@@ -1,0 +1,9 @@
+{
+  "name": "buro-credito-frontend",
+  "version": "0.1.0",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "",
+    "jquery": ""
+  }
+}

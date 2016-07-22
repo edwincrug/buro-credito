@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class=" ">
+<html lang="es">
 
 <!-- Mirrored from jaybabani.com/complete-admin/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Jul 2016 21:43:23 GMT -->
 
@@ -10,27 +10,12 @@
          * @Version: 4.1
          * This file is part of Complete Admin Theme.
         -->
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Buró de Crédito</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta content="" name="description" />
-    <meta content="" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
-    <!-- Favicon -->
-    <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-57-precomposed.png">
-    <!-- For iPhone -->
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/apple-touch-icon-114-precomposed.png">
-    <!-- For iPhone 4 Retina display -->
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-touch-icon-72-precomposed.png">
-    <!-- For iPad -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/apple-touch-icon-144-precomposed.png">
-    <!-- For iPad Retina display -->
-
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="Portal para buró de crédito Andrade" name="description" />
+    <meta content="Lourdes Maldonado" name="author" />
 
     <!-- CORE CSS FRAMEWORK - START LMS Cambio ruta-->
     <link href="css/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen" />
@@ -45,18 +30,23 @@
     <link href="css/plugins/jvectormap/jquery-jvectormap-2.0.1.css" rel="stylesheet" type="text/css" media="screen" />
     <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
 
-
     <!-- CORE CSS TEMPLATE - START -->
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/responsive.css" rel="stylesheet" type="text/css" />
     <!-- CORE CSS TEMPLATE - END -->
+
+    <!-- Declaración de Scripts-->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+    <base href='/'>
 
 </head>
 <!-- END HEAD -->
 
 <!-- BEGIN BODY -->
 
-<body class=" ">
+<body ng-app="app">
     <!-- START TOPBAR -->
     <div class='page-topbar '>
         <div class='logo-area'>
@@ -408,6 +398,10 @@
     <!-- CORE TEMPLATE JS - START -->
     <script src="js/scripts.js" type="text/javascript"></script>
     <!-- END CORE TEMPLATE JS - END -->
+
+
+    <!--  Scripts de Angular -->
+    <script src="node_modules/angular/angular.js"></script>
 
 
     <!-- General section box modal start -->
