@@ -1,16 +1,15 @@
 appControllers.controller('homeController', function ($scope, homeRepository) {
+    //this is the first method executed in the view
+    $scope.init = function () {
+        $scope.hello = "Hello, Angular is ready! XD  :)  :(";
+    };
 
-    //Obtiene la consulta de contrato
-    $scope.GetContrato = function () {
-        homeRepository.getHome()
-            .then(function successCallback(response) {
-                console.log(response.data);
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-                alert('Error');
-            });
+    //all the logic for the view
+    $scope.sayHello = function () {
+        alertFactory.success($scope.hello);
     };
 
 
 });
+
+

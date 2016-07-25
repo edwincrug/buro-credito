@@ -1,17 +1,17 @@
 appServices.factory('homeRepository', function ($http, configurationFactory) {
 
-    var loginRepositoryURL = configurationFactory.urlAPI + 'ejemplo/';
+    var loginRepositoryURL = configurationFactory.urlAPI + 'login/';
 
     return {
 
-        getHome: function (user, password) {
-            var loginURL = loginRepositoryURL + 'consultaejemplo/';
+        login: function (user, password) {
+            var loginURL = loginRepositoryURL + 'login/';
             return $http({
                 url: loginURL,
                 method: "GET",
                 params: {
-                    idCliente: 1,
-                    idContrato: 'aaa'
+                    user: user,
+                    password: password
                 },
                 headers: {
                     'Content-Type': 'application/json'
