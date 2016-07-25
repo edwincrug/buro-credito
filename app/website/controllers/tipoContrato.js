@@ -13,7 +13,7 @@ var TipoContrato = function (conf) {
 }
 
 // POST Se utiliza para INSERT
-TipoContrato.prototype.post_nuevacuenta_data = function (req, res, next) {
+TipoContrato.prototype.post_nuevotipocontrato_data = function (req, res, next) {
     var self = this;
     //Obtención de valores de los parámetros del request
     var params = [
@@ -49,33 +49,33 @@ TipoContrato.prototype.post_nuevacuenta_data = function (req, res, next) {
 
 
 //PUT Se utiliza para UPDATE
-TipoContrato.prototype.put_editarcuenta_data = function (req, res, next) {
+TipoContrato.prototype.put_editartipocontrato_data = function (req, res, next) {
     var self = this;
     //Obtención de valores de los parámetros del request
     var params = [
         {
-            name: 'idActaCuenta',
-            value: req.body.idActaCuenta,
+            name: 'idTipoContrato',
+            value: req.body.idTipoContrato,
             type: self.model.types.INT
                     },
         {
-            name: 'idActa',
-            value: req.body.idActa,
-            type: self.model.types.INT
-                    },
-        {
-            name: 'formaPago',
-            value: req.body.formaPago,
+            name: 'nombreContrato',
+            value: req.body.nombreContrato,
             type: self.model.types.STRING
                     },
         {
-            name: 'cuenta',
-            value: req.body.cuenta,
+            name: 'descripcion',
+            value: req.body.descripcion,
             type: self.model.types.STRING
+                    },
+        {
+            name: 'fechaTermino',
+            value: req.body.fechaTermino,
+            type: self.model.types.DATE
                     }
     ];
 
-    this.model.query('UPD_ACTA_CUENTA_SP', params, function (error, result) {
+    this.model.query('UPD_TIPO_CONTRATO_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result
@@ -85,18 +85,18 @@ TipoContrato.prototype.put_editarcuenta_data = function (req, res, next) {
 
 
 // DELETE Se utiliza para Eliminar DEL
-TipoContrato.prototype.delete_eliminarcuenta_data = function (req, res, next) {
+TipoContrato.prototype.delete_eliminartipocontrato_data = function (req, res, next) {
     var self = this;
     //Obtención de valores de los parámetros del request
     var params = [
         {
-            name: 'idActaCuenta',
-            value: req.body.idActaCuenta,
+            name: 'idTipoContrato',
+            value: req.body.idTipoContrato,
             type: self.model.types.INT
                     }
     ];
 
-    this.model.query('DEL_ACTA_CUENTA_SP', params, function (error, result) {
+    this.model.query('DEL_TIPO_CONTRATO_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result
@@ -106,7 +106,7 @@ TipoContrato.prototype.delete_eliminarcuenta_data = function (req, res, next) {
 
 
 // GET GetAll para obtener todos los elementos
-TipoContrato.prototype.get_obtienecuentas = function (req, res, next) {
+TipoContrato.prototype.get_obtienetipocontrato = function (req, res, next) {
     //Con req.query se obtienen los parametros de la url
     //Ejemplo: ?p1=a&p2=b
     //Retorna {p1:'a',p2:'b'}
@@ -114,9 +114,15 @@ TipoContrato.prototype.get_obtienecuentas = function (req, res, next) {
     //Referencia a la clase para callback
     var self = this;
     //Obtención de valores de los parámetros del request
-    var params = [];
+    var params = [
+        {
+            name: 'idTipoContrato',
+            value: req.body.idTipoContrato,
+            type: self.model.types.INT
+                    }
+    ];
 
-    this.model.query('SEL_ACTA_CUENTA_SP', params, function (error, result) {
+    this.model.query('SEL_TIPO_CONTRATO_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result
@@ -125,7 +131,7 @@ TipoContrato.prototype.get_obtienecuentas = function (req, res, next) {
 };
 
 //GET BY ID Para obtener un elemento en específico
-TipoContrato.prototype.get_obtienecuentabyid = function (req, res, next) {
+TipoContrato.prototype.get_obtienetipocontratobyid = function (req, res, next) {
     //Con req.query se obtienen los parametros de la url
     //Ejemplo: ?p1=a&p2=b
     //Retorna {p1:'a',p2:'b'}
