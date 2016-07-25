@@ -1,3 +1,3 @@
  module.exports = {
-     ejemplo: require('./controllers/ejemplo')
+     factura: require('./controllers/factura')
  }
