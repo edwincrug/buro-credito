@@ -117,7 +117,7 @@ TipoContrato.prototype.get_obtienetipocontrato = function (req, res, next) {
     var params = [
         {
             name: 'idTipoContrato',
-            value: req.body.idTipoContrato,
+            value: req.query.idTipoContrato,
             type: self.model.types.INT
                     }
     ];
@@ -130,27 +130,27 @@ TipoContrato.prototype.get_obtienetipocontrato = function (req, res, next) {
     });
 };
 
-//GET BY ID Para obtener un elemento en específico
-TipoContrato.prototype.get_obtienetipocontratobyid = function (req, res, next) {
-    //Con req.query se obtienen los parametros de la url
-    //Ejemplo: ?p1=a&p2=b
-    //Retorna {p1:'a',p2:'b'}
-    //Objeto que envía los parámetros
-    //Referencia a la clase para callback
-    var self = this;
-    //Obtención de valores de los parámetros del request
-    var params = [{
-        name: 'idActa',
-        value: req.query.idActa,
-        type: self.model.types.INT
-                    }];
-
-    this.model.query('SEL_ACTA_CUENTABYID_SP', params, function (error, result) {
-        self.view.speakJSON(res, {
-            error: error,
-            result: result
-        });
-    });
-};
+////GET BY ID Para obtener un elemento en específico
+//TipoContrato.prototype.get_obtienetipocontratobyid = function (req, res, next) {
+//    //Con req.query se obtienen los parametros de la url
+//    //Ejemplo: ?p1=a&p2=b
+//    //Retorna {p1:'a',p2:'b'}
+//    //Objeto que envía los parámetros
+//    //Referencia a la clase para callback
+//    var self = this;
+//    //Obtención de valores de los parámetros del request
+//    var params = [{
+//        name: 'idActa',
+//        value: req.query.idActa,
+//        type: self.model.types.INT
+//                    }];
+//
+//    this.model.query('SEL_ACTA_CUENTABYID_SP', params, function (error, result) {
+//        self.view.speakJSON(res, {
+//            error: error,
+//            result: result
+//        });
+//    });
+//};
 
 module.exports = TipoContrato;

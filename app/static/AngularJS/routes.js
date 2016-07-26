@@ -10,8 +10,8 @@ angular.module('app.routes', [])
 
         .state('home', {
         url: '/',
-        templateUrl: 'Templates/home.html',
-        controller: 'homeController'
+        templateUrl: 'Templates/tipoContrato.html',
+        controller: 'tipoContratoController'
     })
 
     .state('login', {

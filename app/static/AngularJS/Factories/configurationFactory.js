@@ -2,7 +2,7 @@ appServices.factory('configurationFactory', [function () {
 
     var interfaz = {};
 
-    interfaz.urlAPI = 'http://localhost:5000/api/';
+    interfaz.urlAPI = 'http://localhost:4600/api/';
 
     return interfaz;
 

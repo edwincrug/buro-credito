@@ -46,6 +46,50 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/AngularJS\/Controllers\/TipoContrato\/min\/tipoContratoController-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/TipoContrato\/min\/tipoContratoController-min.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/TipoContrato\/min\/min\/tipoContratoController-min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/AngularJS\/Controllers\/TipoContrato\/min\/tipoContratoRepository-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/TipoContrato\/min\/tipoContratoRepository-min.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/TipoContrato\/min\/min\/tipoContratoRepository-min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/AngularJS\/Controllers\/TipoContrato\/tipoContratoController.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/TipoContrato\/tipoContratoController.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/TipoContrato\/min\/tipoContratoController-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/AngularJS\/Controllers\/TipoContrato\/tipoContratoRepository.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/TipoContrato\/tipoContratoRepository.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/TipoContrato\/min\/tipoContratoRepository-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/AngularJS\/Directives\/directives.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -68,6 +112,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/AngularJS\/Factories\/min\/configurationFactory-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Factories\/min\/configurationFactory-min.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Factories\/min\/min\/configurationFactory-min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/AngularJS\/Factories\/notificationFactory.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -85,6 +140,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/AngularJS\/min\/app-min.js",
 		"outputAbbreviatedPath": "\/AngularJS\/min\/min\/app-min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/AngularJS\/min\/routes-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/min\/routes-min.js",
+		"outputAbbreviatedPath": "\/AngularJS\/min\/min\/routes-min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -574,6 +640,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/plugins\/toastr\/toastr.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/plugins\/toastr\/toastr.min.js",
+		"outputAbbreviatedPath": "\/js\/plugins\/toastr\/min\/toastr.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/scripts.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -596,11 +673,20 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1
 		},
-	"\/Templates\/home.html": {
+	"\/Templates\/nuevoTipoContrato.html": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/Templates\/home.html",
+		"inputAbbreviatedPath": "\/Templates\/nuevoTipoContrato.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/Templates\/tipoContrato.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/Templates\/tipoContrato.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0

@@ -1,8 +1,10 @@
 {
-	"port": 5000,
-	"SQL_user": "sa",
-    "SQL_password": "S0p0rt3",
-    "SQL_server": "192.168.20.9",
-    "SQL_database": "Buro",
-    "SQL_connectionTimeout": 60000
-} 
+    "port": 4600,
+    "connection": {
+        "SQL_user": "sa",
+        "SQL_password": "S0p0rt3",
+        "SQL_server": "192.168.20.9",
+        "SQL_database": "Buro",
+        "SQL_connectionTimeout": 60000
+    }
+}

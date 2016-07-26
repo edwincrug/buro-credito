@@ -1,0 +1,1 @@
+angular.module("app.routes",[]).config(function(t,l){t.state("home",{url:"/",templateUrl:"Templates/tipoContrato.html",controller:"tipoContratoController"}).state("login",{url:"/page5",templateUrl:"templates/login.html",controller:"loginController"}),l.otherwise("/")});
