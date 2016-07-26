@@ -1,5 +1,76 @@
 <div ng-init="init()">
 
-    HOLA LULU
+
+    <div>
+        <p>Id Contrato:
+            <input type="text" id="Busqueda" size="18"></input>
+        </p>
+        <p>Nombre:
+            <input type="text" id="Busqueda" size="18"></input>
+        </p>
+        <p>Descripcion:
+            <input type="text" id="Busqueda" size="18"></input>
+        </p>
+    </div>
+    <div>
+        <p>Fecha Creacion:
+            <input type="text" id="Busqueda" size="18"></input>
+        </p>
+        <p>Fecha Termino:
+            <input type="text" id="Busqueda" size="18"></input>
+        </p>
+    </div>
+
+    <!--Tabla-->
+    <div class="col-lg-12">
+        <section class="box">
+            <header class="panel_header">
+                <h2 class="title pull-left"><strong>Documentos Requeridos</strong></h2>
+                <!--h2 class="title pull-right">Fecha Consulta:22/Julio/2016</h2-->
+                <!--div class="actions panel_actions pull-right">
+                            <a class="box_toggle fa fa-chevron-down"></a>
+                            <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                            <a class="box_close fa fa-times"></a>
+                        </div-->
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Seleccionar</th>
+                                        <th>Obligatorio</th>
+                                        <th>idDocumento</th>
+                                        <th>Descripcion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <!-- ng-repeat="contrato in listaContratos"-->
+                                        <td>
+                                            <input type="checkbox" name="selArchivo">
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" name="obligatorio">
+                                        </td>
+                                        <td> </td>
+                                        <td> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!--Fin Tabla-->
+    <p align="right">
+        <input type="button" value="Cancelar" onclick="" class="btn btn-primary"></input>
+        <input type="button" value="Aceptar" onclick="" class="btn btn-success"></input>
+    </p>
+
 
 </div>
