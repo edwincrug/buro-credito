@@ -1,0 +1,228 @@
+<!-----------------------------------------------Datos Contrato --------------------------------------------------------->
+<div ng-init="init()">
+    <!--Datos Contrato -->
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left">Datos del Cliente: </h2>
+        </header>
+        <div class="content-body">
+
+            <!-- Boton-->
+            <div class="col-md-offset-10">
+                <div class="form-group">
+                    <button type="button" class="btn btn-info">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbspBuscar</button>
+                </div>
+            </div>
+            <!-- Boton-->
+
+            <!-- Acomodo 1-->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="field-1" class="control-label">Nombre:</label>
+                        <input type="text" class="form-control" id="field-1" placeholder="John">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="field-2" class="control-label">RFC:</label>
+                        <input type="text" class="form-control" id="field-2" placeholder="Doe">
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+
+            <div class="row">
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label for="field-4" class="control-label">Telefono:</label>
+
+                        <input type="text" class="form-control" id="field-4" placeholder="Boston">
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label for="field-5" class="control-label">Correo:</label>
+
+                        <input type="text" class="form-control" id="field-5" placeholder="United States">
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label for="field-6" class="control-label">Cel:</label>
+
+                        <input type="text" class="form-control" id="field-6" placeholder="123456">
+                    </div>
+
+                </div>
+            </div>
+            <!-- Acomodo 1-->
+
+
+
+
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <form role="form">
+                        <div class="form-group">
+                            <label class="form-label">Nombre:&nbspEduardo Anguiano Estrada</label>
+                        </div>
+                        <div class="texto">
+                            {{ expediente.nombre }}
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">RFC:&nbspRFC12356457</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Dirección:&nbspHector Espinoza Num.527 Col. Sector Popular</label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label class="form-label">Telefono:&nbsp5555555555</label>
+                            </div>
+
+                            <div class="col-xs-6">
+                                <label class="form-label">Correo:&nbspeduardo@hotmail.com</label>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!--Tabla Documentos-->
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left">Datos del Contrato:</h2>
+        </header>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-xs-6">
+                    <form role="form">
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Contrato:</label>
+                            <select class="form-control m-bot15">
+                                <option>AAA_VIP</option>
+                                <option>BBB_VIP</option>
+                                <option>CCC_VIP</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Empresa:</label>
+                            <select class="form-control m-bot15">
+                                <option>NISSAN</option>
+                                <option>SUZUKI</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Sucursal:</label>
+                            <select class="form-control m-bot15">
+                                <option>Zaragoza</option>
+                                <option>Viaducto</option>
+                                <option>La Viga</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Departamento:</label>
+                            <select class="form-control m-bot15">
+                                <option>Refacciones</option>
+                                <option>Plan Piso</option>
+                                <option>Varios</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="form-label">Fecha Creación:</label>
+                            <input class="form-control" placeholder="Fecha Inicio">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Fecha Término:</label>
+                            <input class="form-control" placeholder="Fecha Fin">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Limite de Crédito:50000.00</label>
+                            <!--input class="form-control" placeholder="Fecha Inicio"-->
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left">Documentos Requeridos:</h2>
+        </header>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Documento</th>
+                                    <th>Obligatorio</th>
+                                    <th>Adjuntar Archivo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat=" tipoContrato in listaTiposContrato">
+                                    <td>{{ tipoContrato.nombreContrato }}</td>
+                                    <td>{{ tipoContrato.idTipoContrato }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary rss" tooltip="Editar" ng-click="Editar()">
+                                            <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Tabla Documentos-->
+    <div class="col-md-offset-7">
+        <div class="form-group">
+            <button type="button" class="btn btn-accent" tooltip="Editar" ng-click="Editar()">Cancelar
+            </button>
+            <button type="button" class="btn btn-info" tooltip="Editar" ng-click="Editar()">Guardar
+            </button>
+            <button type="button" class="btn btn-success" tooltip="Editar" ng-click="Editar()">Solicitar Aprobación
+            </button>
+        </div>
+    </div>
+
+
+
+    <!--FIN Datos Contrato-->
+</div>

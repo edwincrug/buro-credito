@@ -33,6 +33,10 @@
     <!-- CORE CSS TEMPLATE - START -->
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/responsive.css" rel="stylesheet" type="text/css" />
+    <!-- LMS 26/07/2016 -->
+    <link href="css/toastr.css" rel="stylesheet" type="text/css">
+    <link href="css/plugins/icheck/skins/flat/_all.css" type="text/css">
+
     <!-- CORE CSS TEMPLATE - END -->
 
     <!-- Declaración de Scripts-->
@@ -219,7 +223,7 @@
                                 <span class="input-group-addon">
                                         <i class="fa fa-search"></i>
                                     </span>
-                                <input type="text" class="form-control animated fadeIn" placeholder="Search & Enter">
+                                <input type="text" class="form-control animated fadeIn" placeholder="Buscar">
                             </div>
                             <input type='submit' value="">
                         </form>
@@ -300,8 +304,7 @@
 
 
                 <!-- Menu -->
-                <ul class='wraplist'>
-
+                <ul class='wraplist' style="height: 892px;">
                     <li class='menusection'>GENERAL</li>
                     <li class="open">
                         <a href="AngularJS\Templates\administrador.html">
@@ -315,28 +318,27 @@
                             <span class="title">Reportes</span>
                             <span class="arrow "></span>
                         </a>
-                        <ul class="sub-menu">
+                        <!--ul class="sub-menu">
                             <li>
                                 <a class="" href="layout-default.html">Reporte mensual</a>
                             </li>
                             <li>
                                 <a class="" href="layout-collapsed.html">Reporte Anual</a>
                             </li>
-                        </ul>
+                        </ul-->
                     </li>
                     <li class='menusection'>CATALOGOS</li>
                     <li class="">
-                        <a href="ui-calendar.html">
+                        <a ui-sref="home">
                             <i class="fa fa-gears"></i>
-                            <span class="title">Crear Tipo de Contrato</span>
+                            <span class="title">Tipos de Contrato</span>
                         </a>
                     </li>
                     <li class="">
-                        <a href="javascript:;">
+                        <a ui-sref="nuevocontrato">
                             <i class="fa fa-edit"></i>
                             <span class="title">Crear Contrato</span>
                         </a>
-                    </li>
                     </li>
                     <li class='menusection'>SENSOR</li>
                     <li class="">
@@ -363,7 +365,7 @@
                     <div class="page-title">
 
                         <div class="pull-left">
-                            <h1 class="title">Contratos</h1>
+                            <h1 class="title">Tipos de Contrato</h1>
                         </div>
                     </div>
                     <div ui-view></div>
@@ -398,6 +400,7 @@
 
     <!-- CORE TEMPLATE JS - START -->
     <script src="js/scripts.js" type="text/javascript"></script>
+    <script src="js/datepicker.js" type="text/javascript"></script>
     <!-- END CORE TEMPLATE JS - END -->
 
 
@@ -421,6 +424,7 @@
     <script src="AngularJS/services.js"></script>
     <script src="AngularJS/Factories/configurationFactory.js"></script>
     <script src="AngularJS/Factories/notificationFactory.js"></script>
+    <script src="AngularJS/Factories/sessionFactory.js"></script>
 
     <!--  Detalle de directivas  -->
     <script src="AngularJS/Directives/directives.js"></script>
@@ -431,6 +435,7 @@
     <script src="AngularJS/Controllers/Home/homeController.js"></script>
     <script src="AngularJS/Controllers/TipoContrato/tipoContratoRepository.js"></script>
     <script src="AngularJS/Controllers/TipoContrato/tipoContratoController.js"></script>
+    <script src="AngularJS/Controllers/TipoContrato/tipoContratoEditarController.js"></script>
 
 
 </body>

@@ -14,9 +14,24 @@ angular.module('app.routes', [])
         controller: 'tipoContratoController'
     })
 
+    //1) nuevoTipoContrato
+    .state('nuevotipocontrato', {
+        url: '/nuevotipocontrato',
+        templateUrl: 'templates/nuevoTipoContrato.html',
+        controller: 'tipoContratoEditarController'
+    })
+
+    //2) nuevoContrato
+    .state('nuevocontrato', {
+        url: '/nuevocontrato',
+        templateUrl: 'templates/nuevoContrato.html',
+        controller: 'nuevoContratoController'
+    })
+
+    //Login
     .state('login', {
         url: '/page5',
-        templateUrl: 'templates/login.html',
+        templateUrl: 'Templates/login.html',
         controller: 'loginController'
     })
 

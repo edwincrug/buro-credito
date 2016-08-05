@@ -16,6 +16,7 @@ var TipoContrato = function (conf) {
 TipoContrato.prototype.post_nuevotipocontrato_data = function (req, res, next) {
     var self = this;
     //Obtención de valores de los parámetros del request
+
     var params = [
         {
             name: 'nombreContrato',
@@ -52,25 +53,28 @@ TipoContrato.prototype.post_nuevotipocontrato_data = function (req, res, next) {
 TipoContrato.prototype.put_editartipocontrato_data = function (req, res, next) {
     var self = this;
     //Obtención de valores de los parámetros del request
+    var date = new Date(req.query.fechaTermino.toString());
+    //var fecha = new Date(date.valueOf() - date.getTimezoneOffset() * 60000);
+
     var params = [
         {
             name: 'idTipoContrato',
-            value: req.body.idTipoContrato,
+            value: req.query.idTipoContrato,
             type: self.model.types.INT
                     },
         {
             name: 'nombreContrato',
-            value: req.body.nombreContrato,
+            value: req.query.nombreContrato,
             type: self.model.types.STRING
                     },
         {
             name: 'descripcion',
-            value: req.body.descripcion,
+            value: req.query.descripcion,
             type: self.model.types.STRING
                     },
         {
             name: 'fechaTermino',
-            value: req.body.fechaTermino,
+            value: date,
             type: self.model.types.DATE
                     }
     ];
@@ -91,7 +95,7 @@ TipoContrato.prototype.delete_eliminartipocontrato_data = function (req, res, ne
     var params = [
         {
             name: 'idTipoContrato',
-            value: req.body.idTipoContrato,
+            value: req.query.idTipoContrato,
             type: self.model.types.INT
                     }
     ];
@@ -129,6 +133,34 @@ TipoContrato.prototype.get_obtienetipocontrato = function (req, res, next) {
         });
     });
 };
+
+// GET GetAll para obtener todos los documentos disponibles
+TipoContrato.prototype.get_obtienelistadocumentos = function (req, res, next) {
+    //Con req.query se obtienen los parametros de la url
+    //Ejemplo: ?p1=a&p2=b
+    //Retorna {p1:'a',p2:'b'}
+    //Objeto que envía los parámetros
+    //Referencia a la clase para callback
+    var self = this;
+    //Obtención de valores de los parámetros del request
+    var params = [
+        {
+            name: 'idTipoContrato',
+            value: req.query.idTipoContrato,
+            type: self.model.types.INT
+                    }
+    ];
+
+    this.model.query('SEL_DOCUMENTOS_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+};
+
+
+
 
 ////GET BY ID Para obtener un elemento en específico
 //TipoContrato.prototype.get_obtienetipocontratobyid = function (req, res, next) {
