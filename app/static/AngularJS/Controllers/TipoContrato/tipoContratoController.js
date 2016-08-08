@@ -44,6 +44,7 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
                     notificationFactory.error('Error al eliminar el contrato: ' + response.data.message);
                 }
             );
+        $state.go('home'); //No funcion ;(
     };
 
     //Ir a Editar Tipo de Contrato

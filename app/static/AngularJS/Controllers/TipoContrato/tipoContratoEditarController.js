@@ -44,6 +44,28 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
             );
     };
 
+    //Funcion Crear Nuevo Tipo de Contrato
+    $scope.CrearTipo = function () {
+        alert($scope.contratoEditar.nombreContrato);
+        notificationFactory.warning('Entre en Nuevo Tipo de Contrato');
+
+        tipoContratoRepository.insertarTipoContrato($scope.contratoEditar)
+            .then(
+                function successCallbackNuevoTipo(response) {
+                    //reset
+                    //Success
+                    notificationFactory.success('Nuevo Tipo Contrato correctamente.');
+                    $scope.resultado = response.data;
+                    $state.go('home');
+                },
+                function errorCallbackNuevoTipo(response) {
+                    //Error
+                    notificationFactory.error('Error al editar el Tipo contrato: ' + response.data.message);
+                }
+            );
+    };
+
+
     //Funcion Carga Lista de Documentos  --Inconluso
     var cargaListaDocumentos = function () {
         tipoContratoRepository.obtieneListaDocumentos(0)

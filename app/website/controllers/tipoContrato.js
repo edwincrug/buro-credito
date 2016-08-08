@@ -20,22 +20,22 @@ TipoContrato.prototype.post_nuevotipocontrato_data = function (req, res, next) {
     var params = [
         {
             name: 'nombreContrato',
-            value: req.body.nombreContrato,
+            value: req.query.nombreContrato,
             type: self.model.types.STRING
                     },
         {
             name: 'descripcion',
-            value: req.body.descripcion,
+            value: req.query.descripcion,
             type: self.model.types.STRING
                     },
         {
             name: 'fechaCreacion',
-            value: req.body.fechaCreacion,
+            value: req.query.fechaCreacion,
             type: self.model.types.DATE
                     },
         {
             name: 'fechaTermino',
-            value: req.body.fechaTermino,
+            value: req.query.fechaTermino,
             type: self.model.types.DATE
                     }
     ];
