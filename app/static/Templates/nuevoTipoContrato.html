@@ -1,5 +1,13 @@
 <div ng-init="init()">
 
+    <!--Titulo de Pagina  -->
+    <div class="page-title">
+        <div class="pull-left">
+            <h1 class="title">Captura de Tipo de Contrato</h1>
+        </div>
+    </div>
+
+
     <!--Datos Tipo Contrato -->
     <section class="box ">
         <header class="panel_header">
@@ -20,16 +28,33 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-xs-6">
-                                <label class="form-label">Fecha Creación:</label>
-                                <input type="text" class="form-control datepicker" data-disabled-days="0,6" id="fechaInicio" ng-model="contratoEditar.fechaCreacion" placeholder="Fecha Inicio">
+                            <!-- Ejemplo datepicker bootstrap-->
+                            <!--label class="form-label">Fecha Creación:</label-->
+                            <div class="col-md-6">
+                                <p class="input-group">
+                                    <input type="text" class="form-control" ng-model="contratoEditar.fechaCreacion" />
+                                    <span class="input-group-btn">
+                                          <button type="button" class="btn btn-default" ng-click="true">
+                                          <i class="glyphicon glyphicon-time"></i>
+                                          </button> 
+                                     </span>
+                                </p>
                             </div>
 
-                            <div class="col-xs-6">
-                                <label class="form-label">Fecha Término:</label>
-                                <input class="form-control" id="descripcionTipo" ng-model="contratoEditar.fechaTermino" placeholder="Fecha Fin">
+                            <!--label class="form-label">Fecha Término:</label-->
+                            <div class="col-md-6">
+                                <p class="input-group">
+                                    <input type="text" class="form-control" ng-model="contratoEditar.fechaTermino" />
+                                    <span class="input-group-btn">
+                                          <button type="button" class="btn btn-default" ng-click="true">
+                                          <i class="glyphicon glyphicon-time"></i>
+                                          </button> 
+                                     </span>
+                                </p>
                             </div>
+
                         </div>
+                        <!-- Ejemplo datepicker bootstrap-->
 
                     </form>
 
@@ -71,7 +96,8 @@
             <div class="col-md-offset-9">
                 <div class="form-group">
                     <button type="button" class="btn btn-primary ">Cancelar</button>
-                    <button type="button" class="btn btn-purple" ng-click="EditarTipo()">Guardar Cambios</button>
+                    <button type="button" class="btn btn-purple" ng-click="EditarTipo()" ng-show="opcion==2">Actualizar Cambios</button>
+                    <button type="button" class="btn btn-purple" ng-click="CrearTipo()" ng-show="opcion==1">Guardar Contrato</button>
                 </div>
             </div>
 

@@ -27,11 +27,11 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
 
 
     //Eliminar Tipo de Contrato
-    $scope.Eliminar = function () {
+    $scope.Eliminar = function (idtipocontrato) {
 
         //login
         notificationFactory.warning('Entre en Borrar Tipo de Contrato Funcion');
-        tipoContratoRepository.eliminarTipoContrato(3)
+        tipoContratoRepository.eliminarTipoContrato(idtipocontrato)
             .then(
                 function successCallbackEliminar(response) {
                     //reset
@@ -51,16 +51,23 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
         notificationFactory.success('Entre en Editar');
     };
 
-    //VerNuevoTipo()
-    $scope.EditarTipoContrato = function (tipo) {
+    //EditarTipo()
+    $scope.EditarTipoContrato = function (tipo, opc) {
         //Success
         //var url = window.location.pathname + '//nuevotipoContrato';
         sessionFactory.tipoContratoEditar = tipo;
-        //  location.href = '/nuevotipocontrato';
+        sessionFactory.opcion = opc;
         $state.go('nuevotipocontrato');
 
     };
 
+    //Lamada NuevoTipo
+    $scope.NuevoTipo = function (opc) {
+        sessionFactory.tipoContratoEditar = null;
+        sessionFactory.opcion = opc;
+        $state.go('nuevotipocontrato');
+
+    };
 
 
     /*
