@@ -44,13 +44,13 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
                     notificationFactory.error('Error al eliminar el contrato: ' + response.data.message);
                 }
             );
-        $state.go('home'); //No funcion ;(
+        $state.go('home'); //No funciono ;(
     };
 
-    //Ir a Editar Tipo de Contrato
+    /*//Ir a Editar Tipo de Contrato
     $scope.Editar = function () {
         notificationFactory.success('Entre en Editar');
-    };
+    };*/
 
     //EditarTipo()
     $scope.EditarTipoContrato = function (tipo, opc) {
@@ -70,21 +70,11 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
 
     };
 
+    //Boton Cancelar
+    $scope.Regresar = function () {
+        $state.go('home');
+    };
 
-    /*
-        var borraTipoContrato = function () {
-            tipoContratoRepository.eliminarTipoContrato(2)
-                .then(
-                    function successCallback(response) {
-                        //Success
-                        notificationFactory.success('Eliminados correctamente.');
-                    },
-                    function errorCallback(response) {
-                        //Error
-                        notificationFactory.error('Error al eliminar el contrato: ' + response.data.message);
-                    }
-                );
-        };
-    */
+
 
 }); //FIN de appControllers

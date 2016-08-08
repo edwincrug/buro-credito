@@ -82,8 +82,10 @@
                         <div class="row linea">
                             <div class="col-md-8">
                                 <div class="input-group" ng-repeat=" documento in listaDocumentos">
-                                    <span class="input-group-addon"><input type="checkbox" aria-label="Checkbox for following text input"></span>
-                                    <span class="input-group-addon"><input type="checkbox" aria-label="Checkbox for following text input"></span>
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" ng-model="documento.seleccionado"  aria-label="Checkbox for following text input"></span>
+                                    <!-- ng-change="SeleccionDocumentos(documento)"-->
+                                    <!--span class="input-group-addon"><input type="checkbox" aria-label="Checkbox for following text input"></span-->
                                     <input ng-model="documento.nombre" type="text" class="form-control" aria-label="Text input with checkbox">
                                 </div>
                             </div>
@@ -93,9 +95,9 @@
             </div>
 
 
-            <div class="col-md-offset-9">
-                <div class="form-group">
-                    <button type="button" class="btn btn-primary ">Cancelar</button>
+            <div class="col-md-offset-8">
+                <div class="list-group">
+                    <button type="button" class="btn btn-primary " ng-click="Regresar()">Cancelar</button>
                     <button type="button" class="btn btn-purple" ng-click="EditarTipo()" ng-show="opcion==2">Actualizar Cambios</button>
                     <button type="button" class="btn btn-purple" ng-click="CrearTipo()" ng-show="opcion==1">Guardar Contrato</button>
                 </div>
