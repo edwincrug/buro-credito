@@ -35,16 +35,17 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
             .then(
                 function successCallbackEliminar(response) {
                     //reset
-                    //Success
+                    //Success                    
                     notificationFactory.success('Eliminados correctamente.');
-                    $scope.resultado = response.data;
+                    //$scope.resultado = response.data;
+                    
                 },
                 function errorCallbackEliminar(response) {
                     //Error
                     notificationFactory.error('Error al eliminar el contrato: ' + response.data.message);
                 }
             );
-        $state.go('home'); //No funciono ;(
+             location.href = '/';  
     };
 
     /*//Ir a Editar Tipo de Contrato
@@ -70,10 +71,7 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
 
     };
 
-    //Boton Cancelar
-    $scope.Regresar = function () {
-        $state.go('home');
-    };
+   
 
 
 

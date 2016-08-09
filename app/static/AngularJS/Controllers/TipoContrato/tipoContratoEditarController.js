@@ -53,7 +53,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
     };
 
     //Funcion Crear Nuevo Tipo de Contrato
-    $scope.CrearTipo = function () {
+    $scope.CrearTipo = function (documento) {
         alert($scope.contratoEditar.nombreContrato);
         notificationFactory.warning('Entre en Nuevo Tipo de Contrato');
 
@@ -63,7 +63,8 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                     //reset
                     //Success
                     notificationFactory.success('Nuevo Tipo Contrato correctamente.');
-                    $scope.resultado = response.data;
+                    $scope.resultado = response.data;                   
+                    $scope.cargarDocumentos(documento,resultado);
                     $state.go('home');
                 },
                 function errorCallbackNuevoTipo(response) {
@@ -126,6 +127,50 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
 
         alert('Total seleccionados: ' + $scope.contadorSeleccionado +' '+ $scope.tipoContratoEditar.idTipoContrato);
 
+    };
+
+
+      //Selecciona Documento
+    $scope.cargarDocumentos = function (documento,idContrato) {
+        alert('Estoy en Seleccion Documentos: ' + documento.nombre); //documento.seleccionado
+        //Contador de seleccionados
+        $scope.contadorSeleccionado = 0;
+
+        angular.forEach($scope.listaDocumentos, function (value, key) {
+            alert(value.nombre + 'Seleccionado: ' + value.seleccionado);
+
+            if (value.seleccionado == true) {
+             tipoContratoRepository.TipoDocumento(value.idDocumento , idContrato)
+            .then(
+                function successCallbackEditar(response) {
+                    //reset
+                    //Success
+                    notificationFactory.success('Update realizado correctamente.');
+                    $scope.resultado = response.data;
+                    
+
+                },
+                function errorCallbackEditar(response) {
+                    //Error
+                    notificationFactory.error('Error al subir documentos: ');
+                }
+            );
+
+
+
+
+
+                $scope.contadorSeleccionado++;
+            }
+        });
+
+        alert('Total seleccionados: ' + $scope.contadorSeleccionado +' '+ $scope.tipoContratoEditar.idTipoContrato);
+
+    };
+
+     //Boton Cancelar
+    $scope.Regresar = function () {
+        $state.go('home');
     };
 
 
