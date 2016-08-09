@@ -1,3 +1,4 @@
  module.exports = {
-     tipoContrato: require('./controllers/tipoContrato')
+     tipoContrato: require('./controllers/tipoContrato'),
+     contrato: require('./controllers/contrato')
  }

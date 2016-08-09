@@ -25,7 +25,7 @@ angular.module('app.routes', [])
     .state('nuevocontrato', {
         url: '/nuevocontrato',
         templateUrl: 'templates/nuevoContrato.html',
-        controller: 'nuevoContratoController'
+        controller: 'contratoController'
     })
 
     //Login

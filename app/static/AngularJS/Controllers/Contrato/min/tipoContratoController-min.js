@@ -1,0 +1,1 @@
+appControllers.controller("tipoContratoController",function(o,t,n){o.init=function(){e()};var e=function(){t.obtieneTipoContrato(0).then(function e(t){n.success("Tipos de contrato obtenidos correctamente."),o.listaTiposContrato=t.data},function r(o){n.error("No se pudieron obtener los tipos de contrato: "+o.data.message)})}});
