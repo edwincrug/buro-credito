@@ -1,18 +1,18 @@
-appControllers.controller('contratoController', function ($scope, $state, contratoRepository, notificationFactory,tipoContratoRepository,sessionFactory) {
+appControllers.controller('contratoController', function ($scope, $state, contratoRepository, notificationFactory, tipoContratoRepository, sessionFactory) {
 
 
     //Metodo de incio 
     $scope.init = function () {
         //Carga datos del Cliente
 
-    cargaCliente();
-    cargaTiposContrato();
-    cargaTiposEmpresas();   
+        //cargaCliente();
+        cargaTiposContrato();
+        cargaTiposEmpresas();
 
     };
 
     //Obtiene los Datos del Cliente
-    var cargaCliente = function () {
+    /*var cargaCliente = function () {
         contratoRepository.obtieneDatosCliente('diana')
             .then(
                 function succesCallback(response) {
@@ -25,6 +25,26 @@ appControllers.controller('contratoController', function ($scope, $state, contra
                     notificationFactory.error('No se pudieron obtener los  ' + response.data.message);
                 }
             );
+    };*/
+
+    //Obtiene todos los clientes coincidentes con la busqueda
+    $scope.BuscarCliente = function (txtBusqueda) {
+        notificationFactory.success('Estoy en la funcion BuscarCliente ' + $scope.txtBusqueda);
+        $('#searchCliente').modal('show');
+
+        contratoRepository.obtieneDatosCliente($scope.txtBusqueda)
+            .then(
+                function succesCallback(response) {
+                    //Success
+                    notificationFactory.success('Datos cliente correctamente');
+                    $scope.listaClientes = response.data;
+                },
+                function errorCallback(response) {
+                    //Error
+                    notificationFactory.error('No se pudieron obtener los datos ' + response.data.message);
+                }
+            );
+
     };
 
     //Obtiene la lista de tipos contrato 
@@ -60,36 +80,44 @@ appControllers.controller('contratoController', function ($scope, $state, contra
             );
     };
 
-    $scope.TipoSucursal = function (idEmpresa) {  
+    $scope.TipoSucursal = function (idEmpresa) {
 
-    contratoRepository.obtieneTipoSucursal(idEmpresa)
+        contratoRepository.obtieneTipoSucursal(idEmpresa)
             .then(
                 function succesCallback(response) {
-                    
+
                     $scope.listaTiposSucursal = response.data;
                 },
                 function errorCallback(response) {
                     //Error
                     notificationFactory.error('No se pudieron obtener los tipos de sucursal: ' + response.data.message);
                 }
-            );      
-        
+            );
+
     };
 
-     $scope.TipoDepartamento = function (idSucursal) {  
+    $scope.TipoDepartamento = function (idSucursal) {
 
-    contratoRepository.obtieneTipoDepartamento(idSucursal)
+        contratoRepository.obtieneTipoDepartamento(idSucursal)
             .then(
                 function succesCallback(response) {
-                    
+
                     $scope.listaTiposDepartamento = response.data;
                 },
                 function errorCallback(response) {
                     //Error
                     notificationFactory.error('No se pudieron obtener los tipos de departamento: ' + response.data.message);
                 }
-            );      
-        
+            );
+
+    };
+
+
+    //
+    $scope.cargarCliente = function (infoCliente) {
+        alert('Estoy en carga Cliente' + infoCliente.nombre);
+        $scope.datosCliente = infoCliente;
+        $state.go('nuevocontrato');
     };
 
 
