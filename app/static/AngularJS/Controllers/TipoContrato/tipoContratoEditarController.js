@@ -7,6 +7,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
         cargaListaDocumentos();
 
         $scope.opcion = sessionFactory.opcion;
+        $scope.tipoContratoEditar=sessionFactory.tipoContratoEditar;
 
         if (sessionFactory.tipoContratoEditar != null) {
             notificationFactory.success(sessionFactory.tipoContratoEditar.idTipoContrato);
@@ -24,8 +25,9 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
 
 
     //Funcion de Actualizacion del Tipo de Contrato
-    $scope.EditarTipo = function () {
-        alert($scope.contratoEditar.nombreContrato);
+    $scope.EditarTipo = function (documento) {        
+        if($scope.contratoEditar.nombreContrato!=null && $scope.contratoEditar.descripcion!=null && $scope.contratoEditar.fechaTermino!=null && $scope.contratoEditar.fechaCreacion!=null 
+            && $scope.contratoEditar.nombreContrato!="" && $scope.contratoEditar.descripcion!="" && $scope.contratoEditar.fechaTermino!="" && $scope.contratoEditar.fechaCreacion!=""){
 
         tipoContratoRepository.editarTipoContrato($scope.contratoEditar)
             .then(
@@ -35,8 +37,8 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                     notificationFactory.success('Update realizado correctamente.');
                     $scope.resultado = response.data;
 
-                    alert('Antes de SeleccionaDocumentos');
-                    SeleccionDocumentos(documento);
+                    alert('Antes de SeleccionaDocumentos' +$scope.resultado);
+                    $scope.SeleccionDocumentos(documento);
                     alert(documento.nombre);
 
                 },
@@ -44,7 +46,10 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                     //Error
                     notificationFactory.error('Error al editar el Tipo contrato: ' + response.data.message);
                 }
-            );
+            );}
+            else{
+                notificationFactory.success('Llene todos los campos');
+            }
     };
 
     //Funcion Crear Nuevo Tipo de Contrato
@@ -95,11 +100,31 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
             alert(value.nombre + 'Seleccionado: ' + value.seleccionado);
 
             if (value.seleccionado == true) {
+             tipoContratoRepository.TipoDocumento(value.idDocumento , $scope.tipoContratoEditar.idTipoContrato)
+            .then(
+                function successCallbackEditar(response) {
+                    //reset
+                    //Success
+                    notificationFactory.success('Update realizado correctamente.');
+                    $scope.resultado = response.data;
+                    
+
+                },
+                function errorCallbackEditar(response) {
+                    //Error
+                    notificationFactory.error('Error al subir documentos: ');
+                }
+            );
+
+
+
+
+
                 $scope.contadorSeleccionado++;
             }
         });
 
-        alert('Total seleccionados: ' + $scope.contadorSeleccionado);
+        alert('Total seleccionados: ' + $scope.contadorSeleccionado +' '+ $scope.tipoContratoEditar.idTipoContrato);
 
     };
 

@@ -160,6 +160,31 @@ TipoContrato.prototype.get_obtienelistadocumentos = function (req, res, next) {
 };
 
 
+TipoContrato.prototype.post_TipoDocumento_data = function (req, res, next) {
+    var self = this;
+   
+
+    var params = [
+        {
+            name: 'idDocumento',
+            value: req.query.idDocumento,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'idTipoContrato',
+            value: req.query.idTipoContrato,
+            type: self.model.types.INT
+                    }
+    ];
+
+    this.model.query('INS_DOCUMENTOS_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+};
+
 
 
 ////GET BY ID Para obtener un elemento en específico

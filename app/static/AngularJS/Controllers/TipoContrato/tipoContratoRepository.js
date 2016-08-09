@@ -71,7 +71,18 @@ appServices.factory('tipoContratoRepository', function ($http, configurationFact
             });
         }, //Fin obtieneListaDocumentos
 
-
+        //6.-Update tipos de documentos
+        TipoDocumento: function (idDocumento, idtipocontrato) {
+            return $http({
+                url: tipoContratoRepositoryURL + 'TipoDocumento/',
+                method: "POST",
+                params: {   idDocumento:idDocumento,
+                            idTipoContrato:idtipocontrato},
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }, //Fin editarTipoContrato
 
 
     }; //Fin del return
