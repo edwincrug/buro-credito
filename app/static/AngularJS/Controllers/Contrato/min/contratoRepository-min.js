@@ -1,0 +1,1 @@
+appServices.factory("contratoRepository",function(o,t){var n=t.urlAPI+"tipocontrato/";return{obtieneTipoContrato:function(t){return o({url:n+"obtienetipocontrato/",method:"GET",params:{idTipoContrato:t},headers:{"Content-Type":"application/json"}})}}});

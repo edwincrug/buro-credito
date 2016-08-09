@@ -4,7 +4,8 @@ appControllers.controller('contratoController', function ($scope, $state, contra
     //Metodo de incio 
     $scope.init = function () {
         //Carga datos del Cliente
-        cargaCliente();
+    cargaCliente();
+    TipoContrato();
 
     };
 
@@ -23,6 +24,16 @@ appControllers.controller('contratoController', function ($scope, $state, contra
                 }
             );
     };
+
+    var TipoContrato = function(){
+        contratoRepository.tipocontrato(0).then(function(tipocontratos){
+            if(tipocontratos.data.length > 0){
+                $scope.tipocontratos = tipocontratos.data;                   
+            }
+        }, function(error){
+            alert("Error al obtener tipo de usuarios");
+        }); 
+    }
 
 
 
