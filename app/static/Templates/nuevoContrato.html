@@ -32,7 +32,7 @@
                         <label for="field-1" class="control-label">Nombre:</label>
 
                         
-                        <input class="form-control" id="nombreCliente" ng-model="datosCliente[0].nombre + datosCliente[0].paterno + datosCliente[0].materno" placeholder="Nombre">
+                        <input class="form-control" id="nombreCliente" ng-model="datosCliente[0].nombre" placeholder="Nombre">
 
                     </div>
                 </div>
@@ -100,40 +100,32 @@
                     <form role="form">
                         <div class="form-group">
                             <label class="form-label">Tipo de Contrato:</label>
-                            <select class="form-control" name="tipousuario" ng-model="tipoContrato.idTipoContrato" ng-options="tipoContrato.idTipoContrato as tipoContrato.tipoContrato for tipoContrato in tipocontratos">
+                            <select class="form-control" name="tipocontrato" ng-model="nuevoContrato.idTipoContrato" ng-options="tipoContrato.idTipoContrato as tipoContrato.nombreContrato for tipoContrato in listaTiposContrato">
                 <option value="">Tipo de Contrato</option>
                 </select> 
-                            <select class="form-control m-bot15">
-                                <option>AAA_VIP</option>
-                                <option>BBB_VIP</option>
-                                <option>CCC_VIP</option>
-                            </select>
+                
+                            
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Empresa:</label>
-                            <select class="form-control m-bot15">
-                                <option>NISSAN</option>
-                                <option>SUZUKI</option>
-                            </select>
+                            <select class="form-control" name="tipoempresa" ng-model="nuevoContrato.idEmpresa" ng-options="tipoEmpresa.idEmpresa as tipoEmpresa.nombreEmpresa for tipoEmpresa in listaTiposEmpresa" ng-click="TipoSucursal(nuevoContrato.idEmpresa)">
+                <option value="">Tipo de Empresa</option>
+                </select>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Sucursal:</label>
-                            <select class="form-control m-bot15">
-                                <option>Zaragoza</option>
-                                <option>Viaducto</option>
-                                <option>La Viga</option>
-                            </select>
+                            <select class="form-control" name="tipocontrato" ng-model="nuevoContrato.idSucursal" ng-options="tipoSucursal.idSucursal as tipoSucursal.nombreSucursal for tipoSucursal in listaTiposSucursal" ng-click="TipoDepartamento(nuevoContrato.idSucursal)">
+                <option value="">Tipo de Sucursal</option>
+                </select> 
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Departamento:</label>
-                            <select class="form-control m-bot15">
-                                <option>Refacciones</option>
-                                <option>Plan Piso</option>
-                                <option>Varios</option>
-                            </select>
+                             <select class="form-control" name="tipocontrato" ng-model="nuevoContrato.idTipoContrato" ng-options="tipoDepartamento.idDepartamento as tipoDepartamento.nombreDepartamento for tipoDepartamento in listaTiposDepartamento">
+                <option value="">Tipo de Departamento</option>
+                </select> 
                         </div>
 
 
@@ -145,6 +137,7 @@
                         <div class="form-group">
                             <label class="form-label">Fecha Término:</label>
                             <input class="form-control" placeholder="Fecha Fin">
+                            <input type="text" class="form-control datepicker" data-format="D, dd MM yyyy" value="">
                         </div>
 
                         <div class="form-group">

@@ -18,19 +18,49 @@ appServices.factory('contratoRepository', function ($http, configurationFactory)
                 });
             }, //Fin Obtiene informacion del Cliente
 
-        tipocontrato: function(idtipocontrato){
+            //2.-Obtiene todos los Tipo de Empresa
+        obtieneTipoEmpresa: function (idUsuario) {
             return $http({
-                url: contratoRepositoryURL + 'tipocontrato/',
+                url: contratoRepositoryURL + 'obtienetipoempresa/',
                 method: "GET",
                 params: {
-                    idTipoContrato: idtipocontrato
+                    idUsuario: idUsuario
                 },
                 headers: {
-                'Content-Type': 'application/json'
+                    'Content-Type': 'application/json'
                 }
             });
-        },
+        }, //Fin obtieneTipoEmpresa
 
+        //3.-Obtiene todos los Tipo de Sucursal
+        obtieneTipoSucursal: function (idEmpresa) {
+            return $http({
+                url: contratoRepositoryURL + 'obtienetiposucursal/',
+                method: "GET",
+                params: {
+                    idEmpresa: idEmpresa
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }, //Fin obtieneTipoSucursal
+
+         //4.-Obtiene todos los Tipo de Departamento
+        obtieneTipoDepartamento: function (idSucursal) {
+            return $http({
+                url: contratoRepositoryURL + 'obtienetipodepartamento/',
+                method: "GET",
+                params: {
+                    idSucursal: idSucursal
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }, //Fin obtieneTipoSucursal
+
+        
     }; //Fin del return
 
 }); //Fin de appServices

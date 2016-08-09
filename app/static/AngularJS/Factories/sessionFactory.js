@@ -4,7 +4,7 @@ appServices.factory('sessionFactory', [function () {
 
     interfaz.tipoContratoEditar = null;
     interfaz.opcion = null;
-
+    interfaz.nuevoContrato=null;
     return interfaz;
 
 }]);

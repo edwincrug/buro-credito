@@ -32,24 +32,71 @@ contrato.prototype.get_obtienedatoscliente = function (req, res, next) {
     });
 };
 
-//obtiene los tipos de contrato
-contrato.prototype.get_tipocontrato = function(req, res, next){
-    
+// GET GetAll para obtener todos los elementos
+contrato.prototype.get_obtienetipoempresa = function (req, res, next) {
+   
     var self = this;
     //Obtención de valores de los parámetros del request
-    var params = [{
-            name: 'idTipoContrato',
-            value: req.query.idTipoContrato,
+    var params = [
+        {
+            name: 'idUsuario',
+            value: req.query.idUsuario,
             type: self.model.types.INT
-                    }];
-    
-    this.model.query('SEL_TIPO_CONTRATO_SP', params, function(error, result) {
+                    }
+    ];
+
+    this.model.query('SEL_EMPRESAS_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result
         });
     });
 };
+
+
+// GET GetAll para obtener todos los elementos
+contrato.prototype.get_obtienetiposucursal = function (req, res, next) {
+   
+    var self = this;
+    //Obtención de valores de los parámetros del request
+    var params = [
+        {
+            name: 'idEmpresa',
+            value: req.query.idEmpresa,
+            type: self.model.types.INT
+                    }
+    ];
+
+    this.model.query('SEL_SUCURSALES_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+};
+
+
+contrato.prototype.get_obtienetipodepartamento = function (req, res, next) {
+   
+    var self = this;
+    //Obtención de valores de los parámetros del request
+    var params = [
+        {
+            name: 'idSucursal',
+            value: req.query.idSucursal,
+            type: self.model.types.INT
+                    }
+    ];
+
+    this.model.query('SEL_DEPARTAMENTOS_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+};
+
+
 
 
 module.exports = contrato;
