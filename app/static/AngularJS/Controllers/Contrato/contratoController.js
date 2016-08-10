@@ -118,6 +118,8 @@ appControllers.controller('contratoController', function ($scope, $state, contra
         //alert('Estoy en carga Cliente' + infoCliente.nombre);
         $scope.datosCliente = infoCliente;
         $state.go('nuevocontrato');
+        //$state.go('home');
+        // location.href = '/#/nuevocontrato';
     };
 
 

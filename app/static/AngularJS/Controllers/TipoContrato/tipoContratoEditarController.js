@@ -39,6 +39,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                         //alert('Antes de SeleccionaDocumentos' +$scope.resultado);
                         $scope.SeleccionDocumentos(documento);
                         //alert(documento.nombre);
+                        $state.go('home');
 
                     },
                     function errorCallbackEditar(response) {
@@ -54,7 +55,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
     //Funcion Crear Nuevo Tipo de Contrato
     $scope.CrearTipo = function (documento) {
         //alert($scope.contratoEditar.nombreContrato);
-        notificationFactory.warning('Entre en Nuevo Tipo de Contrato');
+        //notificationFactory.warning('Entre en Nuevo Tipo de Contrato');
 
         tipoContratoRepository.insertarTipoContrato($scope.contratoEditar)
             .then(
@@ -62,8 +63,9 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                     //reset
                     //Success
                     notificationFactory.success('Nuevo Tipo Contrato correctamente.');
-                    $scope.resultado = response.data;
-                    $scope.cargarDocumentos(documento, resultado);
+
+                    $scope.idTipoContrato = response.data["0"][""];                  
+                    $scope.cargarDocumentos(documento, $scope.idTipoContrato);
                     $state.go('home');
                 },
                 function errorCallbackNuevoTipo(response) {
