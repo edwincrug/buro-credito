@@ -60,8 +60,8 @@
                                         <!-- ng-repeat="contrato in listaContratos"-->
                                         <td>{{ tipoContrato.nombreContrato }}</td>
                                         <td>{{ tipoContrato.descripcion }}</td>
-                                        <td>{{ tipoContrato.fechaCreacion }}</td>
-                                        <td>{{ tipoContrato.fechaTermino }}</td>
+                                        <td>{{ tipoContrato.fechaCreacion | date:"dd/MM/yyyy"}}</td>
+                                        <td>{{ tipoContrato.fechaTermino | date:"dd/MM/yyyy"}}</td>
                                         <td>
                                             <div class="list-group">
                                                 <!--  class="btn-group"-->
