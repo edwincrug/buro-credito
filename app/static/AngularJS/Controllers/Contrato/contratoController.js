@@ -115,7 +115,7 @@ appControllers.controller('contratoController', function ($scope, $state, contra
 
     //
     $scope.cargarCliente = function (infoCliente) {
-        alert('Estoy en carga Cliente' + infoCliente.nombre);
+        //alert('Estoy en carga Cliente' + infoCliente.nombre);
         $scope.datosCliente = infoCliente;
         $state.go('nuevocontrato');
     };

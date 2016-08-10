@@ -142,57 +142,56 @@
         </header>
         <div class="content-body">
             <div class="row">
-                <div class="col-xs-6">
-                    <form role="form">
-                        <div class="form-group">
-                            <label class="form-label">Tipo de Contrato:</label>
-                            <select class="form-control" name="tipocontrato" ng-model="nuevoContrato.idTipoContrato" ng-options="tipoContrato.idTipoContrato as tipoContrato.nombreContrato for tipoContrato in listaTiposContrato">
-                                <option value="">Tipo de Contrato</option>
-                            </select>
+                <div class="col-md-6">
+                    <!-- class="col-md-6"-->
+                    <!--form role="form"-->
+                    <div class="form-group">
+                        <label class="form-label">Tipo de Contrato:</label>
+                        <select class="form-control" name="tipocontrato" ng-model="nuevoContrato.idTipoContrato" ng-options="tipoContrato.idTipoContrato as tipoContrato.nombreContrato for tipoContrato in listaTiposContrato">
+                            <option value="">Tipo de Contrato</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Empresa:</label>
+                        <select class="form-control" name="tipoempresa" ng-model="nuevoContrato.idEmpresa" ng-options="tipoEmpresa.idEmpresa as tipoEmpresa.nombreEmpresa for tipoEmpresa in listaTiposEmpresa" ng-click="TipoSucursal(nuevoContrato.idEmpresa)">
+                            <option value="">Tipo de Empresa</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Sucursal:</label>
+                        <select class="form-control" name="tipocontrato" ng-model="nuevoContrato.idSucursal" ng-options="tipoSucursal.idSucursal as tipoSucursal.nombreSucursal for tipoSucursal in listaTiposSucursal" ng-click="TipoDepartamento(nuevoContrato.idSucursal)">
+                            <option value="">Tipo de Sucursal</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Departamento:</label>
+                        <select class="form-control" name="tipocontrato" ng-model="nuevoContrato.idDepartamento" ng-options="tipoDepartamento.idDepartamento as tipoDepartamento.nombreDepartamento for tipoDepartamento in listaTiposDepartamento">
+                            <option value="">Tipo de Departamento</option>
+                        </select>
+                    </div>
 
 
-                        </div>
+                    <div class="form-group">
+                        <label class="form-label">Fecha Creación:</label>
+                        <input class="form-control" placeholder="Fecha Inicio">
+                    </div>
 
-                        <div class="form-group">
-                            <label class="form-label">Empresa:</label>
-                            <select class="form-control" name="tipoempresa" ng-model="nuevoContrato.idEmpresa" ng-options="tipoEmpresa.idEmpresa as tipoEmpresa.nombreEmpresa for tipoEmpresa in listaTiposEmpresa" ng-click="TipoSucursal(nuevoContrato.idEmpresa)">
-                                <option value="">Tipo de Empresa</option>
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label class="form-label">Fecha Término:</label>
+                        <input class="form-control" placeholder="Fecha Fin">
+                        <!--input type="text" class="form-control datepicker" data-format="D, dd MM yyyy" value=""-->
+                    </div>
 
-                        <div class="form-group">
-                            <label class="form-label">Sucursal:</label>
-                            <select class="form-control" name="tipocontrato" ng-model="nuevoContrato.idSucursal" ng-options="tipoSucursal.idSucursal as tipoSucursal.nombreSucursal for tipoSucursal in listaTiposSucursal" ng-click="TipoDepartamento(nuevoContrato.idSucursal)">
-                                <option value="">Tipo de Sucursal</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">Departamento:</label>
-                            <select class="form-control" name="tipocontrato" ng-model="nuevoContrato.idDepartamento" ng-options="tipoDepartamento.idDepartamento as tipoDepartamento.nombreDepartamento for tipoDepartamento in listaTiposDepartamento">
-                                <option value="">Tipo de Departamento</option>
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label class="form-label">Limite de Crédito:50000.00</label>
+                        <!--input class="form-control" placeholder="Fecha Inicio"-->
+                    </div>
 
 
-                        <div class="form-group">
-                            <label class="form-label">Fecha Creación:</label>
-                            <input class="form-control" placeholder="Fecha Inicio">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">Fecha Término:</label>
-                            <input class="form-control" placeholder="Fecha Fin">
-                            <input type="text" class="form-control datepicker" data-format="D, dd MM yyyy" value="">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">Limite de Crédito:50000.00</label>
-                            <!--input class="form-control" placeholder="Fecha Inicio"-->
-                        </div>
-
-
-                    </form>
+                    <!--/form-->
                 </div>
             </div>
         </div>
@@ -236,9 +235,9 @@
     <!--Tabla Documentos-->
     <div class="col-md-offset-7">
         <div class="form-group">
-            <button type="button" class="btn btn-accent" tooltip="Editar" ng-click="Editar()">Cancelar
+            <button type="button" class="btn btn-secondary" tooltip="Editar" ng-click="Editar()">Cancelar
             </button>
-            <button type="button" class="btn btn-info" tooltip="Editar" ng-click="Editar()">Guardar
+            <button type="button" class="btn btn-primary" tooltip="Editar" ng-click="Editar()">Guardar
             </button>
             <button type="button" class="btn btn-success" tooltip="Editar" ng-click="Editar()">Solicitar Aprobación
             </button>
