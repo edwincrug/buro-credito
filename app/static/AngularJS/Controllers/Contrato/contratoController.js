@@ -1,4 +1,4 @@
-appControllers.controller('contratoController', function ($scope, $state, contratoRepository, notificationFactory, tipoContratoRepository, sessionFactory) {
+appControllers.controller('contratoController', function ($scope, $state, tipoContratoRepository, contratoRepository, notificationFactory, sessionFactory) {
 
 
     //Metodo de incio 
@@ -8,7 +8,7 @@ appControllers.controller('contratoController', function ($scope, $state, contra
         //cargaCliente();
         cargaTiposContrato();
         cargaTiposEmpresas();
-
+        cargaListaDocumentos();
     };
 
     //Obtiene los Datos del Cliente
@@ -64,6 +64,7 @@ appControllers.controller('contratoController', function ($scope, $state, contra
             );
     };
 
+    //Obtiene el catalogo de empresas
     var cargaTiposEmpresas = function () {
         contratoRepository.obtieneTipoEmpresa(0)
             .then(
@@ -80,6 +81,7 @@ appControllers.controller('contratoController', function ($scope, $state, contra
             );
     };
 
+    //Obtiene el catalogo de sucursales por empresa
     $scope.TipoSucursal = function (idEmpresa) {
 
         contratoRepository.obtieneTipoSucursal(idEmpresa)
@@ -96,6 +98,7 @@ appControllers.controller('contratoController', function ($scope, $state, contra
 
     };
 
+    //Obtiene el catalogo de departamentos por sucursal
     $scope.TipoDepartamento = function (idSucursal) {
 
         contratoRepository.obtieneTipoDepartamento(idSucursal)
@@ -113,14 +116,33 @@ appControllers.controller('contratoController', function ($scope, $state, contra
     };
 
 
-    //
+    //Regreso a la pantalla nuevo Contrato con los datos del Cliente
     $scope.cargarCliente = function (infoCliente) {
-        //alert('Estoy en carga Cliente' + infoCliente.nombre);
+        alert('Estoy en carga Cliente' + infoCliente.nombre);
         $scope.datosCliente = infoCliente;
-        $state.go('nuevocontrato');
-        //$state.go('home');
-        // location.href = '/#/nuevocontrato';
+        $('#searchCliente').modal('hide');
     };
+
+
+
+    //Funcion Carga Lista de Documentos  --Inconluso
+    var cargaListaDocumentos = function () {
+        tipoContratoRepository.obtieneListaDocumentos(0)
+            .then(
+                function succesCallback(response) {
+                    //Success
+                    notificationFactory.success('Lista de documentos obtenidos correctamente. ');
+                    $scope.listaDocumentos = response.data;
+                },
+                function errorCallback(response) {
+                    //Error
+                    notificationFactory.error('No se pudieron obtener la lista de Documentos: ' + response.data.message);
+                }
+            );
+    };
+
+
+
 
 
 

@@ -118,10 +118,6 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                         }
                     );
 
-
-
-
-
                 $scope.contadorSeleccionado++;
             }
         });
@@ -156,11 +152,6 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                             notificationFactory.error('Error al subir documentos: ');
                         }
                     );
-
-
-
-
-
                 $scope.contadorSeleccionado++;
             }
         });

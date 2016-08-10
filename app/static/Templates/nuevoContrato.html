@@ -42,15 +42,19 @@
                                 <table class="table table-striped table-condensed table-hover">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>
                                             <th>Nombre</th>
                                             <th>RFC</th>
+                                            <!--th>Correo</th-->
                                             <th>Acción</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr ng-repeat=" infoCliente in listaClientes">
+                                            <td> {{ infoCliente.idCliente }} </td>
                                             <td> {{ infoCliente.nombre }} </td>
                                             <td> {{ infoCliente.rfc }} </td>
+                                            <!--td> {{ infoCliente.email }} </td-->
                                             <td>
                                                 <button class="btn btn-primary twiter" tooltip="Ir" data-toggle="tooltip" data-placement="top" title="Seleccionar" ng-click="cargarCliente(infoCliente);">
                                                     <span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
@@ -143,67 +147,64 @@
         <div class="content-body">
             <div class="row">
                 <div class="col-md-6">
-                    <!-- class="col-md-6"-->
-                    <!--form role="form"-->
                     <div class="form-group">
                         <label class="form-label">Tipo de Contrato:</label>
                         <select class="form-control" name="tipocontrato" ng-model="nuevoContrato.idTipoContrato" ng-options="tipoContrato.idTipoContrato as tipoContrato.nombreContrato for tipoContrato in listaTiposContrato">
                             <option value="">Tipo de Contrato</option>
                         </select>
                     </div>
+                </div>
 
+                <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label">Empresa:</label>
                         <select class="form-control" name="tipoempresa" ng-model="nuevoContrato.idEmpresa" ng-options="tipoEmpresa.idEmpresa as tipoEmpresa.nombreEmpresa for tipoEmpresa in listaTiposEmpresa" ng-click="TipoSucursal(nuevoContrato.idEmpresa)">
-                            <option value="">Tipo de Empresa</option>
+                            <option value="">Empresa</option>
                         </select>
                     </div>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label">Sucursal:</label>
                         <select class="form-control" name="tipocontrato" ng-model="nuevoContrato.idSucursal" ng-options="tipoSucursal.idSucursal as tipoSucursal.nombreSucursal for tipoSucursal in listaTiposSucursal" ng-click="TipoDepartamento(nuevoContrato.idSucursal)">
-                            <option value="">Tipo de Sucursal</option>
+                            <option value="">Sucursal</option>
                         </select>
                     </div>
-
+                </div>
+                <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label">Departamento:</label>
                         <select class="form-control" name="tipocontrato" ng-model="nuevoContrato.idDepartamento" ng-options="tipoDepartamento.idDepartamento as tipoDepartamento.nombreDepartamento for tipoDepartamento in listaTiposDepartamento">
-                            <option value="">Tipo de Departamento</option>
+                            <option value="">Departamento</option>
                         </select>
                     </div>
-
-
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label">Fecha Creación:</label>
                         <input class="form-control" placeholder="Fecha Inicio">
                     </div>
-
-                    <!--div class="col-md-6">
-                                <p class="input-group">
-                                    <input type="text" class="form-control" ng-model="contratoEditar.fechaCreacion" />
-                                    <span class="input-group-btn">
-                                          <button type="button" class="btn btn-default" ng-click="true">
-                                          <i class="glyphicon glyphicon-calendar"></i>
-                                          </button> 
-                                     </span>
-                                </p>
-                            </div-->
-
-
+                </div>
+                <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label">Fecha Término:</label>
                         <input class="form-control" placeholder="Fecha Fin">
                         <!--input type="text" class="form-control datepicker" data-format="D, dd MM yyyy" value=""-->
                     </div>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-md-6">
                     <div class="form-group">
-                        <label class="form-label">Limite de Crédito:50000.00</label>
-                        <!--input class="form-control" placeholder="Fecha Inicio"-->
+                        <label class="form-label">Limite de Crédito:</label>
+                        <input type="text" class="form-control" id="limiteCredito" value='5000000'>
                     </div>
-
-
-                    <!--/form-->
                 </div>
             </div>
         </div>
@@ -227,9 +228,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat=" tipoContrato in listaTiposContrato">
-                                    <td>{{ tipoContrato.nombreContrato }}</td>
-                                    <td>{{ tipoContrato.idTipoContrato }}</td>
+                                <tr ng-repeat="documento in listaDocumentos">
+                                    <td>{{ documento.nombre }}</td>
+                                    <td>{{ documento.obligatorio }}</td>
                                     <td>
                                         <button type="button" class="btn btn-primary rss" tooltip="Editar" ng-click="Editar()">
                                             <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
