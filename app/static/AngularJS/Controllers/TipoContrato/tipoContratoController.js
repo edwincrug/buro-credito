@@ -48,7 +48,8 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
             .then(
                 function successCallbackEliminar(response) {
                     //reset
-                    //Success                    
+                    //Success        
+                                 
                     notificationFactory.success('Eliminados correctamente.');
                     //$scope.resultado = response.data;
                     
@@ -58,6 +59,7 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
                     notificationFactory.error('Error al eliminar el contrato: ' + response.data.message);
                 }
             );
+            $('#modaleliminar').modal('hide');
              location.href = '/';  
     };
 
@@ -81,6 +83,12 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
         sessionFactory.tipoContratoEditar = null;
         sessionFactory.opcion = opc;
         $state.go('nuevotipocontrato');
+
+    };
+
+      $scope.modalEliminar = function (idtipocontrato) {
+       $('#modaleliminar').modal('show');
+       $scope.idEliminar=idtipocontrato;
 
     };
 
