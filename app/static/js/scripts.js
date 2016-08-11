@@ -35,7 +35,6 @@ jQuery(function($) {
             $(".page-chatapi").removeClass("showit").addClass("hideit");
             $(".chatapi-windows").removeClass("showit").addClass("hideit");
             CMPLTADMIN_SETTINGS.mainmenuCollapsed();
-
         } else {
 
             // large window
