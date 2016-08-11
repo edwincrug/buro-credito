@@ -3,6 +3,8 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
 
     //Metodo de incio 
     $scope.init = function () {
+
+
         //Cargo la lista de tipos contrato completa
         $scope.resultado = 9;
         cargaTiposContrato();
@@ -10,19 +12,30 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
 
     //Obtiene la lista de tipos contrato 
     var cargaTiposContrato = function () {
+
         tipoContratoRepository.obtieneTipoContrato(0)
             .then(
                 function succesCallback(response) {
                     //Success
                     notificationFactory.success('Tipos de contrato obtenidos correctamente. ');
                     //messenger.showErrorMessage('Tipos de contrato obtenidos');
+
                     $scope.listaTiposContrato = response.data;
+
+                    setTimeout(function () {
+                        $('#example-1').DataTable({
+                           
+                        });
+                    }, 100);
+
+                    
                 },
                 function errorCallback(response) {
                     //Error
                     notificationFactory.error('No se pudieron obtener los tipos de contrato: ' + response.data.message);
                 }
             );
+
     };
 
 
