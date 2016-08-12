@@ -2,12 +2,65 @@
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
 "creatorBuild": "19127",
 "files": {
+	"\/angular-busy.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/angular-busy.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/AngularJS\/app.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/AngularJS\/app.js",
 		"outputAbbreviatedPath": "\/AngularJS\/min\/app-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/AngularJS\/Controllers\/Contrato\/contratoController.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/Contrato\/contratoController.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/Contrato\/min\/contratoController-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/AngularJS\/Controllers\/Contrato\/contratoRepository.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/Contrato\/contratoRepository.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/Contrato\/min\/contratoRepository-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/AngularJS\/Controllers\/Contrato\/min\/contratoController-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/Contrato\/min\/contratoController-min.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/Contrato\/min\/min\/contratoController-min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/AngularJS\/Controllers\/Contrato\/min\/contratoRepository-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/Contrato\/min\/contratoRepository-min.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/Contrato\/min\/min\/contratoRepository-min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -57,6 +110,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/AngularJS\/Controllers\/TipoContrato\/min\/tipoContratoEditarController-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/TipoContrato\/min\/tipoContratoEditarController-min.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/TipoContrato\/min\/min\/tipoContratoEditarController-min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/AngularJS\/Controllers\/TipoContrato\/min\/tipoContratoRepository-min.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -74,6 +138,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/TipoContrato\/tipoContratoController.js",
 		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/TipoContrato\/min\/tipoContratoController-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/AngularJS\/Controllers\/TipoContrato\/tipoContratoEditarController.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/TipoContrato\/tipoContratoEditarController.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/TipoContrato\/min\/tipoContratoEditarController-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -112,6 +187,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/AngularJS\/Factories\/messenger.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Factories\/messenger.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Factories\/min\/messenger-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/AngularJS\/Factories\/min\/configurationFactory-min.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -129,6 +215,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/AngularJS\/Factories\/notificationFactory.js",
 		"outputAbbreviatedPath": "\/AngularJS\/Factories\/min\/notificationFactory-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/AngularJS\/Factories\/sessionFactory.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Factories\/sessionFactory.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Factories\/min\/sessionFactory-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -178,6 +275,15 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/css\/angular-busy.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/angular-busy.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/css\/animate.min.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -187,11 +293,47 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/css\/datepicker.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/datepicker.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/css\/fonts\/font-awesome\/css\/font-awesome.css": {
 		"fileType": 16,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/css\/fonts\/font-awesome\/css\/font-awesome.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/css\/messenger-theme-flat.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/messenger-theme-flat.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/css\/messenger-theme-future.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/messenger-theme-future.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/css\/messenger.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/messenger.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -210,6 +352,815 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/css\/plugins\/bootstrap\/css\/bootstrap.min.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/css\/plugins\/icheck\/icheck.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/icheck.min.js",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/min\/icheck.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/css\/plugins\/icheck\/skins\/all.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/all.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/_all.css": {
+		"fileType": 16,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/_all.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/aero.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1520,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/aero.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/aero.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/aero@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3218,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/aero@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/aero@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/blue.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1518,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/blue.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/blue.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/blue@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3217,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/blue@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/blue@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/flat.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1515,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/flat.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/flat.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/flat@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3217,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/flat@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/flat@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/green.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1444,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/green.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/green.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/green@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3117,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/green@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/green@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/grey.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1516,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/grey.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/grey.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/grey@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3217,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/grey@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/grey@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/orange.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1518,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/orange.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/orange.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/orange@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3275,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/orange@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/orange@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/pink.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1522,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/pink.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/pink.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/pink@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3218,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/pink@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/pink@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/purple.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1519,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/purple.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/purple.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/purple@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3218,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/purple@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/purple@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/red.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1516,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/red.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/red.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/red@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3276,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/red@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/red@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/yellow.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1516,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/yellow.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/yellow.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/flat\/yellow@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3216,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/yellow@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/flat\/yellow@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/line\/_all.css": {
+		"fileType": 16,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/line\/_all.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/line\/line.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 588,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/line\/line.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/line\/line.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/line\/line@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1073,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/line\/line@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/line\/line@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/_all.css": {
+		"fileType": 16,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/_all.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/aero.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1151,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/aero.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/aero.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/aero@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1409,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/aero@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/aero@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/blue.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1132,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/blue.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/blue.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/blue@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1410,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/blue@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/blue@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/green.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1143,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/green.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/green.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/green@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1408,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/green@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/green@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/grey.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1142,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/grey.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/grey.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/grey@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1407,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/grey@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/grey@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/minimal.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/minimal.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/minimal.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1114,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/minimal.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/minimal.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/minimal@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1410,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/minimal@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/minimal@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/orange.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4230,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/orange.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/orange.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/orange@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4908,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/orange@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/orange@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/pink.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1150,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/pink.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/pink.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/pink@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1409,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/pink@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/pink@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/purple.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1132,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/purple.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/purple.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/purple@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1409,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/purple@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/purple@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/red.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1130,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/red.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/red.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/red@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1410,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/red@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/red@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/white.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/white.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/white.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4202,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/white.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/white.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/white@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4867,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/white@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/white@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/yellow.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1135,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/yellow.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/yellow.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/minimal\/yellow@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1406,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/yellow@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/minimal\/yellow@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/_all.css": {
+		"fileType": 16,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/_all.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/aero.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2167,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/aero.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/aero.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/aero@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4455,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/aero@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/aero@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/blue.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2185,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/blue.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/blue.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/blue@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4485,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/blue@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/blue@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/green.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2193,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/green.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/green.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/green@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4498,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/green@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/green@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/grey.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2186,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/grey.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/grey.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/grey@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4483,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/grey@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/grey@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/orange.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 5823,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/orange.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/orange.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/orange@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 7835,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/orange@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/orange@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/pink.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2189,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/pink.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/pink.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/pink@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4479,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/pink@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/pink@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/purple.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2188,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/purple.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/purple.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/purple@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4501,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/purple@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/purple@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/red.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2190,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/red.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/red.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/red@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4490,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/red@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/red@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/square.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2175,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/square.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/square.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/square@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4478,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/square@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/square@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/white.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2181,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/white.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/white.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/white@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4474,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/white@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/white@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/yellow.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2131,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/yellow.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/yellow.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/icheck\/skins\/square\/yellow@2x.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4385,
+		"inputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/yellow@2x.png",
+		"outputAbbreviatedPath": "\/css\/plugins\/icheck\/skins\/square\/yellow@2x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/css\/plugins\/jquery-ui.min.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/plugins\/jquery-ui.min.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -241,6 +1192,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/css\/plugins\/switchery\/switchery.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/plugins\/switchery\/switchery.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/css\/responsive.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -255,6 +1215,33 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/css\/style.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/css\/tablas\/dataTables.bootstrap.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/tablas\/dataTables.bootstrap.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/css\/tablas\/jquery.dataTables.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/tablas\/jquery.dataTables.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/css\/toastr.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/toastr.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -468,6 +1455,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/profile\/profile_p.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 5004,
+		"inputAbbreviatedPath": "\/images\/profile\/profile_p.jpg",
+		"outputAbbreviatedPath": "\/images\/profile\/profile_p.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/profile\/user.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -541,12 +1539,34 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/datepicker.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/datepicker.js",
+		"outputAbbreviatedPath": "\/js\/min\/datepicker-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/jquery-1.11.2.min.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/jquery-1.11.2.min.js",
 		"outputAbbreviatedPath": "\/js\/min\/jquery-1.11.2.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/jquery-ui.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/jquery-ui.min.js",
+		"outputAbbreviatedPath": "\/js\/min\/jquery-ui.min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -640,6 +1660,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/plugins\/switchery\/switchery.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/plugins\/switchery\/switchery.js",
+		"outputAbbreviatedPath": "\/js\/plugins\/switchery\/min\/switchery-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/plugins\/toastr\/toastr.min.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -662,6 +1693,176 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/tabla\/extensions\/Responsive\/bootstrap\/3\/dataTables.bootstrap.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/tabla\/extensions\/Responsive\/bootstrap\/3\/dataTables.bootstrap.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/js\/tabla\/extensions\/Responsive\/bootstrap\/3\/dataTables.bootstrap.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/tabla\/extensions\/Responsive\/bootstrap\/3\/dataTables.bootstrap.js",
+		"outputAbbreviatedPath": "\/js\/tabla\/extensions\/Responsive\/bootstrap\/3\/min\/dataTables.bootstrap-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/tabla\/extensions\/Responsive\/bootstrap\/images\/sort_asc.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1118,
+		"inputAbbreviatedPath": "\/js\/tabla\/extensions\/Responsive\/bootstrap\/images\/sort_asc.png",
+		"outputAbbreviatedPath": "\/js\/tabla\/extensions\/Responsive\/bootstrap\/images\/sort_asc.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/js\/tabla\/extensions\/Responsive\/bootstrap\/images\/sort_asc_disabled.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1050,
+		"inputAbbreviatedPath": "\/js\/tabla\/extensions\/Responsive\/bootstrap\/images\/sort_asc_disabled.png",
+		"outputAbbreviatedPath": "\/js\/tabla\/extensions\/Responsive\/bootstrap\/images\/sort_asc_disabled.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/js\/tabla\/extensions\/Responsive\/bootstrap\/images\/sort_both.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1136,
+		"inputAbbreviatedPath": "\/js\/tabla\/extensions\/Responsive\/bootstrap\/images\/sort_both.png",
+		"outputAbbreviatedPath": "\/js\/tabla\/extensions\/Responsive\/bootstrap\/images\/sort_both.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/js\/tabla\/extensions\/Responsive\/bootstrap\/images\/sort_desc.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1127,
+		"inputAbbreviatedPath": "\/js\/tabla\/extensions\/Responsive\/bootstrap\/images\/sort_desc.png",
+		"outputAbbreviatedPath": "\/js\/tabla\/extensions\/Responsive\/bootstrap\/images\/sort_desc.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/js\/tabla\/extensions\/Responsive\/bootstrap\/images\/sort_desc_disabled.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1045,
+		"inputAbbreviatedPath": "\/js\/tabla\/extensions\/Responsive\/bootstrap\/images\/sort_desc_disabled.png",
+		"outputAbbreviatedPath": "\/js\/tabla\/extensions\/Responsive\/bootstrap\/images\/sort_desc_disabled.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/js\/tabla\/extensions\/Responsive\/css\/dataTables.responsive.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/tabla\/extensions\/Responsive\/css\/dataTables.responsive.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/js\/tabla\/extensions\/Responsive\/js\/dataTables.responsive.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/tabla\/extensions\/Responsive\/js\/dataTables.responsive.min.js",
+		"outputAbbreviatedPath": "\/js\/tabla\/extensions\/Responsive\/js\/min\/dataTables.responsive.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/tabla\/extensions\/TableTools\/css\/dataTables.tableTools.min.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/tabla\/extensions\/TableTools\/css\/dataTables.tableTools.min.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/js\/tabla\/extensions\/TableTools\/images\/background.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 944,
+		"inputAbbreviatedPath": "\/js\/tabla\/extensions\/TableTools\/images\/background.png",
+		"outputAbbreviatedPath": "\/js\/tabla\/extensions\/TableTools\/images\/background.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/js\/tabla\/extensions\/TableTools\/images\/collection.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1166,
+		"inputAbbreviatedPath": "\/js\/tabla\/extensions\/TableTools\/images\/collection.png",
+		"outputAbbreviatedPath": "\/js\/tabla\/extensions\/TableTools\/images\/collection.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/js\/tabla\/extensions\/TableTools\/images\/collection_hover.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1194,
+		"inputAbbreviatedPath": "\/js\/tabla\/extensions\/TableTools\/images\/collection_hover.png",
+		"outputAbbreviatedPath": "\/js\/tabla\/extensions\/TableTools\/images\/collection_hover.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/js\/tabla\/extensions\/TableTools\/js\/dataTables.tableTools.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/tabla\/extensions\/TableTools\/js\/dataTables.tableTools.min.js",
+		"outputAbbreviatedPath": "\/js\/tabla\/extensions\/TableTools\/js\/min\/dataTables.tableTools.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/tabla\/js\/jquery.dataTables.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/tabla\/js\/jquery.dataTables.min.js",
+		"outputAbbreviatedPath": "\/js\/tabla\/js\/min\/jquery.dataTables.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/viewport\/viewportchecker.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/viewport\/viewportchecker.js",
+		"outputAbbreviatedPath": "\/js\/viewport\/min\/viewportchecker-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/package.json": {
 		"fileType": 524288,
 		"ignore": 1,
@@ -672,6 +1873,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1
+		},
+	"\/Templates\/nuevoContrato.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/Templates\/nuevoContrato.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/Templates\/nuevoTipoContrato.html": {
 		"fileType": 8192,

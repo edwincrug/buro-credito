@@ -1,4 +1,4 @@
-appControllers.controller('contratoController', function ($scope, $state, tipoContratoRepository, contratoRepository, notificationFactory, sessionFactory) {
+appControllers.controller('contratoController', function ($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, notificationFactory, sessionFactory) {
 
 
     //Metodo de incio 
@@ -82,33 +82,34 @@ appControllers.controller('contratoController', function ($scope, $state, tipoCo
     };
 
     //Obtiene el catalogo de sucursales por empresa
-    $scope.TipoSucursal = function (idEmpresa) {
-
-        contratoRepository.obtieneTipoSucursal(idEmpresa)
+    $scope.CargarSucursales = function (idempresa) {
+        $('#cboSucursal').attr('disabled', 'disabled');
+        contratoRepository.obtieneTipoSucursal(idempresa)
             .then(
                 function succesCallback(response) {
-
+                    $('#cboSucursal').removeAttr('disabled');
                     $scope.listaTiposSucursal = response.data;
                 },
                 function errorCallback(response) {
                     //Error
+                    $('#cboSucursal').removeAttr('disabled');
                     notificationFactory.error('No se pudieron obtener los tipos de sucursal: ' + response.data.message);
                 }
             );
-
     };
 
     //Obtiene el catalogo de departamentos por sucursal
-    $scope.TipoDepartamento = function (idSucursal) {
-
-        contratoRepository.obtieneTipoDepartamento(idSucursal)
+    $scope.CargarDepartamentos = function (idsucursal) {
+        $('#cboDepartamento').attr('disabled', 'disabled');
+        contratoRepository.obtieneTipoDepartamento(idsucursal)
             .then(
                 function succesCallback(response) {
-
+                    $('#cboDepartamento').removeAttr('disabled');
                     $scope.listaTiposDepartamento = response.data;
                 },
                 function errorCallback(response) {
                     //Error
+                    $('#cboDepartamento').removeAttr('disabled');
                     notificationFactory.error('No se pudieron obtener los tipos de departamento: ' + response.data.message);
                 }
             );
@@ -118,8 +119,8 @@ appControllers.controller('contratoController', function ($scope, $state, tipoCo
 
     //Regreso a la pantalla nuevo Contrato con los datos del Cliente
     $scope.cargarCliente = function (infoCliente) {
-        alert('Estoy en carga Cliente' + infoCliente.nombre);
-        $scope.datosCliente = infoCliente;
+        //alert('Estoy en carga Cliente' + infoCliente.nombre);
+        $rootScope.datosCliente = infoCliente;
         $('#searchCliente').modal('hide');
     };
 

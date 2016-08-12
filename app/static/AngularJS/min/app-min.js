@@ -1,1 +1,1 @@
-angular.module("app",["ui.router","app.controllers","app.routes","app.services","app.directives"]).run();
+angular.module("app",["ui.router","cgBusy","app.controllers","app.routes","app.services","app.directives"]).run();

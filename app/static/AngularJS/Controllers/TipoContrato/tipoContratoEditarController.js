@@ -1,4 +1,4 @@
-appControllers.controller('tipoContratoEditarController', function ($scope, $state, tipoContratoRepository, notificationFactory, sessionFactory) {
+appControllers.controller('tipoContratoEditarController', function ($scope, $state, $filter, tipoContratoRepository, notificationFactory, sessionFactory) {
 
 
     //Metodo de inicio 
@@ -12,6 +12,8 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
         if (sessionFactory.tipoContratoEditar != null) {
             notificationFactory.success(sessionFactory.tipoContratoEditar.idTipoContrato);
             $scope.contratoEditar = sessionFactory.tipoContratoEditar;
+            $scope.contratoEditar.fechaCreacion = $filter('date')($scope.contratoEditar.fechaCreacion, "dd/MM/yyyy");
+            $scope.contratoEditar.fechaTermino = $filter('date')($scope.contratoEditar.fechaTermino, "dd/MM/yyyy");
         } else {
             $scope.contratoEditar = {
                 idTipoContrato: '',
@@ -21,11 +23,11 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                 fechaTermino: ''
             }
         }
-    
-                        $('.datepicker').datepicker({
-                           
-                        });
-                    
+
+        $('.datepicker').datepicker({
+
+        });
+
     };
 
 
