@@ -21,6 +21,11 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                 fechaTermino: ''
             }
         }
+    
+                        $('.datepicker').datepicker({
+                           
+                        });
+                    
     };
 
 
