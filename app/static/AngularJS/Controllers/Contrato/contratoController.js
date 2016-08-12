@@ -9,6 +9,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         cargaTiposContrato();
         cargaTiposEmpresas();
         cargaListaDocumentos();
+        $rootScope.verDatos = false;
     };
 
     //Obtiene los Datos del Cliente
@@ -121,6 +122,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     $scope.cargarCliente = function (infoCliente) {
         //alert('Estoy en carga Cliente' + infoCliente.nombre);
         $rootScope.datosCliente = infoCliente;
+        $rootScope.verDatos = true;
         $('#searchCliente').modal('hide');
     };
 

@@ -1,6 +1,5 @@
 <!--<link href="css/angular-busy.css" />-->
 <div ng-init="init()">
-
     <div class="page-title">
         <div class="pull-left">
             <h1 class="title">Crear Nuevo Contrato</h1>
@@ -12,72 +11,42 @@
             <h2 class="title pull-left">Datos del Cliente: </h2>
         </header>
         <div class="content-body">
-
             <!-- Boton Busqueda-->
             <div class="col-md-offset-10">
                 <button class="btn btn-info" type="button" ng-click="BuscarCliente()">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbspBuscar Cliente</button>
             </div>
+            <br>
             <!-- Fin Boton Busqueda-->
-            <!-- Acomodo 1-->
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="control-label">Nombre:</label>
-                        <input class="form-control" id="nombreCliente" ng-model="datosCliente.nombre" placeholder="Nombre">
+                        <label class="control-label" ng-show="verDatos">Nombre:&nbsp</label>{{datosCliente.nombre}}
+                        <!--input class="form-control" id="nombreCliente" ng-model="datosCliente.nombre" placeholder="Nombre"-->
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="field-2" class="control-label">RFC:</label>
-                        <input type="text" class="form-control" id="field-2" placeholder="RFC" ng-model="datosCliente.rfc">
+                        <label class="control-label" ng-show="verDatos">RFC:&nbsp</label>{{datosCliente.rfc}}
+                        <!--input type="text" class="form-control" id="field-2" placeholder="RFC" ng-model="datosCliente.rfc">
+                    </div-->
                     </div>
                 </div>
             </div>
-
-
-
-
-
             <div class="row">
-                <div class="col-md-4">
-
+                <div class="col-md-6">
                     <div class="form-group">
-                        <label for="field-4" class="control-label">Telefono:</label>
-
-                        <input type="text" class="form-control" id="field-4" placeholder="Teléfono" ng-model="datosCliente.telefono">
+                        <label class="control-label" ng-show="verDatos">Telefono:&nbsp</label>{{datosCliente.telefono}}
+                        <!--input type="text" class="form-control" id="field-4" placeholder="Teléfono" ng-model="datosCliente.telefono"-->
                     </div>
-
                 </div>
-
-                <div class="col-md-4">
-
+                <div class="col-md-6">
                     <div class="form-group">
-                        <label for="field-5" class="control-label">Correo:</label>
-
-                        <input type="text" class="form-control" id="field-5" placeholder="Correo" ng-model="datosCliente.email">
+                        <label class="control-label" ng-show="verDatos">Correo:&nbsp</label>{{datosCliente.email}}
+                        <!--input type="text" class="form-control" id="field-5" placeholder="Correo" ng-model="datosCliente.email"-->
                     </div>
-
-                </div>
-
-                <div class="col-md-4">
-
-                    <div class="form-group">
-                        <label for="field-6" class="control-label">Cel:</label>
-
-                        <input type="text" class="form-control" id="field-6" placeholder="Teléfono Celular" ng-model="datosCliente[0].telefonoCelular">
-                    </div>
-
                 </div>
             </div>
-            <!-- Acomodo 1-->
-
-
-
-
-
-
-
         </div>
     </section>
     <!--Tabla Documentos-->
@@ -95,7 +64,6 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label">Empresa:</label>
@@ -105,7 +73,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -124,7 +91,30 @@
                     </div>
                 </div>
             </div>
+            <!-- Ejemplo datepicker bootstrap-->
             <div class="row">
+                <div class="col-md-6">
+                    <p class="input-group">
+                        Fecha de inicio:
+                        <div class="input-group">
+                            <input type="text" class="form-control datepicker" data-format="D, dd MM yyyy" value="" ng-model="">
+                        </div>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p class="input-group">
+                        Fecha de termino:
+                        <div class="input-group">
+                            <input type="text" class="form-control datepicker" data-format="D, dd MM yyyy" value="" ng-model="">
+                        </div>
+                    </p>
+                </div>
+            </div>
+            <!-- Ejemplo datepicker bootstrap-->
+
+
+
+            <!--div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label">Fecha Creación:</label>
@@ -135,10 +125,11 @@
                     <div class="form-group">
                         <label class="form-label">Fecha Término:</label>
                         <input class="form-control" placeholder="Fecha Fin">
-                        <!--input type="text" class="form-control datepicker" data-format="D, dd MM yyyy" value=""-->
                     </div>
                 </div>
-            </div>
+            </div-->
+
+
 
             <div class="row">
                 <div class="col-md-6">
@@ -149,9 +140,7 @@
                 </div>
             </div>
         </div>
-
     </section>
-
     <section class="box ">
         <header class="panel_header">
             <h2 class="title pull-left">Documentos Requeridos:</h2>
@@ -186,20 +175,15 @@
         </div>
     </section>
     <!-- Fin Tabla Documentos-->
-
-
-    <!-- Prueba de nuevo cuadro-->
+    <!-- Prueba de nuevo cuadro para catalogo-->
     <section class="box ">
         <header class="panel_header">
             <h2 class="title pull-left">Seguimiento Creación de Contrato:</h2>
         </header>
         <div class="content-body">
-
             <div class="row">
                 <div class="col-xs-12">
-
                     <form id="commentForm" novalidate="novalidate">
-
                         <div id="pills" class="wizardpills">
                             <ul class="form-wizard nav nav-pills">
                                 <li class="complete"><a href="#pills-tab1" data-toggle="tab" aria-expanded="false"><span>Basic</span></a></li>
@@ -275,16 +259,9 @@
                     </form>
                 </div>
             </div>
-
-
-
         </div>
     </section>
     <!-- Fin Prueba de nuevo cuadro-->
-
-
-
-
 
     <div class="col-md-offset-7">
         <div class="form-group">
@@ -297,10 +274,8 @@
         </div>
     </div>
 
-
-
     <!--Modales-->
-    <!-- Modal-->
+    <!-- Modal Busqueda-->
     <div class="modal fade" id="searchCliente" ng-controller="contratoController">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -351,6 +326,5 @@
         </div>
         <!-- Fin dialog -->
     </div>
-    <!-- Modal-->
-    <!--FIN Datos Contrato-->
+    <!-- Modal  Busqueda-->
 </div>
