@@ -1,4 +1,4 @@
-appControllers.controller('contratoController', function ($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, notificationFactory, sessionFactory) {
+appControllers.controller('contratoController', function ($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, limiteCreditoRepository, notificationFactory, sessionFactory) {
 
 
     //Metodo de incio 
@@ -10,6 +10,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         cargaTiposEmpresas();
         cargaListaDocumentos();
         $rootScope.verDatos = false;
+        $rootScope.verLimiteCredito = false;
     };
 
     //Obtiene los Datos del Cliente
@@ -126,6 +127,28 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         $('#searchCliente').modal('hide');
     };
 
+    //Regreso a la pantalla nuevo Contrato con los datos del Cliente
+    $scope.cargarLimiteCredito = function (idcliente, idempresa, idsucursal, iddepartamento) {
+        alert('Estoy en cargar LIMITE DE CREDITO en contrato Controller:');
+        $rootScope.verLimiteCredito = true;
+
+        limiteCreditoRepository.obtieneLimiteCredito(idcliente, idempresa, idsucursal, iddepartamento)
+            .then(
+                function succesCallback(response) {
+                    //Success
+                    $scope.datosCredito = response.data;
+                    alert($scope.datosCredito["0"].idCliente);
+                },
+                function errorCallback(response) {
+                    //Error
+                    alert('No se pudieron obtener los datos ' + response.data.message);
+                }
+            );
+
+
+
+
+    };
 
 
     //Funcion Carga Lista de Documentos  --Inconluso

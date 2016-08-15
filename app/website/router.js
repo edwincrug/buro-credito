@@ -1,4 +1,5 @@
  module.exports = {
      tipoContrato: require('./controllers/tipoContrato'),
-     contrato: require('./controllers/contrato')
+     contrato: require('./controllers/contrato'),
+     limiteCredito: require('./controllers/limiteCredito')
  }
