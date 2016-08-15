@@ -26,7 +26,7 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
                         $('#example-1').DataTable({
                            
                         });
-                    }, 100);
+                    }, 1000);
 
                     
                 },

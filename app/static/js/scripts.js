@@ -2735,7 +2735,7 @@ jQuery(function($) {
                 var $this = $(e),
                     options = {
                         minViewMode: getValue($this, 'minViewMode', 0),
-                        format: getValue($this, 'format', 'mm/dd/yyyy'),
+                        format: getValue($this, 'format', 'dd/mm/yyyy'),
                         startDate: getValue($this, 'startDate', ''),
                         endDate: getValue($this, 'endDate', ''),
                         daysOfWeekDisabled: getValue($this, 'disabledDays', ''),
@@ -3537,7 +3537,7 @@ jQuery(function($) {
                   , disabled          : false
                   , disabledOpacity   : 0.5
                   , speed             : '0.5s'
-                  , size              : 'large'
+                  , size              : 'small'
                 }
                 var count = 0;
                 var colors = ['#f44336','#e91e63','#9c27b0','#673ab7','#3f51b5','#2196f3','#03a9f4','#00bcd4','#009688','#4caf50','#8bc34a','#cddc39','#ffeb3b','#ffc107','#ff9800','#ff5722','#795548','#9e9e9e','#607d8b','#000000'];
