@@ -32,6 +32,7 @@ contrato.prototype.get_obtienedatoscliente = function (req, res, next) {
     });
 };
 
+/*
 // GET GetAll para obtener todos los elementos
 contrato.prototype.get_obtienetipoempresa = function (req, res, next) {
    
@@ -96,7 +97,7 @@ contrato.prototype.get_obtienetipodepartamento = function (req, res, next) {
     });
 };
 
-
+*/
 
 
 module.exports = contrato;

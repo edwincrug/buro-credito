@@ -1,4 +1,4 @@
-appControllers.controller('contratoController', function ($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, limiteCreditoRepository, notificationFactory, sessionFactory) {
+appControllers.controller('contratoController', function ($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, empresasRepository, sucursalesRepository, departamentosRepository, limiteCreditoRepository, notificationFactory, sessionFactory) {
 
 
     //Metodo de incio 
@@ -68,7 +68,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     //Obtiene el catalogo de empresas
     var cargaTiposEmpresas = function () {
-        contratoRepository.obtieneTipoEmpresa(0)
+        empresasRepository.obtieneTipoEmpresa(0)
             .then(
                 function succesCallback(response) {
                     //Success
@@ -86,7 +86,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     //Obtiene el catalogo de sucursales por empresa
     $scope.CargarSucursales = function (idempresa) {
         $('#cboSucursal').attr('disabled', 'disabled');
-        contratoRepository.obtieneTipoSucursal(idempresa)
+        sucursalesRepository.obtieneTipoSucursal(idempresa)
             .then(
                 function succesCallback(response) {
                     $('#cboSucursal').removeAttr('disabled');
@@ -103,7 +103,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     //Obtiene el catalogo de departamentos por sucursal
     $scope.CargarDepartamentos = function (idsucursal) {
         $('#cboDepartamento').attr('disabled', 'disabled');
-        contratoRepository.obtieneTipoDepartamento(idsucursal)
+        departamentosRepository.obtieneTipoDepartamento(idsucursal)
             .then(
                 function succesCallback(response) {
                     $('#cboDepartamento').removeAttr('disabled');

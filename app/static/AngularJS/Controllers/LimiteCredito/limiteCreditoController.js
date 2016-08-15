@@ -1,10 +1,8 @@
 appControllers.controller('limiteCreditoController', function ($scope, limiteCreditoRepository) {
     //this is the first method executed in the view
     $scope.init = function () {
-
         //cargaLimiteCredito();
         $rootScope.verLimiteCredito = false;
-
     };
 
     //Obtenemos el limite de credito por Cliente
@@ -12,25 +10,6 @@ appControllers.controller('limiteCreditoController', function ($scope, limiteCre
 
         $rootScope.verLimiteCredito = true;
         alert('Ojoooooo Estoy en carga Limite de Credito ');
-        /*
-                limiteCreditoRepository.obtieneLimiteCredito(idcliente, idempresa, idsucursal, iddepartamento)
-                    .then(
-                        function succesCallback(response) {
-                            //Success
-                            notificationFactory.success('Limite correcto!!!!');
-                            $scope.limiteCredito = response.data;
-                        },
-                        function errorCallback(response) {
-                            //Error
-                            notificationFactory.error('No se pudieron obtener los datos ' + response.data.message);
-                        }
-                    );
-
-        */
-
-
-
-
     };
 
 
