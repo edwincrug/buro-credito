@@ -23,7 +23,7 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
                     $scope.listaTiposContrato = response.data;
 
                     setTimeout(function () {
-                        $('#example-1').DataTable({
+                        $('.estiloTabla').DataTable({
                            
                         });
                     }, 1000);

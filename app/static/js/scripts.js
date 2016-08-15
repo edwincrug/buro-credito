@@ -1558,7 +1558,7 @@ jQuery(function($) {
 
             /*--- start ---*/
 
-            $("#example-1").dataTable({
+            $(".estiloTabla").dataTable({
                 responsive: true,
                 aLengthMenu: [
                     [10, 25, 50, 100, -1],
