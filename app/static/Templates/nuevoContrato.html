@@ -39,14 +39,14 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label" ng-show="verDatos">Nombre:</label>
-                                                <p>{{datosCliente.nombre}}</p>                                              
+                                                <p>{{datosCliente.nombre}}</p>
                                                 <!--input class="form-control" id="nombreCliente" ng-model="datosCliente.nombre" placeholder="Nombre"-->
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label" ng-show="verDatos">RFC:&nbsp</label>
-                                                <p>{{datosCliente.rfc}}</p> 
+                                                <p>{{datosCliente.rfc}}</p>
                                                 <!--input type="text" class="form-control" id="field-2" placeholder="RFC" ng-model="datosCliente.rfc">
                     </div-->
                                             </div>
@@ -56,14 +56,14 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label" ng-show="verDatos">Telefono:&nbsp</label>
-                                                <p>{{datosCliente.telefono}}</p> 
+                                                <p>{{datosCliente.telefono}}</p>
                                                 <!--input type="text" class="form-control" id="field-4" placeholder="Teléfono" ng-model="datosCliente.telefono"-->
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label" ng-show="verDatos">Correo:&nbsp</label>
-                                                <p>{{datosCliente.email}}</p> 
+                                                <p>{{datosCliente.email}}</p>
                                                 <!--input type="text" class="form-control" id="field-5" placeholder="Correo" ng-model="datosCliente.email"-->
                                             </div>
                                         </div>
@@ -115,15 +115,15 @@
                                                 <p class="input-group">
                                                     Fecha de inicio:
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control datepicker" data-format="D, dd MM yyyy" value="" ng-model="">
+                                                        <input type="text" class="form-control datepicker" data-format="dd mm yyyy" value="" ng-model="nuevoContrato.fechaInicio">
                                                     </div>
                                                 </p>
                                             </div>
                                             <div class="col-md-6">
                                                 <p class="input-group">
                                                     Fecha de termino:
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control datepicker" data-format="D, dd MM yyyy" value="" ng-model="">
+                                                    <div class="input-group">                                              
+                                                        <input type="text" class="form-control datepicker" data-format="D, dd mm yyyy" value="" ng-model="nuevoContrato.fechaTermino">
                                                     </div>
                                                 </p>
                                             </div>
