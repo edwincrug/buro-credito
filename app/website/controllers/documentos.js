@@ -36,34 +36,32 @@ Documentos.prototype.post_uploadfile = function (req, res, next) {
     var self = this;
     //Cargo el archivo
     upload(req, res, function (err) {
-        if (err) {
+            if (err) {
+                res.json({
+                    error_code: 1,
+                    err_desc: err
+                });
+                return;
+            }
             res.json({
-                error_code: 1,
-                err_desc: err
+                error_code: 0,
+                err_desc: null
             });
-            return;
-        }
-        res.json({
-            error_code: 0,
-            err_desc: null
-        });
-    })
-
-
-    //    var params = [
-    //        {
-    //            name: 'idTipoContrato',
-    //            value: req.query.idTipoContrato,
-    //            type: self.model.types.INT
-    //                    }
-    //    ];
-    //
-    //    this.model.query('SEL_DOCUMENTOS_SP', params, function (error, result) {
-    //        self.view.speakJSON(res, {
-    //            error: error,
-    //            result: result
-    //        });
-    //    });
+        })
+        //    var params = [
+        //        {
+        //            name: 'idTipoContrato',
+        //            value: req.query.idTipoContrato,
+        //            type: self.model.types.INT
+        //                    }
+        //    ];
+        //
+        //    this.model.query('SEL_DOCUMENTOS_SP', params, function (error, result) {
+        //        self.view.speakJSON(res, {
+        //            error: error,
+        //            result: result
+        //        });
+        //    });
 };
 
 
