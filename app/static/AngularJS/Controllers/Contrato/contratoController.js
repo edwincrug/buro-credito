@@ -11,6 +11,8 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         cargaListaDocumentos();
         $rootScope.verDatos = false;
         $rootScope.verLimiteCredito = false;
+         $('.datepicker').datepicker({
+        });
     };
 
     //Obtiene los Datos del Cliente

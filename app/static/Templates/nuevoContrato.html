@@ -18,10 +18,13 @@
                             <ul class="form-wizard">
                                 <li><a href="#cliente" data-toggle="tab"><span>Cliente</span></a></li>
                                 <li><a href="#contrato" data-toggle="tab"><span>Contrato</span></a></li>
+                                <li><a href="#limite" data-toggle="tab"><span>Limite</span></a></li>
                                 <li><a href="#documentos" data-toggle="tab"><span>Documentos</span></a></li>
+                                <li><a href="#confirmar" data-toggle="tab"><span>Confirmar</span></a></li>
                             </ul>
                             <div id="bar" class="progress active">
-                                <div class="progress-bar progress-bar-primary " role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                                <div class="progress-bar progress-bar-primary " role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                </div>
                             </div>
                             <div class="tab-content">
                                 <div class="tab-pane" id="cliente">
@@ -36,29 +39,28 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">Nombre:&nbsp</label>{{datosCliente.nombre}}
-                                                <!--input class="form-control" id="nombreCliente" ng-model="datosCliente.nombre" placeholder="Nombre"-->
+                                                <label class="control-label" ng-show="verDatos">Nombre:</label>
+                                                <p>{{datosCliente.nombre}}</p>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">RFC:&nbsp</label>{{datosCliente.rfc}}
-                                                <!--input type="text" class="form-control" id="field-2" placeholder="RFC" ng-model="datosCliente.rfc">
-                    </div-->
+                                                <label class="control-label" ng-show="verDatos">RFC:</label>
+                                                <p>{{datosCliente.rfc}}</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">Telefono:&nbsp</label>{{datosCliente.telefono}}
-                                                <!--input type="text" class="form-control" id="field-4" placeholder="Teléfono" ng-model="datosCliente.telefono"-->
+                                                <label class="control-label" ng-show="verDatos">Telefono:</label>
+                                                <p>{{datosCliente.telefono}}</p>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">Correo:&nbsp</label>{{datosCliente.email}}
-                                                <!--input type="text" class="form-control" id="field-5" placeholder="Correo" ng-model="datosCliente.email"-->
+                                                <label class="control-label" ng-show="verDatos">Correo:</label>
+                                                <p>{{datosCliente.email}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -109,7 +111,7 @@
                                                 <p class="input-group">
                                                     Fecha de inicio:
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control datepicker" data-format="D, dd MM yyyy">
+                                                        <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy">
                                                     </div>
                                                 </p>
                                             </div>
@@ -117,32 +119,21 @@
                                                 <p class="input-group">
                                                     Fecha de termino:
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control datepicker" data-format="D, dd MM yyyy">
+                                                        <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy">
                                                     </div>
                                                 </p>
                                             </div>
                                         </div>
-                                        <!-- Ejemplo datepicker bootstrap-->
-                                        <!--div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label">Fecha Creación:</label>
-                        <input class="form-control" placeholder="Fecha Inicio">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label">Fecha Término:</label>
-                        <input class="form-control" placeholder="Fecha Fin">
-                    </div>
-                </div>
-            </div-->
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="form-label" ng-show="verLimiteCredito">Limite de Crédito:</label> {{datosCredito.limiteCredito}}
-                                                    <input type="text" class="form-control" id="limiteCredito" ng-model="datosCredito[0].limiteCredito">
-                                                </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="limite">
+                                    <h4>Limite de Credito</h4>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label" ng-show="verLimiteCredito">Limite de Crédito:</label> {{datosCredito.limiteCredito}}
+                                                <input type="text" class="form-control" id="limiteCredito" ng-model="datosCredito[0].limiteCredito">
                                             </div>
                                         </div>
                                     </div>
@@ -180,6 +171,11 @@
                                             </div>
                                         </div>
                                     </p>
+                                </div>
+                                <div class="tab-pane" id="confirmar">
+                                    <h4>Confirmar datos capturados</h4>
+                                    <br>
+                                    <p>Form goes here</p>
                                 </div>
                                 <div class="clearfix"></div>
                                 <ul class="pager wizard">
