@@ -161,6 +161,49 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                     //Success
                     notificationFactory.success('Lista de documentos obtenidos correctamente. ');
                     $scope.listaDocumentos = response.data;
+                    setTimeout(function () {
+                        var i = 1,
+                $custom_droplist = $("#custom-droptable"),
+                example_dropzone = $("#customDZ").dropzone({
+                    url: 'data/upload-file.php',
+
+                    // Events
+                    addedfile: function(file) {
+                        if (i == 1) {
+                            $custom_droplist.find('tbody').html('');
+                        }
+
+                        var size = parseInt(file.size / 1024, 10);
+                        size = size < 1024 ? (size + " KB") : (parseInt(size / 1024, 10) + " MB");
+
+                        var $el = $('<tr>\
+                                                    <td class="text-center">' + (i++) + '</td>\
+                                                    <td>' + file.name + '</td>\
+                                                    <td><div class="progress"><div class="progress-bar progress-bar-warning"></div></div></td>\
+                                                    <td>' + size + '</td>\
+                                                </tr>');
+
+                        $custom_droplist.find('tbody').append($el);
+                        file.fileEntryTd = $el;
+                        file.progressBar = $el.find('.progress-bar');
+                    },
+
+                    uploadprogress: function(file, progress, bytesSent) {
+                        file.progressBar.width(progress + '%');
+                        $('.custom-dropzone .drop-table').perfectScrollbar({
+                            suppressScrollX: true
+                        });
+                    },
+
+                    success: function(file) {
+                        file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-success');
+                    },
+
+                    error: function(file) {
+                        file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-red');
+                    }
+                });
+                    }, 1000);
                 },
                 function errorCallback(response) {
                     //Error

@@ -1,4 +1,5 @@
 <!--<link href="css/angular-busy.css" />-->
+<!-- <link href="css/dropzone/dropzone.css" rel="stylesheet" type="text/css" media="screen"/> -->
 <div ng-init="init()">
     <div class="page-title">
         <div class="pull-left">
@@ -68,63 +69,61 @@
                                 <div class="tab-pane" id="contrato">
                                     <h4>Datos del Contrato:</h4>
                                     <br>
-                                    
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="form-label">Tipo de Contrato:</label>
-                                                    <select class="form-control" ng-model="nuevoContrato.idTipoContrato" ng-options="tipoContrato.idTipoContrato as tipoContrato.nombreContrato for tipoContrato in listaTiposContrato">
-                                                        <option value="">Tipo de Contrato</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="form-label">Empresa:</label>
-                                                    <select class="form-control" ng-model="nuevoContrato.idEmpresa" ng-options="tipoEmpresa.idEmpresa as tipoEmpresa.nombreEmpresa for tipoEmpresa in listaTiposEmpresa" ng-change="CargarSucursales(nuevoContrato.idEmpresa)" id="cboEmpresa">
-                                                        <option value="">Empresa</option>
-                                                    </select>
-                                                </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Tipo de Contrato:</label>
+                                                <select class="form-control" ng-model="nuevoContrato.idTipoContrato" ng-options="tipoContrato.idTipoContrato as tipoContrato.nombreContrato for tipoContrato in listaTiposContrato">
+                                                    <option value="">Tipo de Contrato</option>
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="form-label">Sucursal:</label>
-                                                    <select class="form-control" ng-model="nuevoContrato.idSucursal" ng-options="tipoSucursal.idSucursal as tipoSucursal.nombreSucursal for tipoSucursal in listaTiposSucursal" ng-change="CargarDepartamentos(nuevoContrato.idSucursal)" id="cboSucursal">
-                                                        <option value="">Sucursal</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="form-label">Departamento:</label>
-                                                    <select class="form-control" name="tipocontrato" ng-model="nuevoContrato.idDepartamento" ng-options="tipoDepartamento.idDepartamento as tipoDepartamento.nombreDepartamento for tipoDepartamento in listaTiposDepartamento" id="cboDepartamento" ng-change="cargarLimiteCredito(datosCliente.idCliente,nuevoContrato.idEmpresa,nuevoContrato.idSucursal,nuevoContrato.idDepartamento)">
-                                                        <option value="">Departamento</option>
-                                                    </select>
-                                                </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Empresa:</label>
+                                                <select class="form-control" ng-model="nuevoContrato.idEmpresa" ng-options="tipoEmpresa.idEmpresa as tipoEmpresa.nombreEmpresa for tipoEmpresa in listaTiposEmpresa" ng-change="CargarSucursales(nuevoContrato.idEmpresa)" id="cboEmpresa">
+                                                    <option value="">Empresa</option>
+                                                </select>
                                             </div>
                                         </div>
-                                        <!-- Ejemplo datepicker bootstrap-->
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <p class="input-group">
-                                                    Fecha de inicio:
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy">
-                                                    </div>
-                                                </p>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p class="input-group">
-                                                    Fecha de termino:
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy">
-                                                    </div>
-                                                </p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Sucursal:</label>
+                                                <select class="form-control" ng-model="nuevoContrato.idSucursal" ng-options="tipoSucursal.idSucursal as tipoSucursal.nombreSucursal for tipoSucursal in listaTiposSucursal" ng-change="CargarDepartamentos(nuevoContrato.idSucursal)" id="cboSucursal">
+                                                    <option value="">Sucursal</option>
+                                                </select>
                                             </div>
                                         </div>
-                                    
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Departamento:</label>
+                                                <select class="form-control" name="tipocontrato" ng-model="nuevoContrato.idDepartamento" ng-options="tipoDepartamento.idDepartamento as tipoDepartamento.nombreDepartamento for tipoDepartamento in listaTiposDepartamento" id="cboDepartamento" ng-change="cargarLimiteCredito(datosCliente.idCliente,nuevoContrato.idEmpresa,nuevoContrato.idSucursal,nuevoContrato.idDepartamento)">
+                                                    <option value="">Departamento</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Ejemplo datepicker bootstrap-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="input-group">
+                                                Fecha de inicio:
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy">
+                                                </div>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p class="input-group">
+                                                Fecha de termino:
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy">
+                                                </div>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="tab-pane" id="limite">
                                     <h4>Limite de Credito</h4>
@@ -142,35 +141,74 @@
                                     <h4>Documentos Requeridos:</h4>
                                     <br>
                                     <p>
-                                        
-                                            <div class="row">
-                                                <div class="col-xs-8">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-bordered">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Documento</th>
-                                                                    <th>Obligatorio</th>
-                                                                    <th>Adjuntar Archivo</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr ng-repeat="documento in listaDocumentos">
-                                                                    <td>{{ documento.nombre }}</td>
-                                                                    <td>{{ documento.obligatorio }}</td>
-                                                                    <td>
-                                                                        <button type="button" class="btn btn-primary rss" tooltip="Editar" ng-click="Editar()">
-                                                                            <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                        <div class="row">
+                                            <div class="col-xs-8">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Documento</th>
+                                                                <th>Obligatorio</th>
+                                                                <th>Adjuntar Archivo</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="documento in listaDocumentos">
+                                                                <td>{{ documento.nombre }}</td>
+                                                                <td>{{ documento.obligatorio }}</td>
+                                                                <td>
+                                                                    <button type="button" class="btn btn-primary rss" tooltip="Editar" ng-click="Editar()">
+                                                                        <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p>
+                                    <!-- <div class="col-lg-12">
+                                        <section class="box ">
+                                            <header class="panel_header">
+                                                <h2 class="title pull-left">Custom Uploader</h2>
+                                                <div class="actions panel_actions pull-right">
+                                                    <a class="box_toggle fa fa-chevron-down"></a>
+                                                    <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                                                    <a class="box_close fa fa-times"></a>
+                                                </div>
+                                            </header>
+                                            <div class="content-body">
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        <div class="custom-dropzone row">
+                                                            <div class="col-sm-8 drop-table">
+                                                                <table class="table" id="custom-droptable">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th style="width:1%;" class="text-center">#</th>
+                                                                            <th style="width:50%">Name</th>
+                                                                            <th style="width:20%">Progress</th>
+                                                                            <th>Size</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr ng-repeat="documento in listaDocumentos">
+                                                                            <td>{{ documento.nombre }}</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="col-sm-4 drop-area text-center">
+                                                                <div id="customDZ" class="droppable-area">
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        
-                                    </p>
+                                        </section>
+                                    </div> -->
                                 </div>
                                 <div class="tab-pane" id="confirmar">
                                     <h4>Confirmar datos capturados</h4>
@@ -260,3 +298,4 @@
 <script src="js/wizard/jquery.validate.min.js" type="text/javascript"></script>
 <script src="js/wizard/jquery.bootstrap.wizard.min.js" type="text/javascript"></script>
 <script src="js/wizard/form-validation.js" type="text/javascript"></script>
+<!-- <script src="js/dropzone/dropzone.min.js" type="text/javascript"></script> -->
