@@ -17,18 +17,18 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
             .then(
                 function succesCallback(response) {
                     //Success
-                    notificationFactory.success('Tipos de contrato obtenidos correctamente. ');
+                    //notificationFactory.success('Tipos de contrato obtenidos correctamente. ');
                     //messenger.showErrorMessage('Tipos de contrato obtenidos');
 
                     $scope.listaTiposContrato = response.data;
 
                     setTimeout(function () {
                         $('.estiloTabla').DataTable({
-                           
+
                         });
                     }, 1000);
 
-                    
+
                 },
                 function errorCallback(response) {
                     //Error
@@ -43,24 +43,23 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
     $scope.Eliminar = function (idtipocontrato) {
 
         //login
-        notificationFactory.warning('Entre en Borrar Tipo de Contrato Funcion');
+        //notificationFactory.warning('Entre en Borrar Tipo de Contrato Funcion');
         tipoContratoRepository.eliminarTipoContrato(idtipocontrato)
             .then(
                 function successCallbackEliminar(response) {
                     //reset
                     //Success        
-                                 
                     notificationFactory.success('Eliminados correctamente.');
                     //$scope.resultado = response.data;
-                    
+
                 },
                 function errorCallbackEliminar(response) {
                     //Error
                     notificationFactory.error('Error al eliminar el contrato: ' + response.data.message);
                 }
             );
-            $('#modaleliminar').modal('hide');
-             location.href = '/';  
+        $('#modaleliminar').modal('hide');
+        location.href = '/';
     };
 
     /*//Ir a Editar Tipo de Contrato
@@ -86,13 +85,13 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
 
     };
 
-      $scope.modalEliminar = function (idtipocontrato) {
-       $('#modaleliminar').modal('show');
-       $scope.idEliminar=idtipocontrato;
+    $scope.modalEliminar = function (idtipocontrato) {
+        $('#modaleliminar').modal('show');
+        $scope.idEliminar = idtipocontrato;
 
     };
 
-   
+
 
 
 

@@ -11,36 +11,20 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         cargaListaDocumentos();
         $rootScope.verDatos = false;
         $rootScope.verLimiteCredito = false;
-         $('.datepicker').datepicker({
-        });
+        $('.datepicker').datepicker({});
     };
 
-    //Obtiene los Datos del Cliente
-    /*var cargaCliente = function () {
-        contratoRepository.obtieneDatosCliente('diana')
-            .then(
-                function succesCallback(response) {
-                    //Success
-                    notificationFactory.success('Datos cliente correctos');
-                    $scope.datosCliente = response.data;
-                },
-                function errorCallback(response) {
-                    //Error
-                    notificationFactory.error('No se pudieron obtener los  ' + response.data.message);
-                }
-            );
-    };*/
 
     //Obtiene todos los clientes coincidentes con la busqueda
     $scope.BuscarCliente = function (txtBusqueda) {
-        notificationFactory.success('Estoy en la funcion BuscarCliente ' + $scope.txtBusqueda);
+        //notificationFactory.success('Estoy en la funcion BuscarCliente ' + $scope.txtBusqueda);
         $('#searchCliente').modal('show');
 
         contratoRepository.obtieneDatosCliente($scope.txtBusqueda)
             .then(
                 function succesCallback(response) {
                     //Success
-                    notificationFactory.success('Datos cliente correctamente');
+                    //notificationFactory.success('Datos cliente correctamente');
                     $scope.listaClientes = response.data;
                 },
                 function errorCallback(response) {
@@ -57,7 +41,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             .then(
                 function succesCallback(response) {
                     //Success
-                    notificationFactory.success('Tipos de contrato obtenidos correctamente. ');
+                    //notificationFactory.success('Tipos de contrato obtenidos correctamente. ');
                     //messenger.showErrorMessage('Tipos de contrato obtenidos');
                     $scope.listaTiposContrato = response.data;
                 },
@@ -74,7 +58,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             .then(
                 function succesCallback(response) {
                     //Success
-                    notificationFactory.success('Tipos de empresa obtenidos correctamente. ');
+                    //notificationFactory.success('Tipos de empresa obtenidos correctamente. ');
                     //messenger.showErrorMessage('Tipos de contrato obtenidos');
                     $scope.listaTiposEmpresa = response.data;
                 },
@@ -131,7 +115,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     //Regreso a la pantalla nuevo Contrato con los datos del Cliente
     $scope.cargarLimiteCredito = function (idcliente, idempresa, idsucursal, iddepartamento) {
-        alert('Estoy en cargar LIMITE DE CREDITO en contrato Controller:');
+        //alert('Estoy en cargar LIMITE DE CREDITO en contrato Controller:');
         $rootScope.verLimiteCredito = true;
 
         limiteCreditoRepository.obtieneLimiteCredito(idcliente, idempresa, idsucursal, iddepartamento)
@@ -143,7 +127,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                 },
                 function errorCallback(response) {
                     //Error
-                    alert('No se pudieron obtener los datos ' + response.data.message);
+                    notificationFactory.error('No se pudieron obtener los datos ' + response.data.message);
                 }
             );
 
@@ -159,50 +143,50 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             .then(
                 function succesCallback(response) {
                     //Success
-                    notificationFactory.success('Lista de documentos obtenidos correctamente. ');
+                    //notificationFactory.success('Lista de documentos obtenidos correctamente. ');
                     $scope.listaDocumentos = response.data;
                     setTimeout(function () {
                         var i = 1,
-                $custom_droplist = $("#custom-droptable"),
-                example_dropzone = $("#customDZ").dropzone({
-                    url: 'data/upload-file.php',
+                            $custom_droplist = $("#custom-droptable"),
+                            example_dropzone = $("#customDZ").dropzone({
+                                url: 'data/upload-file.php',
 
-                    // Events
-                    addedfile: function(file) {
-                        if (i == 1) {
-                            $custom_droplist.find('tbody').html('');
-                        }
+                                // Events
+                                addedfile: function (file) {
+                                    if (i == 1) {
+                                        $custom_droplist.find('tbody').html('');
+                                    }
 
-                        var size = parseInt(file.size / 1024, 10);
-                        size = size < 1024 ? (size + " KB") : (parseInt(size / 1024, 10) + " MB");
+                                    var size = parseInt(file.size / 1024, 10);
+                                    size = size < 1024 ? (size + " KB") : (parseInt(size / 1024, 10) + " MB");
 
-                        var $el = $('<tr>\
+                                    var $el = $('<tr>\
                                                     <td class="text-center">' + (i++) + '</td>\
                                                     <td>' + file.name + '</td>\
                                                     <td><div class="progress"><div class="progress-bar progress-bar-warning"></div></div></td>\
                                                     <td>' + size + '</td>\
                                                 </tr>');
 
-                        $custom_droplist.find('tbody').append($el);
-                        file.fileEntryTd = $el;
-                        file.progressBar = $el.find('.progress-bar');
-                    },
+                                    $custom_droplist.find('tbody').append($el);
+                                    file.fileEntryTd = $el;
+                                    file.progressBar = $el.find('.progress-bar');
+                                },
 
-                    uploadprogress: function(file, progress, bytesSent) {
-                        file.progressBar.width(progress + '%');
-                        $('.custom-dropzone .drop-table').perfectScrollbar({
-                            suppressScrollX: true
-                        });
-                    },
+                                uploadprogress: function (file, progress, bytesSent) {
+                                    file.progressBar.width(progress + '%');
+                                    $('.custom-dropzone .drop-table').perfectScrollbar({
+                                        suppressScrollX: true
+                                    });
+                                },
 
-                    success: function(file) {
-                        file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-success');
-                    },
+                                success: function (file) {
+                                    file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-success');
+                                },
 
-                    error: function(file) {
-                        file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-red');
-                    }
-                });
+                                error: function (file) {
+                                    file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-red');
+                                }
+                            });
                     }, 1000);
                 },
                 function errorCallback(response) {

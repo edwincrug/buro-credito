@@ -9,7 +9,7 @@ appControllers.controller('limiteCreditoController', function ($scope, limiteCre
     $scope.cargaLimiteCredito = function () { //idcliente, idempresa, idsucursal, iddepartamento
 
         $rootScope.verLimiteCredito = true;
-        alert('Ojoooooo Estoy en carga Limite de Credito ');
+        //alert('Ojoooooo Estoy en carga Limite de Credito ');
     };
 
 
