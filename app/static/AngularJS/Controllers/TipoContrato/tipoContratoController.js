@@ -3,8 +3,6 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
 
     //Metodo de incio 
     $scope.init = function () {
-
-
         //Cargo la lista de tipos contrato completa
         $scope.resultado = 9;
         cargaTiposContrato();
@@ -18,8 +16,6 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
                 function succesCallback(response) {
                     //Success
                     //notificationFactory.success('Tipos de contrato obtenidos correctamente. ');
-                    //messenger.showErrorMessage('Tipos de contrato obtenidos');
-
                     $scope.listaTiposContrato = response.data;
 
                     setTimeout(function () {
@@ -41,7 +37,6 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
 
     //Eliminar Tipo de Contrato
     $scope.Eliminar = function (idtipocontrato) {
-
         //login
         //notificationFactory.warning('Entre en Borrar Tipo de Contrato Funcion');
         tipoContratoRepository.eliminarTipoContrato(idtipocontrato)
@@ -51,7 +46,6 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
                     //Success        
                     notificationFactory.success('Eliminados correctamente.');
                     //$scope.resultado = response.data;
-
                 },
                 function errorCallbackEliminar(response) {
                     //Error
@@ -59,13 +53,9 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
                 }
             );
         $('#modaleliminar').modal('hide');
-        location.href = '/';
+        $state.go('tipocontrato');
+        //location.href = '/'; //***
     };
-
-    /*//Ir a Editar Tipo de Contrato
-    $scope.Editar = function () {
-        notificationFactory.success('Entre en Editar');
-    };*/
 
     //EditarTipo()
     $scope.EditarTipoContrato = function (tipo, opc) {
@@ -81,18 +71,14 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
     $scope.NuevoTipo = function (opc) {
         sessionFactory.tipoContratoEditar = null;
         sessionFactory.opcion = opc;
-        $state.go('nuevotipocontrato');
+        $state.go('tipocontrato');
 
     };
 
     $scope.modalEliminar = function (idtipocontrato) {
         $('#modaleliminar').modal('show');
         $scope.idEliminar = idtipocontrato;
-
     };
-
-
-
 
 
 }); //FIN de appControllers

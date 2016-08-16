@@ -99,7 +99,8 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                         //alert('Antes de SeleccionaDocumentos' +$scope.resultado);
                         $scope.SeleccionDocumentos(documento);
                         //alert(documento.nombre);
-                        $state.go('home');
+                        //$state.go('home');   //****
+                        $state.go('tipocontrato');
                     },
                     function errorCallbackEditar(response) {
                         //Error
@@ -125,7 +126,8 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
 
                     $scope.idTipoContrato = response.data["0"][""];                  
                     $scope.cargarDocumentos(documento, $scope.idTipoContrato);
-                    $state.go('home');
+                    //$state.go('home');   //****
+                    $state.go('tipocontrato');
                 },
                 function errorCallbackNuevoTipo(response) {
                     //Error
@@ -203,8 +205,6 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                             //Success
                             notificationFactory.success('Update realizado correctamente.');
                             $scope.resultado = response.data;
-
-
                         },
                         function errorCallbackEditar(response) {
                             //Error
