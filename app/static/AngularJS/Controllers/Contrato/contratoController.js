@@ -1,4 +1,4 @@
-appControllers.controller('contratoController', function ($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, empresasRepository, sucursalesRepository, departamentosRepository, limiteCreditoRepository, notificationFactory, sessionFactory) {
+appControllers.controller('contratoController', function ($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, empresasRepository, sucursalesRepository, departamentosRepository, limiteCreditoRepository, documentosRepository, notificationFactory, sessionFactory) {
 
 
     //Metodo de incio 
@@ -139,7 +139,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     //Funcion Carga Lista de Documentos  --Inconluso
     var cargaListaDocumentos = function () {
-        tipoContratoRepository.obtieneListaDocumentos(0)
+        documentosRepository.obtieneListaDocumentos(0)
             .then(
                 function succesCallback(response) {
                     //Success

@@ -56,33 +56,36 @@ appServices.factory('tipoContratoRepository', function ($http, configurationFact
             });
         }, //Fin editarTipoContrato
 
-
-        //5.-Obtiene todos los Tipo de Contrato
-        obtieneListaDocumentos: function (idtipocontrato) {
-            return $http({
-                url: tipoContratoRepositoryURL + 'obtienelistadocumentos/',
-                method: "GET",
-                params: {
-                    idTipoContrato: idtipocontrato
-                },
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-        }, //Fin obtieneListaDocumentos
+        /*
+          //5.-Obtiene Lista de documentos
+          obtieneListaDocumentos: function (idtipocontrato) {
+              return $http({
+                  url: tipoContratoRepositoryURL + 'obtienelistadocumentos/',
+                  method: "GET",
+                  params: {
+                      idTipoContrato: idtipocontrato
+                  },
+                  headers: {
+                      'Content-Type': 'application/json'
+                  }
+              });
+          }, //Fin obtieneListaDocumentos
+          */
 
         //6.-Update tipos de documentos
         TipoDocumento: function (idDocumento, idtipocontrato) {
-            return $http({
-                url: tipoContratoRepositoryURL + 'TipoDocumento/',
-                method: "POST",
-                params: {   idDocumento:idDocumento,
-                            idTipoContrato:idtipocontrato},
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-        }, //Fin editarTipoContrato
+                return $http({
+                    url: tipoContratoRepositoryURL + 'TipoDocumento/',
+                    method: "POST",
+                    params: {
+                        idDocumento: idDocumento,
+                        idTipoContrato: idtipocontrato
+                    },
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+            } //Fin tipos de documentos
 
 
     }; //Fin del return

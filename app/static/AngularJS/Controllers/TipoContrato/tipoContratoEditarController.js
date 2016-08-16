@@ -1,4 +1,4 @@
-appControllers.controller('tipoContratoEditarController', function ($scope, $state, $filter, tipoContratoRepository, notificationFactory, sessionFactory) {
+appControllers.controller('tipoContratoEditarController', function ($scope, $state, $filter, tipoContratoRepository, documentosRepository, notificationFactory, sessionFactory) {
 
 
     //Metodo de inicio 
@@ -139,7 +139,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
 
     //Funcion Carga Lista de Documentos  --Inconluso
     var cargaListaDocumentos = function () {
-        tipoContratoRepository.obtieneListaDocumentos(0)
+        documentosRepository.obtieneListaDocumentos(0)
             .then(
                 function succesCallback(response) {
                     //Success
@@ -163,7 +163,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
             //alert(value.nombre + 'Seleccionado: ' + value.seleccionado);
 
             if (value.seleccionado == true) {
-                tipoContratoRepository.TipoDocumento(value.idDocumento, $scope.tipoContratoEditar.idTipoContrato)
+                documentosRepository.TipoDocumento(value.idDocumento, $scope.tipoContratoEditar.idTipoContrato)
                     .then(
                         function successCallbackEditar(response) {
                             //reset
@@ -198,7 +198,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
             //alert(value.nombre + 'Seleccionado: ' + value.seleccionado);
 
             if (value.seleccionado == true) {
-                tipoContratoRepository.TipoDocumento(value.idDocumento, idContrato)
+                documentosRepository.TipoDocumento(value.idDocumento, idContrato)
                     .then(
                         function successCallbackEditar(response) {
                             //reset

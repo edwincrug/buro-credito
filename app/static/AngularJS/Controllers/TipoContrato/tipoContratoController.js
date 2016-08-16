@@ -71,7 +71,7 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
     $scope.NuevoTipo = function (opc) {
         sessionFactory.tipoContratoEditar = null;
         sessionFactory.opcion = opc;
-        $state.go('tipocontrato');
+        $state.go('nuevotipocontrato'); //***
 
     };
 
