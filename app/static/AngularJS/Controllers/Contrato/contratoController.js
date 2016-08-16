@@ -137,7 +137,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                 function succesCallback(response) {
                     //Success
                     $scope.datosCredito = response.data;
-                    alert($scope.datosCredito["0"].idCliente);
+                    //alert($scope.datosCredito["0"].idCliente);
                 },
                 function errorCallback(response) {
                     //Error
