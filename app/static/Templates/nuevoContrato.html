@@ -1,5 +1,6 @@
 <!--<link href="css/angular-busy.css" />-->
 <!-- <link href="css/dropzone/dropzone.css" rel="stylesheet" type="text/css" media="screen"/> -->
+<link rel="stylesheet" href="css/upload.css">
 <div ng-init="init()">
     <div class="page-title">
         <div class="pull-left">
@@ -157,9 +158,11 @@
                                                                 <td>{{ documento.nombre }}</td>
                                                                 <td>{{ documento.obligatorio }}</td>
                                                                 <td>
-                                                                    <button type="button" class="btn btn-primary rss" tooltip="Editar" ng-click="Editar()">
+                                                                    <label class="custom-file-upload">
+                                                                        <input type="file" />
                                                                         <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
-                                                                    </button>
+                                                                    </label>
+                                                                    
                                                                 </td>
                                                             </tr>
                                                         </tbody>
