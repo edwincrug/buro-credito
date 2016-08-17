@@ -99,11 +99,6 @@ contrato.prototype.get_obtienecontratos = function (req, res, next) {
             name: 'idCliente',
             value: req.query.idCliente,
             type: self.model.types.INT
-                    },
-        {
-            name: 'folioContrato',
-            value: req.query.folioContrato,
-            type: self.model.types.STRING
                     }
     ];
 

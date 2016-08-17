@@ -86,13 +86,12 @@ appServices.factory('contratoRepository', function ($http, configurationFactory)
         }, //Fin Inserta Contrato
 
         //6.-Obtiene todos los Contratos
-        obtieneContratos: function (idCliente, folioContrato) {
+        obtieneContratos: function (idCliente) {
                 return $http({
                     url: contratoRepositoryURL + 'obtienecontratos/',
                     method: "GET",
                     params: {
-                        idCliente: idCliente,
-                        folioContrato: folioContrato
+                        idCliente: idCliente
                     },
                     headers: {
                         'Content-Type': 'application/json'

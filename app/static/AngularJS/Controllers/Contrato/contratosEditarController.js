@@ -9,7 +9,7 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
     //Obtiene la lista de Contratos 
     var cargaContratos = function () {
 
-        contratoRepository.obtieneContratos(0, 'nada')
+        contratoRepository.obtieneContratos(0)
             .then(
                 function succesCallback(response) {
                     //Success
