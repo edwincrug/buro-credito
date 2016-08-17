@@ -83,7 +83,22 @@ appServices.factory('contratoRepository', function ($http, configurationFactory)
                     'Content-Type': 'application/json'
                 }
             });
-        }, //Fin obtieneTipoSucursal
+        }, //Fin Inserta Contrato
+
+        //6.-Obtiene todos los Contratos
+        obtieneContratos: function (idCliente, folioContrato) {
+                return $http({
+                    url: contratoRepositoryURL + 'obtienecontratos/',
+                    method: "GET",
+                    params: {
+                        idCliente: idCliente,
+                        folioContrato: folioContrato
+                    },
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+            } //Fin Obtiene todos los Contratos
 
 
     }; //Fin del return

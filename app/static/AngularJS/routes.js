@@ -36,6 +36,14 @@ angular.module('app.routes', [])
         controller: 'contratoController'
     })
 
+    //4) Nuevo Contrato   //****
+    .state('contratos', {
+        url: '/contratos',
+        templateUrl: 'Templates/contratos.html',
+        controller: 'contratosEditarController'
+    })
+
+
     //Login
     .state('login', {
         url: '/page5',

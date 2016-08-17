@@ -90,6 +90,32 @@ contrato.prototype.post_creanuevocontrato_data = function (req, res, next) {
 };
 
 
+// GET GetAll para obtener todos los Contratos
+contrato.prototype.get_obtienecontratos = function (req, res, next) {
+    var self = this;
+    //Obtención de valores de los parámetros del request
+    var params = [
+        {
+            name: 'idCliente',
+            value: req.query.idCliente,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'folioContrato',
+            value: req.query.folioContrato,
+            type: self.model.types.STRING
+                    }
+    ];
+
+    this.model.query('SEL_CONTRATOS_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+};
+
+
 
 // GET GetAll para obtener todos los elementos
 contrato.prototype.get_obtienedatoscliente = function (req, res, next) {
@@ -110,11 +136,6 @@ contrato.prototype.get_obtienedatoscliente = function (req, res, next) {
         });
     });
 };
-
-
-
-
-
 
 
 
