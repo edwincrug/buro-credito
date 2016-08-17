@@ -140,6 +140,7 @@
                                 </div>
                                 <div class="tab-pane" id="documentos">
                                     <h4>Documentos Requeridos:</h4>
+                                    {{folioContrato["0"][""]}}
                                     <br>
                                     <p>
                                         <div class="row">
@@ -161,7 +162,7 @@
                                                                     <form id="upload_form">
                                                                         Single Image with validations
                                                                         <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" />
-                                                                        <button type="submit" ng-click="submit(this.file)">submit</button>
+                                                                        <button type="submit" ng-click="submit(this.file,folioContrato,documento.idDocumento)">submit</button>
                                                                         <!--                                                                        <p>{{progress}}</p>-->
                                                                     </form>
                                                                 </td>

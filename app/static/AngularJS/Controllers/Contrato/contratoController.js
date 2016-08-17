@@ -159,21 +159,23 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     };
 
 
-    $scope.submit = function (fileinput) { //function to call on form submit
+    $scope.submit = function (fileinput,idcontrato,iddocumento) { //function to call on form submit
         if (fileinput != null) { //check if from is valid
-            $scope.upload(fileinput); //call upload function
+            $scope.upload(fileinput,idcontrato,iddocumento); //call upload function
         }
     };
 
     //Carga de archivos
-    $scope.upload = function (file) {
+    $scope.upload = function (file,idcontrato,iddocumento) {
         Upload.upload({
             url: 'http://localhost:4700/api/documentos/uploadfile/', //webAPI exposed to upload the file
             data: {
                 file: file
+                
             } //pass file as data, should be user ng-model
         }).then(function (resp) { //upload function returns a promise
             if (resp.data.error_code === 0) { //validate success
+                
                 $window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
             } else {
                 $window.alert('an error occured');

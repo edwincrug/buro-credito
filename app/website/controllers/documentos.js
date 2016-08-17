@@ -29,12 +29,13 @@ var Documentos = function (conf) {
 
 }
 
-Documentos.prototype.post_uploadfile = function (req, res, next) {
+Documentos.prototype.post_uploadfile_data = function (req, res, next) {
     //Con req.query se obtienen los parametros de la url
     //Objeto que envía los parámetros
     //Referencia a la clase para callback
     var self = this;
     //Cargo el archivo
+    console.log(req.params.data);
     upload(req, res, function (err) {
         if (err) {
             res.json({
@@ -48,7 +49,6 @@ Documentos.prototype.post_uploadfile = function (req, res, next) {
             err_desc: null
         });
     })
-
 
     //    var params = [
     //        {
