@@ -149,7 +149,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                     //Success
                     //notificationFactory.success('Lista de documentos obtenidos correctamente. ');
                     $scope.listaDocumentos = response.data;
-                    
+
                 },
                 function errorCallback(response) {
                     //Error
@@ -188,5 +188,30 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             $scope.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
         });
     };
+
+
+    //Funcion para GuardarContrato
+    $scope.GuardarContrato = function (datoscliente, nuevocontrato, limitecredito) {
+        alert('Estoy en carga Contrato');
+        $rootScope.datosGeneralesCliente = datoscliente;
+        $rootScope.datosTipoContrato = nuevocontrato;
+        $rootScope.montoCredito = limitecredito;
+
+        //insertaContrato
+        contratoRepository.creaNuevoContrato(datoscliente.idCliente, nuevocontrato.idTipoContrato, nuevocontrato.idEmpresa, nuevocontrato.idSucursal, nuevocontrato.idDepartamento, 'empresa', 'sucursal', 'departamento', '', '', 0, 1)
+            .then(
+                function succesCallback(response) {
+                    //Success
+                    $scope.folioContrato = response.data;
+                    alert('Dentro del success de Contrato');
+                },
+                function errorCallback(response) {
+                    //Error
+                    notificationFactory.error('Error al insertar el Contrato ' + response.data.message);
+                }
+            );
+
+    };
+
 
 }); //FIN de appControllers
