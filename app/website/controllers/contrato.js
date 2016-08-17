@@ -12,6 +12,79 @@ var contrato = function (conf) {
     }
 }
 
+// POST Se utiliza para INSERT
+contrato.prototype.post_creanuevocontrato_data = function (req, res, next) {
+    var self = this;
+    //Obtención de valores de los parámetros del request
+
+    var params = [
+        {
+            name: 'idCliente',
+            value: req.query.idCliente,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'idTipoContrato',
+            value: req.query.idTipoContrato,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'idEmpresa',
+            value: req.query.idEmpresa,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'idDepartamento',
+            value: req.query.idDepartamento,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'empresa',
+            value: req.query.empresa,
+            type: self.model.types.STRING
+                    },
+        {
+            name: 'sucursal',
+            value: req.query.sucursal,
+            type: self.model.types.STRING
+                    },
+        {
+            name: 'departamento',
+            value: req.query.departamento,
+            type: self.model.types.STRING
+                    },
+        {
+            name: 'fechaInicio',
+            value: req.query.fechaInicio,
+            type: self.model.types.DATE
+                    },
+        {
+            name: 'fechaTermino',
+            value: req.query.fechaTermino,
+            type: self.model.types.DATE
+                    },
+        {
+            name: 'limiteCredito',
+            value: req.query.limiteCredito,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'estatus',
+            value: req.query.estatus,
+            type: self.model.types.INT
+                    }
+    ];
+
+    this.model.query('INS_CONTRATO_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+};
+
+
+
 // GET GetAll para obtener todos los elementos
 contrato.prototype.get_obtienedatoscliente = function (req, res, next) {
     var self = this;
@@ -31,6 +104,14 @@ contrato.prototype.get_obtienedatoscliente = function (req, res, next) {
         });
     });
 };
+
+
+
+
+
+
+
+
 
 /*
 // GET GetAll para obtener todos los elementos

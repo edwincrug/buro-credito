@@ -6,13 +6,13 @@ angular.module('app.routes', [])
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
-    
+
     $stateProvider
 
         .state('home', {
         url: '/',
         templateUrl: 'templates/nuevoContrato.html',
-        controller: 'contratoController'        
+        controller: 'contratoController'
     })
 
     //1) nuevoTipoContrato
@@ -22,11 +22,18 @@ angular.module('app.routes', [])
         controller: 'tipoContratoEditarController'
     })
 
-    //2) nuevoContrato
+    //2) Tipo Contrato
     .state('tipocontrato', {
         url: '/tipocontrato',
         templateUrl: 'Templates/tipoContrato.html',
         controller: 'tipoContratoController'
+    })
+
+    //3) Nuevo Contrato   //****
+    .state('nuevocontrato', {
+        url: '/nuevocontrato',
+        templateUrl: 'Templates/nuevocontrato.html',
+        controller: 'contratoController'
     })
 
     //Login
