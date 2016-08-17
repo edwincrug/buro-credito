@@ -1,8 +1,7 @@
-appControllers.controller('contratoController', function($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, empresasRepository, sucursalesRepository, departamentosRepository, limiteCreditoRepository, documentosRepository, notificationFactory, sessionFactory) {
-
+appControllers.controller('contratoController', function ($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, empresasRepository, sucursalesRepository, departamentosRepository, limiteCreditoRepository, documentosRepository, notificationFactory, sessionFactory, Upload, $window) {
 
     //Metodo de incio 
-    $scope.init = function() {
+    $scope.init = function () {
         //Carga datos del Cliente
 
         //cargaCliente();
@@ -12,14 +11,16 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
         $rootScope.verDatos = false;
         $rootScope.verLimiteCredito = false;
         $('.datepicker').datepicker({});
-        setTimeout(function() {
-            $(":file").filestyle({ buttonName: "btn-primary" });
-        }, 1000);
+        //        setTimeout(function () {
+        //        $(":file").filestyle({
+        //            buttonName: "btn-primary"
+        //        });
+        //        }, 1000);
     };
 
 
     //Obtiene todos los clientes coincidentes con la busqueda
-    $scope.BuscarCliente = function(txtBusqueda) {
+    $scope.BuscarCliente = function (txtBusqueda) {
         //notificationFactory.success('Estoy en la funcion BuscarCliente ' + $scope.txtBusqueda);
         $('#searchCliente').modal('show');
 
@@ -39,7 +40,7 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
     };
 
     //Obtiene la lista de tipos contrato 
-    var cargaTiposContrato = function() {
+    var cargaTiposContrato = function () {
         tipoContratoRepository.obtieneTipoContrato(0)
             .then(
                 function succesCallback(response) {
@@ -56,7 +57,7 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
     };
 
     //Obtiene el catalogo de empresas
-    var cargaTiposEmpresas = function() {
+    var cargaTiposEmpresas = function () {
         empresasRepository.obtieneTipoEmpresa(0)
             .then(
                 function succesCallback(response) {
@@ -73,7 +74,7 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
     };
 
     //Obtiene el catalogo de sucursales por empresa
-    $scope.CargarSucursales = function(idempresa) {
+    $scope.CargarSucursales = function (idempresa) {
         $('#cboSucursal').attr('disabled', 'disabled');
         sucursalesRepository.obtieneTipoSucursal(idempresa)
             .then(
@@ -90,7 +91,7 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
     };
 
     //Obtiene el catalogo de departamentos por sucursal
-    $scope.CargarDepartamentos = function(idsucursal) {
+    $scope.CargarDepartamentos = function (idsucursal) {
         $('#cboDepartamento').attr('disabled', 'disabled');
         departamentosRepository.obtieneTipoDepartamento(idsucursal)
             .then(
@@ -109,7 +110,7 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
 
 
     //Regreso a la pantalla nuevo Contrato con los datos del Cliente
-    $scope.cargarCliente = function(infoCliente) {
+    $scope.cargarCliente = function (infoCliente) {
         //alert('Estoy en carga Cliente' + infoCliente.nombre);
         $rootScope.datosCliente = infoCliente;
         $rootScope.verDatos = true;
@@ -117,7 +118,7 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
     };
 
     //Regreso a la pantalla nuevo Contrato con los datos del Cliente
-    $scope.cargarLimiteCredito = function(idcliente, idempresa, idsucursal, iddepartamento) {
+    $scope.cargarLimiteCredito = function (idcliente, idempresa, idsucursal, iddepartamento) {
         //alert('Estoy en cargar LIMITE DE CREDITO en contrato Controller:');
         $rootScope.verLimiteCredito = true;
 
@@ -141,21 +142,21 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
 
 
     //Funcion Carga Lista de Documentos  --Inconluso
-    var cargaListaDocumentos = function() {
+    var cargaListaDocumentos = function () {
         documentosRepository.obtieneListaDocumentos(0)
             .then(
                 function succesCallback(response) {
                     //Success
                     //notificationFactory.success('Lista de documentos obtenidos correctamente. ');
                     $scope.listaDocumentos = response.data;
-                    setTimeout(function() {
+                    setTimeout(function () {
                         var i = 1,
                             $custom_droplist = $("#custom-droptable"),
                             example_dropzone = $("#customDZ").dropzone({
                                 url: 'data/upload-file.php',
 
                                 // Events
-                                addedfile: function(file) {
+                                addedfile: function (file) {
                                     if (i == 1) {
                                         $custom_droplist.find('tbody').html('');
                                     }
@@ -175,18 +176,18 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
                                     file.progressBar = $el.find('.progress-bar');
                                 },
 
-                                uploadprogress: function(file, progress, bytesSent) {
+                                uploadprogress: function (file, progress, bytesSent) {
                                     file.progressBar.width(progress + '%');
                                     $('.custom-dropzone .drop-table').perfectScrollbar({
                                         suppressScrollX: true
                                     });
                                 },
 
-                                success: function(file) {
+                                success: function (file) {
                                     file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-success');
                                 },
 
-                                error: function(file) {
+                                error: function (file) {
                                     file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-red');
                                 }
                             });
@@ -200,8 +201,34 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
     };
 
 
+    $scope.submit = function (fileinput) { //function to call on form submit
+        if (fileinput != null) { //check if from is valid
+            $scope.upload(fileinput); //call upload function
+        }
+    };
 
-
-
+    //Carga de archivos
+    $scope.upload = function (file) {
+        Upload.upload({
+            url: 'http://localhost:4700/api/documentos/uploadfile/', //webAPI exposed to upload the file
+            data: {
+                file: file
+            } //pass file as data, should be user ng-model
+        }).then(function (resp) { //upload function returns a promise
+            if (resp.data.error_code === 0) { //validate success
+                $window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
+            } else {
+                $window.alert('an error occured');
+            }
+        }, function (resp) { //catch error
+            console.log('Error status: ' + resp.status);
+            $window.alert('Error status: ' + resp.status);
+        }, function (evt) {
+            console.log(evt);
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            $scope.progress = 'progress: ' + progressPercentage + '% '; // capture upload progress
+        });
+    };
 
 }); //FIN de appControllers

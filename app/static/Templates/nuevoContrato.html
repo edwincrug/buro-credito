@@ -158,8 +158,12 @@
                                                                 <td>{{ documento.nombre }}</td>
                                                                 <td>{{ documento.obligatorio }}</td>
                                                                 <td>
-                                                                    <input type="file" class="filestyle" data-buttonName="btn-primary">
-                                                                    
+                                                                    <form id="upload_form">
+                                                                        Single Image with validations
+                                                                        <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" />
+                                                                        <button type="submit" ng-click="submit(this.file)">submit</button>
+                                                                        <!--                                                                        <p>{{progress}}</p>-->
+                                                                    </form>
                                                                 </td>
                                                             </tr>
                                                         </tbody>

@@ -1,1 +1,1 @@
-appServices.factory("configurationFactory",[function(){var r={};return r.urlAPI="http://localhost:4600/api/",r}]);
+appServices.factory("configurationFactory",[function(){var r={};return r.urlAPI="http://localhost:4700/api/",r}]);

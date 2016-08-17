@@ -1,1 +1,1 @@
-angular.module("app",["ui.router","cgBusy","app.controllers","app.routes","app.services","app.directives"]).run();
+angular.module("app",["ui.router","cgBusy","ngFileUpload","app.controllers","app.routes","app.services","app.directives"]).run();

@@ -3,9 +3,9 @@ var DocumentosView = require('../views/speaker'),
     multer = require('multer');
 
 //Configuración de MULTER
-this.storage = multer.diskStorage({ //multers disk storage settings
+var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
-        cb(null, './uploads/')
+        cb(null, './app/uploads/')
     },
     filename: function (req, file, cb) {
         var datetimestamp = Date.now();
@@ -13,8 +13,8 @@ this.storage = multer.diskStorage({ //multers disk storage settings
     }
 });
 
-this.upload = multer({ //multer settings
-    storage: this.storage
+var upload = multer({ //multer settings
+    storage: storage
 }).single('file');
 
 var Documentos = function (conf) {
@@ -36,32 +36,34 @@ Documentos.prototype.post_uploadfile = function (req, res, next) {
     var self = this;
     //Cargo el archivo
     upload(req, res, function (err) {
-            if (err) {
-                res.json({
-                    error_code: 1,
-                    err_desc: err
-                });
-                return;
-            }
+        if (err) {
             res.json({
-                error_code: 0,
-                err_desc: null
+                error_code: 1,
+                err_desc: err
             });
-        })
-        //    var params = [
-        //        {
-        //            name: 'idTipoContrato',
-        //            value: req.query.idTipoContrato,
-        //            type: self.model.types.INT
-        //                    }
-        //    ];
-        //
-        //    this.model.query('SEL_DOCUMENTOS_SP', params, function (error, result) {
-        //        self.view.speakJSON(res, {
-        //            error: error,
-        //            result: result
-        //        });
-        //    });
+            return;
+        }
+        res.json({
+            error_code: 0,
+            err_desc: null
+        });
+    })
+
+
+    //    var params = [
+    //        {
+    //            name: 'idTipoContrato',
+    //            value: req.query.idTipoContrato,
+    //            type: self.model.types.INT
+    //                    }
+    //    ];
+    //
+    //    this.model.query('SEL_DOCUMENTOS_SP', params, function (error, result) {
+    //        self.view.speakJSON(res, {
+    //            error: error,
+    //            result: result
+    //        });
+    //    });
 };
 
 
