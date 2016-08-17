@@ -13,7 +13,7 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
             .then(
                 function succesCallback(response) {
                     //Success
-                    notificationFactory.success('Cotrato obtenidos correctamente');
+                    //notificationFactory.success('Cotrato obtenidos correctamente');
                     $scope.listaContratos = response.data;
 
                     setTimeout(function () {
