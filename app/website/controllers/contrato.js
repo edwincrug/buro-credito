@@ -17,6 +17,7 @@ contrato.prototype.post_creanuevocontrato_data = function (req, res, next) {
     var self = this;
     //Obtención de valores de los parámetros del request
 
+
     var params = [
         {
             name: 'idCliente',
@@ -31,6 +32,11 @@ contrato.prototype.post_creanuevocontrato_data = function (req, res, next) {
         {
             name: 'idEmpresa',
             value: req.query.idEmpresa,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'idSucursal',
+            value: req.query.idSucursal,
             type: self.model.types.INT
                     },
         {

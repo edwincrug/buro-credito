@@ -193,12 +193,12 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     //Funcion para GuardarContrato
     $scope.GuardarContrato = function (datoscliente, nuevocontrato, limitecredito) {
         alert('Estoy en carga Contrato');
-        $rootScope.datosGeneralesCliente = datoscliente;
-        $rootScope.datosTipoContrato = nuevocontrato;
-        $rootScope.montoCredito = limitecredito;
+        //$rootScope.datosGeneralesCliente = datoscliente;
+        //$rootScope.datosTipoContrato = nuevocontrato;
+        //$rootScope.montoCredito = limitecredito;
 
         //insertaContrato
-        contratoRepository.creaNuevoContrato(datoscliente.idCliente, nuevocontrato.idTipoContrato, nuevocontrato.idEmpresa, nuevocontrato.idSucursal, nuevocontrato.idDepartamento, 'empresa', 'sucursal', 'departamento', '', '', 0, 1)
+        contratoRepository.creaNuevoContrato(datoscliente.idCliente, nuevocontrato.idTipoContrato, nuevocontrato.idEmpresa, nuevocontrato.idSucursal, nuevocontrato.idDepartamento, 'empresa', 'sucursal', 'departamento', '01/01/2016', '01/01/2016', limitecredito, 1)
             .then(
                 function succesCallback(response) {
                     //Success
