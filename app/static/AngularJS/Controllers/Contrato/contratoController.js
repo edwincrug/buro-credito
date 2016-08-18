@@ -161,7 +161,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     $scope.submit = function (fileinput, idcontrato, iddocumento) { //function to call on form submit
         if (fileinput != null) { //check if from is valid
-            $scope.upload(fileinput, idcontrato, iddocumento); //call upload function
+            $scope.upload(fileinput, idcontrato["0"].idContrato, iddocumento); //call upload function
         }
     };
 
@@ -172,7 +172,12 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             data: {
                 file: file
 
-            } //pass file as data, should be user ng-model
+            }, //pass file as data, should be user ng-model
+            params:{
+                contrato:idcontrato,
+                documento:iddocumento
+
+            }
         }).then(function (resp) { //upload function returns a promise
             if (resp.data.error_code === 0) { //validate success
 
