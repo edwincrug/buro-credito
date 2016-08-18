@@ -1,11 +1,13 @@
 var DocumentosView = require('../views/speaker'),
     DocumentosModel = require('../models/dataAccess'),
-    multer = require('multer');
+    multer = require('multer'),
+    mkdirp=require('mkdirp');
 
 //Configuración de MULTER
 var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
-        cb(null, './app/uploads/')
+
+        cb(null, './app/'+req.query.contrato)
     },
     filename: function (req, file, cb) {
         var datetimestamp = Date.now();
@@ -35,7 +37,7 @@ Documentos.prototype.post_uploadfile_data = function (req, res, next) {
     //Referencia a la clase para callback
     var self = this;
     //Cargo el archivo
-    console.log(req.params.data);
+    //console.log(req.params.data);
     upload(req, res, function (err) {
         if (err) {
             res.json({
@@ -115,6 +117,16 @@ Documentos.prototype.post_TipoDocumento_data = function (req, res, next) {
         });
     });
 };
+
+Documentos.prototype.post_creaCarpeta_data = function (req, res, next) {
+    var self = this;
+
+mkdirp('./app/'+req.query.idcontrato, function (err) {
+    if (err) console.error(err)
+    else console.log('pow!')
+});
+};
+
 
 
 

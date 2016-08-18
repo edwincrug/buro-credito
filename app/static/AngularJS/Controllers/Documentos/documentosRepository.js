@@ -33,6 +33,19 @@ appServices.factory('documentosRepository', function ($http, configurationFactor
             });
         }, //Fin editarDocumentos
 
+        creaCarpeta: function (idcontrato) {
+            return $http({
+                url: documentosRepositoryURL + 'creaCarpeta/',
+                method: "POST",
+                params: {
+                    idcontrato: idcontrato
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        },
+
 
     }; //Fin del return
 
