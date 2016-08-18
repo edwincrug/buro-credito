@@ -194,10 +194,12 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     //Funcion para GuardarContrato
     $scope.GuardarContrato = function (datoscliente, nuevocontrato, limitecredito) {
-        //alert('Estoy en carga Contrato');
-        //$rootScope.datosGeneralesCliente = datoscliente;
-        //$rootScope.datosTipoContrato = nuevocontrato;
-        //$rootScope.montoCredito = limitecredito;
+
+        if (datoscliente.idCliente != '' && nuevocontrato != '' && limitecredito > 0) {
+            alert('Puede hacer el guardar');
+        } else {
+            alert('Error en la validacion');
+        }
 
         //insertaContrato
         contratoRepository.creaNuevoContrato(datoscliente.idCliente, nuevocontrato.idTipoContrato, nuevocontrato.idEmpresa, nuevocontrato.idSucursal, nuevocontrato.idDepartamento, 'empresa', 'sucursal', 'departamento', nuevocontrato.fechaInicio, nuevocontrato.fechaTermino, limitecredito, 1)
