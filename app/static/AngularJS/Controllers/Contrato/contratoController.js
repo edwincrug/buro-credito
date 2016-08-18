@@ -16,6 +16,16 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
         //            buttonName: "btn-primary"
         //        });
         //        }, 1000);
+
+        setTimeout(function () {
+                        $('#file').change(function(e) {
+         var filename = e.target.files[0].name
+        console.log(filename);
+         $('#archivo').html(filename);
+        });
+                    }, 1000);
+
+        
     };
 
 

@@ -168,10 +168,12 @@
                                                                 <td>
                                                                     <form id="upload_form">
                                                                         Single Image with validations
-                                                                        <span>Cargar
-                                                                        <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB"/>
+                                                                        <div class="control">
+
+                                                                        <label for="file">Seleccionar Archivo<span id="archivo">0 Archivos </span></label>
+                                                                        <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" id="file"/>
                                                                         
-                                                                        </span>
+                                                                        </div>
                                                                         <button type="submit" ng-click="submit(this.file,folioContrato,documento.idDocumento)">submit</button>
                                                                         <!--                                                                        <p>{{progress}}</p>-->
                                                                     </form>
