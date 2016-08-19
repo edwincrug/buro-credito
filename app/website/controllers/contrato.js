@@ -66,7 +66,7 @@ contrato.prototype.post_creanuevocontrato_data = function (req, res, next) {
                     }
     ];
 
-    this.model.query('INS_CONTRATO_SP2', params, function (error, result) {
+    this.model.query('INS_CONTRATO_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result
