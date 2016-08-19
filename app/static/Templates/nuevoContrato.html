@@ -20,7 +20,7 @@
                             <ul class="form-wizard">
                                 <li><a href="#cliente" data-toggle="tab"><span>Cliente</span></a></li>
                                 <li><a href="#contrato" data-toggle="tab"><span>Contrato</span></a></li>
-                                <li><a href="#limite" data-toggle="tab"><span>Limite</span></a></li>
+                                <li><a href="#limite" data-toggle="tab"><span>Límite</span></a></li>
                                 <li><a href="#documentos" data-toggle="tab"><span>Documentos</span></a></li>
                                 <li><a href="#confirmar" data-toggle="tab"><span>Confirmar</span></a></li>
                             </ul>
@@ -63,7 +63,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">Telefono:</label>
+                                                <label class="control-label" ng-show="verDatos">Teléfono:</label>
                                                 <p>{{datosCliente.telefono}}</p>
                                             </div>
                                         </div>
@@ -126,7 +126,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <p class="input-group">
-                                                Fecha de termino:
+                                                Fecha de término:
                                                 <div class="input-group">
                                                     <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy" ng-model="nuevoContrato.fechaTermino">
                                                 </div>
@@ -135,12 +135,12 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="limite">
-                                    <h4>Limite de Credito</h4>
+                                    <h4>Límite de Crédito</h4>
                                     <br>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="form-label" ng-show="verLimiteCredito">Limite de Crédito:</label> {{datosCredito.limiteCredito}}
+                                                <label class="form-label" ng-show="verLimiteCredito">Límite de Crédito:</label> {{datosCredito.limiteCredito}}
                                                 <input type="text" class="form-control" id="limiteCredito" ng-model="datosCredito[0].limiteCredito">
                                             </div>
                                         </div>
