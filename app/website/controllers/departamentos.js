@@ -19,6 +19,16 @@ departamentos.prototype.get_obtienetipodepartamento = function (req, res, next) 
     //Obtención de valores de los parámetros del request
     var params = [
         {
+            name: 'idUsuario',
+            value: req.query.idUsuario,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'idEmpresa',
+            value: req.query.idEmpresa,
+            type: self.model.types.INT
+                    },
+        {
             name: 'idSucursal',
             value: req.query.idSucursal,
             type: self.model.types.INT

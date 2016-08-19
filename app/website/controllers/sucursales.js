@@ -20,6 +20,11 @@ sucursales.prototype.get_obtienetiposucursal = function (req, res, next) {
     //Obtención de valores de los parámetros del request
     var params = [
         {
+            name: 'idUsuario',
+            value: req.query.idUsuario,
+            type: self.model.types.INT
+                    },
+        {
             name: 'idEmpresa',
             value: req.query.idEmpresa,
             type: self.model.types.INT

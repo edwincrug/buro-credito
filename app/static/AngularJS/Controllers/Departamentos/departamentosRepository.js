@@ -5,11 +5,13 @@ appServices.factory('departamentosRepository', function ($http, configurationFac
     return {
 
         //4.-Obtiene todos los Tipo de Departamento
-        obtieneTipoDepartamento: function (idSucursal) {
+        obtieneTipoDepartamento: function (idUsuario, idEmpresa, idSucursal) {
                 return $http({
                     url: departamentosRepositoryURL + 'obtienetipodepartamento/',
                     method: "GET",
                     params: {
+                        idUsuario: idUsuario,
+                        idEmpresa: idEmpresa,
                         idSucursal: idSucursal
                     },
                     headers: {

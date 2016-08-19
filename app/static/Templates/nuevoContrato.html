@@ -90,7 +90,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-label">Empresa:</label>
-                                                <select class="form-control" ng-model="nuevoContrato.idEmpresa" ng-options="tipoEmpresa.idEmpresa as tipoEmpresa.nombreEmpresa for tipoEmpresa in listaTiposEmpresa" ng-change="CargarSucursales(nuevoContrato.idEmpresa)" id="cboEmpresa">
+                                                <select class="form-control" ng-model="nuevoContrato.idEmpresa" ng-options="tipoEmpresa.idEmpresa as tipoEmpresa.nombreEmpresa for tipoEmpresa in listaTiposEmpresa" ng-change="CargarSucursales(datosCliente.idCliente,nuevoContrato.idEmpresa)" id="cboEmpresa">
                                                     <option value="">Empresa</option>
                                                 </select>
                                             </div>
@@ -100,7 +100,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-label">Sucursal:</label>
-                                                <select class="form-control" ng-model="nuevoContrato.idSucursal" ng-options="tipoSucursal.idSucursal as tipoSucursal.nombreSucursal for tipoSucursal in listaTiposSucursal" ng-change="CargarDepartamentos(nuevoContrato.idSucursal)" id="cboSucursal">
+                                                <select class="form-control" ng-model="nuevoContrato.idSucursal" ng-options="tipoSucursal.idSucursal as tipoSucursal.nombreSucursal for tipoSucursal in listaTiposSucursal" ng-change="CargarDepartamentos(datosCliente.idCliente,nuevoContrato.idEmpresa,nuevoContrato.idSucursal)" id="cboSucursal">
                                                     <option value="">Sucursal</option>
                                                 </select>
                                             </div>
@@ -170,9 +170,9 @@
                                                                         Single Image with validations
                                                                         <div class="control">
 
-                                                                        <label for="file">Seleccionar Archivo<span id="archivo">0 Archivos </span></label>
-                                                                        <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" id="file"/>
-                                                                        
+                                                                            <label for="file">Seleccionar Archivo<span id="archivo">0 Archivos </span></label>
+                                                                            <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" id="file" />
+
                                                                         </div>
                                                                         <button type="submit" ng-click="submit(this.file,folioContrato,documento.idDocumento)">submit</button>
                                                                         <!--                                                                        <p>{{progress}}</p>-->
@@ -237,7 +237,7 @@
                                     <li class="previous first" style="display:none;"><a href="javascript:;">First</a></li>
                                     <li class="previous"><a href="javascript:;">Anterior</a></li>
                                     <li class="next last disabled" style="display:none;"><a href="javascript:;">Last</a></li>
-                                    <li class="next disabled"><a href="javascript:;" ng-hide="datosCliente==undefined">Siguiente</a></li>
+                                    <li class="next disabled"><a href="javascript:;" ng-hide="datosCliente==undefined" ng-click="cargaTiposEmpresas(datosCliente.idCliente)">Siguiente</a></li>
                                     <li class="finish" style="display:;"><a href="javascript:;" ng-click="GuardarContrato(datosCliente,nuevoContrato,datosCredito[0].limiteCredito)" ng-hide="folioContrato!=undefined || datosCliente==undefined || nuevoContrato.idDepartamento==undefined || nuevoContrato.idTipoContrato==undefined || nuevoContrato.fechaTermino==undefined || nuevoContrato.fechaInicio==undefined">
                                         Guardar</a></li>
                                 </ul>

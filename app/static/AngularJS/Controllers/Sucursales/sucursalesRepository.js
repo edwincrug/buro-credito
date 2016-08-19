@@ -5,11 +5,12 @@ appServices.factory('sucursalesRepository', function ($http, configurationFactor
     return {
 
         //3.-Obtiene todos los Tipo de Sucursal
-        obtieneTipoSucursal: function (idEmpresa) {
+        obtieneTipoSucursal: function (idUsuario, idEmpresa) {
                 return $http({
                     url: sucursalesRepositoryURL + 'obtienetiposucursal/',
                     method: "GET",
                     params: {
+                        idUsuario: idUsuario,
                         idEmpresa: idEmpresa
                     },
                     headers: {

@@ -33,11 +33,12 @@ appServices.factory('contratoRepository', function ($http, configurationFactory)
         }, //Fin obtieneTipoEmpresa
 
         //3.-Obtiene todos los Tipo de Sucursal
-        obtieneTipoSucursal: function (idEmpresa) {
+        obtieneTipoSucursal: function (idCliente, idEmpresa) {
             return $http({
                 url: contratoRepositoryURL + 'obtienetiposucursal/',
                 method: "GET",
                 params: {
+                    idCliente: idCliente,
                     idEmpresa: idEmpresa
                 },
                 headers: {
