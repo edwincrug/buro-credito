@@ -234,7 +234,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
         if (datoscliente.idCliente != '' && nuevocontrato != '' && limitecredito > 0) {
             //insertaContrato
-            contratoRepository.creaNuevoContrato(datoscliente.idCliente, nuevocontrato.idTipoContrato, nuevocontrato.idEmpresa, nuevocontrato.idSucursal, nuevocontrato.idDepartamento, 'empresa', 'sucursal', 'departamento', nuevocontrato.fechaInicio, nuevocontrato.fechaTermino, limitecredito, 1)
+            contratoRepository.creaNuevoContrato(datoscliente.idCliente, nuevocontrato.idTipoContrato, nuevocontrato.idEmpresa, nuevocontrato.idSucursal, nuevocontrato.idDepartamento, nuevocontrato.fechaInicio, nuevocontrato.fechaTermino, limitecredito, 1)
                 .then(
                     function succesCallback(response) {
                         //Success

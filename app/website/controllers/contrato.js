@@ -45,21 +45,6 @@ contrato.prototype.post_creanuevocontrato_data = function (req, res, next) {
             type: self.model.types.INT
                     },
         {
-            name: 'empresa',
-            value: req.query.empresa,
-            type: self.model.types.STRING
-                    },
-        {
-            name: 'sucursal',
-            value: req.query.sucursal,
-            type: self.model.types.STRING
-                    },
-        {
-            name: 'departamento',
-            value: req.query.departamento,
-            type: self.model.types.STRING
-                    },
-        {
             name: 'fechaInicio',
             value: req.query.fechaInicio,
             type: self.model.types.DATE
@@ -81,7 +66,7 @@ contrato.prototype.post_creanuevocontrato_data = function (req, res, next) {
                     }
     ];
 
-    this.model.query('INS_CONTRATO_SP', params, function (error, result) {
+    this.model.query('INS_CONTRATO_SP2', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result
