@@ -40,6 +40,8 @@ TipoContrato.prototype.post_nuevotipocontrato_data = function (req, res, next) {
                     }
     ];
 
+    console.log(req.query.fechaCreacion);
+
     this.model.query('INS_TIPO_CONTRATO_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,

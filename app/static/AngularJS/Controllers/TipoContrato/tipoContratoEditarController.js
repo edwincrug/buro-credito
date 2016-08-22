@@ -116,7 +116,12 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
     $scope.CrearTipo = function (documento) {
         //alert($scope.contratoEditar.nombreContrato);
         //notificationFactory.warning('Entre en Nuevo Tipo de Contrato');
-
+        var modifechaInic=$scope.contratoEditar.fechaCreacion.split('/');
+        var newDateIni=modifechaInic[1] +'/'+modifechaInic[0]+'/'+modifechaInic[2];
+        var modifechaTerm=$scope.contratoEditar.fechaTermino.split('/');
+        var newDateterm=modifechaTerm[1] +'/'+modifechaTerm[0]+'/'+modifechaTerm[2];
+        $scope.contratoEditar.fechaCreacion=newDateIni;
+        $scope.contratoEditar.fechaTermino=newDateterm;  
         tipoContratoRepository.insertarTipoContrato($scope.contratoEditar)
             .then(
                 function successCallbackNuevoTipo(response) {
@@ -238,7 +243,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                     //reset
                     //Success
                     //$state.go('nuevotipocontrato');
-                    $('#agregarDocumentos').modal('hide');
+                    
                     notificationFactory.success('Insertado correctamente.');
 
 
@@ -248,9 +253,10 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                     //Error
                     notificationFactory.error('Error al insertar el documento: ' + response.data.message);
                 }
-               
-            );
 
+            );
+            $('#agregarDocumentos').modal('hide');
+            $state.go('nuevotipocontrato');
     };
 
 
