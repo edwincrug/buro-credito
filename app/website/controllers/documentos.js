@@ -127,6 +127,31 @@ mkdirp('./app/'+req.query.idcontrato, function (err) {
 });
 };
 
+Documentos.prototype.post_insertDocumento_data = function (req, res, next) {
+    var self = this;
+
+
+    var params = [
+        {
+            name: 'nombre',
+            value: req.query.nombreDocumento,
+            type: self.model.types.STRING
+                    },
+        {
+            name: 'descripcion',
+            value: req.query.descripcion,
+            type: self.model.types.STRING
+                    }
+    ];
+
+    this.model.query('INS_CAT_DOCUMENTO_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+};
+
 
 
 

@@ -27,8 +27,8 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
             var elemsRed = Array.prototype.slice.call(document.querySelectorAll('.js-switch-red'));
             var elemsBlue = Array.prototype.slice.call(document.querySelectorAll('.js-switch-blue'));
             var defaultsRED = {
-                color: 'red',
-                secondaryColor: '#dfdfdf',
+                color: '#d9534f',
+                secondaryColor: '#eaeaea',
                 jackColor: '#fff',
                 jackSecondaryColor: null,
                 className: 'switchery',
@@ -38,8 +38,8 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                 size: 'small'
             }
             var defaultsBLUE = {
-                    color: '#17a0d9',
-                    secondaryColor: '#dfdfdf',
+                    color: '#3f51b5',
+                    secondaryColor: '#eaeaea',
                     jackColor: '#fff',
                     jackSecondaryColor: null,
                     className: 'switchery',
@@ -222,6 +222,35 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
     //Boton Cancelar
     $scope.Regresar = function () {
         $state.go('home');
+    };
+
+    //Inserta nuevos tipos de documentos
+    $scope.modalDocumentos = function () {
+        $('#agregarDocumentos').modal('show');
+    };
+
+     //Inserta Documentos
+    $scope.insertDocumento = function (nuevoDocumento) {
+        
+        documentosRepository.insertDocumento(nuevoDocumento)
+            .then(
+                function successCallbackNuevoTipo(response) {
+                    //reset
+                    //Success
+                    //$state.go('nuevotipocontrato');
+                    $('#agregarDocumentos').modal('hide');
+                    notificationFactory.success('Insertado correctamente.');
+
+
+                    
+                },
+                function errorCallbackNuevoTipo(response) {
+                    //Error
+                    notificationFactory.error('Error al insertar el documento: ' + response.data.message);
+                }
+               
+            );
+
     };
 
 

@@ -46,6 +46,18 @@ appServices.factory('documentosRepository', function ($http, configurationFactor
             });
         },
 
+        //Inserta nuevo documento
+        insertDocumento: function (nuevoDocumento) {
+            return $http({
+                url: documentosRepositoryURL + 'insertDocumento/',
+                method: "POST",
+                params: nuevoDocumento,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        },
+
 
     }; //Fin del return
 

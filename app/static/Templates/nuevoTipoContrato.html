@@ -4,10 +4,8 @@
     <div class="page-title">
         <div class="pull-left">
             <h1 class="title">Captura de Tipo de Contrato</h1>
-
         </div>
     </div>
-
     <!--Datos Tipo Contrato -->
     <section class="box ">
         <header class="panel_header">
@@ -21,12 +19,10 @@
                             <label class="form-label">Nombre del Tipo de Contrato: </label>
                             <input class="form-control" id="nombreTipo" ng-model="contratoEditar.nombreContrato" placeholder="Nombre">
                         </div>
-
                         <div class="form-group">
                             <label class="form-label">Descripción:</label>
                             <input class="form-control" id="descripcionTipo" ng-model="contratoEditar.descripcion" placeholder="Descripción del Contrato">
                         </div>
-
                         <div class="row">
                             <!-- Ejemplo datepicker bootstrap-->
                             <div class="col-md-6">
@@ -45,7 +41,6 @@
                                     </div>
                                 </p>
                             </div>
-
                         </div>
                         <!-- Ejemplo datepicker bootstrap-->
                     </form>
@@ -63,9 +58,6 @@
             <div class="row">
                 <div class="col-xs-10">
                     <form role="form">
-
-
-
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="table-responsive">
@@ -75,40 +67,33 @@
                                                 <th>Seleccionar</th>
                                                 <th>Obligatorio</th>
                                                 <th>Tipo de Documento</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat=" documento in listaDocumentos">
                                                 <th scope="row">
-                                                    <input type="checkbox" class="js-switch-blue checkbox" checked />
+                                                    <input type="checkbox" class="js-switch-blue checkbox" ng-click="cambiar()" />
                                                 </th>
                                                 <th scope="row">
-                                                    <input type="checkbox" class="js-switch-red checkbox" checked />
+                                                    <input type="checkbox" class="js-switch-red checkbox" id="activar" />
                                                 </th>
-
                                                 <td>{{documento.nombre}}</td>
-
                                             </tr>
-
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-
                         <!-- Botones prueba-->
                         <ul class="pager wizard">
                             <li class="finish" style="display:;"><a href="javascript:;" ng-click="EditarTipo(listaDocumentos)" ng-show="opcion==2">
                                         Actualizar Cambios</a></li>
+                            <li class="finish" style="display:;"><a href="javascript:;" ng-click="modalDocumentos()">Agregar Documentos</a></li>
                         </ul>
                         <!-- Botones prueba-->
-
                     </form>
                 </div>
             </div>
-
-
             <div class="col-md-offset-8">
                 <div class="list-group">
                     <button type="button" class="btn btn-primary " ng-click="Regresar()">Cancelar</button>
@@ -116,24 +101,37 @@
                     <button type="button" class="btn btn-primary vimeo" ng-click="CrearTipo(listaDocumentos)" ng-show="opcion==1">Guardar Contrato</button>
                 </div>
             </div>
-
         </div>
         <!-- Prueba -->
         <!--Tabla Documentos-->
     </section>
     <!--FIN Datos Tipo Contrato-->
-
-
 </div>
-
-
-
-
+<div class="modal" id="agregarDocumentos" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog animated bounceInDown">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Agregar Documentos </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="field-2" class="control-label">Nombre del tipo de documento</label>
+                    <input type="text" class="form-control" id="field-2" placeholder="Nombre del documento" ng-model="nuevoDocumento.nombreDocumento">
+                    <label for="field-2" class="control-label">Descripción</label>
+                    <input type="text" class="form-control" id="field-2" placeholder="Nombre del documento" ng-model="nuevoDocumento.descripcion">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
+                <button class="btn btn-danger" type="button" ng-click="insertDocumento(nuevoDocumento)">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START -->
 <script src="js/plugins/switchery/switchery.js" type="text/javascript"></script>
 <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
-
-
 <!-- CORE TEMPLATE JS - START -->
-
 <!-- END CORE TEMPLATE JS - END -->
+

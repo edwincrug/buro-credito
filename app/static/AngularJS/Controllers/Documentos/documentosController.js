@@ -1,4 +1,4 @@
-appControllers.controller('documentosController', function ($scope, $state, $filter, documentosRepository, notificationFactory, sessionFactory) {
+appControllers.controller('documentosController', function ($scope, $state, $filter, documentosRepository, notificationFactory, sessionFactory,) {
 
     //Metodo de inicio 
     $scope.init = function () {
@@ -83,6 +83,8 @@ appControllers.controller('documentosController', function ($scope, $state, $fil
         });
         //alert('Total seleccionados: ' + $scope.contadorSeleccionado +' '+ $scope.tipoContratoEditar.idTipoContrato);
     };
+
+   
 
 
 }); //FIN de appControllers
