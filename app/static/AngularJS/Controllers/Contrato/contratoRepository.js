@@ -62,7 +62,7 @@ appServices.factory('contratoRepository', function ($http, configurationFactory)
         }, //Fin obtieneTipoDepartamento
 
         //5.-Inserta Contrato
-        creaNuevoContrato: function (idCliente, idTipoContrato, idEmpresa, idSucursal, idDepartamento, empresa, sucursal, departamento, fechaInicio, fechaTermino, limiteCredito, estatus) {
+        creaNuevoContrato: function (idCliente, idTipoContrato, idEmpresa, idSucursal, idDepartamento, fechaInicio, fechaTermino, limiteCredito, estatus) {
             return $http({
                 url: contratoRepositoryURL + 'creanuevocontrato/',
                 method: "POST",
