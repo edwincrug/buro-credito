@@ -55,4 +55,58 @@ LimiteCredito.prototype.get_obtienelimitecredito = function (req, res, next) {
 };
 
 
+//PUT Se utiliza para UPDATE
+LimiteCredito.prototype.put_editarlimitecredito_data = function (req, res, next) {
+    var self = this;
+    //Obtención de valores de los parámetros del request
+
+    var params = [
+        {
+            name: 'idCliente',
+            value: req.query.idCliente,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'idEmpresa',
+            value: req.query.idEmpresa,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'idSucursal',
+            value: req.query.idSucursal,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'idDepartamento',
+            value: req.query.idDepartamento,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'cartera',
+            value: req.query.cartera,
+            type: self.model.types.STRING
+                    },
+        {
+            name: 'nuevoLimite',
+            value: req.query.nuevoLimite,
+            type: self.model.types.INT
+                    }
+
+    ];
+
+    this.model.query('UPD_LIMITE_BPRO_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+};
+
+
+
+
+
+
+
+
 module.exports = LimiteCredito;

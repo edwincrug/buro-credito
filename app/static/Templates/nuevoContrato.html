@@ -140,7 +140,16 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="form-label" ng-show="verLimiteCredito">Límite de Crédito:</label> {{datosCredito.limiteCredito}}
+                                                <label class="control-label" ng-show="verLimiteCredito">Cartera:</label>
+                                                <p>{{datosCredito[0].cartera}} {{datosCredito[0].descripcionCartera}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label" ng-show="verLimiteCredito">Límite de Crédito:</label>
                                                 <input type="text" class="form-control" id="limiteCredito" ng-model="datosCredito[0].limiteCredito">
                                             </div>
                                         </div>

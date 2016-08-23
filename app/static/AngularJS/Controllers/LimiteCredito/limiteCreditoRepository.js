@@ -6,20 +6,43 @@ appServices.factory('limiteCreditoRepository', function ($http, configurationFac
 
         //1.-Obtiene informacion del Limite de Credito por Empresa,Sucursal, Departamento de un cliente
         obtieneLimiteCredito: function (idcliente, idempresa, idsucursal, iddepartamento) {
+            return $http({
+                url: limiteCreditoRepositoryURL + 'obtienelimitecredito/',
+                method: "GET",
+                params: {
+                    idCliente: idcliente,
+                    idEmpresa: idempresa,
+                    idSucursal: idsucursal,
+                    idDepartamento: iddepartamento
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }, //Fin Obtiene informacion del limite de Credito
+
+
+        //2.-Update del Limite de Credito por Empresa,Sucursal, Departamento de un cliente
+        editarLimiteCredito: function (idcliente, idempresa, idsucursal, iddepartamento, cartera, nuevoLimite) {
                 return $http({
-                    url: limiteCreditoRepositoryURL + 'obtienelimitecredito/',
-                    method: "GET",
+                    url: limiteCreditoRepositoryURL + 'editarlimitecredito/',
+                    method: "PUT",
                     params: {
                         idCliente: idcliente,
                         idEmpresa: idempresa,
                         idSucursal: idsucursal,
-                        idDepartamento: iddepartamento
+                        idDepartamento: iddepartamento,
+                        cartera: cartera,
+                        nuevoLimite: nuevoLimite
                     },
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 });
             } //Fin Obtiene informacion del limite de Credito
+
+
+
 
 
     }; //Fin del return
