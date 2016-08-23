@@ -65,18 +65,19 @@
                                         <thead>
                                             <tr>
                                                 <th>Seleccionar</th>
-                                                <th>Obligatorio</th>
+                                                <!-- <th>Obligatorio</th> -->
                                                 <th>Tipo de Documento</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat=" documento in listaDocumentos">
                                                 <th scope="row">
-                                                    <input type="checkbox" class="js-switch-blue checkbox" ng-click="cambiar()" />
+                                                <input type="checkbox" ng-model="documento.seleccionado"  aria-label="Checkbox for following text input"></span>
+                                                    <!-- <input type="checkbox" class="js-switch-blue checkbox" ng-model="documento.seleccionado"/> -->
                                                 </th>
-                                                <th scope="row">
-                                                    <input type="checkbox" class="js-switch-red checkbox" id="activar" />
-                                                </th>
+                                                <!-- <th scope="row">
+                                                    <input type="checkbox" class="js-switch-red checkbox"/>
+                                                </th> -->
                                                 <td>{{documento.nombre}}</td>
                                             </tr>
                                         </tbody>
