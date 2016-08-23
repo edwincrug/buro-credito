@@ -233,6 +233,13 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     $scope.GuardarContrato = function (datoscliente, nuevocontrato, limitecredito) {
 
         if (datoscliente.idCliente != '' && nuevocontrato != '' && limitecredito > 0) {
+
+        var modifechaInic=$scope.nuevocontrato.fechaInicio.split('/');
+        var newDateIni=modifechaInic[1] +'/'+modifechaInic[0]+'/'+modifechaInic[2];
+        var modifechaTerm=$scope.nuevocontrato.fechaTermino.split('/');
+        var newDateterm=modifechaTerm[1] +'/'+modifechaTerm[0]+'/'+modifechaTerm[2];
+        $scope.nuevocontrato.fechaInicio=newDateIni;
+        $scope.nuevocontrato.fechaTermino=newDateterm;
             //insertaContrato
             contratoRepository.creaNuevoContrato(datoscliente.idCliente, nuevocontrato.idTipoContrato, nuevocontrato.idEmpresa, nuevocontrato.idSucursal, nuevocontrato.idDepartamento, nuevocontrato.fechaInicio, nuevocontrato.fechaTermino, limitecredito, 1)
                 .then(
