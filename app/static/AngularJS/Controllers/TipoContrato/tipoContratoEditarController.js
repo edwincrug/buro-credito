@@ -5,6 +5,11 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
     $scope.init = function () {
         //Cargo la lista de documentos
         cargaListaDocumentos();
+        setTimeout(function () {
+                        $('.estiloTabla').DataTable({
+
+                        });
+                    }, 1000);
         $scope.opcion = sessionFactory.opcion;
         $scope.tipoContratoEditar = sessionFactory.tipoContratoEditar;
         if (sessionFactory.tipoContratoEditar != null) {
@@ -80,6 +85,8 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                 var switchery = new Switchery(html, defaultsBLUE);
             });
         }, 1000);
+
+
     };
 
 
