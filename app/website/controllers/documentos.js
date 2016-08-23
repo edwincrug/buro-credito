@@ -11,7 +11,7 @@ var storage = multer.diskStorage({ //multers disk storage settings
     },
     filename: function (req, file, cb) {
         var datetimestamp = Date.now();
-        cb(null, req.query.contrato+'-'+req.query.documento+ '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
+        cb(null, req.query.contrato+'-'+req.query.documento+ '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
     }
 });
 
