@@ -256,7 +256,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
 
             );
             $('#agregarDocumentos').modal('hide');
-            $state.go('nuevotipocontrato');
+            $state.reload();
     };
 
 
