@@ -19,13 +19,14 @@ appServices.factory('documentosRepository', function ($http, configurationFactor
         }, //Fin obtieneListaDocumentos
 
         //2.-Update tipos de documentos
-        TipoDocumento: function (idDocumento, idtipocontrato) {
+        TipoDocumento: function (idDocumento, idtipocontrato, obligatorio) {
             return $http({
                 url: documentosRepositoryURL + 'TipoDocumento/',
                 method: "POST",
                 params: {
                     idDocumento: idDocumento,
-                    idTipoContrato: idtipocontrato
+                    idTipoContrato: idtipocontrato,
+                    obligatorio:obligatorio
                 },
                 headers: {
                     'Content-Type': 'application/json'

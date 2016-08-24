@@ -107,6 +107,11 @@ Documentos.prototype.post_TipoDocumento_data = function (req, res, next) {
             name: 'idTipoContrato',
             value: req.query.idTipoContrato,
             type: self.model.types.INT
+                    },
+        {
+            name: 'obligatorio',
+            value: req.query.obligatorio,
+            type: self.model.types.INT
                     }
     ];
 
