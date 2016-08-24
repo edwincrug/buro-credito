@@ -85,21 +85,7 @@ appServices.factory('tipoContratoRepository', function ($http, configurationFact
                         'Content-Type': 'application/json'
                     }
                 });
-            }, //Fin tipos de documentos
-
-            //6.-get los documentos seleccionados para el tipo de contrato
-        getDocumentosSeleccionados: function (idtipocontrato) {
-                return $http({
-                url: tipoContratoRepositoryURL + 'getDocumentosSeleccionados/',
-                method: "GET",
-                params: {
-                    idTipoContrato: idtipocontrato
-                },
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            } //Fin del get
+            } //Fin tipos de documentos
 
 
     }; //Fin del return

@@ -1,15 +1,15 @@
-appControllers.controller('tipoContratoController', function($scope, $state, tipoContratoRepository, notificationFactory, sessionFactory) {
+appControllers.controller('tipoContratoController', function ($scope, $state, tipoContratoRepository, notificationFactory, sessionFactory) {
 
 
     //Metodo de incio 
-    $scope.init = function() {
+    $scope.init = function () {
         //Cargo la lista de tipos contrato completa
         $scope.resultado = 9;
         cargaTiposContrato();
     };
 
     //Obtiene la lista de tipos contrato 
-    var cargaTiposContrato = function() {
+    var cargaTiposContrato = function () {
 
         tipoContratoRepository.obtieneTipoContrato(0)
             .then(
@@ -18,7 +18,7 @@ appControllers.controller('tipoContratoController', function($scope, $state, tip
                     //notificationFactory.success('Tipos de contrato obtenidos correctamente. ');
                     $scope.listaTiposContrato = response.data;
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $('.estiloTabla').DataTable({
 
                         });
@@ -36,7 +36,7 @@ appControllers.controller('tipoContratoController', function($scope, $state, tip
 
 
     //Eliminar Tipo de Contrato
-    $scope.Eliminar = function(idtipocontrato) {
+    $scope.Eliminar = function (idtipocontrato) {
         //login
         //notificationFactory.warning('Entre en Borrar Tipo de Contrato Funcion');
         tipoContratoRepository.eliminarTipoContrato(idtipocontrato)
@@ -58,49 +58,26 @@ appControllers.controller('tipoContratoController', function($scope, $state, tip
     };
 
     //EditarTipo()
-    $scope.EditarTipoContrato = function(tipo, opc) {
+    $scope.EditarTipoContrato = function (tipo, opc) {
         //Success
         //var url = window.location.pathname + '//nuevotipoContrato';
-
         sessionFactory.tipoContratoEditar = tipo;
-        cargaDocumentosSeleccionados(sessionFactory.tipoContratoEditar.idTipoContrato);
         sessionFactory.opcion = opc;
         $state.go('nuevotipocontrato');
-
-
 
     };
 
     //Lamada NuevoTipo
-    $scope.NuevoTipo = function(opc) {
+    $scope.NuevoTipo = function (opc) {
         sessionFactory.tipoContratoEditar = null;
         sessionFactory.opcion = opc;
         $state.go('nuevotipocontrato'); //***
 
     };
 
-    $scope.modalEliminar = function(idtipocontrato) {
+    $scope.modalEliminar = function (idtipocontrato) {
         $('#modaleliminar').modal('show');
         $scope.idEliminar = idtipocontrato;
-    };
-
-    var cargaDocumentosSeleccionados = function(idtipocontrato) {
-        tipoContratoRepository.getDocumentosSeleccionados(idtipocontrato)
-            .then(
-                function successCallbackConseguir(response) {
-                    //reset
-                    //Success  
-                    $scope.documentosSeleccionados=response.data;
-
-                    notificationFactory.success('Datos conseguidos exitosamente.');
-
-                },
-                function errorCallbackConseguir(response) {
-                    //Error
-                    notificationFactory.error('Error al eliminar el contrato: ' + response.data.message);
-                }
-            );
-
     };
 
 

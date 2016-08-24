@@ -188,32 +188,6 @@ TipoContrato.prototype.post_TipoDocumento_data = function (req, res, next) {
 };
 
 
-// GET lista de documentos seleccionados
-TipoContrato.prototype.get_getDocumentosSeleccionados = function (req, res, next) {
-    //Con req.query se obtienen los parametros de la url
-    //Ejemplo: ?p1=a&p2=b
-    //Retorna {p1:'a',p2:'b'}
-    //Objeto que envía los parámetros
-    //Referencia a la clase para callback
-    var self = this;
-    //Obtención de valores de los parámetros del request
-    var params = [
-        {
-            name: 'idTipoContrato',
-            value: req.query.idTipoContrato,
-            type: self.model.types.INT
-                    }
-    ];
-
-    this.model.query('SEL_DOCUMENTO_CONTRATO_SP', params, function (error, result) {
-        self.view.speakJSON(res, {
-            error: error,
-            result: result
-        });
-    });
-};
-
-
 
 ////GET BY ID Para obtener un elemento en específico
 //TipoContrato.prototype.get_obtienetipocontratobyid = function (req, res, next) {

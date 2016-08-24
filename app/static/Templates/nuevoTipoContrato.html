@@ -1,11 +1,9 @@
 <link href="css/plugins/switchery/switchery.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="css/checkbox/all.css" rel="stylesheet" type="text/css" media="screen" />
-<link rel="stylesheet" href="css/checkbox.css">
 <div ng-init="init()">
     <!--Titulo de Pagina  -->
     <div class="page-title">
         <div class="pull-left">
-            <h1 class="title">Captura de Tipo de Contrato</h1>            
+            <h1 class="title">Captura de Tipo de Contrato</h1>
         </div>
     </div>
     <!--Datos Tipo Contrato -->
@@ -60,7 +58,9 @@
             <div class="row">
                 <div class="col-xs-12">
                     <form role="form">
-                        
+                        <div class="row">
+                            <div class="col-xs-10">
+                                <div class="table-responsive">
                                     <table class="table table-striped dt-responsive display estiloTabla">
                                         <thead>
                                             <tr>
@@ -72,14 +72,12 @@
                                         <tbody>
                                             <tr ng-repeat=" documento in listaDocumentos">
                                                 <td scope="row">
-                                                    <input type="checkbox" ng-model="documento.seleccionado" aria-label="Checkbox for following text input" ng-checked="" class="check">
-
-                                                    <input tabindex="5" type="checkbox" id="flat-checkbox-2" class="skin-flat-green" checked>
+                                                    <input type="checkbox" ng-model="documento.seleccionado" aria-label="Checkbox for following text input" >
                                                     
                                                     <!-- <input type="checkbox" class="js-switch-blue checkbox" ng-model="documento.seleccionado"/> -->
                                                 </td>
                                                 <td scope="row">
-                                                    <input type="checkbox" ng-model="documento.obligatorio" aria-label="Checkbox for following text input" ng-disabled="!documento.seleccionado" >
+                                                    <input type="checkbox" ng-model="documento.obligatorio" aria-label="Checkbox for following text input" ng-disabled="!documento.seleccionado">
                                                     
                                                     <!-- <input type="checkbox" class="js-switch-blue checkbox" ng-model="documento.seleccionado"/> -->
                                                 </td>
@@ -90,7 +88,9 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                               
+                                </div>
+                            </div>
+                        </div>
                         <!-- Botones prueba-->
                         <ul class="pager wizard">
                             <li class="finish" style="display:;"><a href="javascript:;" ng-click="EditarTipo(listaDocumentos)" ng-show="opcion==2">
@@ -138,7 +138,6 @@
 </div>
 <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START -->
 <script src="js/plugins/switchery/switchery.js" type="text/javascript"></script>
- <script src="js/checkbox/icheck.min.js" type="text/javascript"></script>
 <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
 <!-- CORE TEMPLATE JS - START -->
 <!-- END CORE TEMPLATE JS - END -->
