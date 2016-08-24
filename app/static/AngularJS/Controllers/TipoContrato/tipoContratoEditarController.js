@@ -94,6 +94,14 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
 
     //Funcion de Actualizacion del Tipo de Contrato
     $scope.EditarTipo = function (documento) {
+        var modifechaInic=$scope.contratoEditar.fechaCreacion.split('/');
+        var newDateIni=modifechaInic[1] +'/'+modifechaInic[0]+'/'+modifechaInic[2];
+        var modifechaTerm=$scope.contratoEditar.fechaTermino.split('/');
+        var newDateterm=modifechaTerm[1] +'/'+modifechaTerm[0]+'/'+modifechaTerm[2];
+        $scope.contratoEditar.fechaCreacion=newDateIni;
+        $scope.contratoEditar.fechaTermino=newDateterm;
+
+        
         if ($scope.contratoEditar.nombreContrato != null && $scope.contratoEditar.descripcion != null && $scope.contratoEditar.fechaTermino != null && $scope.contratoEditar.fechaCreacion != null && $scope.contratoEditar.nombreContrato != "" && $scope.contratoEditar.descripcion != "" && $scope.contratoEditar.fechaTermino != "" && $scope.contratoEditar.fechaCreacion != "") {
             tipoContratoRepository.editarTipoContrato($scope.contratoEditar)
                 .then(
