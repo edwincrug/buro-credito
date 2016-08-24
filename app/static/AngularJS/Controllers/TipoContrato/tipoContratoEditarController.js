@@ -108,6 +108,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                         //alert(documento.nombre);
                         //$state.go('home');   //****
                         $state.go('tipocontrato');
+                        $state.reload();
                     },
                     function errorCallbackEditar(response) {
                         //Error
@@ -200,17 +201,36 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
     };
 
 
-    //Selecciona Documento
-    $scope.cargarDocumentos = function (documento, idContrato) {
+   //Selecciona Documento
+    $scope.cargarDocumentos = function(documento, idContrato) {
         //alert('Estoy en Seleccion Documentos: ' + documento.nombre); //documento.seleccionado
         //Contador de seleccionados
         $scope.contadorSeleccionado = 0;
 
-        angular.forEach($scope.listaDocumentos, function (value, key) {
+        angular.forEach($scope.listaDocumentos, function(value, key) {
             //alert(value.nombre + 'Seleccionado: ' + value.seleccionado);
 
             if (value.seleccionado == true) {
-                documentosRepository.TipoDocumento(value.idDocumento, idContrato)
+                if (value.obligatorio == true) {
+                    documentosRepository.TipoDocumento(value.idDocumento, idContrato,1)
+                        .then(
+                            function successCallbackEditar(response) {
+                                //reset
+                                //Success
+                                notificationFactory.success('Update realizado correctamente.');
+                                $scope.resultado = response.data;
+                            },
+                            function errorCallbackEditar(response) {
+                                //Error
+                                notificationFactory.error('Error al subir documentos: ');
+                            }
+                        );
+                    $scope.contadorSeleccionado++;
+
+
+                }
+                else{
+                documentosRepository.TipoDocumento(value.idDocumento, idContrato,0)
                     .then(
                         function successCallbackEditar(response) {
                             //reset
@@ -224,7 +244,8 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                         }
                     );
                 $scope.contadorSeleccionado++;
-            }
+                }
+            }else{}
         });
 
         //alert('Total seleccionados: ' + $scope.contadorSeleccionado +' '+ $scope.tipoContratoEditar.idTipoContrato);
