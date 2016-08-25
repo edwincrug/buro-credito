@@ -6,10 +6,10 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
         //Cargo la lista de documentos
         cargaListaDocumentos();
         setTimeout(function () {
-                        $('.estiloTabla').DataTable({
+            $('.estiloTabla').DataTable({
 
-                        });
-                    }, 1000);
+            });
+        }, 1000);
         $scope.opcion = sessionFactory.opcion;
         $scope.tipoContratoEditar = sessionFactory.tipoContratoEditar;
         if (sessionFactory.tipoContratoEditar != null) {
@@ -94,6 +94,13 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
 
     //Funcion de Actualizacion del Tipo de Contrato
     $scope.EditarTipo = function (documento) {
+        var modifechaInic = $scope.contratoEditar.fechaCreacion.split('/');
+        var newDateIni = modifechaInic[1] + '/' + modifechaInic[0] + '/' + modifechaInic[2];
+        var modifechaTerm = $scope.contratoEditar.fechaTermino.split('/');
+        var newDateterm = modifechaTerm[1] + '/' + modifechaTerm[0] + '/' + modifechaTerm[2];
+        $scope.contratoEditar.fechaCreacion = newDateIni;
+        $scope.contratoEditar.fechaTermino = newDateterm;
+
         if ($scope.contratoEditar.nombreContrato != null && $scope.contratoEditar.descripcion != null && $scope.contratoEditar.fechaTermino != null && $scope.contratoEditar.fechaCreacion != null && $scope.contratoEditar.nombreContrato != "" && $scope.contratoEditar.descripcion != "" && $scope.contratoEditar.fechaTermino != "" && $scope.contratoEditar.fechaCreacion != "") {
             tipoContratoRepository.editarTipoContrato($scope.contratoEditar)
                 .then(
@@ -124,12 +131,12 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
     $scope.CrearTipo = function (documento) {
         //alert($scope.contratoEditar.nombreContrato);
         //notificationFactory.warning('Entre en Nuevo Tipo de Contrato');
-        var modifechaInic=$scope.contratoEditar.fechaCreacion.split('/');
-        var newDateIni=modifechaInic[1] +'/'+modifechaInic[0]+'/'+modifechaInic[2];
-        var modifechaTerm=$scope.contratoEditar.fechaTermino.split('/');
-        var newDateterm=modifechaTerm[1] +'/'+modifechaTerm[0]+'/'+modifechaTerm[2];
-        $scope.contratoEditar.fechaCreacion=newDateIni;
-        $scope.contratoEditar.fechaTermino=newDateterm;  
+        var modifechaInic = $scope.contratoEditar.fechaCreacion.split('/');
+        var newDateIni = modifechaInic[1] + '/' + modifechaInic[0] + '/' + modifechaInic[2];
+        var modifechaTerm = $scope.contratoEditar.fechaTermino.split('/');
+        var newDateterm = modifechaTerm[1] + '/' + modifechaTerm[0] + '/' + modifechaTerm[2];
+        $scope.contratoEditar.fechaCreacion = newDateIni;
+        $scope.contratoEditar.fechaTermino = newDateterm;
         tipoContratoRepository.insertarTipoContrato($scope.contratoEditar)
             .then(
                 function successCallbackNuevoTipo(response) {
@@ -201,18 +208,18 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
     };
 
 
-   //Selecciona Documento
-    $scope.cargarDocumentos = function(documento, idContrato) {
+    //Selecciona Documento
+    $scope.cargarDocumentos = function (documento, idContrato) {
         //alert('Estoy en Seleccion Documentos: ' + documento.nombre); //documento.seleccionado
         //Contador de seleccionados
         $scope.contadorSeleccionado = 0;
 
-        angular.forEach($scope.listaDocumentos, function(value, key) {
+        angular.forEach($scope.listaDocumentos, function (value, key) {
             //alert(value.nombre + 'Seleccionado: ' + value.seleccionado);
 
             if (value.seleccionado == true) {
                 if (value.obligatorio == true) {
-                    documentosRepository.TipoDocumento(value.idDocumento, idContrato,1)
+                    documentosRepository.TipoDocumento(value.idDocumento, idContrato, 1)
                         .then(
                             function successCallbackEditar(response) {
                                 //reset
@@ -228,24 +235,23 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                     $scope.contadorSeleccionado++;
 
 
+                } else {
+                    documentosRepository.TipoDocumento(value.idDocumento, idContrato, 0)
+                        .then(
+                            function successCallbackEditar(response) {
+                                //reset
+                                //Success
+                                notificationFactory.success('Update realizado correctamente.');
+                                $scope.resultado = response.data;
+                            },
+                            function errorCallbackEditar(response) {
+                                //Error
+                                notificationFactory.error('Error al subir documentos: ');
+                            }
+                        );
+                    $scope.contadorSeleccionado++;
                 }
-                else{
-                documentosRepository.TipoDocumento(value.idDocumento, idContrato,0)
-                    .then(
-                        function successCallbackEditar(response) {
-                            //reset
-                            //Success
-                            notificationFactory.success('Update realizado correctamente.');
-                            $scope.resultado = response.data;
-                        },
-                        function errorCallbackEditar(response) {
-                            //Error
-                            notificationFactory.error('Error al subir documentos: ');
-                        }
-                    );
-                $scope.contadorSeleccionado++;
-                }
-            }else{}
+            } else {}
         });
 
         //alert('Total seleccionados: ' + $scope.contadorSeleccionado +' '+ $scope.tipoContratoEditar.idTipoContrato);
@@ -262,20 +268,20 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
         $('#agregarDocumentos').modal('show');
     };
 
-     //Inserta Documentos
+    //Inserta Documentos
     $scope.insertDocumento = function (nuevoDocumento) {
-        
+
         documentosRepository.insertDocumento(nuevoDocumento)
             .then(
                 function successCallbackNuevoTipo(response) {
                     //reset
                     //Success
                     //$state.go('nuevotipocontrato');
-                    
+
                     notificationFactory.success('Insertado correctamente.');
 
 
-                    
+
                 },
                 function errorCallbackNuevoTipo(response) {
                     //Error
@@ -283,8 +289,8 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                 }
 
             );
-            $('#agregarDocumentos').modal('hide');
-            $state.reload();
+        $('#agregarDocumentos').modal('hide');
+        $state.reload();
     };
 
 
