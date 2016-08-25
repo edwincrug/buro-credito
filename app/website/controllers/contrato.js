@@ -72,6 +72,24 @@ contrato.prototype.post_creanuevocontrato_data = function (req, res, next) {
             result: result
         });
     });
+
+    /*
+        console.log('estamos aqui inserta contratto ');
+        console.log(req.query.idTipoContrato);
+
+        phantom.create().then(function (ph) {
+            ph.createPage().then(function (page) {
+                page.open("http://localhost:4700/#/nuevotipocontrato").then(function (status) {
+                    page.render('update3.pdf').then(function () {
+                        console.log('Page Rendered');
+                        ph.exit();
+                    });
+                });
+            });
+        });
+
+    */
+
 };
 
 
@@ -117,7 +135,41 @@ contrato.prototype.get_obtienedatoscliente = function (req, res, next) {
     });
 };
 
+//obtiene Informacion del contrato Creado
+contrato.prototype.get_obtienedetallecontrato = function (req, res, next) {
+    var self = this;
+    //Obtención de valores de los parámetros del request
+    var params = [
+        {
+            name: 'idContrato',
+            value: req.query.idContrato,
+            type: self.model.types.INT
+                    }
+    ];
 
+    this.model.query('SEL_CONTRATO_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+
+
+    //    console.log('estamos en selecciona contrato ');
+    //    console.log(req.query.idContrato);
+    //
+    //    phantom.create().then(function (ph) {
+    //        ph.createPage().then(function (page) {
+    //            page.open("http://localhost:4700/#/detallecontrato").then(function (status) {
+    //                page.render('seleccionscontrato.pdf').then(function () {
+    //                    console.log('Page Rendered');
+    //                    ph.exit();
+    //                });
+    //            });
+    //        });
+    //    });
+
+}
 
 
 /*

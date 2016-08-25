@@ -1,0 +1,94 @@
+<div ng-init="init()">
+
+    <!--Titulo de Pagina  -->
+    <div class="page-title">
+        <div class="pull-left">
+            <h1 class="title">Detalle Contrato</h1>
+        </div>
+    </div>
+
+    <section class="box ">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">Num. Cliente BPRO:</label>
+                    <p>{{detalle.idCliente}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">Nombre:</label>
+                    <p>{{detalle.nombreCliente}}</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">RFC:</label>
+                    <p>{{detalle.rfc}}</p>
+                </div>
+            </div>
+        </div>
+        <!--div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label" ng-show="verDatos">Teléfono:</label>
+                    <p>{{detalleContrato.telefono}}</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label" ng-show="verDatos">Correo:</label>
+                    <p>{{detalleContrato.email}}</p>
+                </div>
+            </div>
+        </div-->
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">Tipo Contrato:</label>
+                    <p>{{detalle.nomTipoContrato}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">Empresa:</label>
+                    <p>{{detalle.idEmpresa}}</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">Sucursal:</label>
+                    <p>{{detalle.idSucursal }}</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">Departamento:</label>
+                    <p>{{detalle.idDepartamento}}</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label" ng-show="verDatos">Cartera:</label>
+                    <p>{{detalle.cartera}} {{detalle.descripcionCartera}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label" ng-show="verDatos">Límite Crédito:</label>
+                    <p>{{detalle.limiteCredito}}</p>
+                </div>
+            </div>
+        </div>
+    </section>

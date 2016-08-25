@@ -85,19 +85,32 @@ appServices.factory('contratoRepository', function ($http, configurationFactory)
 
         //6.-Obtiene todos los Contratos
         obtieneContratos: function (idCliente) {
+            return $http({
+                url: contratoRepositoryURL + 'obtienecontratos/',
+                method: "GET",
+                params: {
+                    idCliente: idCliente
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }, //Fin Obtiene todos los Contratos    
+
+
+        //7.-Obtiene Detalle Contrato
+        obtieneDetalleContrato: function (idContrato) {
                 return $http({
-                    url: contratoRepositoryURL + 'obtienecontratos/',
+                    url: contratoRepositoryURL + 'obtienedetallecontrato/',
                     method: "GET",
                     params: {
-                        idCliente: idCliente
+                        idContrato: idContrato
                     },
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 });
-            } //Fin Obtiene todos los Contratos
-
-
+            } //Fin Obtiene Detalle Contrato 
     }; //Fin del return
 
 }); //Fin de appServices

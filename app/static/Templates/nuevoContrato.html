@@ -179,7 +179,7 @@
                                                                         <div class="input-group">
                                                                             <label class="btn btn-info">
                                                                                 <span class="fa fa-search"></span>
-                                                                                <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB"  />
+                                                                                <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" />
                                                                             </label>
                                                                             <input type="text" class="form-control filefield" readonly="">
                                                                             <button type="submit" ng-click="submit(this.file,folioContrato,documento.idDocumento)" class="btn btn-warning"><span class="fa fa-upload"></span></button>
@@ -239,7 +239,101 @@
                                 <div class="tab-pane" id="confirmar">
                                     <h4>Confirmar datos capturados</h4>
                                     <br>
-                                    <p></p>
+
+                                    <div class="col-md-offset-10">
+                                        <button class="btn btn-info" type="button" ng-click="GenerarPDF()">
+                                            <span aria-hidden="true"></span>PDF</button>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label" ng-show="verDatos">Num. Cliente BPRO:</label>
+                                                <p>{{datosCliente.idCliente}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label" ng-show="verDatos">Nombre:</label>
+                                                <p>{{datosCliente.nombre}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label" ng-show="verDatos">RFC:</label>
+                                                <p>{{datosCliente.rfc}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label" ng-show="verDatos">Teléfono:</label>
+                                                <p>{{datosCliente.telefono}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label" ng-show="verDatos">Correo:</label>
+                                                <p>{{datosCliente.email}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label" ng-show="verDatos">Tipo Contrato:</label>
+                                                <p>{{datosCliente.nombre}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label" ng-show="verDatos">Empresa:</label>
+                                                <p>{{nuevoContrato.idEmpresa}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label" ng-show="verDatos">Sucursal:</label>
+                                                <p>{{nuevoContrato.idSucursal }}</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label" ng-show="verDatos">Departamento:</label>
+                                                <p>{{nuevoContrato.idDepartamento}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label" ng-show="verDatos">Cartera:</label>
+                                                <p>{{datosCredito[0].cartera}} {{datosCredito[0].descripcionCartera}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label" ng-show="verDatos">Límite Crédito:</label>
+                                                <p>{{datosCredito[0].limiteCredito}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
                                 </div>
                                 <div class="clearfix"></div>
                                 <ul class="pager wizard">
