@@ -5,5 +5,6 @@
      sucursales: require('./controllers/sucursales'),
      departamentos: require('./controllers/departamentos'),
      limiteCredito: require('./controllers/limiteCredito'),
-     documentos: require('./controllers/documentos')
+     documentos: require('./controllers/documentos'),
+     login: require('./controllers/login')
  }

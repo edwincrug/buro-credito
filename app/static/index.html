@@ -55,7 +55,7 @@
 
 <!-- BEGIN BODY -->
 
-<body ng-app="app">
+<body ng-app="app" ng-controller="loginController" ng-init="init()">
     <!-- START TOPBAR -->
     <div class='page-topbar '>
         <div class='logo-area'>
@@ -237,8 +237,8 @@
                 <ul class="info-menu right-links list-inline list-unstyled">
                     <li class="profile">
                         <a href="#" data-toggle="dropdown" class="toggle">
-                            <img src="images/profile/profile.jpg" alt="user-image" class="img-circle img-inline">
-                            <span>Carolina Hdez<i class="fa fa-angle-down"></i></span>
+                            <img src="images/profile/profile.png" alt="user-image" class="img-circle img-inline">
+                            <span>{{usuario[0].nombre}}<i class="fa fa-angle-down"></i></span>
                         </a>
                         <ul class="dropdown-menu profile animated fadeIn">
                             <li>
@@ -284,14 +284,14 @@
                     <!--Estoy en el menu de lado izquierdo -->
                     <div class="profile-image col-xs-4">
                         <a href="ui-profile.html">
-                            <img alt="" src="images/profile/profile.jpg" class="img-responsive img-circle">
+                            <img alt="" src="images/profile/profile.png" class="img-responsive img-circle">
                         </a>
                     </div>
 
-                    <div class="profile-details col-xs-8">
+                    <div class="profile-title col-xs-8">
 
                         <h3>
-                                <a href="ui-profile.html">Carolina Hdez</a>
+                                <a href="ui-profile.html">{{usuario[0].nombre}}</a>
 
                                 <!-- Available statuses: online, idle, busy, away and offline -->
                                 <span class="profile-status online"></span>
@@ -450,6 +450,8 @@
     <script src="AngularJS/Controllers/Documentos/documentosRepository.js"></script>
     <script src="AngularJS/Controllers/Documentos/documentosController.js"></script>
 
+    <script src="AngularJS/Controllers/login/loginRepository.js"></script>
+    <script src="AngularJS/Controllers/login/loginController.js"></script>
 </body>
 
 
