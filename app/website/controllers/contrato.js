@@ -169,26 +169,7 @@ contrato.prototype.get_obtienedetallecontrato = function (req, res, next) {
     //        });
     //    });
 
-};
-// Obtiene los documentos dependiendo del tipo de contrato 
-contrato.prototype.get_cargarDocumentos = function (req, res, next) {
-    var self = this;
-    //Obtención de valores de los parámetros del request
-    var params = [
-        {
-            name: 'idTipoContrato',
-            value: req.query.idTipoContrato,
-            type: self.model.types.INT
-                    }
-    ];
-
-    this.model.query('SEL_DOCUMENTO_CONTRATO_SP', params, function (error, result) {
-        self.view.speakJSON(res, {
-            error: error,
-            result: result
-        });
-    });
-};
+}
 
 
 /*
