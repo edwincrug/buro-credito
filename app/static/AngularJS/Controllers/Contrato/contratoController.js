@@ -180,18 +180,21 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
                 function succesCallback(response) {
                     //Success
                     //notificationFactory.success('Lista de documentos obtenidos correctamente. ');
-                    angular.forEach(response, function(value, key) {
+                    $scope.listaDocumentos = response.data;
+                    var contador=0;
+                     angular.forEach($scope.listaDocumentos, function(value, key) {
 
-                        if (response.obligatorio == 0) {
-                            response.obligatorio = 'no'
+                        if (value.obligatorio == 0) {
+                            $scope.listaDocumentos[contador].obligatorio = 'No';
+                            contador++;
 
-                        } else {
-
+                        } else if(value.obligatorio == 1){
+                            $scope.listaDocumentos[value.idDocumento-1].obligatorio = 'Si';
+                            contador++;
                         }
                     });
 
 
-                    $scope.listaDocumentos = response.data;
                     
 
                 },
