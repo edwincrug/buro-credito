@@ -30,6 +30,44 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
 
     };
 
+
+    $scope.verDetalleContrato = function (idcontrato) {
+        //sessionFactory.verContrato = null;
+        alert('Estoy en detalle contratos' + idcontrato);
+
+        //        contratoDetalleRepository.obtieneDetalleContrato(idcontrato)
+        //            .then(
+        //                function successCallbackVerDetalleContrato(response) {
+        //                    //Success
+        //                    console.log('Ver contrato');
+        //                    notificationFactory.success('Ver Detalle.');
+        //                    $scope.detalle = response.data;
+        //                    $state.go('detallecontrato');
+        //                },
+        //                function errorCallbackVerDetalleContrato(response) {
+        //                    //Error
+        //                    notificationFactory.error('No se pudo obtener Detalle: ' + response.data.message);
+        //                }
+        //            );
+        contratoRepository.obtieneContratos(idcontrato)
+            .then(
+                function succesCallback(response) {
+                    //Success
+                    //notificationFactory.success('Cotrato obtenidos correctamente');
+                    $scope.detalle = response.data;
+                    $state.go('detallecontrato');
+                },
+                function errorCallback(response) {
+                    //Error
+                    notificationFactory.error('No se pudieron obtener los Contratos: ' + response.data.message);
+                }
+            );
+
+    };
+
+
+
+
     /*
         //Eliminar Tipo de Contrato
         $scope.Eliminar = function (idtipocontrato) {
