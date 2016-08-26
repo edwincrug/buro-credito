@@ -189,7 +189,7 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
                             contador++;
 
                         } else if(value.obligatorio == 1){
-                            $scope.listaDocumentos[value.idDocumento-1].obligatorio = 'Si';
+                            $scope.listaDocumentos[contador].obligatorio = 'Si';
                             contador++;
                         }
                     });
