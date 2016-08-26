@@ -1,4 +1,4 @@
-angular.module('app.routes', [])
+angular.module('app.routes', ["LocalStorageModule"])
 
 .config(function ($stateProvider, $urlRouterProvider) {
 

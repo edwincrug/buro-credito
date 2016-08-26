@@ -1,11 +1,11 @@
-appServices.factory('contratoRepository', function ($http, configurationFactory) {
+appServices.factory('contratoRepository', function($http, configurationFactory) {
 
     var contratoRepositoryURL = configurationFactory.urlAPI + 'contrato/';
 
     return {
 
         //1.-Obtiene informacion del Cliente
-        obtieneDatosCliente: function (varBusqueda) {
+        obtieneDatosCliente: function(varBusqueda) {
             return $http({
                 url: contratoRepositoryURL + 'obtienedatoscliente/',
                 method: "GET",
@@ -19,7 +19,7 @@ appServices.factory('contratoRepository', function ($http, configurationFactory)
         }, //Fin Obtiene informacion del Cliente
 
         //2.-Obtiene todos los Tipo de Empresa
-        obtieneTipoEmpresa: function (idUsuario) {
+        obtieneTipoEmpresa: function(idUsuario) {
             return $http({
                 url: contratoRepositoryURL + 'obtienetipoempresa/',
                 method: "GET",
@@ -33,7 +33,7 @@ appServices.factory('contratoRepository', function ($http, configurationFactory)
         }, //Fin obtieneTipoEmpresa
 
         //3.-Obtiene todos los Tipo de Sucursal
-        obtieneTipoSucursal: function (idCliente, idEmpresa) {
+        obtieneTipoSucursal: function(idCliente, idEmpresa) {
             return $http({
                 url: contratoRepositoryURL + 'obtienetiposucursal/',
                 method: "GET",
@@ -48,7 +48,7 @@ appServices.factory('contratoRepository', function ($http, configurationFactory)
         }, //Fin obtieneTipoSucursal
 
         //4.-Obtiene todos los Tipo de Departamento
-        obtieneTipoDepartamento: function (idSucursal) {
+        obtieneTipoDepartamento: function(idSucursal) {
             return $http({
                 url: contratoRepositoryURL + 'obtienetipodepartamento/',
                 method: "GET",
@@ -62,7 +62,7 @@ appServices.factory('contratoRepository', function ($http, configurationFactory)
         }, //Fin obtieneTipoDepartamento
 
         //5.-Inserta Contrato
-        creaNuevoContrato: function (idCliente, idTipoContrato, idEmpresa, idSucursal, idDepartamento, fechaInicio, fechaTermino, limiteCredito, estatus) {
+        creaNuevoContrato: function(idCliente, idTipoContrato, idEmpresa, idSucursal, idDepartamento, fechaInicio, fechaTermino, limiteCredito, estatus) {
             return $http({
                 url: contratoRepositoryURL + 'creanuevocontrato/',
                 method: "POST",
@@ -84,18 +84,18 @@ appServices.factory('contratoRepository', function ($http, configurationFactory)
         }, //Fin Inserta Contrato
 
         //6.-Obtiene todos los Contratos
-        obtieneContratos: function (idCliente) {
-                return $http({
-                    url: contratoRepositoryURL + 'obtienecontratos/',
-                    method: "GET",
-                    params: {
-                        idCliente: idCliente
-                    },
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-            } //Fin Obtiene todos los Contratos    
+        obtieneContratos: function(idCliente) {
+            return $http({
+                url: contratoRepositoryURL + 'obtienecontratos/',
+                method: "GET",
+                params: {
+                    idCliente: idCliente
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }, //Fin Obtiene todos los Contratos    
 
 
         //        //7.-Obtiene Detalle Contrato
@@ -112,6 +112,18 @@ appServices.factory('contratoRepository', function ($http, configurationFactory)
         //                });
         //            } //Fin Obtiene Detalle Contrato 
         //    }; //Fin del return
-
-    }
+        //8.-Obtiene lista de documentos del tipo de contrato
+        cargarDocumentos: function(idcontrato) {
+            return $http({
+                url: contratoRepositoryURL + 'cargarDocumentos/',
+                method: "GET",
+                params: {
+                    idTipoContrato: idcontrato
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        },
+    };
 }); //Fin de appServices

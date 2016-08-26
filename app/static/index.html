@@ -349,6 +349,7 @@
             <section class="wrapper main-wrapper row" style=''>
                 <div class='col-xs-12'>
                     <div ui-view></div>
+                    <input type="hidden" id="lgnUser" value="[[ user.idUsuario ]]">
                 </div>
             </section>
         </section>
@@ -421,6 +422,7 @@
     <script src="AngularJS/Factories/configurationFactory.js"></script>
     <script src="AngularJS/Factories/notificationFactory.js"></script>
     <script src="AngularJS/Factories/sessionFactory.js"></script>
+    <script src="helpers.js"></script>
 
     <!--  Detalle de directivas  -->
     <script src="AngularJS/Directives/directives.js"></script>

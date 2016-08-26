@@ -6,6 +6,18 @@ appControllers.controller('loginController', function ($scope, loginRepository,n
 
     //Obtiene al usuario hardcodeado
     var cargaDatosUsuario = function () {
+        if (!($('#lgnUser').val().indexOf('[') > -1)) {
+                localStorageService.set('lgnUser', $('#lgnUser').val());
+            } else {
+                if (($('#lgnUser').val().indexOf('[') > -1) && !localStorageService.get('lgnUser')) {
+                    if (getParameterByName('employee') != '') {
+                        $rootScope.currentEmployee = getParameterByName('employee');
+                    } else {
+                        alert('Inicie sesión desde panel de aplicaciones.');
+                        window.close(); 
+                    }
+                }
+            }
         loginRepository.cargaDatosUsuario(10)
             .then(
                 function succesCallback(response) {
