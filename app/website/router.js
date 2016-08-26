@@ -1,6 +1,7 @@
  module.exports = {
      tipoContrato: require('./controllers/tipoContrato'),
      contrato: require('./controllers/contrato'),
+     contratoDetalle: require('./controllers/contratoDetalle'),
      empresas: require('./controllers/empresas'),
      sucursales: require('./controllers/sucursales'),
      departamentos: require('./controllers/departamentos'),
