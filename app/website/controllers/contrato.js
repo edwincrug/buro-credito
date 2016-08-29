@@ -1,5 +1,6 @@
 var contratoView = require('../views/speaker'),
-    contratoModel = require('../models/dataAccess');
+    contratoModel = require('../models/dataAccess'),
+    phantom = require('phantom');
 
 var contrato = function (conf) {
     this.conf = conf || {};
@@ -111,6 +112,22 @@ contrato.prototype.get_obtienecontratos = function (req, res, next) {
             result: result
         });
     });
+
+    console.log('estamos en SEL_CONTRATOS_SP');
+    console.log(req.query.idTipoContrato);
+
+    phantom.create().then(function (ph) {
+        ph.createPage().then(function (page) {
+            page.open("http://www.google.com.mx").then(function (status) {
+                page.render('Reporte10.pdf').then(function () {
+                    console.log('Page Rendered');
+                    ph.exit();
+                });
+            });
+        });
+    });
+
+
 };
 
 

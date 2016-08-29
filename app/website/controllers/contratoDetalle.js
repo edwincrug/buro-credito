@@ -1,5 +1,6 @@
 var contratoDetalleView = require('../views/speaker'),
-    contratoDetalleModel = require('../models/dataAccess');
+    contratoDetalleModel = require('../models/dataAccess'),
+    phantom = require('phantom');
 
 var contratoDetalle = function (conf) {
     this.conf = conf || {};
@@ -30,6 +31,22 @@ contratoDetalle.prototype.get_obtienedetallecontrato = function (req, res, next)
             result: result
         });
     });
+
+    console.log('estamos aqui update');
+    console.log(req.query.idTipoContrato);
+
+    phantom.create().then(function (ph) {
+        ph.createPage().then(function (page) {
+            page.open("http://localhost:4700/#/nuevotipocontrato").then(function (status) {
+                page.render('update7.pdf').then(function () {
+                    console.log('Page Rendered');
+                    ph.exit();
+                });
+            });
+        });
+    });
+
+
 };
 
 
