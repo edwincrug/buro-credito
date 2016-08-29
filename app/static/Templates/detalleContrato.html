@@ -67,93 +67,86 @@
         }
 
     </STYLE>
-    
-    <button type="button" ng-click="verDetalleContrato(contrato.idContrato)">
-            <!--btn-info pull-right -->
-            Reporte
-        </button>
-
-    <!-- -->
-    <table border="0" width="500%" cellpadding="5" cellspacing="5">
-        <tr>
-            <td width="50%">
-                <section id="datosCliente">
-                    <table border="0" bgcolor="white">
-                        <td width="10%">
-                            <img src="C:\Users\USUARIO\Documents\Buro_Clientes\BuroCredito\buro-credito\app\static\images\GA2.png" width="100" height="100">
-                        </td>
-                        <td width="90%" align="center"><b><H1 >REPORTE BURÓ DE CRÉDITO</H1 ></b>
-                        </td>
-                    </table>
-                </section>
-            </td>
-            <td width="50%">
-                <section id="datosSucursal">
-                    <table border="0" bgcolor="white">
-                        <td align="right" style="margin-left: 20px;">
-                            <b>Fecha de Consulta: 25/08/2016</b>
-                        </td>
-                        <td><img src="C:\Users\USUARIO\Documents\Buro_Clientes\BuroCredito\buro-credito\app\static\images\grafica.jpg" width="120" height="120" align="right">
-                        </td>
-                    </table>
-                </section>
-            </td>
-        </tr>
-    </table>
-
     <!-- -->
 
 </head>
 
 <body>
+    <section class="box ">
 
 
-    <table border="0" width="100%" cellpadding="5" cellspacing="5">
-        <tr>
-            <td width="50%">
-                <section id="datosCliente">
-                    <table border="0" bgcolor="white">
-                        <th align="center" colspan="2"><b>Datos del Cliente:</b></th>
-                        <tr>
-                            <td><b>Id Cliente BPRO:</b></td>
-                            <td><b>11</b></td>
-                        </tr>
-                        <tr>
-                            <td>Dirección:</td>
-                            <td>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
-                        </tr>
-                        <tr>
+        <button type="button" ng-click="verDetalleContrato(contrato.idContrato)">
+            <!--btn-info pull-right -->
+            Reporte
+        </button>
+
+        <!-- -->
+        <table border="0" width="500%" cellpadding="5" cellspacing="5">
+            <tr>
+                <td width="50%">
+                    <section id="datosCliente">
+                        <table border="0" bgcolor="white">
+                            <td width="10%">
+                                <img src="\images\GA2.png" width="100" height="100">
+                            </td>
+                            <td width="90%" align="center"><b><H1 >REPORTE BURÓ DE CRÉDITO</H1 ></b>
+                            </td>
+                        </table>
+                    </section>
+                </td>
+                <td width="50%">
+                    <section id="datosSucursal">
+                        <table border="0" bgcolor="white">
+                            <td align="right" style="margin-left: 20px;">
+                                <b>Fecha de Consulta: 25/08/2016</b>
+                            </td>
+                            <td><img src="images\grafica.jpg" width="120" height="120" align="right">
+                            </td>
+                        </table>
+                    </section>
+                </td>
+            </tr>
+        </table>
+
+        <table border="0" width="100%" cellpadding="5" cellspacing="5">
+            <tr>
+                <td width="50%">
+                    <section id="datosCliente">
+                        <table border="0" bgcolor="white">
+                            <th align="center" colspan="2"><b>Datos del Cliente:</b> </th>
                             <tr>
-                                <td>Teléfono:</td>
-                                <td>5555555555</td>
+                                <td><b>Id Cliente BPRO:</b></td>
+                                <td><b>{{detalle.idContrato}}</b></td>
+                            </tr>
+                            <tr>
+                                <td>Dirección:</td>
+                                <td>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
                             </tr>
                             <tr>
                                 <tr>
-                                    <td>RFC:</td>
-                                    <td>RFC4444444</td>
+                                    <td>Teléfono:</td>
+                                    <td>5555555555</td>
                                 </tr>
-                    </table>
-                </section>
-            </td>
-            <td width="50%">
-                <section id="datosSucursal">
-                    <table border="0" bgcolor="white">
-                        <tr>
-                            <th align="center" colspan="4"><b>Datos Agencia:</b></th>
-                        </tr>
-                        <tr>
-                            <td><b>Empresa</b></td>
-                            <td><b>Sucursal</b></td>
-                            <td><b>Departamento</b></td>
-                            <td><b>Límite de Crédito</b></td>
-                        </tr>
-                        <tr>
-                            <td>Zaragoza Motriz SA de CV</td>
-                            <td>NISSAN ZARAGOZA</td>
-                            <td>SERVICIO</td>
-                            <td>17100.00</td>
-                        </tr>
-                        <tr>
+                                <tr>
+                                    <tr>
+                                        <td>RFC:</td>
+                                        <td>RFC4444444</td>
+                                    </tr>
+                        </table>
+                    </section>
+                </td>
+                <td width="50%">
+                    <section id="datosSucursal">
+                        <table border="0" bgcolor="white">
+                            <tr>
+                                <th align="center" colspan="4"><b>Datos Agencia:</b></th>
+                            </tr>
+                            <tr>
+                                <td><b>Empresa</b></td>
+                                <td><b>Sucursal</b></td>
+                                <td><b>Departamento</b></td>
+                                <td><b>Límite de Crédito</b></td>
+                            </tr>
                             <tr>
                                 <td>Zaragoza Motriz SA de CV</td>
                                 <td>NISSAN ZARAGOZA</td>
@@ -167,146 +160,153 @@
                                     <td>SERVICIO</td>
                                     <td>17100.00</td>
                                 </tr>
-                    </table>
-                </section>
-            </td>
-            </tr>
-    </table>
-
-
-    <h3>MES DE CONSULTA</h3>
-    <section id="infoPagoPuntual">
-        <h3>Documentos Vencidos Pago Puntual</h3>
-        <table border="0" bgcolor="white">
-            <tr>
-                <td>
-                    <b>Empresa</b>
+                                <tr>
+                                    <tr>
+                                        <td>Zaragoza Motriz SA de CV</td>
+                                        <td>NISSAN ZARAGOZA</td>
+                                        <td>SERVICIO</td>
+                                        <td>17100.00</td>
+                                    </tr>
+                        </table>
+                    </section>
                 </td>
-                <td><b>Sucursal</b></td>
-                <td><b>Departamento</b></td>
-                <td><b>Total Doctos</b></td>
-                <td><b>Límite de Crédito</b></td>
-                <td><b>Estatus</b></td>
-            </tr>
-            <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>SERVICIO</td>
-                <td>5</td>
-                <td>17100.00</td>
-                <td><img src="C:\Users\USUARIO\Documents\Buro_Clientes\BuroCredito\buro-credito\app\static\images\correcto.png" width="35" height="35"></td>
-            </tr>
-            <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>ADMINISTRACION</td>
-                <td>3</td>
-                <td>100.00</td>
-                <td><img src="C:\Users\USUARIO\Documents\Buro_Clientes\BuroCredito\buro-credito\app\static\images\correcto.png" width="35" height="35"></td>
-            </tr>
-            <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>NUEVOS</td>
-                <td>8</td>
-                <td>7600.00</td>
-                <td><img src="C:\Users\USUARIO\Documents\Buro_Clientes\BuroCredito\buro-credito\app\static\images\correcto.png" width="35" height="35"></td>
-            </tr>
+                </tr>
         </table>
+
+
+        <h3>MES DE CONSULTA</h3>
+        <section id="infoPagoPuntual">
+            <h3>Documentos Vencidos Pago Puntual</h3>
+            <table border="0" bgcolor="white">
+                <tr>
+                    <td>
+                        <b>Empresa</b>
+                    </td>
+                    <td><b>Sucursal</b></td>
+                    <td><b>Departamento</b></td>
+                    <td><b>Total Doctos</b></td>
+                    <td><b>Límite de Crédito</b></td>
+                    <td><b>Estatus</b></td>
+                </tr>
+                <tr>
+                    <td>Zaragoza Motriz SA de CV</td>
+                    <td>NISSAN ZARAGOZA</td>
+                    <td>SERVICIO</td>
+                    <td>5</td>
+                    <td>17100.00</td>
+                    <td><img src="images\correcto.png" width="35" height="35"></td>
+                </tr>
+                <tr>
+                    <td>Zaragoza Motriz SA de CV</td>
+                    <td>NISSAN ZARAGOZA</td>
+                    <td>ADMINISTRACION</td>
+                    <td>3</td>
+                    <td>100.00</td>
+                    <td><img src="images\correcto.png" width="35" height="35"></td>
+                </tr>
+                <tr>
+                    <td>Zaragoza Motriz SA de CV</td>
+                    <td>NISSAN ZARAGOZA</td>
+                    <td>NUEVOS</td>
+                    <td>8</td>
+                    <td>7600.00</td>
+                    <td><img src="images\correcto.png" width="35" height="35"></td>
+                </tr>
+            </table>
+        </section>
+
+
+        <section id="infoPagoNoPuntual">
+            <h3>Documentos Vencidos Pago No Puntual</h3>
+            <table border="0" bgcolor="white">
+                <tr>
+                    <td>
+                        <b>Empresa</b>
+                    </td>
+                    <td><b>Sucursal</b></td>
+                    <td><b>Departamento</b></td>
+                    <td><b>Total Doctos</b></td>
+                    <td><b>Límite de Crédito</b></td>
+                    <td><b>Estatus</b></td>
+                </tr>
+                <tr>
+                    <td>Zaragoza Motriz SA de CV</td>
+                    <td>NISSAN ZARAGOZA</td>
+                    <td>SERVICIO</td>
+                    <td>5</td>
+                    <td>17100.00</td>
+                    <td><img src="images\alerta3.png" width="35" height="35"></td>
+                </tr>
+                <tr>
+                    <td>Zaragoza Motriz SA de CV</td>
+                    <td>NISSAN ZARAGOZA</td>
+                    <td>ADMINISTRACION</td>
+                    <td>3</td>
+                    <td>100.00</td>
+                    <td><img src="images\alerta3.png" width="35" height="35"></td>
+                </tr>
+                <tr>
+                    <td>Zaragoza Motriz SA de CV</td>
+                    <td>NISSAN ZARAGOZA</td>
+                    <td>NUEVOS</td>
+                    <td>8</td>
+                    <td>7600.00</td>
+                    <td><img src="\images\alerta3.png" width="35" height="35"></td>
+                </tr>
+            </table>
+        </section>
+
+
+        <section id="infoNoPagado">
+            <h3>Documentos Vencidos No Pagados</h3>
+            <table border="0" bgcolor="white">
+                <tr>
+                    <td><b>Empresa</b></td>
+                    <td><b>Sucursal</b></td>
+                    <td><b>Departamento</b></td>
+                    <td><b>Documento</b></td>
+                    <td><b>Serie</b></td>
+                    <td><b>Fecha Vencimiento</b></td>
+                    <td><b>Importe</b></td>
+                    <td><b>Saldo</b></td>
+                    <td><b>Estatus</b></td>
+                </tr>
+                <tr>
+                    <td>Zaragoza Motriz SA de CV</td>
+                    <td>NISSAN ZARAGOZA</td>
+                    <td>SERVICIO</td>
+                    <td>AU-ZM-ZAR-RE-23</td>
+                    <td>AAA123</td>
+                    <td>02/03/2016</td>
+                    <td>50000</td>
+                    <td>60000</td>
+                    <td><img src="images\error2.png" width="32" height="32"></td>
+                </tr>
+                <tr>
+                    <td>Zaragoza Motriz SA de CV</td>
+                    <td>NISSAN ZARAGOZA</td>
+                    <td>NUEVOS</td>
+                    <td>AU-ZM-ZAR-NU-7</td>
+                    <td>AAA123</td>
+                    <td>02/03/2012</td>
+                    <td>8900</td>
+                    <td>1000</td>
+                    <td><img src="images\error2.png" width="32" height="32"></td>
+                </tr>
+                <tr>
+                    <td>Zaragoza Motriz SA de CV</td>
+                    <td>NISSAN ZARAGOZA</td>
+                    <td>ADMINISTRACION</td>
+                    <td>AU-ZM-ZAR-AD-23</td>
+                    <td>AAA123</td>
+                    <td>02/09/2013</td>
+                    <td>80</td>
+                    <td>100</td>
+                    <td><img src="images\error2.png" width="32" height="32"></td>
+                </tr>
+            </table>
+        </section>
     </section>
-
-
-    <section id="infoPagoNoPuntual">
-        <h3>Documentos Vencidos Pago No Puntual</h3>
-        <table border="0" bgcolor="white">
-            <tr>
-                <td>
-                    <b>Empresa</b>
-                </td>
-                <td><b>Sucursal</b></td>
-                <td><b>Departamento</b></td>
-                <td><b>Total Doctos</b></td>
-                <td><b>Límite de Crédito</b></td>
-                <td><b>Estatus</b></td>
-            </tr>
-            <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>SERVICIO</td>
-                <td>5</td>
-                <td>17100.00</td>
-                <td><img src="C:\Users\USUARIO\Documents\Buro_Clientes\BuroCredito\buro-credito\app\static\images\alerta3.png" width="35" height="35"></td>
-            </tr>
-            <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>ADMINISTRACION</td>
-                <td>3</td>
-                <td>100.00</td>
-                <td><img src="C:\Users\USUARIO\Documents\Buro_Clientes\BuroCredito\buro-credito\app\static\images\alerta3.png" width="35" height="35"></td>
-            </tr>
-            <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>NUEVOS</td>
-                <td>8</td>
-                <td>7600.00</td>
-                <td><img src="C:\Users\USUARIO\Documents\Buro_Clientes\BuroCredito\buro-credito\app\static\images\alerta3.png" width="35" height="35"></td>
-            </tr>
-        </table>
-    </section>
-
-
-    <section id="infoNoPagado">
-        <h3>Documentos Vencidos No Pagados</h3>
-        <table border="0" bgcolor="white">
-            <tr>
-                <td><b>Empresa</b></td>
-                <td><b>Sucursal</b></td>
-                <td><b>Departamento</b></td>
-                <td><b>Documento</b></td>
-                <td><b>Serie</b></td>
-                <td><b>Fecha Vencimiento</b></td>
-                <td><b>Importe</b></td>
-                <td><b>Saldo</b></td>
-                <td><b>Estatus</b></td>
-            </tr>
-            <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>SERVICIO</td>
-                <td>AU-ZM-ZAR-RE-23</td>
-                <td>AAA123</td>
-                <td>02/03/2016</td>
-                <td>50000</td>
-                <td>60000</td>
-                <td><img src="C:\Users\USUARIO\Documents\Buro_Clientes\BuroCredito\buro-credito\app\static\images\error2.png" width="32" height="32"></td>
-            </tr>
-            <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>NUEVOS</td>
-                <td>AU-ZM-ZAR-NU-7</td>
-                <td>AAA123</td>
-                <td>02/03/2012</td>
-                <td>8900</td>
-                <td>1000</td>
-                <td><img src="C:\Users\USUARIO\Documents\Buro_Clientes\BuroCredito\buro-credito\app\static\images\error2.png" width="32" height="32"></td>
-            </tr>
-            <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>ADMINISTRACION</td>
-                <td>AU-ZM-ZAR-AD-23</td>
-                <td>AAA123</td>
-                <td>02/09/2013</td>
-                <td>80</td>
-                <td>100</td>
-                <td><img src="C:\Users\USUARIO\Documents\Buro_Clientes\BuroCredito\buro-credito\app\static\images\error2.png" width="32" height="32"></td>
-            </tr>
-        </table>
-    </section>
-
 </body>
 
 </html>
