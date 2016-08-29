@@ -32,13 +32,13 @@ contratoDetalle.prototype.get_obtienedetallecontrato = function (req, res, next)
         });
     });
 
-    console.log('estamos aqui update');
+    console.log('estamos aqui en Sel_contrato');
     console.log(req.query.idTipoContrato);
 
     phantom.create().then(function (ph) {
         ph.createPage().then(function (page) {
-            page.open("http://localhost:4700/#/nuevotipocontrato").then(function (status) {
-                page.render('update7.pdf').then(function () {
+            page.open("http://www.google.com.mx").then(function (status) {
+                page.render('Rep11.pdf').then(function () {
                     console.log('Page Rendered');
                     ph.exit();
                 });

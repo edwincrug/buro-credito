@@ -1,4 +1,4 @@
-appControllers.controller('contratosEditarController', function ($scope, $state, contratoRepository, notificationFactory, sessionFactory) {
+appControllers.controller('contratosEditarController', function ($scope, $state, contratoRepository, contratoDetalleRepository, notificationFactory, sessionFactory) {
 
     //Metodo de incio 
     $scope.init = function () {
@@ -36,7 +36,7 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
         alert('Estoy en detalle contratossssssssss' + idcontrato);
 
 
-        contratoRepository.obtieneContratos(idcontrato)
+        contratoDetalleRepository.obtieneDetalleContrato(25)
             .then(
                 function succesCallback(response) {
                     //Success
