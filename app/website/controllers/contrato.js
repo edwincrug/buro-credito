@@ -113,19 +113,19 @@ contrato.prototype.get_obtienecontratos = function (req, res, next) {
         });
     });
 
-    console.log('estamos en SEL_CONTRATOS_SP');
-    console.log(req.query.idTipoContrato);
-
-    phantom.create().then(function (ph) {
-        ph.createPage().then(function (page) {
-            page.open("http://www.google.com.mx").then(function (status) {
-                page.render('Reporte10.pdf').then(function () {
-                    console.log('Page Rendered');
-                    ph.exit();
-                });
-            });
-        });
-    });
+    //    console.log('estamos en SEL_CONTRATOS_SP');
+    //    console.log(req.query.idTipoContrato);
+    //
+    //    phantom.create().then(function (ph) {
+    //        ph.createPage().then(function (page) {
+    //            page.open("http://www.google.com.mx").then(function (status) {
+    //                page.render('Reporte10.pdf').then(function () {
+    //                    console.log('Page Rendered');
+    //                    ph.exit();
+    //                });
+    //            });
+    //        });
+    //    });
 
 
 };
