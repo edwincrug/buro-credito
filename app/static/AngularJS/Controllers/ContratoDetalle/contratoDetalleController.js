@@ -3,6 +3,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //Metodo de incio 
     $scope.init = function () {
         //alert('Estoy en Detalle Contrato');
+        $scope.detalle = sessionFactory.detalle;
     };
 
     //Obtiene Detalle Contrato

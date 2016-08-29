@@ -5,9 +5,9 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
     return {
 
         //1.-Obtiene Detalle Contrato
-        obtieneDetalleContrato: function (idContrato) {
+        obtieneContrato: function (idContrato) {
                 return $http({
-                    url: contratoDetalleRepositoryURL + 'obtienedetallecontrato/',
+                    url: contratoDetalleRepositoryURL + 'obtienecontrato/',
                     method: "GET",
                     params: {
                         idContrato: idContrato
