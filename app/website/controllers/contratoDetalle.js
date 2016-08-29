@@ -1,6 +1,5 @@
 var contratoDetalleView = require('../views/speaker'),
-    contratoDetalleModel = require('../models/dataAccess'),
-    phantom = require('phantom');
+    contratoDetalleModel = require('../models/dataAccess');
 
 var contratoDetalle = function (conf) {
     this.conf = conf || {};
@@ -14,7 +13,7 @@ var contratoDetalle = function (conf) {
 }
 
 //obtiene Informacion del contrato Creado
-contratoDetalle.prototype.get_obtienecontrato = function (req, res, next) {
+contratoDetalle.prototype.get_obtienedetallecontrato = function (req, res, next) {
     var self = this;
     //Obtención de valores de los parámetros del request
     var params = [
