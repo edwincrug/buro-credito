@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="css/reporte.css">
 <div ng-init="init()">
-<section class="box ">
+    <section class="box ">
 
 
         <button type="button" ng-click="generarPdf()">
@@ -44,22 +44,26 @@
                             <th align="center" colspan="2"><b>Datos del Cliente:</b> </th>
                             <tr>
                                 <td><b>Id Cliente BPRO:</b></td>
-                                <td><b>{{datosCliente[0].idCliente}}</b></td>
+                                <td>{{datosCliente[0].idCliente}}</td>
                             </tr>
                             <tr>
-                                <td>Dirección:</td>
+                                <td><b>Nombre:</b></td>
+                                <td>{{datosCliente[0].nombre}}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Dirección:</td>
                                 <td>CALLE {{datosCliente[0].calle}} COL. {{datosCliente[0].colonia}} DEL. {{datosCliente[0].delegacion}} CP {{datosCliente[0].codigoPostal}}</td>
                             </tr>
                             <tr>
                                 <tr>
-                                    <td>Teléfono:</td>
-                                    <td>{{datosCliente[0].telefono}}</td>
-                                </tr>
+                                    <td><b>Teléfono:</b></td>
+                                <td>{{datosCliente[0].telefono}}</td>
+                            </tr>
+                            <tr>
                                 <tr>
-                                    <tr>
-                                        <td>RFC:</td>
-                                        <td>{{datosCliente[0].rfc}}</td>
-                                    </tr>
+                                    <td><b>RFC:</b></td>
+                                    <td>{{datosCliente[0].rfc}}</td>
+                                </tr>
                         </table>
                     </section>
                 </td>
