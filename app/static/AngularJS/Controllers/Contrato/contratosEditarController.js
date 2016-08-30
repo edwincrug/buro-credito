@@ -41,7 +41,8 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
                 function succesCallback(response) {
                     //Success
                     //notificationFactory.success('Cotrato obtenidos correctamente');
-                    $scope.detalle = response.data;
+                    sessionFactory.detalle = response.data;
+                    //location.href = '/detallecontrato';
                     $state.go('detallecontrato');
 
                 },

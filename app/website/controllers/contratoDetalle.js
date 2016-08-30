@@ -32,13 +32,33 @@ contratoDetalle.prototype.get_obtienedetallecontrato = function (req, res, next)
         });
     });
 
-    console.log('estamos aqui en Selecciona un contrato');
-    console.log(req.query.idTipoContrato);
+    // console.log('estamos aqui en Selecciona un contrato');
+    // console.log(req.query.idTipoContrato);
+
+    // phantom.create().then(function (ph) {
+    //     ph.createPage().then(function (page) {
+    //         page.open("http://www.google.com.mx").then(function (status) {
+    //             page.render('Reporte_20.pdf').then(function () {
+    //                 console.log('Page Rendered');
+    //                 ph.exit();
+    //             });
+    //         });
+    //     });
+    // });
+
+
+};
+//Genera PDF
+contratoDetalle.prototype.get_generarPdf = function (req, res, next) {
+    var self = this;
+    
+
+    console.log('estamos aqui en Selecciona un contrato');  
 
     phantom.create().then(function (ph) {
         ph.createPage().then(function (page) {
-            page.open("http://www.google.com.mx").then(function (status) {
-                page.render('Reporte_20.pdf').then(function () {
+            page.open("http://localhost:4700/#/detallecontrato").then(function (status) {
+                page.render('Reporte_23.pdf').then(function () {
                     console.log('Page Rendered');
                     ph.exit();
                 });

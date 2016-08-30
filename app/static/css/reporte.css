@@ -1,0 +1,63 @@
+<STYLE type="text/css">
+        h1 {
+            border-width: 1px;
+            border: solid;
+            text-align: center
+        }
+        
+        h3 {
+            border-width: 1px;
+            border: solid;
+            text-align: center;
+            font-weight: normal;
+            padding: 1px;
+            background: #0B0B61;
+            /*#0B0B61;  */
+            border-top: 4px solid #D8D8D8;
+            /*#aabcfe*  Color sombra*/
+            border-bottom: 1px solid #fff;
+            color: white;
+        }
+        
+        body {
+            border: 2px solid #0B0B61;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 10px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-bottom: 50px;
+            padding-top: 10px;
+        }
+        
+        table {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            /*font-size: 12px;*/
+            margin: 10px;
+            width: 600px;
+            /*text-align: left;*/
+            /*border-collapse: collapse;*/
+        }
+        
+        th {
+            font-size: 13px;
+            font-weight: normal;
+            padding: 1px;
+            background: #0B0B61;
+            /*#b9c9fe; Color fondo encabezado tabla*/
+            border-top: 4px solid #D8D8D8;
+            /*#aabcfe*  Color sombra*/
+            border-bottom: 1px solid #fff;
+            color: white;
+            /*#039;   Color letra encabezado tabla*/
+        }
+        
+        td {
+            padding: 2px;
+            /*background: #e8edff;*/
+            border-bottom: 1px solid #fff;
+            color: #0B0B61;
+            /*#669*/
+            border-top: 1px solid transparent;
+        }
+
+    </STYLE>

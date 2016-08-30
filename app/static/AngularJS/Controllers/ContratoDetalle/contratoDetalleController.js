@@ -1,29 +1,43 @@
-appControllers.controller('contratoDetalleController', function ($scope, $state, contratoDetalleRepository, notificationFactory, sessionFactory) {
+appControllers.controller('contratoDetalleController', function ($scope, $state, contratoDetalleRepository, notificationFactory, sessionFactory,datosClienteRepository) {
 
     //Metodo de incio 
     $scope.init = function () {
-        //alert('Estoy en Detalle Contrato');
+        alert('Estoy en Detalle Contrato');
+        $scope.detalle=sessionFactory.detalle;
+        cargaInfoCliente($scope.detalle["0"].idCliente);
+    }; 
+
+     //Obtiene los datos del cliente
+    var cargaInfoCliente = function (idcliente) {
+
+        datosClienteRepository.cargaInfoCliente(idcliente)
+            .then(
+                function succesCallback(response) {
+                    //Success
+                    //notificationFactory.success('Cotrato obtenidos correctamente');
+                    $scope.datosCliente = response.data;
+                    
+                },
+                function errorCallback(response) {
+                    //Error
+                    notificationFactory.error('No se pudieron obtener los Contratos: ' + response.data.message);
+                }
+            );
+
     };
 
-    //Obtiene Detalle Contrato
-    //    $scope.verDetalleContrato = function (idcontrato) {
-    //        //sessionFactory.verContrato = null;
-    //        alert('Estoy en detalle contratos' + idcontrato);
-    //
-    //        contratoDetalleRepository.obtieneDetalleContrato(idcontrato)
-    //            .then(
-    //                function successCallbackVerDetalleContrato(response) {
-    //                    //Success
-    //                    console.log('Ver contrato');
-    //                    notificationFactory.success('Ver Detalle.');
-    //                    $scope.detalle = response.data;
-    //                    $state.go('detallecontrato');
-    //                },
-    //                function errorCallbackVerDetalleContrato(response) {
-    //                    //Error
-    //                    notificationFactory.error('No se pudo obtener Detalle: ' + response.data.message);
-    //                }
-    //            );
-    //    };
+     //Genera el pdf
+    $scope.generarPdf = function() {
+        contratoDetalleRepository.generarPdf()
+            .then(
+                function succesCallback(response) {
+                    notificationFactory.success('Se genero el pdf');
+                },
+                function errorCallback(response) {
+                    //Error
+                    notificationFactory.error('No se pudo crear el pdf ');
+                }
+            );
+    };
 
 }); //FIN de appControllers

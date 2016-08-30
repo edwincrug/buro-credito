@@ -16,7 +16,18 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
                         'Content-Type': 'application/json'
                     }
                 });
-            } //Fin Obtiene Detalle Contrato
+            }, //Fin Obtiene Detalle Contrato
+
+        //Genera PDF
+        generarPdf: function () {
+                return $http({
+                    url: contratoDetalleRepositoryURL + 'generarPdf/',
+                    method: "GET",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+            } //Fin de genera pdf 
 
 
     }; //Fin del return
