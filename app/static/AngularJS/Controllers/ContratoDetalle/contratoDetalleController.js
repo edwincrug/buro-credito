@@ -2,7 +2,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
     //Metodo de incio 
     $scope.init = function () {
-        alert('Estoy en Detalle Contrato');
+        //alert('Estoy en Detalle Contrato');
         $scope.detalle=sessionFactory.detalle;
         cargaInfoCliente($scope.detalle["0"].idCliente);
     }; 
