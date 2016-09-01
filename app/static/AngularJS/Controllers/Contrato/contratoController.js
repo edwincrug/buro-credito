@@ -1,7 +1,7 @@
-appControllers.controller('contratoController', function($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, empresasRepository, sucursalesRepository, departamentosRepository, limiteCreditoRepository, documentosRepository, notificationFactory, sessionFactory, Upload, $window) {
+appControllers.controller('contratoController', function ($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, empresasRepository, sucursalesRepository, departamentosRepository, limiteCreditoRepository, documentosRepository, notificationFactory, sessionFactory, Upload, $window) {
 
     //Metodo de incio 
-    $scope.init = function() {
+    $scope.init = function () {
         //Carga datos del Cliente
 
         //cargaCliente();
@@ -17,42 +17,11 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
         //        });
         //        }, 1000);
 
-        setTimeout(function() {
-            $(document).ready(function() {
-
-                $(document).on('change', ':file', function() {
-                    var input = $(this),
-                        numFiles = input.get(0).files ? input.get(0).files.length : 1,
-                        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-                    input.trigger('fileselect', [numFiles, label]);
-                });
-
-                $(':file').on('fileselect', function(event, numFiles, label) {
-                    var input = $(this).parents('.input-group').find(':text'),
-                        log = numFiles > 1 ? numFiles + ' files selected' : label;
-                    if (input.length) {
-                        input.val(log);
-                    } else {
-                        if (log) alert(log);
-                    }
-                });
-
-                $('.filefield').on('click', function(event, numFiles, label) {
-                    var fileinput = $(this).parents('.input-group').find(':file')
-                    if (fileinput != null) {
-                        fileinput.focus().trigger('click');
-                    }
-                });
-
-            });
-        }, 1000);
-
-
     };
 
 
     //Obtiene todos los clientes coincidentes con la busqueda
-    $scope.BuscarCliente = function(txtBusqueda) {
+    $scope.BuscarCliente = function (txtBusqueda) {
         //notificationFactory.success('Estoy en la funcion BuscarCliente ' + $scope.txtBusqueda);
         $('#searchCliente').modal('show');
 
@@ -72,7 +41,7 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
     };
 
     //Obtiene la lista de tipos contrato 
-    var cargaTiposContrato = function() {
+    var cargaTiposContrato = function () {
         tipoContratoRepository.obtieneTipoContrato(0)
             .then(
                 function succesCallback(response) {
@@ -89,7 +58,7 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
     };
 
     //Obtiene el catalogo de empresas
-    $scope.cargaTiposEmpresas = function(idcliente) {
+    $scope.cargaTiposEmpresas = function (idcliente) {
         empresasRepository.obtieneTipoEmpresa(idcliente)
             .then(
                 function succesCallback(response) {
@@ -106,7 +75,7 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
     };
 
     //Obtiene el catalogo de sucursales por empresa
-    $scope.CargarSucursales = function(idcliente, idempresa) {
+    $scope.CargarSucursales = function (idcliente, idempresa) {
         $('#cboSucursal').attr('disabled', 'disabled');
         sucursalesRepository.obtieneTipoSucursal(idcliente, idempresa)
             .then(
@@ -123,7 +92,7 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
     };
 
     //Obtiene el catalogo de departamentos por sucursal
-    $scope.CargarDepartamentos = function(idcliente, idempresa, idsucursal) {
+    $scope.CargarDepartamentos = function (idcliente, idempresa, idsucursal) {
         $('#cboDepartamento').attr('disabled', 'disabled');
         departamentosRepository.obtieneTipoDepartamento(idcliente, idempresa, idsucursal)
             .then(
@@ -142,7 +111,7 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
 
 
     //Regreso a la pantalla nuevo Contrato con los datos del Cliente
-    $scope.cargarCliente = function(infoCliente) {
+    $scope.cargarCliente = function (infoCliente) {
         //alert('Estoy en carga Cliente' + infoCliente.nombre);
         $rootScope.datosCliente = infoCliente;
         $rootScope.verDatos = true;
@@ -150,7 +119,7 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
     };
 
     //Regreso a la pantalla nuevo Contrato con los datos del Cliente
-    $scope.cargarLimiteCredito = function(idcliente, idempresa, idsucursal, iddepartamento) {
+    $scope.cargarLimiteCredito = function (idcliente, idempresa, idsucursal, iddepartamento) {
         //alert('Estoy en cargar LIMITE DE CREDITO en contrato Controller:');
         $rootScope.verLimiteCredito = true;
 
@@ -166,36 +135,62 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
                     notificationFactory.error('No se pudieron obtener los datos ' + response.data.message);
                 }
             );
-
-
-
-
     };
 
 
     //Funcion Carga Lista de Documentos  --Inconluso
-    var cargaListaDocumentos = function(idtipocontrato) {
+    var cargaListaDocumentos = function (idtipocontrato) {
         contratoRepository.cargarDocumentos(idtipocontrato)
             .then(
                 function succesCallback(response) {
                     //Success
                     //notificationFactory.success('Lista de documentos obtenidos correctamente. ');
                     $scope.listaDocumentos = response.data;
-                    var contador=0;
-                     angular.forEach($scope.listaDocumentos, function(value, key) {
+                    var contador = 0;
+                    angular.forEach($scope.listaDocumentos, function (value, key) {
 
                         if (value.obligatorio == 0) {
                             $scope.listaDocumentos[contador].obligatorio = 'No';
                             contador++;
 
-                        } else if(value.obligatorio == 1){
+                        } else if (value.obligatorio == 1) {
                             $scope.listaDocumentos[contador].obligatorio = 'Si';
                             contador++;
                         }
                     });
 
+                    //Funcion para que del nombre del documento al subirlo
+                    setTimeout(function () {
+                        $(document).ready(function () {
 
-                    
+                            $(document).on('change', ':file', function () {
+                                var input = $(this),
+                                    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                                input.trigger('fileselect', [numFiles, label]);
+                            });
+
+                            $(':file').on('fileselect', function (event, numFiles, label) {
+                                var input = $(this).parents('.input-group').find(':text'),
+                                    log = numFiles > 1 ? numFiles + ' files selected' : label;
+                                if (input.length) {
+                                    input.val(log);
+                                } else {
+                                    if (log) alert(log);
+                                }
+                            });
+
+                            $('.filefield').on('click', function (event, numFiles, label) {
+                                var fileinput = $(this).parents('.input-group').find(':file')
+                                if (fileinput != null) {
+                                    fileinput.focus().trigger('click');
+                                }
+                            });
+
+                        });
+                    }, 1000);
+
+
 
                 },
                 function errorCallback(response) {
@@ -206,36 +201,34 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
     };
 
 
-    $scope.submit = function(fileinput, idcontrato, iddocumento) { //function to call on form submit
+    //Funcion para llamar al submit
+    $scope.submit = function (fileinput, idcontrato, iddocumento) { //function to call on form submit
         if (fileinput != null) { //check if from is valid
             $scope.upload(fileinput, idcontrato["0"].idContrato, iddocumento); //call upload function
         }
     };
 
     //Carga de archivos
-    $scope.upload = function(file, idcontrato, iddocumento) {
+    $scope.upload = function (file, idcontrato, iddocumento) {
         Upload.upload({
             url: 'http://localhost:4700/api/documentos/uploadfile/', //webAPI exposed to upload the file
             data: {
                 file: file
-
             }, //pass file as data, should be user ng-model
-            params: {
+            params: { //Parametros para pasar variables
                 contrato: idcontrato,
                 documento: iddocumento
-
             }
-        }).then(function(resp) { //upload function returns a promise
+        }).then(function (resp) { //upload function returns a promise
             if (resp.data.error_code === 0) { //validate success
-
                 $window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
             } else {
                 $window.alert('an error occured');
             }
-        }, function(resp) { //catch error
+        }, function (resp) { //catch error
             console.log('Error status: ' + resp.status);
             $window.alert('Error status: ' + resp.status);
-        }, function(evt) {
+        }, function (evt) {
             console.log(evt);
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
@@ -245,7 +238,7 @@ appControllers.controller('contratoController', function($scope, $rootScope, $st
 
 
     //Funcion para GuardarContrato
-    $scope.GuardarContrato = function(datoscliente, nuevocontrato, limitecredito) {
+    $scope.GuardarContrato = function (datoscliente, nuevocontrato, limitecredito) {
 
         if (datoscliente.idCliente != '' && nuevocontrato != '' && limitecredito > 0) {
 

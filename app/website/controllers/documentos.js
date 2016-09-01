@@ -1,17 +1,18 @@
 var DocumentosView = require('../views/speaker'),
     DocumentosModel = require('../models/dataAccess'),
     multer = require('multer'),
-    mkdirp=require('mkdirp');
+    mkdirp = require('mkdirp');
 
 //Configuración de MULTER
 var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
-
-        cb(null, './app/'+req.query.contrato)
+        //Direccion donde creara la carpeta req.query.contrato idContrato
+        cb(null, './app/' + req.query.contrato)
     },
     filename: function (req, file, cb) {
         var datetimestamp = Date.now();
-        cb(null, req.query.contrato+'-'+req.query.documento+ '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
+        //Aqui pongo el nombre del documento
+        cb(null, req.query.contrato + '-' + req.query.documento + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
     }
 });
 
@@ -123,18 +124,19 @@ Documentos.prototype.post_TipoDocumento_data = function (req, res, next) {
     });
 };
 
+//Crea Carpeta para Documentos
 Documentos.prototype.post_creaCarpeta_data = function (req, res, next) {
     var self = this;
 
-mkdirp('./app/'+req.query.idcontrato, function (err) {
-    if (err) console.error(err)
-    else console.log('pow!')
-});
+    mkdirp('./app/' + req.query.idcontrato, function (err) {
+        if (err) console.error(err)
+        else console.log('Carpeta Creada para Documentos')
+    });
 };
+
 
 Documentos.prototype.post_insertDocumento_data = function (req, res, next) {
     var self = this;
-
 
     var params = [
         {
