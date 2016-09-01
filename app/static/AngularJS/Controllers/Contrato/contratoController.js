@@ -1,4 +1,4 @@
-appControllers.controller('contratoController', function ($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, empresasRepository, sucursalesRepository, departamentosRepository, limiteCreditoRepository, documentosRepository, notificationFactory, sessionFactory, Upload, $window) {
+appControllers.controller('contratoController', function ($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, empresasRepository, sucursalesRepository, departamentosRepository, limiteCreditoRepository, documentosRepository, notificationFactory, sessionFactory, Upload, $window,contratoDetalleRepository) {
 
     //Metodo de incio 
     $scope.init = function () {
@@ -246,6 +246,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             nuevocontrato.fechaInicio = newDateIni;
             nuevocontrato.fechaTermino = newDateterm;
             //insertaContrato
+
             contratoRepository.creaNuevoContrato(datoscliente.idCliente, nuevocontrato.idTipoContrato, nuevocontrato.idEmpresa, nuevocontrato.idSucursal, nuevocontrato.idDepartamento, nuevocontrato.fechaInicio, nuevocontrato.fechaTermino, limitecredito, 1)
                 .then(
                     function succesCallback(response) {
@@ -276,5 +277,29 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         }
     };
 
+//Conseguir datos del contrato para nuevo html
+    $scope.GenerarJson = function (idcontrato) {        
+        contratoDetalleRepository.obtieneDetalleContrato(idcontrato)
+            .then(
+                function succesCallback(response) {
+                    //Success
+                    $scope.detallesContrato = response.data;
+                    //alert($scope.datosCredito["0"].idCliente);
+                    var infoContrato=[{
+                        "tipocontrato": $scope.detallesContrato["0"].nomTipoContrato,
+                         "empresa": $scope.detallesContrato["0"].empresa,
+                         "sucursal":$scope.detallesContrato["0"].sucursal,
+                         "rfc":$scope.detallesContrato["0"].rfc,
+                         "departamento":$scope.detallesContrato["0"].departamento
+                    }
+
+                    ];
+                },
+                function errorCallback(response) {
+                    //Error
+                    notificationFactory.error('No se pudieron obtener los datos ' + response.data.message);
+                }
+            );
+    };
 
 }); //FIN de appControllers

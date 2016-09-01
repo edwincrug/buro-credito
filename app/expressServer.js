@@ -32,11 +32,11 @@ var ExpressServer = function (config) {
 
     this.expressServer.engine('html', swig.renderFile);
     this.expressServer.set('view engine', 'html');
-    this.expressServer.set('views', __dirname + '/static/');
-    swig.setDefaults({
+    this.expressServer.set('views', __dirname + '/website/templates/');
+   /* swig.setDefaults({
         varControls: ['[[', ']]']
     });
-
+*/
     if (env == 'development') {
         console.log('OK NO HAY CACHE');
         this.expressServer.set('view cache', false);
