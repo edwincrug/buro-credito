@@ -5,11 +5,11 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
     $scope.init = function () {
         //Cargo la lista de documentos
         cargaListaDocumentos();
+        //Mando a llamar la Tabla despues de cargar datos
         setTimeout(function () {
-            $('.estiloTabla').DataTable({
-
-            });
+            $('.estiloTabla').DataTable({});
         }, 1000);
+
         $scope.opcion = sessionFactory.opcion;
         $scope.tipoContratoEditar = sessionFactory.tipoContratoEditar;
         if (sessionFactory.tipoContratoEditar != null) {
@@ -26,6 +26,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                 fechaTermino: ''
             }
         }
+        //Llamada al datepicker
         $('.datepicker').datepicker({});
 
         setTimeout(function () {

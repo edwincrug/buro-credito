@@ -3,7 +3,6 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     //Metodo de incio 
     $scope.init = function () {
         //Carga datos del Cliente
-
         //cargaCliente();
         cargaTiposContrato();
         //cargaTiposEmpresas();
@@ -189,8 +188,6 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
                         });
                     }, 1000);
-
-
 
                 },
                 function errorCallback(response) {
