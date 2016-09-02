@@ -1,30 +1,112 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Contrato</title>
-</head>
-<body style="margin:40px;">
-	<h1>Ejemplo conejo</h1>
-	<table>
-		<thead>
-			<tr>
-				<th>Datos</th>
-				<th>Datos</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>[[idContrato]]</td>
-				<td>[[folioContrato]]</td>
-				
-			</tr>
-		</tbody>
 
-	</table>	
-	
- 	
+<head>
+    <title>Contrato</title>
+
+    <table border="0" width="500%" cellpadding="5" cellspacing="5">
+        <tr>
+            <td width="50%">
+                <section id="datosCliente">
+                    <table border="0" bgcolor="white">
+                        <td width="10%">
+                            <img src="\images\GA2.png" width="100" height="100">
+                        </td>
+                        <td width="90%" align="center"><b><H1 >REPORTE BURÓ DE CRÉDITO</H1 ></b>
+                        </td>
+                    </table>
+                </section>
+            </td>
+            <td width="50%">
+                <section id="datosSucursal">
+                    <table border="0" bgcolor="white">
+                        <td align="right" style="margin-left: 20px;">
+                            <h4><b>Fecha de Consulta: 25/08/2016</b></h4>
+                        </td>
+                        <td><img src="images\grafica.jpg" width="120" height="120" align="right">
+                        </td>
+                    </table>
+                </section>
+            </td>
+        </tr>
+    </table>
+
+</head>
+
+<body style="margin:40px;">
+
+    <h1>DATOS DEL CLIENTE</h1>
+    <table>
+        <tr>
+            <td><b>id Cliente BPRO:</b></td>
+            <td>{{idCliente}}</td>
+        </tr>
+        <tr>
+            <td><b>Nombre del Cliente:</b></td>
+            <td>{{nombreCliente}}</td>
+        </tr>
+        <tr>
+            <td><b>RFC:</b></td>
+            <td>{{rfc}}</td>
+        </tr>
+    </table>
+
+
+    <h1>DATOS DEL CONTRATO</h1>
+    <table>
+        <tr>
+            <td><b>id Contrato</b></td>
+            <td>{{idContrato}}</td>
+        </tr>
+        <tr>
+            <td><b>Folio Contrato</b></td>
+            <td>{{folioContrato}}</td>
+        </tr>
+        <tr>
+            <td><b>Tipo Contrato:</b></td>
+            <td>{{tipoContrato}}</td>
+        </tr>
+        <tr>
+            <td><b>Fecha Inicio:</b></td>
+            <td>{{fechaInicio}}</td>
+        </tr>
+        <tr>
+            <td><b>Fecha Termino:</b></td>
+            <td>{{fechaTermino}}</td>
+        </tr>
+        <tr>
+            <td><b>Empresa:</b></td>
+            <td>{{empresa}}</td>
+        </tr>
+        <tr>
+            <td><b>Sucursal:</b></td>
+            <td>{{sucursal}}</td>
+        </tr>
+        <tr>
+            <td><b>Departamento:</b></td>
+            <td>{{departamento}}</td>
+        </tr>
+        <tr>
+            <td><b>Cartera:</b></td>
+            <td>{{cartera}}</td>
+        </tr>
+        <tr>
+            <td><b>Limite Credito:</b></td>
+            <td>{{limiteCredito}}</td>
+        </tr>
+    </table>
 </body>
+
 </html>
+
+
+
+
+
+
+
+
+
 
 <!--
 { idContrato: 13,
