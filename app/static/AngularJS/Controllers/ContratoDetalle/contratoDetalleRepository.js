@@ -6,23 +6,26 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
 
         //1.-Obtiene Detalle Contrato
         obtieneDetalleContrato: function (idContrato) {
+            return $http({
+                url: contratoDetalleRepositoryURL + 'obtienedetallecontrato/',
+                method: "GET",
+                params: {
+                    idContrato: idContrato
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }, //Fin Obtiene Detalle Contrato
+
+        //Genera PDF
+        generarPdf: function (idContrato) {
                 return $http({
-                    url: contratoDetalleRepositoryURL + 'obtienedetallecontrato/',
+                    url: contratoDetalleRepositoryURL + 'generarPdf/',
                     method: "GET",
                     params: {
                         idContrato: idContrato
                     },
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-            }, //Fin Obtiene Detalle Contrato
-
-        //Genera PDF
-        generarPdf: function () {
-                return $http({
-                    url: contratoDetalleRepositoryURL + 'generarPdf/',
-                    method: "GET",
                     headers: {
                         'Content-Type': 'application/json'
                     }

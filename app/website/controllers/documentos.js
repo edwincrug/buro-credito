@@ -160,6 +160,4 @@ Documentos.prototype.post_insertDocumento_data = function (req, res, next) {
 };
 
 
-
-
 module.exports = Documentos;

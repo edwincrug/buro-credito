@@ -74,23 +74,6 @@ contrato.prototype.post_creanuevocontrato_data = function (req, res, next) {
         });
     });
 
-    /*
-        console.log('estamos aqui inserta contratto ');
-        console.log(req.query.idTipoContrato);
-
-        phantom.create().then(function (ph) {
-            ph.createPage().then(function (page) {
-                page.open("http://localhost:4700/#/nuevotipocontrato").then(function (status) {
-                    page.render('update3.pdf').then(function () {
-                        console.log('Page Rendered');
-                        ph.exit();
-                    });
-                });
-            });
-        });
-
-    */
-
 };
 
 
@@ -112,21 +95,6 @@ contrato.prototype.get_obtienecontratos = function (req, res, next) {
             result: result
         });
     });
-
-    //    console.log('estamos en SEL_CONTRATOS_SP');
-    //    console.log(req.query.idTipoContrato);
-    //
-    //    phantom.create().then(function (ph) {
-    //        ph.createPage().then(function (page) {
-    //            page.open("http://www.google.com.mx").then(function (status) {
-    //                page.render('Reporte10.pdf').then(function () {
-    //                    console.log('Page Rendered');
-    //                    ph.exit();
-    //                });
-    //            });
-    //        });
-    //    });
-
 
 };
 
@@ -171,87 +139,6 @@ contrato.prototype.get_cargarDocumentos = function (req, res, next) {
         });
     });
 };
-
-//    console.log('estamos en selecciona contrato ');
-//    console.log(req.query.idContrato);
-//
-//    phantom.create().then(function (ph) {
-//        ph.createPage().then(function (page) {
-//            page.open("http://localhost:4700/#/detallecontrato").then(function (status) {
-//                page.render('seleccionscontrato.pdf').then(function () {
-//                    console.log('Page Rendered');
-//                    ph.exit();
-//                });
-//            });
-//        });
-//    });
-
-/*
-// GET GetAll para obtener todos los elementos
-contrato.prototype.get_obtienetipoempresa = function (req, res, next) {
-   
-    var self = this;
-    //Obtención de valores de los parámetros del request
-    var params = [
-        {
-            name: 'idUsuario',
-            value: req.query.idUsuario,
-            type: self.model.types.INT
-                    }
-    ];
-
-    this.model.query('SEL_EMPRESAS_SP', params, function (error, result) {
-        self.view.speakJSON(res, {
-            error: error,
-            result: result
-        });
-    });
-};
-
-
-// GET GetAll para obtener todos los elementos
-contrato.prototype.get_obtienetiposucursal = function (req, res, next) {
-   
-    var self = this;
-    //Obtención de valores de los parámetros del request
-    var params = [
-        {
-            name: 'idEmpresa',
-            value: req.query.idEmpresa,
-            type: self.model.types.INT
-                    }
-    ];
-
-    this.model.query('SEL_SUCURSALES_SP', params, function (error, result) {
-        self.view.speakJSON(res, {
-            error: error,
-            result: result
-        });
-    });
-};
-
-
-contrato.prototype.get_obtienetipodepartamento = function (req, res, next) {
-   
-    var self = this;
-    //Obtención de valores de los parámetros del request
-    var params = [
-        {
-            name: 'idSucursal',
-            value: req.query.idSucursal,
-            type: self.model.types.INT
-                    }
-    ];
-
-    this.model.query('SEL_DEPARTAMENTOS_SP', params, function (error, result) {
-        self.view.speakJSON(res, {
-            error: error,
-            result: result
-        });
-    });
-};
-
-*/
 
 
 module.exports = contrato;
