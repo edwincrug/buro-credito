@@ -112,6 +112,7 @@ appServices.factory('contratoRepository', function($http, configurationFactory) 
         //                });
         //            } //Fin Obtiene Detalle Contrato 
         //    }; //Fin del return
+        
         //8.-Obtiene lista de documentos del tipo de contrato
         cargarDocumentos: function(idcontrato) {
             return $http({

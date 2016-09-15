@@ -7,6 +7,7 @@ appServices.factory('sessionFactory', [function () {
     interfaz.nuevoContrato = null;
     interfaz.nuevoDocumento = null;
     interfaz.detalle = null;
+    interfaz.detalleCliente = null;
     return interfaz;
 
 }]);

@@ -1,4 +1,4 @@
-appControllers.controller('contratoController', function ($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, empresasRepository, sucursalesRepository, departamentosRepository, limiteCreditoRepository, documentosRepository, notificationFactory, sessionFactory, Upload, $window,contratoDetalleRepository) {
+appControllers.controller('contratoController', function ($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, empresasRepository, sucursalesRepository, departamentosRepository, limiteCreditoRepository, documentosRepository, notificationFactory, sessionFactory, Upload, $window, contratoDetalleRepository) {
 
     //Metodo de incio 
     $scope.init = function () {
@@ -277,20 +277,20 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         }
     };
 
-//Conseguir datos del contrato para nuevo html
-    $scope.GenerarJson = function (idcontrato) {        
+    //Conseguir datos del contrato para nuevo html CONFIRMAR DATOS DE NUEVO CONTRATO GenerarJson
+    $scope.GenerarJson = function (idcontrato) {
         contratoDetalleRepository.obtieneDetalleContrato(idcontrato)
             .then(
                 function succesCallback(response) {
                     //Success
                     $scope.detallesContrato = response.data;
                     //alert($scope.datosCredito["0"].idCliente);
-                    var infoContrato=[{
-                        "tipocontrato": $scope.detallesContrato["0"].nomTipoContrato,
-                         "empresa": $scope.detallesContrato["0"].empresa,
-                         "sucursal":$scope.detallesContrato["0"].sucursal,
-                         "rfc":$scope.detallesContrato["0"].rfc,
-                         "departamento":$scope.detallesContrato["0"].departamento
+                    var infoContrato = [{
+                            "tipocontrato": $scope.detallesContrato["0"].nomTipoContrato,
+                            "empresa": $scope.detallesContrato["0"].empresa,
+                            "sucursal": $scope.detallesContrato["0"].sucursal,
+                            "rfc": $scope.detallesContrato["0"].rfc,
+                            "departamento": $scope.detallesContrato["0"].departamento
                     }
 
                     ];

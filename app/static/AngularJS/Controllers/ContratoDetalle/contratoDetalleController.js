@@ -26,15 +26,18 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
     };
 
-    //Genera el pdf
+    //Genera el pdf 
     $scope.generarPdf = function () {
         $scope.idcontrato = $scope.detalle["0"].idCliente;
-        alert('Estoy en genera PDF' + $scope.idcontrato);
+        //alert('Estoy en genera PDF con el IdCliente: ' + $scope.idcontrato);
+
+        //verDetalleCliente($scope.idcontrato);
+        //alert('Paso verDetalleCliente');
 
         contratoDetalleRepository.generarPdf($scope.idcontrato)
             .then(
                 function succesCallback(response) {
-                    notificationFactory.success('Se genero el pdf');
+                    notificationFactory.success('Success genero el pdf');
                     //
                     $scope.url = response.config.url;
                     window.open($scope.url + '?idContrato=' + $scope.idcontrato, "ventana1", "width=700,height=600,scrollbars=NO");
@@ -45,5 +48,24 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                 }
             );
     };
+
+    $scope.verDetalleCliente = function (idcliente) {
+        contratoDetalleRepository.obtieneDetalleCliente(idcliente)
+            .then(
+                function succesCallback(response) {
+                    //alert('Success detalle Cliente Pagos');
+                    //Success
+                    //notificationFactory.success('Cotrato obtenidos correctamente');
+                    sessionFactory.detalleCliente = response.data;
+                    //location.href = '/detallecontrato';
+                    //$state.go('detallecontrato');
+                },
+                function errorCallback(response) {
+                    //Error
+                    notificationFactory.error('No se pudieron obtener datos del Cliente: ' + response.data.message);
+                }
+            );
+    };
+
 
 }); //FIN de appControllers

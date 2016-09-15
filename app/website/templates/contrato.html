@@ -1,8 +1,74 @@
 <!DOCTYPE html>
 <html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--  -->
 
 <head>
-    <title>Contrato</title>
+
+    <STYLE type="text/css">
+        h1 {
+            border-width: 1px;
+            /*border: solid;*/
+            text-align: center
+        }
+        
+        h3 {
+            border-width: 1px;
+            border: solid;
+            text-align: center;
+            font-weight: normal;
+            padding: 1px;
+            background: #0B0B61;
+            /*#0B0B61;  */
+            border-top: 4px solid #D8D8D8;
+            /*#aabcfe*  Color sombra*/
+            border-bottom: 1px solid #fff;
+            color: white;
+        }
+        
+        body {
+            border: 2px solid #0B0B61;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 10px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-bottom: 50px;
+            padding-top: 10px;
+        }
+        
+        table {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            /*font-size: 12px;*/
+            margin: 10px;
+            width: 600px;
+            /*text-align: left;*/
+            /*border-collapse: collapse;*/
+        }
+        
+        th {
+            font-size: 13px;
+            font-weight: normal;
+            padding: 1px;
+            background: #0B0B61;
+            /*#b9c9fe; Color fondo encabezado tabla*/
+            border-top: 4px solid #D8D8D8;
+            /*#aabcfe*  Color sombra*/
+            border-bottom: 1px solid #fff;
+            color: white;
+            /*#039;   Color letra encabezado tabla*/
+        }
+        
+        td {
+            padding: 2px;
+            /*background: #e8edff;*/
+            border-bottom: 1px solid #fff;
+            color: #0B0B61;
+            /*#669*/
+            border-top: 1px solid transparent;
+        }
+
+    </STYLE>
+
 
     <table border="0" width="500%" cellpadding="5" cellspacing="5">
         <tr>
@@ -18,96 +84,233 @@
                 </section>
             </td>
             <td width="50%">
+                <!--script>
+                    var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",               "Septiembre", "Octubre", "Noviembre", "Diciembre");
+                    var f = new Date();
+                    document.write(f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
+                </script-->
                 <section id="datosSucursal">
                     <table border="0" bgcolor="white">
                         <td align="right" style="margin-left: 20px;">
-                            <h4><b>Fecha de Consulta: 25/08/2016</b></h4>
+                            <h4><b>Fecha de Consulta: 14/09/2016</b></h4>
                         </td>
-                        <td><img src="images\grafica.jpg" width="120" height="120" align="right">
+                        <td><img src="\images\grafica.jpg" width="120" height="120" align="right">
                         </td>
                     </table>
                 </section>
             </td>
         </tr>
     </table>
-
 </head>
+
 
 <body style="margin:40px;">
 
-    <h1>DATOS DEL CLIENTE</h1>
-    <table>
+    <!-- HTML Vista-->
+    <table border="0" width="100%" cellpadding="5" cellspacing="5">
         <tr>
-            <td><b>id Cliente BPRO:</b></td>
-            <td>{{idCliente}}</td>
-        </tr>
-        <tr>
-            <td><b>Nombre del Cliente:</b></td>
-            <td>{{nombreCliente}}</td>
-        </tr>
-        <tr>
-            <td><b>RFC:</b></td>
-            <td>{{rfc}}</td>
-        </tr>
+            <td width="50%">
+                <section id="datosCliente">
+                    <table border="0" bgcolor="white">
+                        <th align="center" colspan="2"><b>Datos del Cliente:</b> </th>
+                        <tr>
+                            <td><b>Id Cliente BPRO:</b></td>
+                            <td>{{idCliente}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Nombre:</b></td>
+                            <td>{{nombreCliente}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Dirección:</td>
+                                <td>CALLE {{calle}} COL. {{colonia}} DEL. {{delegacion}} C.P.  {{codigoPostal}}</td>
+                            </tr>
+                            <tr>
+                                <tr>
+                                    <td><b>Teléfono:</b></td>
+                            <td>{{telefono}}</td>
+                        </tr>
+                        <tr>
+                            <tr>
+                                <td><b>RFC:</b></td>
+                                <td>{{rfc}}</td>
+                            </tr>
+                    </table>
+                </section>
+            </td>
+            <td width="50%">
+                <section id="datosSucursal">
+                    <table border="0" bgcolor="white">
+                        <tr>
+                            <th align="center" colspan="4"><b>Datos Agencia:</b></th>
+                        </tr>
+                        <tr>
+                            <td><b>Empresa</b></td>
+                            <td><b>Sucursal</b></td>
+                            <td><b>Departamento</b></td>
+                            <td><b>Saldo</b></td>
+                        </tr>
+                        <tr>
+                            <td>Zaragoza Motriz SA de CV</td>
+                            <td>NISSAN ZARAGOZA</td>
+                            <td>SERVICIO</td>
+                            <td>17100.00</td>
+                        </tr>
+                        <tr>
+                            <tr>
+                                <td>Zaragoza Motriz SA de CV</td>
+                                <td>NISSAN ZARAGOZA</td>
+                                <td>SERVICIO</td>
+                                <td>17100.00</td>
+                            </tr>
+                            <tr>
+                                <tr>
+                                    <td>Zaragoza Motriz SA de CV</td>
+                                    <td>NISSAN ZARAGOZA</td>
+                                    <td>SERVICIO</td>
+                                    <td>17100.00</td>
+                                </tr>
+                    </table>
+                </section>
+            </td>
+            </tr>
     </table>
+    <!--html vista fin -->
 
+    <!--Listado de Documentos -->
+    <h2>DOCUMENTOS VENCIDOS</h2>
+    <section id="infoPagoPuntual">
+        <h3>Pagado Puntualmente</h3>
+        <table border="0" bgcolor="white">
+            <tr>
+                <td><b>Empresa</b></td>
+                <td><b>Sucursal</b></td>
+                <td><b>Departamento</b></td>
+                <td><b>Total Doctos</b></td>
+                <td><b>Saldo</b></td>
+                <td><b>Estatus</b></td>
+            </tr>
+            <tr>
+                <td>Zaragoza Motriz SA de CV</td>
+                <td>NISSAN ZARAGOZA</td>
+                <td>SERVICIO</td>
+                <td>5</td>
+                <td>17100.00</td>
+                <td><img src="\images\correcto.png" width="35" height="35"></td>
+            </tr>
+            <tr>
+                <td>Zaragoza Motriz SA de CV</td>
+                <td>NISSAN ZARAGOZA</td>
+                <td>ADMINISTRACION</td>
+                <td>3</td>
+                <td>100.00</td>
+                <td><img src="\images\correcto.png" width="35" height="35"></td>
+            </tr>
+            <tr>
+                <td>Zaragoza Motriz SA de CV</td>
+                <td>NISSAN ZARAGOZA</td>
+                <td>NUEVOS</td>
+                <td>8</td>
+                <td>7600.00</td>
+                <td><img src="\images\correcto.png" width="35" height="35"></td>
+            </tr>
+        </table>
+    </section>
 
-    <h1>DATOS DEL CONTRATO</h1>
-    <table>
-        <tr>
-            <td><b>id Contrato</b></td>
-            <td>{{idContrato}}</td>
-        </tr>
-        <tr>
-            <td><b>Folio Contrato</b></td>
-            <td>{{folioContrato}}</td>
-        </tr>
-        <tr>
-            <td><b>Tipo Contrato:</b></td>
-            <td>{{tipoContrato}}</td>
-        </tr>
-        <tr>
-            <td><b>Fecha Inicio:</b></td>
-            <td>{{fechaInicio}}</td>
-        </tr>
-        <tr>
-            <td><b>Fecha Termino:</b></td>
-            <td>{{fechaTermino}}</td>
-        </tr>
-        <tr>
-            <td><b>Empresa:</b></td>
-            <td>{{empresa}}</td>
-        </tr>
-        <tr>
-            <td><b>Sucursal:</b></td>
-            <td>{{sucursal}}</td>
-        </tr>
-        <tr>
-            <td><b>Departamento:</b></td>
-            <td>{{departamento}}</td>
-        </tr>
-        <tr>
-            <td><b>Cartera:</b></td>
-            <td>{{cartera}}</td>
-        </tr>
-        <tr>
-            <td><b>Limite Credito:</b></td>
-            <td>{{limiteCredito}}</td>
-        </tr>
-    </table>
+    <section id="infoPagoNoPuntual">
+        <h3>Pagado No Puntual</h3>
+        <table border="0" bgcolor="white">
+            <tr>
+                <td>
+                    <b>Empresa</b>
+                </td>
+                <td><b>Sucursal</b></td>
+                <td><b>Departamento</b></td>
+                <td><b>Total Doctos</b></td>
+                <td><b>Saldo</b></td>
+                <td><b>Estatus</b></td>
+            </tr>
+            <tr>
+                <td>Zaragoza Motriz SA de CV</td>
+                <td>NISSAN ZARAGOZA</td>
+                <td>SERVICIO</td>
+                <td>5</td>
+                <td>17100.00</td>
+                <td><img src="\images\alerta3.png" width="35" height="35"></td>
+            </tr>
+            <tr>
+                <td>Zaragoza Motriz SA de CV</td>
+                <td>NISSAN ZARAGOZA</td>
+                <td>ADMINISTRACION</td>
+                <td>3</td>
+                <td>100.00</td>
+                <td><img src="\images\alerta3.png" width="35" height="35"></td>
+            </tr>
+            <tr>
+                <td>Zaragoza Motriz SA de CV</td>
+                <td>NISSAN ZARAGOZA</td>
+                <td>NUEVOS</td>
+                <td>8</td>
+                <td>7600.00</td>
+                <td><img src="\images\alerta3.png" width="35" height="35"></td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="infoNoPagado">
+        <h3>No Pagados</h3>
+        <table border="0" bgcolor="white">
+            <tr>
+                <td><b>Empresa</b></td>
+                <td><b>Sucursal</b></td>
+                <td><b>Departamento</b></td>
+                <td><b>Documento</b></td>
+                <td><b>Serie</b></td>
+                <td><b>Fecha Vencimiento</b></td>
+                <td><b>Importe</b></td>
+                <td><b>Saldo</b></td>
+                <td><b>Estatus</b></td>
+            </tr>
+            <tr>
+                <td>Zaragoza Motriz SA de CV</td>
+                <td>NISSAN ZARAGOZA</td>
+                <td>SERVICIO</td>
+                <td>AU-ZM-ZAR-RE-23</td>
+                <td>AAA123</td>
+                <td>02/03/2016</td>
+                <td>50000</td>
+                <td>60000</td>
+                <td><img src="\images\error2.png" width="32" height="32"></td>
+            </tr>
+            <tr>
+                <td>Zaragoza Motriz SA de CV</td>
+                <td>NISSAN ZARAGOZA</td>
+                <td>NUEVOS</td>
+                <td>AU-ZM-ZAR-NU-7</td>
+                <td>AAA123</td>
+                <td>02/03/2012</td>
+                <td>8900</td>
+                <td>1000</td>
+                <td><img src="\images\error2.png" width="32" height="32"></td>
+            </tr>
+            <tr>
+                <td>Zaragoza Motriz SA de CV</td>
+                <td>NISSAN ZARAGOZA</td>
+                <td>ADMINISTRACION</td>
+                <td>AU-ZM-ZAR-AD-23</td>
+                <td>AAA123</td>
+                <td>02/09/2013</td>
+                <td>80</td>
+                <td>100</td>
+                <td><img src="\images\error2.png" width="32" height="32"></td>
+            </tr>
+        </table>
+    </section>
+    <!-- Listado de Documentos fin-->
+
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
 <!--
 { idContrato: 13,
   folioContrato: 'ZM-SE-8-12',

@@ -38,7 +38,6 @@ contratoDetalle.prototype.get_obtienedetallecontrato = function (req, res, next)
 contratoDetalle.prototype.get_generarPdf = function (req, res, next) {
     var self = this;
 
-    //Agregado 13_09_2016
     var params = [
         {
             name: 'idContrato',
@@ -46,7 +45,6 @@ contratoDetalle.prototype.get_generarPdf = function (req, res, next) {
             type: self.model.types.INT
                         }
         ];
-    //
 
     console.log('1.-estamos aqui en genera PDF() contrato: ' + req.query.idContrato);
 
@@ -56,26 +54,25 @@ contratoDetalle.prototype.get_generarPdf = function (req, res, next) {
                 width: 700, //480
                 height: 900 //800
             };
+            console.log('2.-Mando a llamar a Nuevo');
             page.open("http://localhost:4700/api/contratoDetalle/nuevo?idContrato=" + req.query.idContrato).then(function (status) {
                 console.log(status);
                 page.render('Reporte_Buro.pdf').then(function () {
-                    console.log('Page Rendered');
+                    console.log('4.-Regreso y estoy en Page Rendered');
                     page.close();
                     ph.exit();
-                    console.log('Page Rendered2');
+                    console.log('5.-Page Rendered2');
                     setTimeout(function () {
                         res.sendFile("Reporte_Buro.pdf", {
                             root: path.join(__dirname, '../../../')
                         });
-                        console.log('Page Rendered3');
+                        console.log('6.-Page Rendered3');
                     }, 10)
 
                 });
             });
         });
     });
-
-
 };
 
 contratoDetalle.prototype.get_nuevo = function (req, res, next) {
@@ -89,12 +86,34 @@ contratoDetalle.prototype.get_nuevo = function (req, res, next) {
         }
     ];
 
-    console.log('2.-estamos aqui en NUEVO Selecciona un contrato: ' + req.query.idContrato);
+    console.log('3.-Estoy en NUEVO Selecciona un contrato: ' + req.query.idContrato);
     console.log(params)
     this.model.query('SEL_CONTRATO_SP', params, function (error, result) {
         console.log(result);
         res.render('contrato.html', result[0]);
     });
+};
+
+//obtiene Informacion del Cliente
+contratoDetalle.prototype.get_obtienedetallecliente = function (req, res, next) {
+    var self = this;
+    //Obtención de valores de los parámetros del request
+    var params = [
+        {
+            name: 'idCliente',
+            value: req.query.idCliente,
+            type: self.model.types.INT
+                    }
+    ];
+
+    this.model.query('SEL_PAGOS_DOCUMENTOS_SP', params, function (error, result) {
+        console.log(result);
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+
 };
 
 

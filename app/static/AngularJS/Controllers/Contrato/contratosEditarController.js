@@ -33,18 +33,18 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
 
     $scope.verDetalleContrato = function (idcontrato) {
         //sessionFactory.verContrato = null;
-        alert('Estoy en detalle contratossssssssss' + idcontrato);
+        //alert('Estoy en detalle contratos' + idcontrato);
 
 
         contratoDetalleRepository.obtieneDetalleContrato(idcontrato)
             .then(
                 function succesCallback(response) {
+                    //alert('Empiezo obten detalle contrato');
                     //Success
                     //notificationFactory.success('Cotrato obtenidos correctamente');
                     sessionFactory.detalle = response.data;
                     //location.href = '/detallecontrato';
                     $state.go('detallecontrato');
-
                 },
                 function errorCallback(response) {
                     //Error
@@ -53,7 +53,6 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
             );
 
     };
-
 
 
 
