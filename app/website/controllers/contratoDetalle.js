@@ -93,8 +93,8 @@ contratoDetalle.prototype.get_nuevo = function (req, res, next) {
 
     console.log('3.-Estoy en NUEVO Selecciona un contrato: ' + req.query.idContrato);
     console.log(params);
-    this.model.query('SEL_CONTRATO_SP', params, function (error, informacioncliente) {
-        console.log('10.-Estoy en SEL_CONTRATO_SP ' + req.query.idContrato);
+    this.model.query('SEL_CLIENTE_CONTRATO_SP', params, function (error, informacioncliente) {
+        console.log('10.-Estoy en SEL_CLIENTE_CONTRATO_SP' + req.query.idContrato);
         console.log(error)
         console.log(informacioncliente)
         params = [{

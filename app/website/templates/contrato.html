@@ -177,7 +177,7 @@
                 <th><b>Saldo</b></th>
                 <th><b>Estatus</b></th>
             </tr>
-            {% for docpagado in docpagados %}
+            {% for docpagado in docpagados %} {% if docpagado.tipoPagoFecha == 1 %}
             <tr>
                 <td width=100%>{{docpagado.empresa}}</td>
                 <td>{{docpagado.sucursal}}</td>
@@ -186,7 +186,7 @@
                 <td>{{docpagado.cargo}}</td>
                 <td><img src="\images\correcto.png" width="35" height="35"></td>
             </tr>
-            {% endfor %}
+            {% endif %} {% endfor %}
         </table>
     </section>
 
@@ -201,7 +201,7 @@
                 <th><b>Saldo</b></th>
                 <th><b>Estatus</b></th>
             </tr>
-            {% for docpagado in docpagados %}
+            {% for docpagado in docpagados %}{% if docpagado.tipoPagoFecha == 2 %}
             <tr>
                 <td>{{docpagado.empresa}}</td>
                 <td>{{docpagado.sucursal}}</td>
@@ -210,7 +210,7 @@
                 <td>{{docpagado.cargo}}</td>
                 <td><img src="\images\alerta3.png" width="35" height="35"></td>
             </tr>
-            {% endfor %}
+            {% endif %} {% endfor %}
         </table>
     </section>
 
