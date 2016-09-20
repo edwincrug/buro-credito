@@ -1,4 +1,5 @@
-appControllers.controller('contratoDetalleController', function ($scope, $state, contratoDetalleRepository, notificationFactory, sessionFactory, datosClienteRepository) {
+appControllers.controller('contratoDetalleController', function ($scope, $state,
+    $stateParams, contratoDetalleRepository, notificationFactory, sessionFactory, datosClienteRepository) {
 
     //Metodo de incio 
     $scope.init = function () {
@@ -28,7 +29,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
     //Genera el pdf 
     $scope.generarPdf = function () {
-        $scope.idcontrato = $scope.detalle["0"].idCliente;
+        $scope.idcontrato = $stateParams.contratoObj.idContrato;
         //alert('Estoy en genera PDF con el IdCliente: ' + $scope.idcontrato);
 
         //verDetalleCliente($scope.idcontrato);

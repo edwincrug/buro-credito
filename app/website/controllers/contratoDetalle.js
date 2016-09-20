@@ -26,7 +26,7 @@ contratoDetalle.prototype.get_obtienedetallecontrato = function (req, res, next)
                     }
     ];
 
-    this.model.query('SEL_CONTRATO_SP', params, function (error, result) {
+    this.model.query('SEL_CLIENTE_CONTRATO_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result

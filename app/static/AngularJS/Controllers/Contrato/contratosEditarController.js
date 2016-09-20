@@ -31,20 +31,24 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
     };
 
 
-    $scope.verDetalleContrato = function (idcontrato) {
+    $scope.verDetalleContrato = function (contrato) {
         //sessionFactory.verContrato = null;
-        //alert('Estoy en detalle contratos' + idcontrato);
+        alert('Estoy en detalle contratos' + contrato.idContrato);
 
 
-        contratoDetalleRepository.obtieneDetalleContrato(idcontrato)
+        contratoDetalleRepository.obtieneDetalleContrato(contrato.idContrato)
             .then(
                 function succesCallback(response) {
                     //alert('Empiezo obten detalle contrato');
                     //Success
                     //notificationFactory.success('Cotrato obtenidos correctamente');
                     sessionFactory.detalle = response.data;
-                    //location.href = '/detallecontrato';
-                    $state.go('detallecontrato');
+                    //$state.go('detallecontrato');
+                    $state.go('detallecontrato', {
+                        contratoObj: contrato
+                    }, {
+                        reload: true
+                    });
                 },
                 function errorCallback(response) {
                     //Error

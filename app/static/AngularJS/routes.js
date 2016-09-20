@@ -47,7 +47,10 @@ angular.module('app.routes', ["LocalStorageModule"])
     .state('detallecontrato', {
         url: '/detallecontrato',
         templateUrl: 'Templates/detalleContrato.html',
-        controller: 'contratoDetalleController'
+        controller: 'contratoDetalleController',
+        params: {
+            contratoObj: null
+        }
     })
 
     //Login
