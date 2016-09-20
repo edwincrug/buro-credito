@@ -45,6 +45,32 @@ DataAccess.prototype.query = function (stored, params, callback) {
     });
 };
 
+//////////////////////////////////////////////////////////////////////////////////////////
+//Opcion para recibir mas de un objeto Multiple LMS 19/09/2016
+//método genérico para acciones get
+DataAccess.prototype.querymulti = function (stored, params, callback) {
+    var self = this.connection;
+    this.connection.connect(function (err) {
+        // Stored Procedure
+        var request = new sql.Request(self);
+        // Add inputs
+        if (params.length > 0) {
+            params.forEach(function (param) {
+                request.input(param.name, param.type, param.value);
+            });
+        }
+
+        request.execute(stored)
+            .then(function (recordsets) {
+                callback(null, recordsets); //  
+            }).catch(function (err) {
+                callback(err);
+            });
+    });
+};
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
 //método genérico para acciones post
 DataAccess.prototype.post = function (stored, params, callback) {
     var self = this.connection;

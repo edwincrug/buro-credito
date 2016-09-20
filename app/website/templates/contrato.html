@@ -105,7 +105,6 @@
 
 
 <body style="margin:40px;">
-
     <!-- HTML Vista-->
     <table border="0" width="100%" cellpadding="5" cellspacing="5">
         <tr>
@@ -115,25 +114,25 @@
                         <th align="center" colspan="2"><b>Datos del Cliente:</b> </th>
                         <tr>
                             <td><b>Id Cliente BPRO:</b></td>
-                            <td>{{idCliente}}</td>
+                            <td>{{informacioncliente.idCliente}}</td>
                         </tr>
                         <tr>
                             <td><b>Nombre:</b></td>
-                            <td>{{nombreCliente}}</td>
+                            <td>{{informacioncliente.nombreCliente}}</td>
                         </tr>
                         <tr>
                             <td><b>Dirección:</td>
-                                <td>CALLE {{calle}} COL. {{colonia}} DEL. {{delegacion}} C.P.  {{codigoPostal}}</td>
+                                <td>CALLE {{informacioncliente.calle}} COL. {{informacioncliente.colonia}} DEL. {{informacioncliente.delegacion}} C.P.  {{informacioncliente.codigoPostal}}</td>
                             </tr>
                             <tr>
                                 <tr>
                                     <td><b>Teléfono:</b></td>
-                            <td>{{telefono}}</td>
+                            <td>{{informacioncliente.telefono}}</td>
                         </tr>
                         <tr>
                             <tr>
                                 <td><b>RFC:</b></td>
-                                <td>{{rfc}}</td>
+                                <td>{{informacioncliente.rfc}}</td>
                             </tr>
                     </table>
                 </section>
@@ -145,31 +144,19 @@
                             <th align="center" colspan="4"><b>Datos Agencia:</b></th>
                         </tr>
                         <tr>
-                            <td><b>Empresa</b></td>
-                            <td><b>Sucursal</b></td>
-                            <td><b>Departamento</b></td>
-                            <td><b>Saldo</b></td>
+                            <th><b>Empresa</b></th>
+                            <th><b>Sucursal</b></th>
+                            <th><b>Departamento</b></th>
+                            <th><b>Saldo</b></th>
                         </tr>
+                        {% for total in totales %}
                         <tr>
-                            <td>Zaragoza Motriz SA de CV</td>
-                            <td>NISSAN ZARAGOZA</td>
-                            <td>SERVICIO</td>
-                            <td>17100.00</td>
+                            <td>{{total.empresa}}</td>
+                            <td>{{total.sucursal}}</td>
+                            <td>{{total.departamento}}</td>
+                            <td>{{total.credito}}</td>
                         </tr>
-                        <tr>
-                            <tr>
-                                <td>Zaragoza Motriz SA de CV</td>
-                                <td>NISSAN ZARAGOZA</td>
-                                <td>SERVICIO</td>
-                                <td>17100.00</td>
-                            </tr>
-                            <tr>
-                                <tr>
-                                    <td>Zaragoza Motriz SA de CV</td>
-                                    <td>NISSAN ZARAGOZA</td>
-                                    <td>SERVICIO</td>
-                                    <td>17100.00</td>
-                                </tr>
+                        {% endfor %}
                     </table>
                 </section>
             </td>
@@ -183,37 +170,23 @@
         <h3>Pagado Puntualmente</h3>
         <table border="0" bgcolor="white">
             <tr>
-                <td><b>Empresa</b></td>
-                <td><b>Sucursal</b></td>
-                <td><b>Departamento</b></td>
-                <td><b>Total Doctos</b></td>
-                <td><b>Saldo</b></td>
-                <td><b>Estatus</b></td>
+                <th><b>Empresa</b></th>
+                <th><b>Sucursal</b></th>
+                <th><b>Departamento</b></th>
+                <th><b>Total Doctos</b></th>
+                <th><b>Saldo</b></th>
+                <th><b>Estatus</b></th>
             </tr>
+            {% for docpagado in docpagados %}
             <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>SERVICIO</td>
-                <td>5</td>
-                <td>17100.00</td>
+                <td width=100%>{{docpagado.empresa}}</td>
+                <td>{{docpagado.sucursal}}</td>
+                <td>{{docpagado.departamento}}</td>
+                <td>{{docpagado.totalDoctos}}</td>
+                <td>{{docpagado.cargo}}</td>
                 <td><img src="\images\correcto.png" width="35" height="35"></td>
             </tr>
-            <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>ADMINISTRACION</td>
-                <td>3</td>
-                <td>100.00</td>
-                <td><img src="\images\correcto.png" width="35" height="35"></td>
-            </tr>
-            <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>NUEVOS</td>
-                <td>8</td>
-                <td>7600.00</td>
-                <td><img src="\images\correcto.png" width="35" height="35"></td>
-            </tr>
+            {% endfor %}
         </table>
     </section>
 
@@ -221,39 +194,23 @@
         <h3>Pagado No Puntual</h3>
         <table border="0" bgcolor="white">
             <tr>
-                <td>
-                    <b>Empresa</b>
-                </td>
-                <td><b>Sucursal</b></td>
-                <td><b>Departamento</b></td>
-                <td><b>Total Doctos</b></td>
-                <td><b>Saldo</b></td>
-                <td><b>Estatus</b></td>
+                <th><b>Empresa</b></th>
+                <th><b>Sucursal</b></th>
+                <th><b>Departamento</b></th>
+                <th><b>Total Doctos</b></th>
+                <th><b>Saldo</b></th>
+                <th><b>Estatus</b></th>
             </tr>
+            {% for docpagado in docpagados %}
             <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>SERVICIO</td>
-                <td>5</td>
-                <td>17100.00</td>
+                <td>{{docpagado.empresa}}</td>
+                <td>{{docpagado.sucursal}}</td>
+                <td>{{docpagado.departamento}}</td>
+                <td>{{docpagado.totalDoctos}}</td>
+                <td>{{docpagado.cargo}}</td>
                 <td><img src="\images\alerta3.png" width="35" height="35"></td>
             </tr>
-            <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>ADMINISTRACION</td>
-                <td>3</td>
-                <td>100.00</td>
-                <td><img src="\images\alerta3.png" width="35" height="35"></td>
-            </tr>
-            <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>NUEVOS</td>
-                <td>8</td>
-                <td>7600.00</td>
-                <td><img src="\images\alerta3.png" width="35" height="35"></td>
-            </tr>
+            {% endfor %}
         </table>
     </section>
 
@@ -261,69 +218,48 @@
         <h3>No Pagados</h3>
         <table border="0" bgcolor="white">
             <tr>
-                <td><b>Empresa</b></td>
-                <td><b>Sucursal</b></td>
-                <td><b>Departamento</b></td>
-                <td><b>Documento</b></td>
-                <td><b>Serie</b></td>
-                <td><b>Fecha Vencimiento</b></td>
-                <td><b>Importe</b></td>
-                <td><b>Saldo</b></td>
-                <td><b>Estatus</b></td>
+                <th colspan="1" rowspan="2"><b>Departamento</b></th>
+                <th colspan="2"><b>Por Vencer</b></th>
+                <th colspan="2"><b>1 a 30 dias</b></th>
+                <th colspan="2"><b>31 a 60 dias</b></th>
+                <th colspan="2"><b>61 a 90 dias</b></th>
+                <th colspan="2"><b>Mas de 90</b></th>
+                <th colspan="1" rowspan="2"><b>Estatus</b></th>
             </tr>
             <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>SERVICIO</td>
-                <td>AU-ZM-ZAR-RE-23</td>
-                <td>AAA123</td>
-                <td>02/03/2016</td>
-                <td>50000</td>
-                <td>60000</td>
-                <td><img src="\images\error2.png" width="32" height="32"></td>
+                <!--th colspan="1"><b>&nbsp;</b></th-->
+                <th colspan="1"><b>Num. Doc.</b></th>
+                <th colspan="1"><b>Importe</b></th>
+                <th colspan="1"><b>Num. Doc.</b></th>
+                <th colspan="1"><b>Importe</b></th>
+                <th colspan="1"><b>Num. Doc.</b></th>
+                <th colspan="1"><b>Importe</b></th>
+                <th colspan="1"><b>Num. Doc.</b></th>
+                <th colspan="1"><b>Importe</b></th>
+                <th colspan="1"><b>Num. Doc.</b></th>
+                <th colspan="1"><b>Importe</b></th>
+                <!--th colspan="1"><b>Estatus</b></th-->
             </tr>
+            {% for docnopagado in docnopagados %}
             <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>NUEVOS</td>
-                <td>AU-ZM-ZAR-NU-7</td>
-                <td>AAA123</td>
-                <td>02/03/2012</td>
-                <td>8900</td>
-                <td>1000</td>
+                <td>{{docnopagado.departamento}}</td>
+                <td>{{docnopagado.conteoTotal}}</td>
+                <td>{{docnopagado.saldoTotal}}</td>
+                <td>{{docnopagado.conteoP}}</td>
+                <td>{{docnopagado.saldoP}}</td>
+                <td>{{docnopagado.conteoS}}</td>
+                <td>{{docnopagado.saldoS}}</td>
+                <td>{{docnopagado.conteoT}}</td>
+                <td>{{docnopagado.saldoT}}</td>
+                <td>{{docnopagado.conteoC}}</td>
+                <td>{{docnopagado.saldoC}}</td>
                 <td><img src="\images\error2.png" width="32" height="32"></td>
             </tr>
-            <tr>
-                <td>Zaragoza Motriz SA de CV</td>
-                <td>NISSAN ZARAGOZA</td>
-                <td>ADMINISTRACION</td>
-                <td>AU-ZM-ZAR-AD-23</td>
-                <td>AAA123</td>
-                <td>02/09/2013</td>
-                <td>80</td>
-                <td>100</td>
-                <td><img src="\images\error2.png" width="32" height="32"></td>
-            </tr>
+            {% endfor %}
         </table>
+
     </section>
     <!-- Listado de Documentos fin-->
-
 </body>
 
 </html>
-<!--
-{ idContrato: 13,
-  folioContrato: 'ZM-SE-8-12',
-  idCliente: 12,
-  nombreCliente: 'AUTOMOTRIZ LOPEZ Y GONZALEZ, S.A. DE C.V',
-  tipoContrato: 8,
-  nomTipoContrato: 'AAA_VIP',
-  empresa: 'Zaragoza Motriz SA de CV',
-  sucursal: 'Body',
-  departamento: 'Servicio',
-  fechaInicio: 1900-01-01T00:00:00.000Z,
-  fechaTermino: 1900-01-01T00:00:00.000Z,
-  limiteCredito: 50000,
-  estatus: 1,
-  rfc: 'RFC22222',
-  cartera: 'zzzz' } ]-->
