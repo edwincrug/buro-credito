@@ -3,14 +3,17 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
     //Metodo de incio 
     $scope.init = function () {
-        //alert('Estoy en Detalle Contrato');
         $scope.detalle = sessionFactory.detalle;
         //cargaInfoCliente($scope.detalle["0"].idCliente);
+        //$scope.idcontrato = $stateParams.contratoObj.idContrato;
         setTimeout(function () {
-            $('.estiloTabla').DataTable({
-
-            });
+            $('.estiloTabla').DataTable({});
         }, 10);
+
+
+        //$scope.idcontrato = $stateParams.contratoObj.idContrato;
+        cargaPagoDocumentos();
+        cargaNoPagoDocumentos();
     };
 
     //Obtiene los datos del cliente
@@ -35,10 +38,6 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //Genera el pdf 
     $scope.generarPdf = function () {
         $scope.idcontrato = $stateParams.contratoObj.idContrato;
-        //alert('Estoy en genera PDF con el IdCliente: ' + $scope.idcontrato);
-
-        //verDetalleCliente($scope.idcontrato);
-        //alert('Paso verDetalleCliente');
 
         contratoDetalleRepository.generarPdf($scope.idcontrato)
             .then(
@@ -73,5 +72,51 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
             );
     };
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //  Documentos Pagados
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var cargaPagoDocumentos = function () {
+        $scope.idcontrato = $stateParams.contratoObj.idContrato;
+        $scope.idcliente = 46440; //$stateParams.contratoObj.idCliente;
+        $scope.idempresa = $stateParams.contratoObj.idEmpresa;
+        //$scope.nombreCliente = $stateParams.contratoObj.nombreCliente;
+
+        alert('contrato: ' + $scope.idcontrato + ' cliente: ' + $scope.idcliente + ' empresa: ' + $scope.idempresa);
+
+        contratoDetalleRepository.detallePagoDocumentos($scope.idcliente, $scope.idempresa)
+            .then(
+                function succesCallback(response) {
+                    notificationFactory.success('Detalle Documentos Pagados');
+                    $scope.listaPagados = response.data;
+                    alert('Pagados: ' + pagados.empresa);
+                },
+                function errorCallback(response) {
+                    notificationFactory.error('No se pudo obtener el detalle de los Documentos Pagados');
+                }
+            );
+    };
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //  Documentos No Pagados
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var cargaNoPagoDocumentos = function () {
+        $scope.idcontrato = $stateParams.contratoObj.idContrato;
+        $scope.idcliente = 46440; //$stateParams.contratoObj.idCliente;
+        $scope.idempresa = $stateParams.contratoObj.idEmpresa;
+
+        alert('contrato: ' + $scope.idcontrato + ' cliente: ' + $scope.idcliente + ' empresa: ' + $scope.idempresa);
+
+        contratoDetalleRepository.detalleNoPagados($scope.idcliente, $scope.idempresa)
+            .then(
+                function succesCallback(response) {
+                    notificationFactory.success('Detalle Documentos No Pagados');
+                    $scope.listaNoPagados = response.data;
+                    alert('No Pagados: ' + pagados.empresa);
+                },
+                function errorCallback(response) {
+                    notificationFactory.error('No se pudo obtener el detalle de los Documentos No Pagados');
+                }
+            );
+    };
 
 }); //FIN de appControllers

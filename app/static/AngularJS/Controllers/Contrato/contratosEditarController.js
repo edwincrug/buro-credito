@@ -33,7 +33,7 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
 
     $scope.verDetalleContrato = function (contrato) {
         //sessionFactory.verContrato = null;
-        alert('Estoy en detalle contratos' + contrato.idContrato);
+        //alert('Estoy en detalle contratos' + contrato.idContrato);
 
 
         contratoDetalleRepository.obtieneDetalleContrato(contrato.idContrato)

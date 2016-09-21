@@ -46,6 +46,35 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
             });
         }, //Fin Obtiene Detalle Cliente
 
+        //Detalle Documentos
+        detallePagoDocumentos: function (idCliente, idEmpresa) {
+            return $http({
+                url: contratoDetalleRepositoryURL + 'detallepagodocumentos/',
+                method: "GET",
+                params: {
+                    idCliente: idCliente,
+                    idEmpresa: idEmpresa
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }, //Fin Detalle Documentos 
+
+        //Detalle No Pagados
+        detalleNoPagados: function (idCliente, idEmpresa) {
+            return $http({
+                url: contratoDetalleRepositoryURL + 'detallenopagados/',
+                method: "GET",
+                params: {
+                    idCliente: idCliente,
+                    idEmpresa: idEmpresa
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }, //Fin Detalle Documentos 
 
     }; //Fin del return
 

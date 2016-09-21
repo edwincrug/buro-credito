@@ -4,7 +4,7 @@
         <div class="page-title">
 
             <div class="pull-left">
-                <h1 class="title">Cliente: {{ model.cliente.nombre }} - Detalle del Contrato</h1> </div>
+                <h1 class="title">Cliente: {{idCliente}}  - Detalle del Contrato </h1> </div>
 
             <div class="pull-right hidden-xs">
                 <ol class="breadcrumb">
@@ -54,15 +54,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>$320,800</td>
-                                    <td>Edinburgh</td>
-                                    <td>5421</td>
-                                    <td>t.nixon@datatables.net</td>
-                                    <td>5421</td>
-                                    <td>t.nixon@datatables.net</td>
+                                <tr ng-repeat="pagado in listaPagados" ng-show="pagado.tipoPagoFecha===1">
+                                    <td>{{ pagado.empresa }}</td>
+                                    <td>{{ pagado.sucursal }}</td>
+                                    <td>{{ pagado.departamento }}</td>
+                                    <td>{{ pagado.idDocumento }}</td>
+                                    <td>{{ pagado.serie }}</td>
+                                    <td>{{ pagado.fechaVencimiento }}</td>
+                                    <td>{{ pagado.cargo }}</td>
+                                    <td>{{ pagado.fechaPago }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -108,16 +108,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>$320,800</td>
-                                    <td>Edinburgh</td>
-                                    <td>5421</td>
-                                    <td>t.nixon@datatables.net</td>
-                                    <td>5421</td>
-                                    <td>sdf</td>
-                                    <td>3</td>
+                                <tr ng-repeat="pagado in listaPagados" ng-show="pagado.tipoPagoFecha===2">
+                                    <td>{{ pagado.empresa }}</td>
+                                    <td>{{ pagado.sucursal }}</td>
+                                    <td>{{ pagado.departamento }}</td>
+                                    <td>{{ pagado.idDocumento }}</td>
+                                    <td>{{ pagado.serie }}</td>
+                                    <td>{{ pagado.fechaVencimiento }}</td>
+                                    <td>{{ pagado.cargo }}</td>
+                                    <td>{{ pagado.fechaPago }}</td>
+                                    <td>{{ pagado.diasAtraso }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -158,19 +158,19 @@
                                     <th>Serie</th>
                                     <th>Vencimiento</th>
                                     <th>Importe</th>
-                                    <th>Dias Atraso</th>
+                                    <th>Dias Vencidos</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>$320,800</td>
-                                    <td>Edinburgh</td>
-                                    <td>5421</td>
-                                    <td>t.nixon@datatables.net</td>
-                                    <td>5421</td>
-                                    <td>3</td>
+                                <tr ng-repeat="nopagado in listaNoPagados">
+                                    <td>{{ nopagado.empresa }}</td>
+                                    <td>{{ nopagado.sucursal }}</td>
+                                    <td>{{ nopagado.departamento }}</td>
+                                    <td>{{ nopagado.idDocumento }}</td>
+                                    <td>{{ nopagado.serie }}</td>
+                                    <td>{{ nopagado.fechaVencimiento }}</td>
+                                    <td>{{ nopagado.importe }}</td>
+                                    <td>{{ nopagado.diasVencidos }}</td>
                                 </tr>
                             </tbody>
                         </table>
