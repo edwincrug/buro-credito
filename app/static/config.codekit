@@ -44,6 +44,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/AngularJS\/Controllers\/Contrato\/contratosEditarController.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/Contrato\/contratosEditarController.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/Contrato\/min\/contratosEditarController-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/AngularJS\/Controllers\/Contrato\/min\/contratoController-min.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -66,12 +77,45 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/AngularJS\/Controllers\/ContratoDetalle\/contratoDetalleController.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/ContratoDetalle\/contratoDetalleController.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/ContratoDetalle\/min\/contratoDetalleController-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/AngularJS\/Controllers\/ContratoDetalle\/contratoDetalleRepository.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/ContratoDetalle\/contratoDetalleRepository.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/ContratoDetalle\/min\/contratoDetalleRepository-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/AngularJS\/Controllers\/controllers.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/controllers.js",
 		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/min\/controllers-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/AngularJS\/Controllers\/DatosCliente\/datosClienteRepository.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/DatosCliente\/datosClienteRepository.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/DatosCliente\/min\/datosClienteRepository-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -182,6 +226,28 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/LimiteCredito\/limiteCreditoRepository.js",
 		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/LimiteCredito\/min\/limiteCreditoRepository-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/AngularJS\/Controllers\/login\/loginController.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/login\/loginController.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/login\/min\/loginController-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/AngularJS\/Controllers\/login\/loginRepository.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/AngularJS\/Controllers\/login\/loginRepository.js",
+		"outputAbbreviatedPath": "\/AngularJS\/Controllers\/login\/min\/loginRepository-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -1320,6 +1386,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/css\/reporte.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/reporte.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/css\/responsive.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -1374,6 +1449,50 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/helpers.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/helpers.js",
+		"outputAbbreviatedPath": "\/min\/helpers-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/images\/alerta.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 19948,
+		"inputAbbreviatedPath": "\/images\/alerta.jpg",
+		"outputAbbreviatedPath": "\/images\/alerta.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/alerta2.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 72961,
+		"inputAbbreviatedPath": "\/images\/alerta2.jpg",
+		"outputAbbreviatedPath": "\/images\/alerta2.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/alerta3.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 7104,
+		"inputAbbreviatedPath": "\/images\/alerta3.png",
+		"outputAbbreviatedPath": "\/images\/alerta3.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/apple-touch-icon-114-precomposed.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -1418,6 +1537,39 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/correcto.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 222055,
+		"inputAbbreviatedPath": "\/images\/correcto.png",
+		"outputAbbreviatedPath": "\/images\/correcto.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/error.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 185112,
+		"inputAbbreviatedPath": "\/images\/error.png",
+		"outputAbbreviatedPath": "\/images\/error.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/error2.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 8966,
+		"inputAbbreviatedPath": "\/images\/error2.png",
+		"outputAbbreviatedPath": "\/images\/error2.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/favicon.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -1425,6 +1577,39 @@
 		"initialSize": 3174,
 		"inputAbbreviatedPath": "\/images\/favicon.png",
 		"outputAbbreviatedPath": "\/images\/favicon.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/GA.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 15508,
+		"inputAbbreviatedPath": "\/images\/GA.png",
+		"outputAbbreviatedPath": "\/images\/GA.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/GA2.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.29894e+06,
+		"inputAbbreviatedPath": "\/images\/GA2.png",
+		"outputAbbreviatedPath": "\/images\/GA2.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/grafica.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 38406,
+		"inputAbbreviatedPath": "\/images\/grafica.jpg",
+		"outputAbbreviatedPath": "\/images\/grafica.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -1506,17 +1691,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/images\/profile\/avatar-2.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 4805,
-		"inputAbbreviatedPath": "\/images\/profile\/avatar-2.png",
-		"outputAbbreviatedPath": "\/images\/profile\/avatar-2.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
 	"\/images\/profile\/avatar-4.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -1550,13 +1724,24 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/images\/profile\/profile.jpg": {
+	"\/images\/profile\/profile-2.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 5004,
-		"inputAbbreviatedPath": "\/images\/profile\/profile.jpg",
-		"outputAbbreviatedPath": "\/images\/profile\/profile.jpg",
+		"initialSize": 54380,
+		"inputAbbreviatedPath": "\/images\/profile\/profile-2.jpg",
+		"outputAbbreviatedPath": "\/images\/profile\/profile-2.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/profile\/profile.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4805,
+		"inputAbbreviatedPath": "\/images\/profile\/profile.png",
+		"outputAbbreviatedPath": "\/images\/profile\/profile.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -2056,6 +2241,24 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1
+		},
+	"\/Templates\/contratos.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/Templates\/contratos.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/Templates\/detalleContrato.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/Templates\/detalleContrato.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/Templates\/nuevoContrato.html": {
 		"fileType": 8192,

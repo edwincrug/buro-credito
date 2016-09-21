@@ -33,7 +33,7 @@ var ExpressServer = function (config) {
     this.expressServer.engine('html', swig.renderFile);
     this.expressServer.set('view engine', 'html');
     this.expressServer.set('views', __dirname + '/website/templates/');
-   /* swig.setDefaults({
+    /* swig.setDefaults({
         varControls: ['[[', ']]']
     });
 */
@@ -66,12 +66,15 @@ var ExpressServer = function (config) {
         res.sendfile('app/static/index.html');
     });
 
-     //Recibo las variables de login
-    this.expressServer.post('*', function(req, res){
-        var user = { idUsuario: req.body.idUsuario };
-        res.render('index', { user });
+    //Recibo las variables de login
+    this.expressServer.post('*', function (req, res) {
+        var user = {
+            idUsuario: req.body.idUsuario
+        };
+        res.render('index', {
+            user
+        });
     });
-
 
 };
 
