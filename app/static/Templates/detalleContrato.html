@@ -1,243 +1,187 @@
-<link rel="stylesheet" href="css/reporte.css">
+<!--<link rel="stylesheet" href="css/reporte.css">-->
 <div ng-init="init()">
-    <section class="box ">
+    <div class='col-xs-12'>
+        <div class="page-title">
 
+            <div class="pull-left">
+                <h1 class="title">Cliente: {{ model.cliente.nombre }} - Detalle del Contrato</h1> </div>
 
-        <button type="button" ng-click="generarPdf()">
-            <!--btn-info pull-right -->
-            Reporte PDF
-        </button>
+            <div class="pull-right hidden-xs">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="index-2.html"><i class="fa fa-home"></i>Regresar</a>
+                    </li>
+                </ol>
+            </div>
 
-        <!-- -->
-        <table border="0" width="500%" cellpadding="5" cellspacing="5">
-            <tr>
-                <td width="50%">
-                    <section id="datosCliente">
-                        <table border="0" bgcolor="white">
-                            <td width="10%">
-                                <img src="\images\GA2.png" width="100" height="100">
-                            </td>
-                            <td width="90%" align="center"><b><H1 >REPORTE BURÓ DE CRÉDITO</H1 ></b>
-                            </td>
-                        </table>
-                    </section>
-                </td>
-                <td width="50%">
-                    <section id="datosSucursal">
-                        <table border="0" bgcolor="white">
-                            <td align="right" style="margin-left: 20px;">
-                                <h4><b>Fecha de Consulta:  14/09/2016</b></h4>
-                            </td>
-                            <td><img src="\images\grafica.jpg" width="120" height="120" align="right">
-                            </td>
-                        </table>
-                    </section>
-                </td>
-            </tr>
-        </table>
-
-        <table border="0" width="100%" cellpadding="5" cellspacing="5">
-            <tr>
-                <td width="50%">
-                    <section id="datosCliente">
-                        <table border="0" bgcolor="white">
-                            <th align="center" colspan="2"><b>Datos del Cliente:</b> </th>
-                            <tr>
-                                <td><b>Id Cliente BPRO:</b></td>
-                                <td>{{datosCliente[0].idCliente}}</td>
-                            </tr>
-                            <tr>
-                                <td><b>Nombre:</b></td>
-                                <td>{{datosCliente[0].nombre}}</td>
-                            </tr>
-                            <tr>
-                                <td><b>Dirección:</td>
-                                <td>CALLE {{datosCliente[0].calle}} COL. {{datosCliente[0].colonia}} DEL. {{datosCliente[0].delegacion}} CP {{datosCliente[0].codigoPostal}}</td>
-                            </tr>
-                            <tr>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-xs-12">
+        <button type="button" class="btn btn-primary pull-right" ng-click="generarPdf()">Generar Reporte</button>
+    </div>
+    <div class="col-xs-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Pago Puntual</h2>
+                <div class="actions panel_actions pull-right">
+                    <a class="box_toggle fa fa-chevron-down"></a>
+                    <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                    <a class="box_close fa fa-times"></a>
+                </div>
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- ********************************************** -->
+                        <table id="puntual" class="display estiloTabla">
+                            <thead>
                                 <tr>
-                                    <td><b>Teléfono:</b></td>
-                                <td>{{datosCliente[0].telefono}}</td>
-                            </tr>
-                            <tr>
-                                <tr>
-                                    <td><b>RFC:</b></td>
-                                    <td>{{datosCliente[0].rfc}}</td>
-                                </tr>
-                        </table>
-                    </section>
-                </td>
-                <td width="50%">
-                    <section id="datosSucursal">
-                        <table border="0" bgcolor="white">
-                            <tr>
-                                <th align="center" colspan="4"><b>Datos Agencia:</b></th>
-                            </tr>
-                            <tr>
-                                <td><b>Empresa</b></td>
-                                <td><b>Sucursal</b></td>
-                                <td><b>Departamento</b></td>
-                                <td><b>Saldo</b></td>
-                            </tr>
-                            <tr>
-                                <td>Zaragoza Motriz SA de CV</td>
-                                <td>NISSAN ZARAGOZA</td>
-                                <td>SERVICIO</td>
-                                <td>17100.00</td>
-                            </tr>
-                            <tr>
-                                <tr>
-                                    <td>Zaragoza Motriz SA de CV</td>
-                                    <td>NISSAN ZARAGOZA</td>
-                                    <td>SERVICIO</td>
-                                    <td>17100.00</td>
+                                    <!--                                    <th rowspan="3">Origen</th>-->
+                                    <th colspan="3">Origen</th>
+                                    <th colspan="3">Detalle de documento</th>
+                                    <th colspan="2">Detalle de pago</th>
                                 </tr>
                                 <tr>
-                                    <tr>
-                                        <td>Zaragoza Motriz SA de CV</td>
-                                        <td>NISSAN ZARAGOZA</td>
-                                        <td>SERVICIO</td>
-                                        <td>17100.00</td>
-                                    </tr>
+                                    <th>Empresa</th>
+                                    <th>Sucursal</th>
+                                    <th>Departamento</th>
+                                    <th>Documento</th>
+                                    <th>Serie</th>
+                                    <th>Vencimiento</th>
+                                    <th>Importe</th>
+                                    <th>Fecha Pago</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tiger Nixon</td>
+                                    <td>System Architect</td>
+                                    <td>$320,800</td>
+                                    <td>Edinburgh</td>
+                                    <td>5421</td>
+                                    <td>t.nixon@datatables.net</td>
+                                    <td>5421</td>
+                                    <td>t.nixon@datatables.net</td>
+                                </tr>
+                            </tbody>
                         </table>
-                    </section>
-                </td>
-                </tr>
-        </table>
+                        <!-- ********************************************** -->
+                    </div>
+                </div>
 
-
-        <h2>DOCUMENTOS VENCIDOS</h2>
-        <section id="infoPagoPuntual">
-            <h4>Pagado Puntualmente</h4>
-            <table border="0" bgcolor="white">
-                <tr>
-                    <td>
-                        <b>Empresa</b>
-                    </td>
-                    <td><b>Sucursal</b></td>
-                    <td><b>Departamento</b></td>
-                    <td><b>Total Doctos</b></td>
-                    <td><b>Saldo</b></td>
-                    <td><b>Estatus</b></td>
-                </tr>
-                <tr>
-                    <td>Zaragoza Motriz SA de CV</td>
-                    <td>NISSAN ZARAGOZA</td>
-                    <td>SERVICIO</td>
-                    <td>5</td>
-                    <td>17100.00</td>
-                    <td><img src="images\correcto.png" width="35" height="35"></td>
-                </tr>
-                <tr>
-                    <td>Zaragoza Motriz SA de CV</td>
-                    <td>NISSAN ZARAGOZA</td>
-                    <td>ADMINISTRACION</td>
-                    <td>3</td>
-                    <td>100.00</td>
-                    <td><img src="images\correcto.png" width="35" height="35"></td>
-                </tr>
-                <tr>
-                    <td>Zaragoza Motriz SA de CV</td>
-                    <td>NISSAN ZARAGOZA</td>
-                    <td>NUEVOS</td>
-                    <td>8</td>
-                    <td>7600.00</td>
-                    <td><img src="images\correcto.png" width="35" height="35"></td>
-                </tr>
-            </table>
+            </div>
         </section>
+    </div>
+    <div class="col-xs-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Pago Extemporáneo</h2>
+                <div class="actions panel_actions pull-right">
+                    <a class="box_toggle fa fa-chevron-down"></a>
+                    <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                    <a class="box_close fa fa-times"></a>
+                </div>
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- ********************************************** -->
+                        <table id="puntual" class="display estiloTabla">
+                            <thead>
+                                <tr>
+                                    <!--                                    <th rowspan="3">Origen</th>-->
+                                    <th colspan="3">Origen</th>
+                                    <th colspan="3">Detalle de documento</th>
+                                    <th colspan="3">Detalle de pago</th>
+                                </tr>
+                                <tr>
+                                    <th>Empresa</th>
+                                    <th>Sucursal</th>
+                                    <th>Departamento</th>
+                                    <th>Documento</th>
+                                    <th>Serie</th>
+                                    <th>Vencimiento</th>
+                                    <th>Importe</th>
+                                    <th>Fecha Pago</th>
+                                    <th>Dias Atraso</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tiger Nixon</td>
+                                    <td>System Architect</td>
+                                    <td>$320,800</td>
+                                    <td>Edinburgh</td>
+                                    <td>5421</td>
+                                    <td>t.nixon@datatables.net</td>
+                                    <td>5421</td>
+                                    <td>sdf</td>
+                                    <td>3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- ********************************************** -->
+                    </div>
+                </div>
 
-
-        <section id="infoPagoNoPuntual">
-            <h4>Pagado No Puntual</h4>
-            <table border="0" bgcolor="white">
-                <tr>
-                    <td>
-                        <b>Empresa</b>
-                    </td>
-                    <td><b>Sucursal</b></td>
-                    <td><b>Departamento</b></td>
-                    <td><b>Total Doctos</b></td>
-                    <td><b>Saldo</b></td>
-                    <td><b>Estatus</b></td>
-                </tr>
-                <tr>
-                    <td>Zaragoza Motriz SA de CV</td>
-                    <td>NISSAN ZARAGOZA</td>
-                    <td>SERVICIO</td>
-                    <td>5</td>
-                    <td>17100.00</td>
-                    <td><img src="images\alerta3.png" width="35" height="35"></td>
-                </tr>
-                <tr>
-                    <td>Zaragoza Motriz SA de CV</td>
-                    <td>NISSAN ZARAGOZA</td>
-                    <td>ADMINISTRACION</td>
-                    <td>3</td>
-                    <td>100.00</td>
-                    <td><img src="images\alerta3.png" width="35" height="35"></td>
-                </tr>
-                <tr>
-                    <td>Zaragoza Motriz SA de CV</td>
-                    <td>NISSAN ZARAGOZA</td>
-                    <td>NUEVOS</td>
-                    <td>8</td>
-                    <td>7600.00</td>
-                    <td><img src="\images\alerta3.png" width="35" height="35"></td>
-                </tr>
-            </table>
+            </div>
         </section>
+    </div>
+    <div class="col-xs-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">No Pagado</h2>
+                <div class="actions panel_actions pull-right">
+                    <a class="box_toggle fa fa-chevron-down"></a>
+                    <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
+                    <a class="box_close fa fa-times"></a>
+                </div>
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- ********************************************** -->
+                        <table id="puntual" class="display estiloTabla">
+                            <thead>
+                                <tr>
+                                    <!--                                    <th rowspan="3">Origen</th>-->
+                                    <th colspan="3">Origen</th>
+                                    <th colspan="3">Detalle de documento</th>
+                                    <th colspan="3">Detalle de pago</th>
+                                </tr>
+                                <tr>
+                                    <th>Empresa</th>
+                                    <th>Sucursal</th>
+                                    <th>Departamento</th>
+                                    <th>Documento</th>
+                                    <th>Serie</th>
+                                    <th>Vencimiento</th>
+                                    <th>Importe</th>
+                                    <th>Dias Atraso</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tiger Nixon</td>
+                                    <td>System Architect</td>
+                                    <td>$320,800</td>
+                                    <td>Edinburgh</td>
+                                    <td>5421</td>
+                                    <td>t.nixon@datatables.net</td>
+                                    <td>5421</td>
+                                    <td>3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- ********************************************** -->
+                    </div>
+                </div>
 
-
-        <section id="infoNoPagado">
-            <h4>No Pagados</h4>
-            <table border="0" bgcolor="white">
-                <tr>
-                    <td><b>Empresa</b></td>
-                    <td><b>Sucursal</b></td>
-                    <td><b>Departamento</b></td>
-                    <td><b>Documento</b></td>
-                    <td><b>Serie</b></td>
-                    <td><b>Fecha Vencimiento</b></td>
-                    <td><b>Importe</b></td>
-                    <td><b>Saldo</b></td>
-                    <td><b>Estatus</b></td>
-                </tr>
-                <tr>
-                    <td>Zaragoza Motriz SA de CV</td>
-                    <td>NISSAN ZARAGOZA</td>
-                    <td>SERVICIO</td>
-                    <td>AU-ZM-ZAR-RE-23</td>
-                    <td>AAA123</td>
-                    <td>02/03/2016</td>
-                    <td>50000</td>
-                    <td>60000</td>
-                    <td><img src="images\error2.png" width="32" height="32"></td>
-                </tr>
-                <tr>
-                    <td>Zaragoza Motriz SA de CV</td>
-                    <td>NISSAN ZARAGOZA</td>
-                    <td>NUEVOS</td>
-                    <td>AU-ZM-ZAR-NU-7</td>
-                    <td>AAA123</td>
-                    <td>02/03/2012</td>
-                    <td>8900</td>
-                    <td>1000</td>
-                    <td><img src="images\error2.png" width="32" height="32"></td>
-                </tr>
-                <tr>
-                    <td>Zaragoza Motriz SA de CV</td>
-                    <td>NISSAN ZARAGOZA</td>
-                    <td>ADMINISTRACION</td>
-                    <td>AU-ZM-ZAR-AD-23</td>
-                    <td>AAA123</td>
-                    <td>02/09/2013</td>
-                    <td>80</td>
-                    <td>100</td>
-                    <td><img src="images\error2.png" width="32" height="32"></td>
-                </tr>
-            </table>
+            </div>
         </section>
-    </section>
+    </div>
+
+
 
 </div>

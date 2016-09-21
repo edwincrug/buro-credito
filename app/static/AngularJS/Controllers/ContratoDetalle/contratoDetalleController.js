@@ -5,7 +5,12 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     $scope.init = function () {
         //alert('Estoy en Detalle Contrato');
         $scope.detalle = sessionFactory.detalle;
-        cargaInfoCliente($scope.detalle["0"].idCliente);
+        //cargaInfoCliente($scope.detalle["0"].idCliente);
+        setTimeout(function () {
+            $('.estiloTabla').DataTable({
+
+            });
+        }, 10);
     };
 
     //Obtiene los datos del cliente

@@ -28,7 +28,7 @@
 
     <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START -->
     <link href="css/plugins/jvectormap/jquery-jvectormap-2.0.1.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="css/tablas/jquery.dataTables.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="css/plugins/datatables/css/jquery.dataTables.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="js/tabla/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="css/tablas/dataTables.bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="css/plugins/switchery/switchery.css" rel="stylesheet" type="text/css" media="screen" />
@@ -55,11 +55,9 @@
 
 <!-- BEGIN BODY -->
 
-<body ng-app="app" ng-controller="loginController" ng-init="init()">
+<body ng-app="app" ng-controller="loginController" ng-init="init()" class="sidebar-collapse">
     <!-- START TOPBAR -->
     <div class='page-topbar '>
-        <div class='logo-area'>
-        </div>
         <div class='quick-area'>
             <div class='pull-left'>
                 <ul class="info-menu left-links list-inline list-unstyled">
@@ -232,39 +230,8 @@
                     </li>
                 </ul>
             </div>
-            <!--1) Estoy en la barra de arriba -->
-            <div class='pull-right'>
-                <ul class="info-menu right-links list-inline list-unstyled">
-                    <li class="profile">
-                        <a href="#" data-toggle="dropdown" class="toggle">
-                            <img src="images/profile/profile.png" alt="user-image" class="img-circle img-inline">
-                            <span>{{usuario[0].nombre}}<i class="fa fa-angle-down"></i></span>
-                        </a>
-                        <ul class="dropdown-menu profile animated fadeIn">
-                            <li>
-                                <a href="#settings">
-                                    <i class="fa fa-wrench"></i> Settings
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#profile">
-                                    <i class="fa fa-user"></i> Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#help">
-                                    <i class="fa fa-info"></i> Help
-                                </a>
-                            </li>
-                            <li class="last">
-                                <a href="ui-login.html">
-                                    <i class="fa fa-lock"></i> Logout
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+
+
         </div>
 
     </div>
@@ -274,7 +241,7 @@
 
         <!-- SIDEBAR - START -->
 
-        <div class="page-sidebar pagescroll">
+        <div class="page-sidebar pagescroll collapseit">
 
             <!-- MAIN MENU - START -->
             <div class="page-sidebar-wrapper" id="main-menu-wrapper">
@@ -345,7 +312,7 @@
         <!-- START CONTENT -->
         <!--LMS Comienza pagina -->
 
-        <section id="main-content" class=" ">
+        <section id="main-content" class=" sidebar_shift">
             <section class="wrapper main-wrapper row" style=''>
                 <div class='col-xs-12'>
                     <div ui-view></div>
