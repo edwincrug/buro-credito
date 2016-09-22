@@ -46,7 +46,7 @@ DataAccess.prototype.query = function (stored, params, callback) {
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////
-//Opcion para recibir mas de un objeto Multiple LMS 19/09/2016
+//Opcion para recibir mas de un objeto Multiple 19/09/2016
 //método genérico para acciones get
 DataAccess.prototype.querymulti = function (stored, params, callback) {
     var self = this.connection;

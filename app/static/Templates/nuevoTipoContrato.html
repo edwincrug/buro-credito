@@ -29,7 +29,7 @@
                                 <p class="input-group">
                                     Fecha de inicio
                                     <div class="input-group">
-                                        <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy" value="" ng-model="contratoEditar.fechaCreacion" >
+                                        <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy" value="" ng-model="contratoEditar.fechaCreacion">
                                     </div>
                                 </p>
                             </div>
@@ -58,35 +58,35 @@
             <div class="row">
                 <div class="col-xs-12">
                     <form role="form">
-                        
-                                    <table class="table table-striped dt-responsive display estiloTabla">
-                                        <thead>
-                                            <tr>
-                                                <th>Seleccionar</th>
-                                                <th>Obligatorio</th>
-                                                <th>Tipo de Documento</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat=" documento in listaDocumentos">
-                                                <td scope="row">
-                                                    <input type="checkbox" ng-model="documento.seleccionado" aria-label="Checkbox for following text input" >
-                                                    
-                                                    <!-- <input type="checkbox" class="js-switch-blue checkbox" ng-model="documento.seleccionado"/> -->
-                                                </td>
-                                                <td scope="row">
-                                                    <input type="checkbox" ng-model="documento.obligatorio" aria-label="Checkbox for following text input" ng-disabled="!documento.seleccionado">
-                                                    
-                                                    <!-- <input type="checkbox" class="js-switch-blue checkbox" ng-model="documento.seleccionado"/> -->
-                                                </td>
-                                                <!-- <th scope="row">
+
+                        <table class="table table-striped dt-responsive display estiloTabla">
+                            <thead>
+                                <tr>
+                                    <th>Seleccionar</th>
+                                    <th>Obligatorio</th>
+                                    <th>Tipo de Documento</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat=" documento in listaDocumentos">
+                                    <td scope="row">
+                                        <input type="checkbox" ng-model="documento.seleccionado" aria-label="Checkbox for following text input">
+
+                                        <!-- <input type="checkbox" class="js-switch-blue checkbox" ng-model="documento.seleccionado"/> -->
+                                    </td>
+                                    <td scope="row">
+                                        <input type="checkbox" ng-model="documento.obligatorio" aria-label="Checkbox for following text input" ng-disabled="!documento.seleccionado">
+
+                                        <!-- <input type="checkbox" class="js-switch-blue checkbox" ng-model="documento.seleccionado"/> -->
+                                    </td>
+                                    <!-- <th scope="row">
                                                     <input type="checkbox" class="js-switch-red checkbox"/>
                                                 </th> -->
-                                                <td>{{documento.nombre}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                
+                                    <td>{{documento.nombre}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                         <!-- Botones prueba-->
                         <ul class="pager wizard">
                             <li class="finish" style="display:;"><a href="javascript:;" ng-click="EditarTipo(listaDocumentos)" ng-show="opcion==2">
@@ -97,11 +97,11 @@
                     </form>
                 </div>
             </div>
-            <div class="col-md-offset-8">
+            <div class="col-md-offset-10">
                 <div class="list-group">
+                    <!--button type="button" class="btn btn-primary vimeo" ng-click="EditarTipo(listaDocumentos)" ng-show="opcion==2">Actualizar Cambios</button-->
+                    <button type="button" class="btn btn-success" ng-click="CrearTipo(listaDocumentos)" ng-show="opcion==1">Guardar Contrato</button>
                     <button type="button" class="btn btn-primary " ng-click="Regresar()">Cancelar</button>
-                    <button type="button" class="btn btn-primary vimeo" ng-click="EditarTipo(listaDocumentos)" ng-show="opcion==2">Actualizar Cambios</button>
-                    <button type="button" class="btn btn-primary vimeo" ng-click="CrearTipo(listaDocumentos)" ng-show="opcion==1">Guardar Contrato</button>
                 </div>
             </div>
         </div>
