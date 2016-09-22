@@ -507,6 +507,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/css\/home.css": {
+		"fileType": 16,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/home.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/css\/messenger-theme-flat.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -2476,6 +2485,22 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1
 		},
+	"\/sass\/home.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/sass\/home.scss",
+		"outputAbbreviatedPath": "\/css\/home.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
 	"\/Templates\/contratos.html": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -2558,7 +2583,7 @@
 	"bowerAbbreviatedPath": "",
 	"displayValue": "buro-credito",
 	"displayValueWasSetByUser": 1,
-	"iconImageName": "brackets_gray"
+	"iconImageName": "brackets_orange"
 	},
 "projectSettings": {
 	"alwaysUseExternalServer": 0,
