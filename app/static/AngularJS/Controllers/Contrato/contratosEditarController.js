@@ -13,14 +13,10 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
             .then(
                 function succesCallback(response) {
                     //Success
-                    //notificationFactory.success('Cotrato obtenidos correctamente');
                     $scope.listaContratos = response.data;
-
                     setTimeout(function () {
-                        $('.estiloTabla').DataTable({
-
-                        });
-                    }, 1000);
+                        $('.estiloTabla').DataTable({});
+                    }, 100);
                 },
                 function errorCallback(response) {
                     //Error
@@ -32,18 +28,12 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
 
 
     $scope.verDetalleContrato = function (contrato) {
-        //sessionFactory.verContrato = null;
-        //alert('Estoy en detalle contratos' + contrato.idContrato);
-
 
         contratoDetalleRepository.obtieneDetalleContrato(contrato.idContrato)
             .then(
                 function succesCallback(response) {
-                    //alert('Empiezo obten detalle contrato');
                     //Success
-                    //notificationFactory.success('Cotrato obtenidos correctamente');
                     sessionFactory.detalle = response.data;
-                    //$state.go('detallecontrato');
                     $state.go('detallecontrato', {
                         contratoObj: contrato
                     }, {
@@ -58,53 +48,4 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
 
     };
 
-
-
-    /*
-        //Eliminar Tipo de Contrato
-        $scope.Eliminar = function (idtipocontrato) {
-            //login
-            //notificationFactory.warning('Entre en Borrar Tipo de Contrato Funcion');
-            tipoContratoRepository.eliminarTipoContrato(idtipocontrato)
-                .then(
-                    function successCallbackEliminar(response) {
-                        //reset
-                        //Success        
-                        notificationFactory.success('Eliminados correctamente.');
-                        //$scope.resultado = response.data;
-                    },
-                    function errorCallbackEliminar(response) {
-                        //Error
-                        notificationFactory.error('Error al eliminar el contrato: ' + response.data.message);
-                    }
-                );
-            $('#modaleliminar').modal('hide');
-            $state.go('tipocontrato');
-            //location.href = '/'; //***
-        };
-
-        //EditarTipo()
-        $scope.EditarTipoContrato = function (tipo, opc) {
-            //Success
-            //var url = window.location.pathname + '//nuevotipoContrato';
-            sessionFactory.tipoContratoEditar = tipo;
-            sessionFactory.opcion = opc;
-            $state.go('nuevotipocontrato');
-
-        };
-
-        //Lamada NuevoTipo
-        $scope.NuevoTipo = function (opc) {
-            sessionFactory.tipoContratoEditar = null;
-            sessionFactory.opcion = opc;
-            $state.go('nuevotipocontrato'); //***
-
-        };
-
-        $scope.modalEliminar = function (idtipocontrato) {
-            $('#modaleliminar').modal('show');
-            $scope.idEliminar = idtipocontrato;
-        };
-
-    */
-}); //FIN de appControllers
+});

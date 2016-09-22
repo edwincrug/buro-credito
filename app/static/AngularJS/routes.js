@@ -9,10 +9,10 @@ angular.module('app.routes', ["LocalStorageModule"])
 
     $stateProvider
 
-        .state('nuevo', {
-        url: '/nuevo',
-        templateUrl: 'templates/nuevoContrato.html',
-        controller: 'contratoController'
+        .state('home', {
+        url: '/',
+        templateUrl: 'Templates/contratos.html',
+        controller: 'contratosEditarController'
     })
 
     //1) nuevoTipoContrato
@@ -34,13 +34,6 @@ angular.module('app.routes', ["LocalStorageModule"])
         url: '/nuevocontrato',
         templateUrl: 'Templates/nuevocontrato.html',
         controller: 'contratoController'
-    })
-
-    //4) Nuevo Contrato   //****
-    .state('contratos', {
-        url: '/',
-        templateUrl: 'Templates/contratos.html',
-        controller: 'contratosEditarController'
     })
 
     //5)Detalle Contrato   //****

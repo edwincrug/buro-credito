@@ -65,7 +65,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     };
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //  Documentos Pagados
+    //  Documentos 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     var cargaDocumentos = function () {
         $scope.idcontrato = $stateParams.contratoObj.idContrato;
@@ -90,7 +90,6 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                 notificationFactory.error('No se pudo obtener el detalle de los Documentos No Pagados');
                             }
                         );
-
                 },
                 function errorCallback(response) {
                     notificationFactory.error('No se pudo obtener el detalle de los Documentos Pagados');
