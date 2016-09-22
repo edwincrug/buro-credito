@@ -77,7 +77,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     var cargaPagoDocumentos = function () {
         $scope.idcontrato = $stateParams.contratoObj.idContrato;
-        $scope.idcliente = 46440; //$stateParams.contratoObj.idCliente;
+        $scope.idcliente = $stateParams.contratoObj.idCliente;
         $scope.idempresa = $stateParams.contratoObj.idEmpresa;
         //$scope.nombreCliente = $stateParams.contratoObj.nombreCliente;
 
@@ -101,7 +101,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     var cargaNoPagoDocumentos = function () {
         $scope.idcontrato = $stateParams.contratoObj.idContrato;
-        $scope.idcliente = 46440; //$stateParams.contratoObj.idCliente;
+        $scope.idcliente = $stateParams.contratoObj.idCliente;
         $scope.idempresa = $stateParams.contratoObj.idEmpresa;
 
         alert('contrato: ' + $scope.idcontrato + ' cliente: ' + $scope.idcliente + ' empresa: ' + $scope.idempresa);

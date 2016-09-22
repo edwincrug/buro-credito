@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!--  -->
 
 <head>
 
@@ -84,15 +83,10 @@
                 </section>
             </td>
             <td width="50%">
-                <!--script>
-                    var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",               "Septiembre", "Octubre", "Noviembre", "Diciembre");
-                    var f = new Date();
-                    document.write(f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
-                </script-->
                 <section id="datosSucursal">
                     <table border="0" bgcolor="white">
                         <td align="right" style="margin-left: 20px;">
-                            <h4><b>Fecha de Consulta: 14/09/2016</b></h4>
+                            <h4><b>Fecha de Consulta: {{informacioncliente.fechaConsulta}}</b></h4>
                         </td>
                         <td><img src="\images\grafica.jpg" width="120" height="120" align="right">
                         </td>
@@ -103,9 +97,7 @@
     </table>
 </head>
 
-
 <body style="margin:40px;">
-    <!-- HTML Vista-->
     <table border="0" width="100%" cellpadding="5" cellspacing="5">
         <tr>
             <td width="50%">
@@ -162,7 +154,6 @@
             </td>
             </tr>
     </table>
-    <!--html vista fin -->
 
     <!--Listado de Documentos -->
     <h2>DOCUMENTOS VENCIDOS</h2>
@@ -227,7 +218,6 @@
                 <th colspan="1" rowspan="2"><b>Estatus</b></th>
             </tr>
             <tr>
-                <!--th colspan="1"><b>&nbsp;</b></th-->
                 <th colspan="1"><b>Num. Doc.</b></th>
                 <th colspan="1"><b>Importe</b></th>
                 <th colspan="1"><b>Num. Doc.</b></th>
@@ -238,7 +228,6 @@
                 <th colspan="1"><b>Importe</b></th>
                 <th colspan="1"><b>Num. Doc.</b></th>
                 <th colspan="1"><b>Importe</b></th>
-                <!--th colspan="1"><b>Estatus</b></th-->
             </tr>
             {% for docnopagado in docnopagados %}
             <tr>
@@ -257,7 +246,6 @@
             </tr>
             {% endfor %}
         </table>
-
     </section>
     <!-- Listado de Documentos fin-->
 </body>
