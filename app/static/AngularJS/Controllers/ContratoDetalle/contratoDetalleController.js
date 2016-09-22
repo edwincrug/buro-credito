@@ -81,14 +81,14 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         $scope.idempresa = $stateParams.contratoObj.idEmpresa;
         //$scope.nombreCliente = $stateParams.contratoObj.nombreCliente;
 
-        alert('contrato: ' + $scope.idcontrato + ' cliente: ' + $scope.idcliente + ' empresa: ' + $scope.idempresa);
+        //alert('contrato: ' + $scope.idcontrato + ' cliente: ' + $scope.idcliente + ' empresa: ' + $scope.idempresa);
 
         contratoDetalleRepository.detallePagoDocumentos($scope.idcliente, $scope.idempresa)
             .then(
                 function succesCallback(response) {
                     notificationFactory.success('Detalle Documentos Pagados');
                     $scope.listaPagados = response.data;
-                    alert('Pagados: ' + pagados.empresa);
+                    //alert('Pagados: ' + pagados.empresa);
                 },
                 function errorCallback(response) {
                     notificationFactory.error('No se pudo obtener el detalle de los Documentos Pagados');
@@ -104,14 +104,14 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         $scope.idcliente = $stateParams.contratoObj.idCliente;
         $scope.idempresa = $stateParams.contratoObj.idEmpresa;
 
-        alert('contrato: ' + $scope.idcontrato + ' cliente: ' + $scope.idcliente + ' empresa: ' + $scope.idempresa);
+        //alert('contrato: ' + $scope.idcontrato + ' cliente: ' + $scope.idcliente + ' empresa: ' + $scope.idempresa);
 
         contratoDetalleRepository.detalleNoPagados($scope.idcliente, $scope.idempresa)
             .then(
                 function succesCallback(response) {
                     notificationFactory.success('Detalle Documentos No Pagados');
                     $scope.listaNoPagados = response.data;
-                    alert('No Pagados: ' + pagados.empresa);
+                    //alert('No Pagados: ' + pagados.empresa);
                 },
                 function errorCallback(response) {
                     notificationFactory.error('No se pudo obtener el detalle de los Documentos No Pagados');
