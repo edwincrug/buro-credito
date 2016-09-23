@@ -33,6 +33,7 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
             .then(
                 function succesCallback(response) {
                     //Success
+                    //alert('Estoy en ver detalle Contrato: ' + contrato.idContrato);
                     sessionFactory.detalle = response.data;
                     $state.go('detallecontrato', {
                         contratoObj: contrato

@@ -1,0 +1,33 @@
+.rojo {
+    color: #FFEB7D;
+}
+.naranja {
+    background-color: #FFB44B;
+}
+.verde {
+    background-color: #96CD39;
+}
+.gris {
+    background-color: #FAF8F8;
+}
+
+/* opc pasteles
+.rojo {
+    background-color: #FFD6A4;
+}
+.naranja {
+    background-color: #FEFDCA;#EDE7CF
+}
+.verde {
+    background-color: #ABCD9E;
+     #EAEFC4;
+}*/
+
+.izquierda {
+    float: left;
+    width: 50%
+}
+.derecha {
+    float: left;
+    width: 50%
+}

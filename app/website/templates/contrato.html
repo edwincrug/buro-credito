@@ -86,7 +86,7 @@
                 <section id="datosSucursal">
                     <table border="0" bgcolor="white">
                         <td align="right" style="margin-left: 20px;">
-                            <h4><b>Fecha de Consulta: {{informacioncliente.fechaConsulta}}</b></h4>
+                            <h4><b>FECHA DE CONSULTA: {{informacioncliente.fechaConsulta}}</b></h4>
                         </td>
                         <td><img src="\images\grafica.jpg" width="120" height="120" align="right">
                         </td>
@@ -103,7 +103,7 @@
             <td width="50%">
                 <section id="datosCliente">
                     <table border="0" bgcolor="white">
-                        <th align="center" colspan="2"><b>Datos del Cliente:</b> </th>
+                        <th align="center" colspan="2"><b>DATOS DEL CLIENTE:</b> </th>
                         <tr>
                             <td><b>Id Cliente BPRO:</b></td>
                             <td>{{informacioncliente.idCliente}}</td>
@@ -133,13 +133,13 @@
                 <section id="datosSucursal">
                     <table border="0" bgcolor="white">
                         <tr>
-                            <th align="center" colspan="4"><b>Datos Agencia:</b></th>
+                            <th align="center" colspan="4"><b>DATOS POR AGENCIA:</b></th>
                         </tr>
                         <tr>
                             <th><b>Empresa</b></th>
                             <th><b>Sucursal</b></th>
                             <th><b>Departamento</b></th>
-                            <th><b>Saldo</b></th>
+                            <th><b>Crédito</b></th>
                         </tr>
                         {% for total in totales %}
                         <tr>
@@ -157,56 +157,9 @@
 
     <!--Listado de Documentos -->
     <h2>DOCUMENTOS VENCIDOS</h2>
-    <section id="infoPagoPuntual">
-        <h3>Pagado Puntualmente</h3>
-        <table border="0" bgcolor="white">
-            <tr>
-                <th><b>Empresa</b></th>
-                <th><b>Sucursal</b></th>
-                <th><b>Departamento</b></th>
-                <th><b>Total Doctos</b></th>
-                <th><b>Saldo</b></th>
-                <th><b>Estatus</b></th>
-            </tr>
-            {% for docpagado in docpagados %} {% if docpagado.tipoPagoFecha == 1 %}
-            <tr>
-                <td width=100%>{{docpagado.empresa}}</td>
-                <td>{{docpagado.sucursal}}</td>
-                <td>{{docpagado.departamento}}</td>
-                <td>{{docpagado.totalDoctos}}</td>
-                <td>{{docpagado.cargo}}</td>
-                <td><img src="\images\correcto.png" width="35" height="35"></td>
-            </tr>
-            {% endif %} {% endfor %}
-        </table>
-    </section>
-
-    <section id="infoPagoNoPuntual">
-        <h3>Pagado No Puntual</h3>
-        <table border="0" bgcolor="white">
-            <tr>
-                <th><b>Empresa</b></th>
-                <th><b>Sucursal</b></th>
-                <th><b>Departamento</b></th>
-                <th><b>Total Doctos</b></th>
-                <th><b>Saldo</b></th>
-                <th><b>Estatus</b></th>
-            </tr>
-            {% for docpagado in docpagados %}{% if docpagado.tipoPagoFecha == 2 %}
-            <tr>
-                <td>{{docpagado.empresa}}</td>
-                <td>{{docpagado.sucursal}}</td>
-                <td>{{docpagado.departamento}}</td>
-                <td>{{docpagado.totalDoctos}}</td>
-                <td>{{docpagado.cargo}}</td>
-                <td><img src="\images\alerta3.png" width="35" height="35"></td>
-            </tr>
-            {% endif %} {% endfor %}
-        </table>
-    </section>
 
     <section id="infoNoPagado">
-        <h3>No Pagados</h3>
+        <h3>NO PAGADO</h3>
         <table border="0" bgcolor="white">
             <tr>
                 <th colspan="1" rowspan="2"><b>Departamento</b></th>
@@ -247,6 +200,55 @@
             {% endfor %}
         </table>
     </section>
+
+    <section id="infoPagoNoPuntual">
+        <h3>PAGO EXTEMPORÁNEO</h3>
+        <table border="0" bgcolor="white">
+            <tr>
+                <th><b>Empresa</b></th>
+                <th><b>Sucursal</b></th>
+                <th><b>Departamento</b></th>
+                <th><b>Total Doctos</b></th>
+                <th><b>Saldo</b></th>
+                <th><b>Estatus</b></th>
+            </tr>
+            {% for docpagado in docpagados %}{% if docpagado.tipoPagoFecha == 2 %}
+            <tr>
+                <td>{{docpagado.empresa}}</td>
+                <td>{{docpagado.sucursal}}</td>
+                <td>{{docpagado.departamento}}</td>
+                <td>{{docpagado.totalDoctos}}</td>
+                <td>{{docpagado.cargo}}</td>
+                <td><img src="\images\alerta3.png" width="35" height="35"></td>
+            </tr>
+            {% endif %} {% endfor %}
+        </table>
+    </section>
+
+    <section id="infoPagoPuntual">
+        <h3>PAGO PUNTUAL</h3>
+        <table border="0" bgcolor="white">
+            <tr>
+                <th><b>Empresa</b></th>
+                <th><b>Sucursal</b></th>
+                <th><b>Departamento</b></th>
+                <th><b>Total Doctos</b></th>
+                <th><b>Saldo</b></th>
+                <th><b>Estatus</b></th>
+            </tr>
+            {% for docpagado in docpagados %} {% if docpagado.tipoPagoFecha == 1 %}
+            <tr>
+                <td width=100%>{{docpagado.empresa}}</td>
+                <td>{{docpagado.sucursal}}</td>
+                <td>{{docpagado.departamento}}</td>
+                <td>{{docpagado.totalDoctos}}</td>
+                <td>{{docpagado.cargo}}</td>
+                <td><img src="\images\correcto.png" width="35" height="35"></td>
+            </tr>
+            {% endif %} {% endfor %}
+        </table>
+    </section>
+
     <!-- Listado de Documentos fin-->
 </body>
 

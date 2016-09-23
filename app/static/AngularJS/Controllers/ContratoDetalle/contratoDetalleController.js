@@ -1,6 +1,8 @@
 appControllers.controller('contratoDetalleController', function ($scope, $state,
     $stateParams, contratoDetalleRepository, notificationFactory, sessionFactory, datosClienteRepository) {
 
+    $scope.message = 'Buscando...';
+
     //Metodo de incio 
     $scope.init = function () {
         $scope.detalle = sessionFactory.detalle;
@@ -17,7 +19,6 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                     //Success
                     //notificationFactory.success('Cotrato obtenidos correctamente');
                     $scope.datosCliente = response.data;
-
                 },
                 function errorCallback(response) {
                     //Error
@@ -71,8 +72,14 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         $scope.idcontrato = $stateParams.contratoObj.idContrato;
         $scope.idcliente = $stateParams.contratoObj.idCliente;
         $scope.idempresa = $stateParams.contratoObj.idEmpresa;
+        $scope.nombrecliente = $stateParams.contratoObj.nombreCliente;
+        $scope.folioContrato = $stateParams.contratoObj.folioContrato;
+        $scope.empresa = $stateParams.contratoObj.empresa;
 
-        contratoDetalleRepository.detallePagoDocumentos($scope.idcliente, $scope.idempresa)
+
+        //alert('Estoy en ver detalle Empresa: ' + $scope.nombreCliente);
+
+        $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente, $scope.idempresa)
             .then(
                 function succesCallback(response) {
                     notificationFactory.success('Detalle Documentos Pagados');
