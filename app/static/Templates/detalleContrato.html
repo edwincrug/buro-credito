@@ -61,7 +61,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- ********************************************** -->
-                        <table id="puntual" class="display estiloTabla">
+                        <table id="nopagado" class="display estiloTabla">
                             <thead class="gris">
                                 <tr>
                                     <!--                                    <th rowspan="3">Origen</th>-->
@@ -103,14 +103,12 @@
         </section>
     </div>
 
-
-
-
-    <!-- -->
+    <!--Otra prueba -->
+    <!-- Pagados-->
     <div class="col-xs-12">
         <section class="box ">
             <header class="panel_header">
-                <h2 class="title pull-left">Pago Extemporáneo</h2>
+                <h2 class="rojo title pull-left rojo">Pago Extemporáneo</h2>
                 <div class="actions panel_actions pull-right">
                     <a class="box_toggle fa fa-chevron-down"></a>
                     <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
@@ -121,13 +119,13 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- ********************************************** -->
-                        <table id="puntual" class="display estiloTabla">
+                        <table id="inpuntual" class="display estiloTabla">
                             <thead class="gris">
                                 <tr>
                                     <!--                                    <th rowspan="3">Origen</th>-->
                                     <th colspan="3">Origen</th>
                                     <th colspan="2">Detalle de documento</th>
-                                    <th colspan="4">Detalle de pago</th>
+                                    <th colspan="3">Detalle de pago</th>
                                 </tr>
                                 <tr>
                                     <th>Empresa</th>
@@ -138,12 +136,12 @@
                                     <th>Vencimiento</th>
                                     <th>Importe</th>
                                     <th>Fecha Pago</th>
-                                    <th>Dias Atraso</th>
+                                    <!--th>Dias Atraso</th-->
                                     <th>Estatus</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="pagado in listaPagados" ng-show="pagado.tipoPagoFecha===2">
+                                <tr ng-repeat="pagado in listaPagados" ng-show="pagado.tipoPagoFecha==2">
                                     <td>{{ pagado.empresa }}</td>
                                     <td>{{ pagado.sucursal }}</td>
                                     <td>{{ pagado.departamento }}</td>
@@ -152,9 +150,12 @@
                                     <td>{{ pagado.fechaVencimiento }}</td>
                                     <td>{{ pagado.cargo }}</td>
                                     <td>{{ pagado.fechaPago }}</td>
-                                    <td>{{ pagado.diasAtraso }}</td>
-                                    <th><img src="\images\alerta3.png" width="35" height="35"></th>
+                                    <!--td>{{ pagado.diasAtraso }}</td-->
+                                    <td><img src="\images\alerta3.png" width="35" height="35"></td>
                                 </tr>
+                                <!--tr>
+                                    <th colspan="4">Totales:</th>
+                                </tr-->
                             </tbody>
                         </table>
                         <!-- ********************************************** -->
@@ -164,6 +165,9 @@
             </div>
         </section>
     </div>
+    <!--Otra prueba -->
+
+
 
     <!-- Pagados-->
     <div class="col-xs-12">

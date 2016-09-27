@@ -110,13 +110,14 @@ contratoDetalle.prototype.get_nuevo = function (req, res, next) {
             console.log('101.-Estoy en SEL_TOTAL_CREDITO_AGENCIA_SP ' + req.query.idContrato);
             console.log(error)
             console.log(totales)
-
-            self.model.query('SEL_DOCUMENTOS_PAGADOS_SP', params, function (error, docpagados) {
-                console.log('102.-Estoy en SEL_DOCUMENTOS_PAGADOS_SP');
+                /*SEL_DOCUMENTOS_PAGADOS_SP   */
+            self.model.query('SEL_EMP_DOC_PAGADOS_SP', params, function (error, docpagados) {
+                console.log('102.-Estoy en SEL_EMP_DOC_PAGADOS_SP');
                 console.log(error)
                 console.log(docpagados)
-                self.model.query('SEL_CARTERA_VENCIDA_SP', params, function (error, docnopagados) {
-                    console.log('103.-Estoy en SEL_CARTERA_VENCIDA_SP');
+                    /*SEL_CARTERA_VENCIDA_SP*/
+                self.model.query('SEL_EMP_DOC_NO_PAGADOS_SP', params, function (error, docnopagados) {
+                    console.log('103.-Estoy en SEL_EMP_DOC_NO_PAGADOS_SP');
                     console.log(error)
                     console.log(docnopagados);
                     res.render('contrato.html', {
