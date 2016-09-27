@@ -46,15 +46,16 @@ angular.module('app.routes', ["LocalStorageModule"])
         }
     })
 
-    //5)Consulta de BURO   //****
+    //6)Consulta de BURO   //****
     .state('consultaburo', {
         url: '/consultaburo',
         templateUrl: 'Templates/consultaBuro.html',
-        controller: 'consultaBuroController',
-        params: {
-            contratoObj: null
-        }
+        controller: 'consultaBuroController'
+            //,params: {
+            //    contratoObj: null
+            //}
     })
+
 
     //Login
     .state('login', {
@@ -64,7 +65,5 @@ angular.module('app.routes', ["LocalStorageModule"])
     })
 
     $urlRouterProvider.otherwise('/')
-
-
 
 });
