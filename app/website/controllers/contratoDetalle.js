@@ -95,36 +95,36 @@ contratoDetalle.prototype.get_nuevo = function (req, res, next) {
         }
     ];
 
-    console.log('3.-Estoy en NUEVO cliente: ' + req.query.idCliente);
-    console.log(params);
+    //    console.log('3.-Estoy en NUEVO cliente: ' + req.query.idCliente);
+    //    console.log(params);
     this.model.query('SEL_DATOS_CLIENTE_SP', params, function (error, informacioncliente) {
-        console.log('10.-Estoy en SEL_DATOS_CLIENTE_SP' + req.query.idCliente);
-        console.log(error)
-        console.log(informacioncliente)
+        //        console.log('10.-Estoy en SEL_DATOS_CLIENTE_SP' + req.query.idCliente);
+        //        console.log(error)
+        //        console.log(informacioncliente)
         params = [{
             name: 'idCliente',
             value: informacioncliente[0].idCliente,
             type: self.model.types.INT
         }]
-        self.model.query('SEL_TOTAL_CREDITO_SP', params, function (error, totales) {
-            console.log('101.-Estoy en SEL_TOTAL_CREDITO_SP ' + req.query.idContrato);
-            console.log(error)
-            console.log(totales)
-                /*SEL_EMP_DOC_PAGADOS_SP   */
-            self.model.query('SEL_TOTAL_DOC_PAGADOS_SP', params, function (error, docpagados) {
-                console.log('102.-Estoy en SEL_TOTAL_DOC_PAGADOS_SP');
-                console.log(error)
-                console.log(docpagados)
-                    /*SEL_EMP_DOC_NO_PAGADOS_SP*/
-                self.model.query('SEL_TOTAL_DOC_NO_PAGADOS_SP', params, function (error, docnopagados) {
-                    console.log('103.-Estoy en SEL_TOTAL_DOC_NO_PAGADOS_SP');
-                    console.log(error)
-                    console.log(docnopagados);
+        self.model.querymulti('SEL_TOTAL_CREDITO_SP', params, function (error, totales) {
+            //            console.log('101.-Estoy en SEL_TOTAL_CREDITO_SP ' + req.query.idContrato);
+            //            console.log(error)
+            //            console.log(totales)
+            /*SEL_EMP_DOC_PAGADOS_SP   */
+            self.model.querymulti('SEL_TOTAL_DOC_PAGADOS_SP', params, function (error, docpagados) {
+                //                console.log('102.-Estoy en SEL_TOTAL_DOC_PAGADOS_SP');
+                //                console.log(error)
+                //                console.log(docpagados)
+                /*SEL_EMP_DOC_NO_PAGADOS_SP*/
+                self.model.querymulti('SEL_TOTAL_DOC_NO_PAGADOS_SP', params, function (error, docnopagados) {
+                    //                    console.log('103.-Estoy en SEL_TOTAL_DOC_NO_PAGADOS_SP');
+                    //                    console.log(error)
+                    //                    console.log(docnopagados);
                     res.render('contrato.html', {
                         informacioncliente: informacioncliente[0],
-                        totales: totales,
-                        docpagados: docpagados,
-                        docnopagados: docnopagados
+                        listaTotales: totales,
+                        listaDocPagados: docpagados,
+                        listaDocNoPagados: docnopagados
                     });
                     console.log('Termina')
                 });
