@@ -79,12 +79,12 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
         //alert('Estoy en ver detalle Empresa: ' + $scope.nombreCliente);
 
-        $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente, $scope.idempresa)
+        $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente)
             .then(
                 function succesCallback(response) {
                     notificationFactory.success('Detalle Documentos Pagados');
                     $scope.listaPagados = response.data;
-                    contratoDetalleRepository.detalleNoPagados($scope.idcliente, $scope.idempresa)
+                    contratoDetalleRepository.detalleNoPagados($scope.idcliente)
                         .then(
                             function succesCallback(response) {
                                 notificationFactory.success('Detalle Documentos No Pagados');

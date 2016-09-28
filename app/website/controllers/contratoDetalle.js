@@ -168,13 +168,9 @@ contratoDetalle.prototype.get_detallePagoDocumentos = function (req, res, next) 
         name: 'idCliente',
         value: req.query.idCliente,
         type: self.model.types.INT
-        }, {
-        name: 'idEmpresa',
-        value: req.query.idEmpresa,
-        type: self.model.types.INT
         }]
 
-    this.model.query('SEL_DOC_PAGADOS_DETALLE_SP', params, function (error, result) {
+    this.model.query('SEL_TOTAL_DOC_PAG_DETALLE_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result
@@ -192,13 +188,10 @@ contratoDetalle.prototype.get_detalleNoPagados = function (req, res, next) {
         name: 'idCliente',
         value: req.query.idCliente,
         type: self.model.types.INT
-        }, {
-        name: 'idEmpresa',
-        value: req.query.idEmpresa,
-        type: self.model.types.INT
         }]
 
-    this.model.query('SEL_CARTERA_DETALLE_SP', params, function (error, result) {
+
+    this.model.query('SEL_TOTAL_CARTERA_DETALLE_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result

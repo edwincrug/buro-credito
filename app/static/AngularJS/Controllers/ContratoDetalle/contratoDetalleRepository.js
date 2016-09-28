@@ -52,8 +52,7 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
                 url: contratoDetalleRepositoryURL + 'detallepagodocumentos/',
                 method: "GET",
                 params: {
-                    idCliente: idCliente,
-                    idEmpresa: idEmpresa
+                    idCliente: idCliente
                 },
                 headers: {
                     'Content-Type': 'application/json'
@@ -67,8 +66,7 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
                 url: contratoDetalleRepositoryURL + 'detallenopagados/',
                 method: "GET",
                 params: {
-                    idCliente: idCliente,
-                    idEmpresa: idEmpresa
+                    idCliente: idCliente
                 },
                 headers: {
                     'Content-Type': 'application/json'
