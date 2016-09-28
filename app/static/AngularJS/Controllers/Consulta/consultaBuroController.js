@@ -24,43 +24,15 @@ appControllers.controller('consultaBuroController', function ($scope, $state, no
     };
 
     $scope.verDetalleReporte = function (cliente) {
-        //$scope.idcliente = $stateParams.clienteObj.idCliente;
+        $scope.idcliente = cliente.idCliente;
+        $scope.nombrecliente = cliente.nombre;
 
-        alert('Estoy en ver detalle Contrato : ' + cliente.idCliente);
-        ///Hasta aqui estoy ;((((()))))
+        //alert('Estoy en ver detalle Contrato : ' + $scope.idcliente + ' Nombre: ' + $scope.nombrecliente);
         $state.go('detallecontrato', {
             contratoObj: cliente
         }, {
             reload: true
         });
-
-        //         contratoDetalleRepository.obtieneDetalleContrato(contrato.idContrato)
-        //            .then(
-        //                function succesCallback(response) {
-        //                    //Success
-        //                    //alert('Estoy en ver detalle Contrato: ' + contrato.idContrato);
-        //                    sessionFactory.detalle = response.data;
-        //                    $state.go('detallecontrato', {
-        //                        contratoObj: contrato
-        //                    }, {
-        //                        reload: true
-        //                    });
-        //                },
-        //                function errorCallback(response) {
-        //                    //Error
-        //                    notificationFactory.error('No se pudieron obtener los Contratos: ' + response.data.message);
-        //                }
-        //            );
-
     };
-
-    //   Regreso a la pantalla nuevo Contrato con los datos del Cliente
-    //    $scope.cargarCliente = function (infoCliente) {
-    //        //alert('Estoy en carga Cliente' + infoCliente.nombre);
-    //        $rootScope.datosCliente = infoCliente;
-    //        $rootScope.verDatos = true;
-    //        //$('#searchCliente').modal('hide');
-    //    };
-
 
 });

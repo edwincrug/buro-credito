@@ -70,12 +70,12 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //  Documentos 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     var cargaDocumentos = function () {
-        $scope.idcontrato = $stateParams.contratoObj.idContrato;
         $scope.idcliente = $stateParams.contratoObj.idCliente;
-        $scope.idempresa = $stateParams.contratoObj.idEmpresa;
         $scope.nombrecliente = $stateParams.contratoObj.nombreCliente;
-        $scope.folioContrato = $stateParams.contratoObj.folioContrato;
-        $scope.empresa = $stateParams.contratoObj.empresa;
+        //$scope.idempresa = $stateParams.contratoObj.idEmpresa;
+        //$scope.idcontrato = $stateParams.contratoObj.idContrato;
+        //$scope.folioContrato = $stateParams.contratoObj.folioContrato;
+        //$scope.empresa = $stateParams.contratoObj.empresa;
 
 
         //alert('Estoy en ver detalle Empresa: ' + $scope.nombreCliente);
