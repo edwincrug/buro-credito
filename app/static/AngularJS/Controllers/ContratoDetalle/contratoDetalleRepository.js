@@ -19,12 +19,12 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
         }, //Fin Obtiene Detalle Contrato
 
         //Genera PDF
-        generarPdf: function (idContrato) {
+        generarPdf: function (idCliente) {
             return $http({
                 url: contratoDetalleRepositoryURL + 'generarPdf/',
                 method: "GET",
                 params: {
-                    idContrato: idContrato
+                    idCliente: idCliente
                 },
                 headers: {
                     'Content-Type': 'application/json'

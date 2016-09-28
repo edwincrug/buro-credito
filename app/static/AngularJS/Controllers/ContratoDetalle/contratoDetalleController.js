@@ -31,14 +31,15 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //Genera el pdf 
     $scope.generarPdf = function () {
         $scope.idcontrato = $stateParams.contratoObj.idContrato;
+        $scope.idcliente = $stateParams.contratoObj.idCliente;
 
-        contratoDetalleRepository.generarPdf($scope.idcontrato)
+        contratoDetalleRepository.generarPdf($scope.idcliente)
             .then(
                 function succesCallback(response) {
                     notificationFactory.success('Success genero el pdf');
                     //
                     $scope.url = response.config.url;
-                    window.open($scope.url + '?idContrato=' + $scope.idcontrato, "ventana1", "width=700,height=600,scrollbars=NO");
+                    window.open($scope.url + '?idCliente=' + $scope.idcliente, "ventana1", "width=700,height=600,scrollbars=NO");
                 },
                 function errorCallback(response) {
                     //Error
