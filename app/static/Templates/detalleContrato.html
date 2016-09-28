@@ -36,9 +36,9 @@
                 <div class="row">
                     <div class="col-xs-12"><b>Id BPRO:&nbsp;</b> {{idcliente}}</div>
                     <div class="col-xs-12"><b>Nombre:&nbsp;&nbsp;</b> {{nombrecliente}}</div>
-                    <div class="col-xs-12"><b>Folio Contrato:&nbsp;&nbsp;</b> {{folioContrato}}</div>
+                    <!--div class="col-xs-12"><b>Folio Contrato:&nbsp;&nbsp;</b> {{folioContrato}}</div-->
                     <!--div class="col-xs-12"><b>Tipo Contrato:&nbsp;&nbsp;</b> {{nomTipoContrato}}</div-->
-                    <div class="col-xs-12"><b>Empresa:&nbsp;&nbsp;</b> {{empresa}}</div>
+                    <!--div class="col-xs-12"><b>Empresa:&nbsp;&nbsp;</b> {{empresa}}</div-->
                     <!--h2 class="amarillo">Probando</h2-->
                 </div>
             </div>
@@ -89,7 +89,7 @@
                                     <td>{{ nopagado.idDocumento }}</td>
                                     <!--td>{{ nopagado.serie }}</td-->
                                     <td>{{ nopagado.fechaVencimiento }}</td>
-                                    <td>{{ nopagado.importe }}</td>
+                                    <td>${{ nopagado.importe }}</td>
                                     <td>{{ nopagado.diasVencidos }}</td>
                                     <th><img src="\images\error2.png" width="32" height="32"></th>
                                 </tr>
@@ -148,7 +148,7 @@
                                     <td>{{ pagado.idDocumento }}</td>
                                     <!--td>{{ pagado.serie }}</td-->
                                     <td>{{ pagado.fechaVencimiento }}</td>
-                                    <td>{{ pagado.cargo }}</td>
+                                    <td>${{ pagado.cargo }}</td>
                                     <td>{{ pagado.fechaPago }}</td>
                                     <!--td>{{ pagado.diasAtraso }}</td-->
                                     <td><img src="\images\alerta3.png" width="35" height="35"></td>
@@ -212,7 +212,7 @@
                                     <td>{{ pagado.idDocumento }}</td>
                                     <!--td>{{ pagado.serie }}</td-->
                                     <td>{{ pagado.fechaVencimiento }}</td>
-                                    <td>{{ pagado.cargo }}</td>
+                                    <td>${{ pagado.cargo }}</td>
                                     <td>{{ pagado.fechaPago }}</td>
                                     <td><img src="\images\correcto.png" width="35" height="35"></td>
                                 </tr>

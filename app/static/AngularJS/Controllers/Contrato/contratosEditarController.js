@@ -46,7 +46,6 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
                     notificationFactory.error('No se pudieron obtener los Contratos: ' + response.data.message);
                 }
             );
-
     };
 
 });
