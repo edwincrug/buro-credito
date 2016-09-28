@@ -13,6 +13,7 @@
     "phantom": "^2.1.18",
     "serve-favicon": "^2.1.6",
     "socket.io": "^1.2.0",
-    "swig": "^1.4.2"
+    "swig": "^1.4.2",
+    "swig-filters": "^0.1.0"
   }
 }
