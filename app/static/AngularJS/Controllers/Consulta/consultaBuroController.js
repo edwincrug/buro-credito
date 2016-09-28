@@ -27,13 +27,21 @@ appControllers.controller('consultaBuroController', function ($scope, $state, no
         //$scope.idcliente = $stateParams.clienteObj.idCliente;
 
         alert('Estoy en ver detalle Contrato : ' + cliente.idCliente);
-        //        contratoDetalleRepository.obtieneDetalleContrato(contrato.idContrato)
+        ///Hasta aqui estoy ;((((()))))
+        $state.go('detallecontrato', {
+            contratoObj: cliente
+        }, {
+            reload: true
+        });
+
+        //         contratoDetalleRepository.obtieneDetalleContrato(contrato.idContrato)
         //            .then(
         //                function succesCallback(response) {
         //                    //Success
+        //                    //alert('Estoy en ver detalle Contrato: ' + contrato.idContrato);
         //                    sessionFactory.detalle = response.data;
         //                    $state.go('detallecontrato', {
-        //                        clienteObj: cliente
+        //                        contratoObj: contrato
         //                    }, {
         //                        reload: true
         //                    });
@@ -43,6 +51,7 @@ appControllers.controller('consultaBuroController', function ($scope, $state, no
         //                    notificationFactory.error('No se pudieron obtener los Contratos: ' + response.data.message);
         //                }
         //            );
+
     };
 
     //   Regreso a la pantalla nuevo Contrato con los datos del Cliente
