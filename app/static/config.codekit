@@ -1890,7 +1890,7 @@
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 38406,
+		"initialSize": 34262,
 		"inputAbbreviatedPath": "\/images\/grafica.jpg",
 		"outputAbbreviatedPath": "\/images\/grafica.jpg",
 		"outputPathIsOutsideProject": 0,
@@ -2080,6 +2080,17 @@
 		"initialSize": 5369,
 		"inputAbbreviatedPath": "\/images\/profile\/woman.jpg",
 		"outputAbbreviatedPath": "\/images\/profile\/woman.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/reporte\/logoA.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 16568,
+		"inputAbbreviatedPath": "\/images\/reporte\/logoA.png",
+		"outputAbbreviatedPath": "\/images\/reporte\/logoA.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

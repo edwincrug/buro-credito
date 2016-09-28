@@ -3,255 +3,167 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <head>
-
-    <STYLE type="text/css">
-        h1 {
-            border-width: 1px;
-            /*border: solid;*/
-            text-align: center
-        }
-        
-        h3 {
-            border-width: 1px;
-            border: solid;
-            text-align: center;
-            font-weight: normal;
-            padding: 1px;
-            background: #0B0B61;
-            /*#0B0B61;  */
-            border-top: 4px solid #D8D8D8;
-            /*#aabcfe*  Color sombra*/
-            border-bottom: 1px solid #fff;
-            color: white;
-        }
-        
-        body {
-            border: 2px solid #0B0B61;
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 10px;
-            padding-left: 30px;
-            padding-right: 30px;
-            padding-bottom: 50px;
-            padding-top: 10px;
-        }
-        
-        table {
-            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-            /*font-size: 12px;*/
-            margin: 10px;
-            width: 600px;
-            /*text-align: left;*/
-            /*border-collapse: collapse;*/
-        }
-        
-        th {
-            font-size: 13px;
-            font-weight: normal;
-            padding: 1px;
-            background: #0B0B61;
-            /*#b9c9fe; Color fondo encabezado tabla*/
-            border-top: 4px solid #D8D8D8;
-            /*#aabcfe*  Color sombra*/
-            border-bottom: 1px solid #fff;
-            color: white;
-            /*#039;   Color letra encabezado tabla*/
-        }
-        
-        td {
-            padding: 2px;
-            /*background: #e8edff;*/
-            border-bottom: 1px solid #fff;
-            color: #0B0B61;
-            /*#669*/
-            border-top: 1px solid transparent;
-        }
-
-    </STYLE>
-
-
     <link rel="stylesheet" href="../../css/report.css">
-
-    <table border="0" width="500%" cellpadding="5" cellspacing="5">
-        <tr>
-            <td width="50%">
-                <section id="datosCliente">
-                    <table border="0" bgcolor="white">
-                        <td width="10%">
-                            <img src="\images\GA2.png" width="100" height="100">
-                        </td>
-                        <td width="90%" align="center"><b><H1 >REPORTE BURÓ DE CRÉDITO</H1 ></b>
-                        </td>
-                    </table>
-                </section>
-            </td>
-            <td width="50%">
-                <section id="datosSucursal">
-                    <table border="0" bgcolor="white">
-                        <td align="right" style="margin-left: 20px;">
-                            <h4><b>FECHA DE CONSULTA: {{informacioncliente.fechaConsulta}}</b></h4>
-                        </td>
-                        <td><img src="\images\grafica.jpg" width="120" height="120" align="right">
-                        </td>
-                    </table>
-                </section>
-            </td>
-        </tr>
-    </table>
 </head>
 
-<body style="margin:40px;">
-    <table border="0" width="100%" cellpadding="5" cellspacing="5">
-        <tr>
-            <td width="50%">
-                <section id="datosCliente">
-                    <table border="0" bgcolor="white">
-                        <th align="center" colspan="2" class="hola"><b>DATOS DEL CLIENTE:</b> </th>
-                        <tr>
-                            <td><b>Id Cliente BPRO:</b></td>
-                            <td>{{informacioncliente.idCliente}}</td>
-                        </tr>
-                        <tr>
-                            <td><b>Nombre:</b></td>
-                            <td>{{informacioncliente.nombre}}</td>
-                        </tr>
-                        <tr>
-                            <td><b>Dirección:</td>
+<body>
+
+    <!-- Repeater por empresa  -->
+    {% for totales in listaTotales %}
+    <div class="principal">
+        <div class="header">
+            <img src="\images\reporte\logoA.png" class="logo">
+            <div class="title">REPORTE DE BURÓ DE CRÉDITO</div>
+            <div class="fecha">FECHA DE CONSULTA: {{informacioncliente.fechaConsulta}}</div>
+            <!--            <img src="\images\grafica.jpg" class="grafica">-->
+        </div>
+        <div class="contenedorHeader">
+            <div class="cliente">
+                <table border="0" bgcolor="white">
+                    <th align="center" colspan="2" class="clienteHeader"><b>DATOS DEL CLIENTE:</b> </th>
+                    <tr>
+                        <td><b>Id Cliente BPRO:</b></td>
+                        <td>{{informacioncliente.idCliente}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Nombre:</b></td>
+                        <td>{{informacioncliente.nombre}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Dirección:</td>
                                 <td>{{informacioncliente.calle}}</td>
                             </tr>
                             <tr>
                                 <tr>
                                     <td><b>Teléfono:</b></td>
-                            <td>{{informacioncliente.telefono}}</td>
-                        </tr>
+                        <td>{{informacioncliente.telefono}}</td>
+                    </tr>
+                    <tr>
                         <tr>
-                            <tr>
-                                <td><b>RFC:</b></td>
-                                <td>{{informacioncliente.rfc}}</td>
-                            </tr>
-                    </table>
-                </section>
-            </td>
-            <td width="50%">
-                <section id="datosSucursal">
-                    <table border="0" bgcolor="white">
-                        <tr>
-                            <th align="center" colspan="4"><b>DATOS POR AGENCIA:</b></th>
+                            <td><b>RFC:</b></td>
+                            <td>{{informacioncliente.rfc}}</td>
                         </tr>
-                        <tr>
-                            <th><b>Empresa</b></th>
-                            <th><b>Sucursal</b></th>
-                            <th><b>Departamento</b></th>
-                            <th><b>Crédito</b></th>
-                        </tr>
-                        {% for total in totales %}
-                        <tr>
-                            <td>{{total.empresa}}</td>
-                            <td>{{total.sucursal}}</td>
-                            <td>{{total.departamento}}</td>
-                            <td>{{total.credito}}</td>
-                        </tr>
-                        {% endfor %}
-                    </table>
-                </section>
-            </td>
-            </tr>
-    </table>
+                </table>
+            </div>
+            <div class="sucursales">
+                <div class="sucursalesHeader">
+                    <div class="sucursalesEmpresa">EMPRESA:</div> {{ totales[0].empresa }}</div>
+                <table border="0" bgcolor="white" class="tablaReporte">
+                    <tr>
+                        <th align="center" colspan="4" class="sucursalesDetalleHeader"><b>DATOS POR AGENCIA:</b></th>
+                    </tr>
+                    <tr>
+                        <th><b>Sucursal</b></th>
+                        <th><b>Departamento</b></th>
+                        <th><b>Crédito</b></th>
+                    </tr>
+                    {% for total in totales %}
+                    <tr>
+                        <td>{{total.sucursal}}</td>
+                        <td>{{total.departamento}}</td>
+                        <td class="tdMonto">{{total.credito | currency('$')}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <!--Listado de Documentos -->
+        <div class="headerDetalle">DOCUMENTOS VENCIDOS</div>
+        {{ listaDocNoPagados[0] }}
+        <section id="infoNoPagado">
+            <div class="titleSection hred">NO PAGADO</div>
+            <table border="0" bgcolor="white" class="tablaReporte">
+                <tr>
+                    <th colspan="1" rowspan="2"><b>Departamento</b></th>
+                    <th colspan="2"><b>Por Vencer</b></th>
+                    <th colspan="2"><b>1 a 30 dias</b></th>
+                    <th colspan="2"><b>31 a 60 dias</b></th>
+                    <th colspan="2"><b>61 a 90 dias</b></th>
+                    <th colspan="2"><b>Mas de 90</b></th>
+                    <th colspan="1" rowspan="2"><b>Estatus</b></th>
+                </tr>
+                <tr>
+                    <th colspan="1"><b>Num. Doc.</b></th>
+                    <th colspan="1"><b>Importe</b></th>
+                    <th colspan="1"><b>Num. Doc.</b></th>
+                    <th colspan="1"><b>Importe</b></th>
+                    <th colspan="1"><b>Num. Doc.</b></th>
+                    <th colspan="1"><b>Importe</b></th>
+                    <th colspan="1"><b>Num. Doc.</b></th>
+                    <th colspan="1"><b>Importe</b></th>
+                    <th colspan="1"><b>Num. Doc.</b></th>
+                    <th colspan="1"><b>Importe</b></th>
+                </tr>
+                {% for docnopagados in listaDocNoPagados %} {% for docnopagado in docnopagados %} {% if docnopagado.idEmpresa == totales[0].idEmpresa %}
+                <tr>
+                    <td>{{docnopagado.departamento}}</td>
+                    <td class="tdNum">{{docnopagado.conteoTotal}}</td>
+                    <td class="tdMonto">{{docnopagado.saldoTotal | currency('$')}}</td>
+                    <td class="tdNum">{{docnopagado.conteoP}}</td>
+                    <td class="tdMonto">{{docnopagado.saldoP | currency('$')}}</td>
+                    <td class="tdNum">{{docnopagado.conteoS}}</td>
+                    <td class="tdMonto">{{docnopagado.saldoS | currency('$')}}</td>
+                    <td class="tdNum">{{docnopagado.conteoT}}</td>
+                    <td class="tdMonto">{{docnopagado.saldoT | currency('$')}}</td>
+                    <td class="tdNum">{{docnopagado.conteoC}}</td>
+                    <td class="tdMonto">{{docnopagado.saldoC | currency('$')}}</td>
+                    <td><img src="\images\error2.png" width="32" height="32"></td>
+                </tr>
+                {% endif %} {% endfor %} {% endfor %}
+            </table>
+        </section>
 
-    <!--Listado de Documentos -->
-    <h2>DOCUMENTOS VENCIDOS</h2>
+        <section id="infoPagoNoPuntual">
+            <div class="titleSection hyellow">PAGO EXTEMPORÁNEO</div>
+            <table border="0" bgcolor="white" class="tablaReporte">
+                <tr>
+                    <th><b>Empresa</b></th>
+                    <th><b>Sucursal</b></th>
+                    <th><b>Departamento</b></th>
+                    <th><b>Total Doctos</b></th>
+                    <th><b>Saldo</b></th>
+                    <th><b>Estatus</b></th>
+                </tr>
+                {% for docpagados in listaDocPagados %} {% for docpagado in docpagados %}{% if docpagado.idEmpresa == totales[0].idEmpresa %}{% if docpagado.tipoPagoFecha == 2 %}
+                <tr>
+                    <td>{{docpagado.empresa}}</td>
+                    <td>{{docpagado.sucursal}}</td>
+                    <td>{{docpagado.departamento}}</td>
+                    <td>{{docpagado.totalDoctos}}</td>
+                    <td>{{docpagado.cargo}}</td>
+                    <td><img src="\images\alerta3.png" width="35" height="35"></td>
+                </tr>
+                {% endif %} {% endif %} {% endfor %}{% endfor %}
+            </table>
+        </section>
 
-    <section id="infoNoPagado">
-        <h3>NO PAGADO</h3>
-        <table border="0" bgcolor="white">
-            <tr>
-                <th colspan="1" rowspan="2"><b>Departamento</b></th>
-                <th colspan="2"><b>Por Vencer</b></th>
-                <th colspan="2"><b>1 a 30 dias</b></th>
-                <th colspan="2"><b>31 a 60 dias</b></th>
-                <th colspan="2"><b>61 a 90 dias</b></th>
-                <th colspan="2"><b>Mas de 90</b></th>
-                <th colspan="1" rowspan="2"><b>Estatus</b></th>
-            </tr>
-            <tr>
-                <th colspan="1"><b>Num. Doc.</b></th>
-                <th colspan="1"><b>Importe</b></th>
-                <th colspan="1"><b>Num. Doc.</b></th>
-                <th colspan="1"><b>Importe</b></th>
-                <th colspan="1"><b>Num. Doc.</b></th>
-                <th colspan="1"><b>Importe</b></th>
-                <th colspan="1"><b>Num. Doc.</b></th>
-                <th colspan="1"><b>Importe</b></th>
-                <th colspan="1"><b>Num. Doc.</b></th>
-                <th colspan="1"><b>Importe</b></th>
-            </tr>
-            {% for docnopagado in docnopagados %}
-            <tr>
-                <td>{{docnopagado.departamento}}</td>
-                <td>{{docnopagado.conteoTotal}}</td>
-                <td>{{docnopagado.saldoTotal}}</td>
-                <td>{{docnopagado.conteoP}}</td>
-                <td>{{docnopagado.saldoP}}</td>
-                <td>{{docnopagado.conteoS}}</td>
-                <td>{{docnopagado.saldoS}}</td>
-                <td>{{docnopagado.conteoT}}</td>
-                <td>{{docnopagado.saldoT}}</td>
-                <td>{{docnopagado.conteoC}}</td>
-                <td>{{docnopagado.saldoC}}</td>
-                <td><img src="\images\error2.png" width="32" height="32"></td>
-            </tr>
-            {% endfor %}
-        </table>
-    </section>
+        <section id="infoPagoPuntual">
+            <div class="titleSection hgreen">PAGO PUNTUAL</div>
+            <table border="0" bgcolor="white" class="tablaReporte">
+                <tr>
+                    <th><b>Empresa</b></th>
+                    <th><b>Sucursal</b></th>
+                    <th><b>Departamento</b></th>
+                    <th><b>Total Doctos</b></th>
+                    <th><b>Saldo</b></th>
+                    <th><b>Estatus</b></th>
+                </tr>
+                {% for docpagados in listaDocPagados %} {% for docpagado in docpagados %} {% if docpagado.idEmpresa == totales[0].idEmpresa %}{% if docpagado.tipoPagoFecha == 1 %}
+                <tr>
+                    <td width=100%>{{docpagado.empresa}}</td>
+                    <td>{{docpagado.sucursal}}</td>
+                    <td>{{docpagado.departamento}}</td>
+                    <td>{{docpagado.totalDoctos}}</td>
+                    <td>{{docpagado.cargo}}</td>
+                    <td><img src="\images\correcto.png" width="35" height="35"></td>
+                </tr>
+                {% endif %} {% endif %} {% endfor %}{% endfor %}
+            </table>
+        </section>
 
-    <section id="infoPagoNoPuntual">
-        <h3>PAGO EXTEMPORÁNEO</h3>
-        <table border="0" bgcolor="white">
-            <tr>
-                <th><b>Empresa</b></th>
-                <th><b>Sucursal</b></th>
-                <th><b>Departamento</b></th>
-                <th><b>Total Doctos</b></th>
-                <th><b>Saldo</b></th>
-                <th><b>Estatus</b></th>
-            </tr>
-            {% for docpagado in docpagados %}{% if docpagado.tipoPagoFecha == 2 %}
-            <tr>
-                <td>{{docpagado.empresa}}</td>
-                <td>{{docpagado.sucursal}}</td>
-                <td>{{docpagado.departamento}}</td>
-                <td>{{docpagado.totalDoctos}}</td>
-                <td>{{docpagado.cargo}}</td>
-                <td><img src="\images\alerta3.png" width="35" height="35"></td>
-            </tr>
-            {% endif %} {% endfor %}
-        </table>
-    </section>
-
-    <section id="infoPagoPuntual">
-        <h3>PAGO PUNTUAL</h3>
-        <table border="0" bgcolor="white">
-            <tr>
-                <th><b>Empresa</b></th>
-                <th><b>Sucursal</b></th>
-                <th><b>Departamento</b></th>
-                <th><b>Total Doctos</b></th>
-                <th><b>Saldo</b></th>
-                <th><b>Estatus</b></th>
-            </tr>
-            {% for docpagado in docpagados %} {% if docpagado.tipoPagoFecha == 1 %}
-            <tr>
-                <td width=100%>{{docpagado.empresa}}</td>
-                <td>{{docpagado.sucursal}}</td>
-                <td>{{docpagado.departamento}}</td>
-                <td>{{docpagado.totalDoctos}}</td>
-                <td>{{docpagado.cargo}}</td>
-                <td><img src="\images\correcto.png" width="35" height="35"></td>
-            </tr>
-            {% endif %} {% endfor %}
-        </table>
-    </section>
-
-    <!-- Listado de Documentos fin-->
+    </div>
+    {% endfor %}
+    <!-- Fin de repeater por empresa-->
 </body>
 
 </html>
