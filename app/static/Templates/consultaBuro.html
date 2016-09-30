@@ -1,9 +1,18 @@
 <!--Div principal-->
 <div ng-init="init()">
+
+    <div class='col-xs-12'>
+        <div class="page-title">
+            <div class="pull-left">
+                <h1 class="title">Consulta Buró De Crédito</h1>
+            </div>
+        </div>
+    </div>
+
     <div class="col-xs-12">
         <section class="box ">
             <header class="panel_header">
-                <h2 class="title pull-left">Buscar Cliente:</h2>
+                <h2 class="title pull-left">Busqueda de Cliente</h2>
                 <div class="actions panel_actions pull-right">
                     <a class="box_toggle fa fa-chevron-down"></a>
                     <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
@@ -11,6 +20,7 @@
                 </div>
             </header>
             <div class="content-body">
+                <h2>Introduce un Cliente:</h2>
                 <div class="input-group searchinResults">
                     <input type="text" class="form-control" placeholder="Introducir nombre o RFC..." ng-model="txtBusqueda">
                     <span class="input-group-btn">
