@@ -145,7 +145,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="pagado in listaPagados" ng-show="pagado.tipoPagoFecha==2">
+                                <tr ng-repeat="pagado in listaPagados | filter:{ tipoPagoFecha:'2'}">
                                     <td>{{ pagado.empresa }}</td>
                                     <td>{{ pagado.sucursal }}</td>
                                     <td>{{ pagado.departamento }}</td>
@@ -209,7 +209,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="pagado in listaPagados" ng-show="pagado.tipoPagoFecha===1">
+                                <tr ng-repeat="pagado in listaPagados | filter:{ tipoPagoFecha:'1'}">
                                     <td>{{ pagado.empresa }}</td>
                                     <td>{{ pagado.sucursal }}</td>
                                     <td>{{ pagado.departamento }}</td>

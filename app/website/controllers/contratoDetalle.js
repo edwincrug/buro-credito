@@ -100,7 +100,7 @@ contratoDetalle.prototype.get_nuevo = function (req, res, next) {
     this.model.query('SEL_DATOS_CLIENTE_SP', params, function (error, informacioncliente) {
         //        console.log('10.-Estoy en SEL_DATOS_CLIENTE_SP' + req.query.idCliente);
         //        console.log(error)
-        //        console.log(informacioncliente)
+        console.log(informacioncliente)
         params = [{
             name: 'idCliente',
             value: informacioncliente[0].idCliente,
@@ -109,17 +109,17 @@ contratoDetalle.prototype.get_nuevo = function (req, res, next) {
         self.model.querymulti('SEL_TOTAL_CREDITO_SP', params, function (error, totales) {
             //            console.log('101.-Estoy en SEL_TOTAL_CREDITO_SP ' + req.query.idContrato);
             //            console.log(error)
-            //            console.log(totales)
-            /*SEL_EMP_DOC_PAGADOS_SP   */
+            console.log(totales)
+                /*SEL_EMP_DOC_PAGADOS_SP   */
             self.model.querymulti('SEL_TOTAL_DOC_PAGADOS_SP', params, function (error, docpagados) {
                 //                console.log('102.-Estoy en SEL_TOTAL_DOC_PAGADOS_SP');
                 //                console.log(error)
-                //                console.log(docpagados)
-                /*SEL_EMP_DOC_NO_PAGADOS_SP*/
+                console.log(docpagados)
+                    /*SEL_EMP_DOC_NO_PAGADOS_SP*/
                 self.model.querymulti('SEL_TOTAL_DOC_NO_PAGADOS_SP', params, function (error, docnopagados) {
                     //                    console.log('103.-Estoy en SEL_TOTAL_DOC_NO_PAGADOS_SP');
                     //                    console.log(error)
-                    //                    console.log(docnopagados);
+                    console.log(docnopagados);
                     res.render('contrato.html', {
                         informacioncliente: informacioncliente[0],
                         listaTotales: totales,
