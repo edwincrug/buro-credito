@@ -72,6 +72,9 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     var cargaDocumentos = function () {
         $scope.idcliente = $stateParams.contratoObj.idCliente;
         $scope.nombrecliente = $stateParams.contratoObj.nombreCliente;
+        $scope.totalNoPagado = 0;
+        $scope.totalPagPuntual = 0;
+        $scope.totalPagInPuntual = 0;
         //$scope.idempresa = $stateParams.contratoObj.idEmpresa;
         //$scope.idcontrato = $stateParams.contratoObj.idContrato;
         //$scope.folioContrato = $stateParams.contratoObj.folioContrato;
@@ -85,11 +88,25 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                 function succesCallback(response) {
                     notificationFactory.success('Detalle Documentos Pagados');
                     $scope.listaPagados = response.data;
+
+                    for (var i = 0; i < response.data.length; i++) {
+                        if (response.data[i].tipoPagoFecha == 1) {
+                            $scope.totalPagPuntual += (response.data[i].cargo);
+                        } else if (response.data[i].tipoPagoFecha == 2) {
+                            $scope.totalPagInPuntual += (response.data[i].cargo);
+                        }
+                    }
+
                     contratoDetalleRepository.detalleNoPagados($scope.idcliente)
                         .then(
                             function succesCallback(response) {
                                 notificationFactory.success('Detalle Documentos No Pagados');
                                 $scope.listaNoPagados = response.data;
+
+                                for (var i = 0; i < response.data.length; i++) {
+                                    $scope.totalNoPagado += (response.data[i].saldo);
+                                }
+
                                 setTimeout(function () {
                                     $('.estiloTabla').DataTable({});
                                 }, 100);
