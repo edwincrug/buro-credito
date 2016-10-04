@@ -21,13 +21,29 @@
             </header>
             <div class="content-body">
                 <h2>Introduce un Cliente:</h2>
-                <div class="input-group searchinResults">
-                    <input type="text" class="form-control" placeholder="Introducir nombre o RFC..." ng-model="txtBusqueda">
-                    <span class="input-group-btn">
-                                <button class="btn btn-primary" type="button" ng-click="BuscarCliente(txtBusqueda)">Buscar</button>
+                <!-- Busqueda Id-->
+                <div class="col-md-4">
+                    <div class="input-group searchinResults">
+                        <input type="text" class="form-control" placeholder="ID BPRO" ng-model="idBusqueda">
+                        <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" ng-click="BuscarClienteId(idBusqueda)">Buscar ID</button>
                                  </span>
+                    </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="input-group searchinResults">
+                        <input type="text" class="form-control" placeholder="Nombre o RFC" ng-model="txtBusqueda">
+                        <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" ng-click="BuscarCliente(txtBusqueda)">Buscar </button>
+                                 </span>
+                    </div>
+                </div>
+
+                <!-- Fin Busqueda Id-->
+
                 <div class="tableContent">
+                    <br>
+                    <br>
                     <table class="table table-striped table-condensed table-hover">
                         <thead>
                             <tr>

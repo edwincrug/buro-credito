@@ -18,6 +18,20 @@ appServices.factory('contratoRepository', function ($http, configurationFactory)
             });
         }, //Fin Obtiene informacion del Cliente
 
+        //Obtiene informacion del Cliente por ID
+        obtieneCliente: function (idBusqueda) {
+            return $http({
+                url: contratoRepositoryURL + 'obtienecliente/',
+                method: "GET",
+                params: {
+                    idBusqueda: idBusqueda
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }, //Fin Obtiene informacion del Cliente
+
         //2.-Obtiene todos los Tipo de Empresa
         obtieneTipoEmpresa: function (idUsuario) {
             return $http({

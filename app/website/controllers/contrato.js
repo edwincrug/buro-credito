@@ -140,5 +140,26 @@ contrato.prototype.get_cargarDocumentos = function (req, res, next) {
     });
 };
 
+/////////////////////////// Busqueda por ID /////////////////////////// 
+contrato.prototype.get_obtienecliente = function (req, res, next) {
+    var self = this;
+    //Obtención de valores de los parámetros del request
+    var params = [
+        {
+            name: 'idBusqueda',
+            value: req.query.idBusqueda,
+            type: self.model.types.INT
+                    }
+    ];
+
+    this.model.query('SEL_CLIENTE_ID_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+};
+
+
 
 module.exports = contrato;
