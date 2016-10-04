@@ -106,17 +106,17 @@ contratoDetalle.prototype.get_nuevo = function (req, res, next) {
             value: informacioncliente[0].idCliente,
             type: self.model.types.INT
         }]
-        self.model.querymulti('SEL_TOTAL_CREDITO_SP', params, function (error, totales) {
+        self.model.querymulti('SEL_TOTAL_CREDITO_SP_TODAS', params, function (error, totales) {
             //            console.log('101.-Estoy en SEL_TOTAL_CREDITO_SP ' + req.query.idContrato);
             //            console.log(error)
             console.log(totales)
                 /*SEL_EMP_DOC_PAGADOS_SP   */
-            self.model.querymulti('SEL_TOTAL_DOC_PAGADOS_SP', params, function (error, docpagados) {
+            self.model.querymulti('SEL_TOTAL_DOC_PAGADOS_SP_TODAS', params, function (error, docpagados) {
                 //                console.log('102.-Estoy en SEL_TOTAL_DOC_PAGADOS_SP');
                 //                console.log(error)
                 console.log(docpagados)
                     /*SEL_EMP_DOC_NO_PAGADOS_SP*/
-                self.model.querymulti('SEL_TOTAL_DOC_NO_PAGADOS_SP', params, function (error, docnopagados) {
+                self.model.querymulti('SEL_TOTAL_DOC_NO_PAGADOS_SP_TODAS', params, function (error, docnopagados) {
                     //                    console.log('103.-Estoy en SEL_TOTAL_DOC_NO_PAGADOS_SP');
                     //                    console.log(error)
                     console.log(docnopagados);
@@ -277,7 +277,7 @@ contratoDetalle.prototype.get_detallePagoDocumentos = function (req, res, next) 
         type: self.model.types.INT
         }]
 
-    this.model.query('SEL_TOTAL_DOC_PAG_DETALLE_SP', params, function (error, result) {
+    this.model.query('SEL_TOTAL_DOC_PAG_DETALLE_SP_TODAS', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result
@@ -298,7 +298,7 @@ contratoDetalle.prototype.get_detalleNoPagados = function (req, res, next) {
         }]
 
 
-    this.model.query('SEL_TOTAL_CARTERA_DETALLE_SP', params, function (error, result) {
+    this.model.query('SEL_TOTAL_CARTERA_DETALLE_SP_TODAS', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result
