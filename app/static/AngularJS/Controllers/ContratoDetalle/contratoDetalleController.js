@@ -120,6 +120,39 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
                                 setTimeout(function () {
                                     $('.estiloTabla').DataTable({});
+                                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                    //                   Gráfica
+                                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                    if ($("#morris_donut_graph").length) {
+                                        /*Donut Graph*/
+                                        Morris.Donut({
+                                            element: 'morris_donut_graph',
+                                            data: [{
+                                                value: $scope.porcNoPagado.toFixed(2),
+                                                label: 'No Pagados'
+            }, {
+                                                value: $scope.porcPagInPuntual.toFixed(2),
+                                                label: 'Pagado Extemporáneo'
+            }, {
+                                                value: $scope.porcPagPuntual.toFixed(2),
+                                                label: 'Pagado Puntual'
+            }],
+                                            resize: true,
+                                            redraw: true,
+                                            backgroundColor: '#ffffff',
+                                            labelColor: '#999999',
+                                            colors: [
+                '#FF5656',
+                '#FFC12D',
+                '#9BDF46', /*Pagado*/
+                '#ffcc00'
+            ],
+                                            formatter: function (x) {
+                                                return x + "%"
+                                            }
+                                        });
+                                    }
+                                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                 }, 100);
                             },
                             function errorCallback(response) {
@@ -133,181 +166,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
             );
     }; //Fin de Documentos
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //                   Gráfica
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /*--------------- Chart 3 -------------*/
-    /*
-     if ($("#platform_type_dates").length) {
-         var myChart = echarts.init(document.getElementById('platform_type_dates'));
 
-         var idx = 1;
-
-         // Comienza Objeto Options
-         var option_dt = {
-
-             timeline: {
-                 show: true,
-                 data: ['01-16', '02-16', '03-16'],
-                 label: {
-                     formatter: function (s) {
-                         return s.slice(0, 5);
-                     }
-                 },
-                 x: 10,
-                 y: null,
-                 x2: 10,
-                 y2: 0,
-                 width: 250,
-                 height: 50,
-                 backgroundColor: "rgba(0,0,0,0)",
-                 borderColor: "#eaeaea",
-                 borderWidth: 0,
-                 padding: 5,
-                 controlPosition: "left",
-                 autoPlay: true,
-                 loop: true,
-                 playInterval: 2000,
-                 lineStyle: {
-                     width: 1,
-                     color: "#bdbdbd",
-                     type: ""
-                 },
-             },
-
-             options: [
-                 {
-                     color: ['#5ACFD6', '#303F9F', '#189BFA', '#0098EF', '#17B794', '#9DE5FF'],
-                     title: {
-                         text: '',
-                         subtext: ''
-                     },
-                     tooltip: {
-                         trigger: 'item',
-                         formatter: "{a} <br/>{b} : {c} ({d}%)"
-                     },
-                     legend: {
-                         show: false,
-                         x: 'left',
-                         orient: 'vertical',
-                         padding: 0,
-                         data: ['NO PAGADO', 'PAGO EXTEMPORÁNEO', 'PAGO PUNTUAL']
-                     },
-                     toolbox: {
-                         show: true,
-                         color: ['#bdbdbd', '#bdbdbd', '#bdbdbd', '#bdbdbd'],
-                         feature: {
-                             mark: {
-                                 show: false
-                             },
-                             dataView: {
-                                 show: false,
-                                 readOnly: true
-                             },
-                             magicType: {
-                                 show: true,
-                                 type: ['pie', 'funnel'],
-                                 option: {
-                                     funnel: {
-                                         x: '10%',
-                                         width: '80%',
-                                         funnelAlign: 'center',
-                                         max: 50
-                                     },
-                                     pie: {
-                                         roseType: 'none',
-                                     }
-                                 }
-                             },
-                             restore: {
-                                 show: false
-                             },
-                             saveAsImage: {
-                                 show: true
-                             }
-                         }
-                     },
-                     series: [
-                         {
-                             name: '01-16',
-                             type: 'pie',
-                             radius: [20, '80%'],
-                             roseType: 'radius',
-                             center: ['50%', '45%'],
-                             width: '50%', // for funnel
-                             itemStyle: {
-                                 normal: {
-                                     label: {
-                                         show: true
-                                     },
-                                     labelLine: {
-                                         show: true
-                                     }
-                                 },
-                                 emphasis: {
-                                     label: {
-                                         show: false
-                                     },
-                                     labelLine: {
-                                         show: false
-                                     }
-                                 }
-                             },
-                             data: [{
-                                 value: 25,
-                                 name: 'No Pagados'
-                                 }, {
-                                 value: 25,
-                                 name: 'Pago Puntual'
-                                 }, {
-                                 value: 50,
-                                 name: 'Pago Extémporaneo'
-                                 }]
-                             }
-                         ]
-                 },
-                 {
-                     series: [
-                         {
-                             name: '02-16',
-                             type: 'pie',
-                             data: [{
-                                 value: 30,
-                                 name: 'No pagados'
-                                 }, {
-                                 value: 30,
-                                 name: 'Pago Puntual'
-                                 }, {
-                                 value: 40,
-                                 name: 'Pago Inpuntual'
-                                 }]
-                     }
-                 ]
-             },
-                 {
-                     series: [
-                         {
-                             name: '03-16',
-                             type: 'pie',
-                             data: [{
-                                 value: 40,
-                                 name: 'No Pagados'
-                                 }, {
-                                 value: 40,
-                                 name: 'Pago Puntual'
-                                 }, {
-                                 value: 20,
-                                 name: 'Pago Extemporaneo'
-                                 }]
-                     }
-                                    ]
-             },
-          ]
-         }; // Termina Objeto Options
-         myChart.setOption(option_dt);
-     }
-    */
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
