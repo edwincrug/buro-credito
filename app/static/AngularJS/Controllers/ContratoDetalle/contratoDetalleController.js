@@ -70,16 +70,19 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //  Documentos 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     var cargaDocumentos = function () {
+        //Datos Cliente
         $scope.idcliente = $stateParams.contratoObj.idCliente;
         $scope.nombrecliente = $stateParams.contratoObj.nombreCliente;
+        //Total Credito
+        $scope.totalCredito = 0;
         $scope.totalNoPagado = 0;
         $scope.totalPagPuntual = 0;
         $scope.totalPagInPuntual = 0;
-        //$scope.idempresa = $stateParams.contratoObj.idEmpresa;
-        //$scope.idcontrato = $stateParams.contratoObj.idContrato;
-        //$scope.folioContrato = $stateParams.contratoObj.folioContrato;
-        //$scope.empresa = $stateParams.contratoObj.empresa;
-
+        //Porcentajes Credito
+        $scope.porcCredito = 0;
+        $scope.porcNoPagado = 0;
+        $scope.porcPagPuntual = 0;
+        $scope.porcPagInPuntual = 0;
 
         //alert('Estoy en ver detalle Empresa: ' + $scope.nombreCliente);
 
@@ -107,6 +110,14 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                     $scope.totalNoPagado += (response.data[i].saldo);
                                 }
 
+                                //Total de Credito
+                                $scope.totalCredito = $scope.totalNoPagado + $scope.totalPagPuntual + $scope.totalPagInPuntual;
+                                //Porcentajes
+                                $scope.porcNoPagado = $scope.totalNoPagado * 100 / $scope.totalCredito;
+                                $scope.porcPagInPuntual = $scope.totalPagInPuntual * 100 / $scope.totalCredito;
+                                $scope.porcPagPuntual = $scope.totalPagPuntual * 100 / $scope.totalCredito;
+                                $scope.porcCredito = $scope.porcNoPagado + $scope.porcPagInPuntual + $scope.porcPagPuntual;
+
                                 setTimeout(function () {
                                     $('.estiloTabla').DataTable({});
                                 }, 100);
@@ -120,6 +131,8 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                     notificationFactory.error('No se pudo obtener el detalle de los Documentos Pagados');
                 }
             );
+
+
     };
 
 
