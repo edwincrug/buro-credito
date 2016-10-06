@@ -130,23 +130,24 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                             data: [{
                                                 value: $scope.porcNoPagado.toFixed(2),
                                                 label: 'No Pagados'
-            }, {
+                                                }, {
                                                 value: $scope.porcPagInPuntual.toFixed(2),
                                                 label: 'Pagado Extemporáneo'
-            }, {
+                                                }, {
                                                 value: $scope.porcPagPuntual.toFixed(2),
                                                 label: 'Pagado Puntual'
-            }],
+
+                                                }],
                                             resize: true,
                                             redraw: true,
                                             backgroundColor: '#ffffff',
-                                            labelColor: '#999999',
+                                            labelColor: '#1D242B', //#999999',
                                             colors: [
-                '#FF5656',
-                '#FFC12D',
-                '#9BDF46', /*Pagado*/
-                '#ffcc00'
-            ],
+                                                        '#E20049', //'#E20049', //#b90f49', //'#FF5656',
+                                                        '#F79F24', //'#F79F24', //'#FFC12D',
+                                                      '#700961', //#3F1263', // '#680097', //AzulOK '#0278AE', //'#395EA6', // //'#7C064D', //'#4CB648', //'#00ADB5', //'#44C662', //#4CB648',
+                                                        '#ffcc00'
+                                                    ],
                                             formatter: function (x) {
                                                 return x + "%"
                                             }
@@ -166,7 +167,10 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
             );
     }; //Fin de Documentos
 
-
+    //Boton Cancelar
+    $scope.Regresar = function () {
+        $state.go('home');
+    };
 
 
 

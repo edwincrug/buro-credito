@@ -4402,6 +4402,9 @@ a.cke_button_disabled:hover,
     UI Icons
 ----------------------------------------------*/
 
+.iconopago {
+    font-size: 50px;
+}
 .glyphicon,
 .fa {
     font-size: 14px;
