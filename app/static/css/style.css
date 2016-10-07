@@ -4403,7 +4403,7 @@ a.cke_button_disabled:hover,
 ----------------------------------------------*/
 
 .iconopago {
-    font-size: 50px;
+    font-size: 29px !important;
 }
 .glyphicon,
 .fa {

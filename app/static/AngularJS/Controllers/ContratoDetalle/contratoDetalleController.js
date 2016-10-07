@@ -143,9 +143,8 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                             backgroundColor: '#ffffff',
                                             labelColor: '#1D242B', //#999999',
                                             colors: [
-                                                        '#E20049', //'#E20049', //#b90f49', //'#FF5656',
-                                                        '#F79F24', //'#F79F24', //'#FFC12D',
-                                                      '#700961', //#3F1263', // '#680097', //AzulOK '#0278AE', //'#395EA6', // //'#7C064D', //'#4CB648', //'#00ADB5', //'#44C662', //#4CB648',
+//                                                        '#FF5656','#FFCC00','#B3E55E', 
+                                                       '#FF5656', '#FFCC00', '#9ACD32',
                                                         '#ffcc00'
                                                     ],
                                             formatter: function (x) {

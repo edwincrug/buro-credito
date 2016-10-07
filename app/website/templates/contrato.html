@@ -14,6 +14,7 @@
         <div class="header">
             <img src="\images\reporte\logoA.png" class="logo">
             <div class="title">REPORTE DE BURÓ DE CRÉDITO</div>
+            <div class="sucursalesEmpresa">{{ totales[0].empresa }}</div>
             <div class="fecha">FECHA DE CONSULTA: {{informacioncliente.fechaConsulta}}</div>
             <!--            <img src="\images\grafica.jpg" class="grafica">-->
         </div>
@@ -46,8 +47,8 @@
                 </table>
             </div>
             <div class="sucursales">
-                <div class="sucursalesHeader">
-                    <div class="sucursalesEmpresa">EMPRESA:</div> {{ totales[0].empresa }}</div>
+                <!--div class="sucursalesHeader">
+                    <div class="sucursalesEmpresa">EMPRESA:</div> {{ totales[0].empresa }}</div-->
                 <table border="0" bgcolor="white" class="tablaReporte">
                     <tr>
                         <th align="center" colspan="4" class="sucursalesDetalleHeader"><b>DATOS POR AGENCIA:</b></th>
@@ -155,7 +156,7 @@
                     <td>{{docpagado.departamento}}</td>
                     <td>{{docpagado.totalDoctos}}</td>
                     <td>{{docpagado.cargo}}</td>
-                    <td><img src="\images\correcto.png" width="35" height="35"></td>
+                    <!--td><img src="\images\correcto.png" width="35" height="35"></td-->
                 </tr>
                 {% endif %} {% endif %} {% endfor %}{% endfor %}
             </table>

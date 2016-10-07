@@ -4,7 +4,10 @@ appControllers.controller('consultaBuroController', function ($scope, $state, no
     $scope.init = function () {
 
     };
-
+    $scope.clearControls = function () {
+        $scope.txtBusqueda = '';
+        $scope.idBusqueda = '';
+    }
 
     //Obtiene todos los clientes coincidentes con la busqueda
     $scope.BuscarCliente = function (txtBusqueda) {
@@ -20,6 +23,7 @@ appControllers.controller('consultaBuroController', function ($scope, $state, no
                     notificationFactory.error('No se pudieron obtener los datos ' + response.data.message);
                 }
             );
+        $scope.clearControls();
     };
 
     //Obtiene todos los clientes coincidentes con la busqueda
@@ -36,6 +40,7 @@ appControllers.controller('consultaBuroController', function ($scope, $state, no
                     notificationFactory.error('No se pudieron obtener los datos ' + response.data.message);
                 }
             );
+        $scope.clearControls();
     };
 
 
