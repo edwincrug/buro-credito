@@ -129,13 +129,13 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                             element: 'morris_donut_graph',
                                             data: [{
                                                 value: $scope.porcNoPagado.toFixed(2),
-                                                label: 'No Pagados'
+                                                label: 'No Pagado'
                                                 }, {
                                                 value: $scope.porcPagInPuntual.toFixed(2),
-                                                label: 'Pagado Extemporáneo'
+                                                label: 'Pago Extemporáneo'
                                                 }, {
                                                 value: $scope.porcPagPuntual.toFixed(2),
-                                                label: 'Pagado Puntual'
+                                                label: 'Pago Puntual'
 
                                                 }],
                                             resize: true,
@@ -143,8 +143,13 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                             backgroundColor: '#ffffff',
                                             labelColor: '#1D242B', //#999999',
                                             colors: [
-//                                                        '#FF5656','#FFCC00','#B3E55E', 
-                                                       '#FF5656', '#FFCC00', '#9ACD32',
+//                                                        '#FF5656','#FFCC00','#B3E55E',
+                                                       //Primera OPC
+                                                      '#FF5656', '#FFCC00', '#9ACD32',
+                                                      //Otros  Mate
+                                                      //'#ed7e29', '#f0e428', '#8fbc21',
+                                                      //OBSCUROS
+                                                      //'#ce6800', '#ffd000', '#b2b206',
                                                         '#ffcc00'
                                                     ],
                                             formatter: function (x) {

@@ -57,8 +57,8 @@ contratoDetalle.prototype.get_generarPdf = function (req, res, next) {
     phantom.create().then(function (ph) {
         ph.createPage().then(function (page) {
             page.viewportSize = {
-                width: 700, //480
-                height: 900 //800
+                width: 480, //700, //
+                height: 800 //900 //
             };
             console.log('2.-Mando a llamar a Nuevo');
             page.open("http://localhost:4700/api/contratoDetalle/nuevo?idCliente=" + req.query.idCliente).then(function (status) {
