@@ -4,6 +4,13 @@
 
 <head>
     <link rel="stylesheet" href="../../css/report.css">
+    <!--link rel="stylesheet" href="../../css/style.css"-->
+    <!--Agregado para probar -->
+    <!--link href="../../css/plugins/jvectormap/jquery-jvectormap-2.0.1.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="../../css/plugins/datatables/css/jquery.dataTables.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="../../js/tabla/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="../../css/tablas/dataTables.bootstrap.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="../../css/plugins/switchery/switchery.css" rel="stylesheet" type="text/css" media="screen" /-->
 </head>
 
 <body>
@@ -49,24 +56,25 @@
             <div class="sucursales">
                 <!--div class="sucursalesHeader">
                     <div class="sucursalesEmpresa">EMPRESA:</div> {{ totales[0].empresa }}</div-->
-                <table border="0" bgcolor="white" class="tablaReporte">
+                <table border="0" bgcolor="white" class="tablePagado">
+                    <!--class="tablaReporte"-->
                     <tr>
                         <th align="center" colspan="4" class="sucursalesDetalleHeader"><b>LIMITE CRÉDITO POR AGENCIA:</b></th>
                     </tr>
-                    <tr>
+                    <tr class="thPagado">
                         <th><b>Sucursal</b></th>
                         <th><b>Departamento</b></th>
                         <th><b>Crédito</b></th>
                     </tr>
                     {% set sumalimites = 0 %}{% for total in totales %} {% set sumalimites = sumalimites + total.credito %}
-                    <tr>
+                    <tr class="tdPagado">
                         <td>{{total.sucursal}}</td>
                         <td>{{total.departamento}}</td>
                         <td class="tdMonto">{{total.credito | currency('$')}}</td>
                     </tr>
                     {% endfor %}
                 </table>
-                <div style="color: gris;">{{ sumalimites | currency('$')}}</div>
+                <div class="total"><strong>{{ sumalimites | currency('$')}}</strong></div>
             </div>
         </div>
         <!--Listado de Documentos -->
@@ -74,8 +82,8 @@
         {{ listaDocNoPagados[0] }}
         <section id="infoNoPagado">
             <div class="titleSection gris" style="color: #E20049;">NO PAGADO</div>
-            <table border="0" bgcolor="white" class="tablaReporte">
-                <tr>
+            <table border="0" bgcolor="white" class="tablePagado">
+                <tr class="thPagado">
                     <th colspan="1" rowspan="2"><b>Departamento</b></th>
                     <th colspan="2"><b>Por Vencer</b></th>
                     <th colspan="2"><b>1 a 30 dias</b></th>
@@ -84,7 +92,7 @@
                     <th colspan="2"><b>Mas de 90</b></th>
                     <th colspan="1" rowspan="2"><b>Estatus</b></th>
                 </tr>
-                <tr>
+                <tr class="thPagado">
                     <th colspan="1"><b>Num. Doc.</b></th>
                     <th colspan="1"><b>Importe</b></th>
                     <th colspan="1"><b>Num. Doc.</b></th>
@@ -97,7 +105,7 @@
                     <th colspan="1"><b>Importe</b></th>
                 </tr>
                 {% set sumanopagados = 0 %}{% for docnopagados in listaDocNoPagados %} {% for docnopagado in docnopagados %} {% if docnopagado.idEmpresa == totales[0].idEmpresa %} {% set sumanopagados = sumanopagados + docnopagado.saldoTotal %}
-                <tr>
+                <tr class="tdPagado">
                     <td>{{docnopagado.departamento}}</td>
                     <td class="tdNum">{{docnopagado.conteoTotal}}</td>
                     <td class="tdMonto">{{docnopagado.saldoTotal | currency('$')}}</td>
@@ -109,17 +117,17 @@
                     <td class="tdMonto">{{docnopagado.saldoT | currency('$')}}</td>
                     <td class="tdNum">{{docnopagado.conteoC}}</td>
                     <td class="tdMonto">{{docnopagado.saldoC | currency('$')}}</td>
-                    <td><img src="\images\error2.png" width="32" height="32"></td>
+                    <td class="tdMonto"><img src="\images\error5.png" width="25" height="25"></td>
                 </tr>
                 {% endif %} {% endfor %} {% endfor %}
             </table>
-            <div style="color: gris;">{{ sumanopagados | currency('$')}}</div>
+            <div class="total"><strong>{{ sumanopagados | currency('$')}}</strong></div>
         </section>
 
         <section id="infoPagoNoPuntual">
             <div class="titleSection gris" style="color: #F79F24;">PAGO EXTEMPORÁNEO</div>
-            <table border="0" bgcolor="white" class="tablaReporte">
-                <tr>
+            <table border="0" bgcolor="white" class="tablePagado">
+                <tr class="thPagado">
                     <th><b>Empresa</b></th>
                     <th><b>Sucursal</b></th>
                     <th><b>Departamento</b></th>
@@ -128,23 +136,23 @@
                     <th><b>Estatus</b></th>
                 </tr>
                 {% set sumainpuntual = 0 %}{% for docpagados in listaDocPagados %} {% for docpagado in docpagados %}{% if docpagado.idEmpresa == totales[0].idEmpresa %}{% if docpagado.tipoPagoFecha == 2 %} {% set sumainpuntual = sumainpuntual + docpagado.cargo %}
-                <tr>
+                <tr class="tdPagado">
                     <td>{{docpagado.empresa}}</td>
                     <td>{{docpagado.sucursal}}</td>
                     <td>{{docpagado.departamento}}</td>
                     <td>{{docpagado.totalDoctos}}</td>
                     <td class="tdMonto">{{docpagado.cargo | currency('$')}}</td>
-                    <td><img src="\images\alerta2.png" width="33" height="33"></td>
+                    <td class="tdMonto"><img src="\images\alerta5.png" width="25" height="25"></td>
                 </tr>
                 {% endif %} {% endif %} {% endfor %}{% endfor %}
             </table>
-            <div style="color: gris;">{{ sumainpuntual | currency('$')}}</div>
+            <div class="total"><strong>{{ sumainpuntual | currency('$')}}</strong></div>
         </section>
 
         <section id="infoPagoPuntual">
             <div class="titleSection gris" style="color: #9ACD32;">PAGO PUNTUAL</div>
-            <table border="0" bgcolor="white" class="tablaReporte">
-                <tr>
+            <table border="0" bgcolor="white" class="tablePagado">
+                <tr class="thPagado">
                     <th><b>Empresa</b></th>
                     <th><b>Sucursal</b></th>
                     <th><b>Departamento</b></th>
@@ -153,17 +161,17 @@
                     <th><b>Estatus</b></th>
                 </tr>
                 {% set sumapagados = 0 %} {% for docpagados in listaDocPagados %} {% for docpagado in docpagados %} {% if docpagado.idEmpresa == totales[0].idEmpresa %}{% if docpagado.tipoPagoFecha == 1 %} {% set sumapagados = sumapagados + docpagado.cargo %}
-                <tr>
-                    <td width=100%>{{docpagado.empresa}}</td>
+                <tr class="tdPagado">
+                    <td>{{docpagado.empresa}}</td>
                     <td>{{docpagado.sucursal}}</td>
                     <td>{{docpagado.departamento}}</td>
                     <td>{{docpagado.totalDoctos}}</td>
                     <td class="tdMonto">{{docpagado.cargo | currency('$')}}</td>
-                    <td><img src="\images\correcto2.png" width="35" height="35"></td>
+                    <td class="tdMonto"><img src="\images\correcto5.png" width="25" height="25"></td>
                 </tr>
                 {% endif %} {% endif %} {% endfor %}{% endfor %}
             </table>
-            <div style="color: gris;">{{ sumapagados | currency('$')}}</div>
+            <div class="total"><strong>{{ sumapagados | currency('$')}}</strong></div>
         </section>
 
     </div>
