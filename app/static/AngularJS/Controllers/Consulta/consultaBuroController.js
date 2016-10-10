@@ -4,10 +4,28 @@ appControllers.controller('consultaBuroController', function ($scope, $state, no
     $scope.init = function () {
 
     };
+
+    //Limpiar variables de busqueda de Cliente
     $scope.clearControls = function () {
-        $scope.txtBusqueda = '';
-        $scope.idBusqueda = '';
+        $scope.txtBusqueda = undefined;
+        $scope.idBusqueda = undefined;
     }
+
+    //Buscar Cliente por Texto u ID
+    $scope.BuscaCliente = function (idBusqueda, txtBusqueda) {
+        //alert('Entre en Buscar Cliente Id:' + idBusqueda + 'txt' + txtBusqueda);
+        if (idBusqueda != '' && idBusqueda != null) {
+            //alert('Entre en IF');
+            $scope.BuscarClienteId(idBusqueda);
+            $scope.clearControls();
+        } else {
+            //alert('Entre en Else');
+            if (txtBusqueda != '' && txtBusqueda != null) {
+                $scope.BuscarCliente(txtBusqueda);
+                $scope.clearControls();
+            }
+        }
+    };
 
     //Obtiene todos los clientes coincidentes con la busqueda
     $scope.BuscarCliente = function (txtBusqueda) {
@@ -42,8 +60,6 @@ appControllers.controller('consultaBuroController', function ($scope, $state, no
             );
         $scope.clearControls();
     };
-
-
 
     $scope.verDetalleReporte = function (cliente) {
         $scope.idcliente = cliente.idCliente;
