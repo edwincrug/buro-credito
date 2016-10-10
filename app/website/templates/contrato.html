@@ -173,8 +173,9 @@
             </table>
             <div class="total"><strong>{{ sumapagados | currency('$')}}</strong></div>
         </section>
-
     </div>
+    <!-- Salto de Pagina en PDF -->
+    <div style="page-break-after: always;"></div>
     {% endfor %}
     <!-- Fin de repeater por empresa-->
 </body>
