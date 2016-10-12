@@ -1,5 +1,5 @@
-appControllers.controller('contratoDetalleController', function ($scope, $state,
-    $stateParams, contratoDetalleRepository, notificationFactory, sessionFactory, datosClienteRepository) {
+appControllers.controller('contratoDetalleController', function ($scope, $state, Utils,
+    $sce, $stateParams, contratoDetalleRepository, notificationFactory, sessionFactory, datosClienteRepository) {
 
     $scope.message = 'Buscando...';
 
@@ -47,6 +47,39 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                 }
             );
     };
+
+    /////////
+    //Genera el pdf 
+    $scope.generarPdf2 = function () {
+        //$scope.idcliente = $stateParams.contratoObj.idCliente;
+
+        contratoDetalleRepository.generarPdfServer()
+            .then(
+                function succesCallback(response) {
+                    notificationFactory.success('Success genero el pdf2');
+                    $scope.htmlString = $sce.trustAsHtml(response.data);
+
+                    setTimeout(function () {
+                        window.open("http://189.204.141.193/jsreports/reporte.pdf");
+                    }, 5000);
+
+                    //Creo la URL
+                    //                    var pdf = URL.createObjectURL(Utils.b64toBlob(response.data, "application/pdf"))
+                    //
+                    //                    console.log(pdf)
+                    //                    $("<object  data='" + pdf + "' width='100%' height='500px' >").appendTo('#pdfInvoceContent');
+
+                    //$scope.documentoIni = '<div><div class="css-label radGroup2">REPORTE BURO</div><object //id="ifDocument" data="' + pdf + '" type="application/pdf" width="100%"><p>Alternative text - //include a link <a href="' + pdf + '">to the PDF!</a></p></object> </div>';
+                    //Muestra el documento
+                    //$("#divDocumento").append($scope.documentoIni);
+                },
+                function errorCallback(response) {
+                    //Error
+                    notificationFactory.error('No se pudo crear el pdf2 ');
+                }
+            );
+    };
+    /////////
 
     $scope.verDetalleCliente = function (idcliente) {
         contratoDetalleRepository.obtieneDetalleCliente(idcliente)

@@ -32,6 +32,33 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
             });
         }, //Fin de genera pdf 
 
+        //Genera PDF SERVER
+        generarPdfServer: function () {
+            return $http({
+                url: 'http://189.204.141.193:5488/api/report',
+                method: "POST",
+                data: {
+                    "template": {
+                        "name": "buro-credito"
+                    },
+                    "data": {
+                        "to": "Gerardo Sladek",
+                        "from": "Jan Blaha",
+                        "price": 90
+                    },
+                    "options": {
+                        "reports": {
+                            "save": true
+                        },
+                        "Content-Disposition": "attachment; filename=myreport.pdf"
+                    }
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }, //Fin de genera pdf Server
+
         //3.-Obtiene Detalle Cliente
         obtieneDetalleCliente: function (idCliente) {
             return $http({
