@@ -81,11 +81,11 @@ LimiteCredito.prototype.put_editarlimitecredito_data = function (req, res, next)
             value: req.query.idDepartamento,
             type: self.model.types.INT
                     },
-        {
+        /*{
             name: 'cartera',
             value: req.query.cartera,
             type: self.model.types.STRING
-                    },
+                    },*/
         {
             name: 'nuevoLimite',
             value: req.query.nuevoLimite,
@@ -94,7 +94,7 @@ LimiteCredito.prototype.put_editarlimitecredito_data = function (req, res, next)
 
     ];
 
-    this.model.query('UPD_LIMITE_BPRO_SP', params, function (error, result) {
+    this.model.query('UPD_LIMITE_CREDITO_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result

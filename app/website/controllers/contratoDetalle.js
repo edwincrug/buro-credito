@@ -60,6 +60,20 @@ contratoDetalle.prototype.get_generarPdf = function (req, res, next) {
                 width: 480, //700, //
                 height: 800 //900 //
             };
+            // 
+            page.paperSize = {
+                format: 'A4',
+                orientation: 'portrait',
+                margin: '1cm',
+                footer: {
+                    height: '1cm',
+                    contents: ph.callback(function (pageNum, numPages) {
+                        return '<div style="text-align: right; font-size: 12px;">' + pageNum + ' / ' + numPages + '</div>';
+                    })
+                }
+                //console.log('Formato PDF');
+            };
+            //
             console.log('2.-Mando a llamar a Nuevo');
             page.open("http://localhost:4700/api/contratoDetalle/nuevo?idCliente=" + req.query.idCliente).then(function (status) {
                 console.log(status);

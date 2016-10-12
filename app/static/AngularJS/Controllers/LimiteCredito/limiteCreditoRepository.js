@@ -23,7 +23,7 @@ appServices.factory('limiteCreditoRepository', function ($http, configurationFac
 
 
         //2.-Update del Limite de Credito por Empresa,Sucursal, Departamento de un cliente
-        editarLimiteCredito: function (idcliente, idempresa, idsucursal, iddepartamento, cartera, nuevoLimite) {
+        editarLimiteCredito: function (idcliente, idempresa, idsucursal, iddepartamento, nuevoLimite) {
                 return $http({
                     url: limiteCreditoRepositoryURL + 'editarlimitecredito/',
                     method: "PUT",
@@ -32,7 +32,7 @@ appServices.factory('limiteCreditoRepository', function ($http, configurationFac
                         idEmpresa: idempresa,
                         idSucursal: idsucursal,
                         idDepartamento: iddepartamento,
-                        cartera: cartera,
+                        //cartera: cartera,
                         nuevoLimite: nuevoLimite
                     },
                     headers: {

@@ -257,7 +257,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                             .then(
                                 function succesCallback(response) {
                                     //Success
-                                    notificationFactory.error('Se creo la carpeta');
+                                    notificationFactory.success('Se creo la carpeta');
 
                                 },
                                 function errorCallback(response) {
@@ -265,7 +265,21 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                                     notificationFactory.error('No se pudieron obtener los datos ' + response.data.message);
                                 }
                             );
+                        //Carga Lista de Documentos
                         cargaListaDocumentos(nuevocontrato.idTipoContrato);
+                        //Agrego update a Limite de Credito en BPRO
+                        limiteCreditoRepository.editarLimiteCredito(datoscliente.idCliente, nuevocontrato.idEmpresa, nuevocontrato.idSucursal, nuevocontrato.idDepartamento, limitecredito)
+                            .then(
+                                function succesCallback(response) {
+                                    //Success
+                                    notificationFactory.success('Se modifico el Limite de Crédito en BPRO');
+                                },
+                                function errorCallback(response) {
+                                    //Error
+                                    notificationFactory.error('No se pudo modificar el Limite de Crédito ' + response.data.message);
+                                }
+                            );
+
                     },
                     function errorCallback(response) {
                         //Error
