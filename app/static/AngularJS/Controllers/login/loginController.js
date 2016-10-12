@@ -1,4 +1,4 @@
-﻿appControllers.controller('loginController', function ($scope, loginRepository,notificationFactory, localStorageService) {
+﻿appControllers.controller('loginController', function ($scope, $rootScope, loginRepository,notificationFactory, localStorageService) {
     //this is the first method executed in the view
     $scope.init = function () {        
         cargaDatosUsuario();
@@ -26,7 +26,7 @@
                     //Success
                     //notificationFactory.success('Tipos de contrato obtenidos correctamente. ');
                     //messenger.showErrorMessage('Tipos de contrato obtenidos');
-                    $scope.usuario = response.data;
+                    $rootScope.usuario = response.data[0];
                 },
                 function errorCallback(response) {
                     //Error
