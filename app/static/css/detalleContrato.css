@@ -32,3 +32,6 @@
     float: left;
     width: 50%
 }
+.tdMonto {
+    text-align: right;
+}

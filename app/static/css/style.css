@@ -8766,3 +8766,7 @@ table.dataTable tfoot td select {
 table.dataTable.display tbody tr:first-child td {
     border-top: 1px solid #eeeeee;
 }
+.altoMenu {
+    height: 892px;
+    !important;
+}

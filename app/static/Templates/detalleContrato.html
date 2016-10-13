@@ -74,30 +74,30 @@
                             </div>
                             <br></br>
                             <br></br>
-                            <div class="col-xs-12">
+                            <div class="col-xs-10">
                                 <table class="table">
                                     <tr>
                                         <td>
                                             <h5 style="color: #E20049;"><strong>NO PAGADO: </strong></h5></td>
-                                        <td>
-                                            <h4>{{ totalNoPagado | currency}} &nbsp;&nbsp;</h4></td>
-                                        <td>
+                                        <td class="tdMonto">
+                                            <h4>{{ totalNoPagado | currency}}</h4></td>
+                                        <td class="tdMonto">
                                             <h4>{{ porcNoPagado | number:2}}%</h4></td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <h5 style="color: #F79F24;"><strong>EXTEMPORANÉO:&nbsp;&nbsp;&nbsp;&nbsp;</strong></h5></td>
-                                        <td>
-                                            <h4>{{ totalPagInPuntual | currency}} &nbsp;&nbsp;</h4></td>
-                                        <td>
+                                            <h5 style="color: #F79F24;"><strong>EXTEMPORANÉO:</strong></h5></td>
+                                        <td class="tdMonto">
+                                            <h4>{{ totalPagInPuntual | currency}}</h4></td>
+                                        <td class="tdMonto">
                                             <h4>{{ porcPagInPuntual | number:2}}%</h4></td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <h5 style="color: #9ACD32;"><strong>PUNTUAL:</strong></h5></td>
-                                        <td>
-                                            <h4>{{ totalPagPuntual | currency}}&nbsp;&nbsp;</h4></td>
-                                        <td>
+                                        <td class="tdMonto">
+                                            <h4>{{ totalPagPuntual | currency}}</h4></td>
+                                        <td class="tdMonto">
                                             <h4>{{ porcPagPuntual | number:2}}%</h4></td>
                                     </tr>
                                     <!--tr>
@@ -224,7 +224,7 @@
                                     <td>{{ nopagado.idDocumento }}</td>
                                     <!--td>{{ nopagado.serie }}</td-->
                                     <td>{{ nopagado.fechaVencimiento }}</td>
-                                    <td>${{ nopagado.importe }}</td>
+                                    <td class="tdMonto">{{nopagado.importe | currency}}</td>
                                     <td>{{ nopagado.diasVencidos }}</td>
                                     <!--th><img src="\images\error2.png" width="32" height="32"> '#FF5656', '#FFCC00', '#9ACD32',</th-->
                                     <td><span class="iconopago fa fa-close" aria-hidden="true" style="color: #FF5656;"></span></td>
@@ -286,7 +286,7 @@
                                     <td>{{ pagado.idDocumento }}</td>
                                     <!--td>{{ pagado.serie }}</td-->
                                     <td>{{ pagado.fechaVencimiento }}</td>
-                                    <td>${{ pagado.cargo }}</td>
+                                    <td class="tdMonto">{{pagado.cargo | currency}}</td>
                                     <td>{{ pagado.fechaPago }}</td>
                                     <!--td>{{ pagado.diasAtraso }}</td-->
                                     <!--td><img src="\images\alerta3.png" width="35" height="35"></td--#F79F24-->
@@ -351,7 +351,7 @@
                                     <td>{{ pagado.idDocumento }}</td>
                                     <!--td>{{ pagado.serie }}</td-->
                                     <td>{{ pagado.fechaVencimiento }}</td>
-                                    <td>${{ pagado.cargo }}</td>
+                                    <td class="tdMonto">{{pagado.cargo | currency}}</td>
                                     <td>{{ pagado.fechaPago }}</td>
                                     <!--td><img src="\images\correcto.png" width="35" height="35"></td-->
                                     <td><span class="iconopago fa fa-check" aria-hidden="true" style="color: #9ACD32;"></span></td>
