@@ -25,16 +25,18 @@
 
     <!-- Totales -->
     <div class="col-xs-12 col-sm-4">
-        <section class="box ">
+        <section class="box primary">
             <header class="panel_header">
                 <h2 class="title pull-left">Datos Generales: </h2>
-                <div class="actions panel_actions pull-right">
+                <!--div class="actions panel_actions pull-right">
                     <a class="box_toggle fa fa-chevron-down"></a>
                     <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
                     <a class="box_close fa fa-times"></a>
-                </div>
+                </div-->
             </header>
             <div class="content-body">
+                <br>
+                <br>
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="labelHeader">
@@ -50,14 +52,14 @@
     </div>
 
     <div class="col-xs-12 col-sm-4">
-        <section class="box ">
+        <section class="box">
             <header class="panel_header">
                 <h2 class="title pull-left">Datos Crédito: </h2>
-                <div class="actions panel_actions pull-right">
+                <!--div class="actions panel_actions pull-right">
                     <a class="box_toggle fa fa-chevron-down"></a>
                     <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
                     <a class="box_close fa fa-times"></a>
-                </div>
+                </div-->
             </header>
             <div class="content-body">
                 <div class="row">
@@ -119,44 +121,55 @@
     </div>
 
     <div class="col-xs-12 col-sm-4">
-        <section class="box ">
+        <section class="box">
             <header class="panel_header">
                 <h2 class="title pull-left">Comportamiento de Pago:  </h2>
                 <!-- {{ totalCredito | currency}}-->
-                <div class="actions panel_actions pull-right">
+                <!--div class="actions panel_actions pull-right">
                     <a class="box_toggle fa fa-chevron-down"></a>
                     <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
                     <a class="box_close fa fa-times"></a>
-                </div>
+                </div-->
             </header>
             <div class="content-body">
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="chart-container">
                             <!--div class="" style="height: 270px" id="platform_type_dates"-->
-                            <div style="height: 280px" id="morris_donut_graph"></div>
+                            <div style="height: 230px" id="morris_donut_graph"></div>
                         </div>
-
-                        <!--section>
-                            <div id="serlegend" class="rickshaw_legend" style="height: 86px;">
-                                <ul class="">
-                                    <li class="line">
-                                        <div class="swatch" style="background-color:#FF5656;">
-                                        </div>
-                                        <span class="label">No Pagado</span>
-                                    </li>
-                                    <li class="line ui-sortable-handle">
-                                        <div class="swatch" style="background-color: #FFCC00;">
-                                        </div><span class="label">Pago Extemporaneo</span>
-                                    </li>
-                                    <li class="line ui-sortable-handle disabled">
-                                        <div class="swatch" style="background-color: #9ACD32;">
-                                        </div><span class="label">Pago Puntual</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </section-->
-
+                        <!-- Tabla Colores-->
+                        <div class="col-xs-8">
+                            <table style="font-size:smaller;color:#545454">
+                                <tbody>
+                                    <tr>
+                                        <td class="legendColorBox">
+                                            <div style="border:1px solid #ccc;padding:1px">
+                                                <div style="width:4px;height:0;border:5px solid #FF5656;overflow:hidden"></div>
+                                            </div>
+                                        </td>
+                                        <td class="legendLabel">No Pagados</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="legendColorBox">
+                                            <div style="border:1px solid #ccc;padding:1px">
+                                                <div style="width:4px;height:0;border:5px solid #FFCC00;overflow:hidden"></div>
+                                            </div>
+                                        </td>
+                                        <td class="legendLabel">Pago Extemporáneo</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="legendColorBox">
+                                            <div style="border:1px solid #ccc;padding:1px">
+                                                <div style="width:4px;height:0;border:5px solid #9ACD32;overflow:hidden"></div>
+                                            </div>
+                                        </td>
+                                        <td class="legendLabel">Pago Puntual</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Tabla-->
                     </div>
                 </div>
                 <!-- End .row -->
