@@ -175,7 +175,8 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                                 if (input.length) {
                                     input.val(log);
                                 } else {
-                                    if (log) alert(log);
+                                    if (log)
+                                        notificationFactory.error('Alert modificado'); //alert(log);
                                 }
                             });
 
@@ -218,13 +219,16 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             }
         }).then(function (resp) { //upload function returns a promise
             if (resp.data.error_code === 0) { //validate success
-                $window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
+                //$window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
+                notificationFactory.success('Success de Documentos' + resp.config.data.file.name + 'uploaded. Response');
             } else {
-                $window.alert('an error occured');
+                //$window.alert('an error occured');
+                notificationFactory.error('A ocurrido un error al subir los Documentos');
             }
         }, function (resp) { //catch error
             console.log('Error status: ' + resp.status);
-            $window.alert('Error status: ' + resp.status);
+            notificationFactory.error('Error status: ' + resp.status);
+            //$window.alert('Error status: ' + resp.status);
         }, function (evt) {
             console.log(evt);
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);

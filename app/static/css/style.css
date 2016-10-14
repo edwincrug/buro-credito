@@ -8770,3 +8770,6 @@ table.dataTable.display tbody tr:first-child td {
     height: 892px;
     !important;
 }
+.tdMonto {
+    text-align: right;
+}
