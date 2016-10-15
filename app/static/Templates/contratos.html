@@ -52,7 +52,7 @@
                                     <td>{{ contrato.nomTipoContrato }}</td>
                                     <td>{{ contrato.fechaInicio | date:"dd/MM/yyyy"}}</td>
                                     <td>{{ contrato.fechaTermino | date:"dd/MM/yyyy"}}</td>
-                                    <td>${{ contrato.limiteCredito }}</td>
+                                    <td class="tdMonto">{{ contrato.limiteCredito | currency}}</td>
                                     <td>
                                         <button type="button" class="btn btn-primary linkedin" tooltip="Ver" ng-click="verDetalleContrato(contrato)">
                                             <span class="fa fa-binoculars" aria-hidden="true"></span>
