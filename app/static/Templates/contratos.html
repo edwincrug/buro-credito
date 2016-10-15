@@ -28,6 +28,7 @@
                         <table class="display estiloTabla">
                             <thead class="gris">
                                 <tr class="active">
+                                    <th>ID BPRO</th>
                                     <th>Cliente</th>
                                     <th>Empresa</th>
                                     <th>Sucursal</th>
@@ -42,6 +43,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="contrato in listaContratos">
+                                    <td>{{ contrato.idCliente }}</td>
                                     <td>{{ contrato.nombreCliente }}</td>
                                     <td>{{ contrato.empresa }}</td>
                                     <td>{{ contrato.sucursal }}</td>
