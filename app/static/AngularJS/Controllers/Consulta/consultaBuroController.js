@@ -11,15 +11,12 @@ appControllers.controller('consultaBuroController', function ($scope, $state, no
         $scope.idBusqueda = undefined;
     }
 
-    //Buscar Cliente por Texto u ID
+    //Buscar Cliente por Texto 
     $scope.BuscaCliente = function (idBusqueda, txtBusqueda) {
-        //alert('Entre en Buscar Cliente Id:' + idBusqueda + 'txt' + txtBusqueda);
         if (idBusqueda != '' && idBusqueda != null) {
-            //alert('Entre en IF');
             $scope.BuscarClienteId(idBusqueda);
             $scope.clearControls();
         } else {
-            //alert('Entre en Else');
             if (txtBusqueda != '' && txtBusqueda != null) {
                 $scope.BuscarCliente(txtBusqueda);
                 $scope.clearControls();
@@ -32,12 +29,9 @@ appControllers.controller('consultaBuroController', function ($scope, $state, no
         contratoRepository.obtieneDatosCliente($scope.txtBusqueda)
             .then(
                 function succesCallback(response) {
-                    //Success
-                    //notificationFactory.success('Datos cliente correctamente');
                     $scope.listaClientes = response.data;
                 },
                 function errorCallback(response) {
-                    //Error
                     notificationFactory.error('No se pudieron obtener los datos ' + response.data.message);
                 }
             );
@@ -49,12 +43,9 @@ appControllers.controller('consultaBuroController', function ($scope, $state, no
         contratoRepository.obtieneCliente($scope.idBusqueda)
             .then(
                 function succesCallback(response) {
-                    //Success
-                    //notificationFactory.success('Datos cliente correctamente');
                     $scope.listaClientes = response.data;
                 },
                 function errorCallback(response) {
-                    //Error
                     notificationFactory.error('No se pudieron obtener los datos ' + response.data.message);
                 }
             );
