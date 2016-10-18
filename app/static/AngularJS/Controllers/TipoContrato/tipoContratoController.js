@@ -17,11 +17,13 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
                 function succesCallback(response) {
                     $scope.listaTiposContrato = response.data;
                     setTimeout(function () {
-                        $('.estiloTabla').DataTable({
-
-                        });
+                        $('.estiloTabla').DataTable({});
                     }, 1000);
-                    $('#loadModal').modal('hide');
+
+                    setTimeout(function () {
+                        $('#loadModal').modal('hide');
+                    }, 1000);
+
                 },
                 function errorCallback(response) {
                     $('#loadModal').modal('hide');
