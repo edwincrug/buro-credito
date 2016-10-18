@@ -10,24 +10,21 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
 
     //Obtiene la lista de tipos contrato 
     var cargaTiposContrato = function () {
+        $('#loadModal').modal('show');
 
         tipoContratoRepository.obtieneTipoContrato(0)
             .then(
                 function succesCallback(response) {
-                    //Success
-                    //notificationFactory.success('Tipos de contrato obtenidos correctamente. ');
                     $scope.listaTiposContrato = response.data;
-
                     setTimeout(function () {
                         $('.estiloTabla').DataTable({
 
                         });
                     }, 1000);
-
-
+                    $('#loadModal').modal('hide');
                 },
                 function errorCallback(response) {
-                    //Error
+                    $('#loadModal').modal('hide');
                     notificationFactory.error('No se pudieron obtener los tipos de contrato: ' + response.data.message);
                 }
             );

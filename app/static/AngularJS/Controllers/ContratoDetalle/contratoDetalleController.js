@@ -118,7 +118,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         $scope.porcPagInPuntual = 0;
 
         //alert('Estoy en ver detalle Empresa: ' + $scope.nombreCliente);
-
+        $('#loadModal').modal('show');
         $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente)
             .then(
                 function succesCallback(response) {
@@ -197,9 +197,11 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                 notificationFactory.error('No se pudo obtener el detalle de los Documentos No Pagados');
                             }
                         );
+                    $('#loadModal').modal('hide');
                 },
                 function errorCallback(response) {
                     notificationFactory.error('No se pudo obtener el detalle de los Documentos Pagados');
+                    $('#loadModal').modal('hide');
                 }
             );
     }; //Fin de Documentos

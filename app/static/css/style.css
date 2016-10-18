@@ -8773,3 +8773,28 @@ table.dataTable.display tbody tr:first-child td {
 .tdMonto {
     text-align: right;
 }
+
+/************************************/
+
+@keyframes example {
+    from {
+        color: white;
+    }
+    to {
+        color: #00CDAC;
+    }
+}
+
+/* The element to apply the animation to */
+
+#pnlAnimation {
+    width: 300px;
+    height: 500px;
+    color: white;
+    padding: 220px;
+    animation-name: example;
+    animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    /* Chrome, Safari, Opera */
+    animation-iteration-count: infinite;
+}
