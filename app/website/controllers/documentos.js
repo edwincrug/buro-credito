@@ -7,7 +7,7 @@ var DocumentosView = require('../views/speaker'),
 var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
         //Direccion donde creara la carpeta req.query.contrato idContrato
-        cb(null, './app/' + req.query.contrato)
+        cb(null, './app/reportes/' + req.query.contrato)
     },
     filename: function (req, file, cb) {
         var datetimestamp = Date.now();
@@ -128,7 +128,7 @@ Documentos.prototype.post_TipoDocumento_data = function (req, res, next) {
 Documentos.prototype.post_creaCarpeta_data = function (req, res, next) {
     var self = this;
 
-    mkdirp('./app/' + req.query.idcontrato, function (err) {
+    mkdirp('./app/reportes/' + req.query.idcontrato, function (err) {
         if (err) console.error(err)
         else console.log('Carpeta Creada para Documentos')
     });

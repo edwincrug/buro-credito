@@ -56,41 +56,30 @@ contratoDetalle.prototype.get_generarPdf = function (req, res, next) {
 
     phantom.create().then(function (ph) {
         ph.createPage().then(function (page) {
-            page.viewportSize = {
-                width: 480, //700, //
-                height: 800 //900 //
-            };
-            // 
-            page.paperSize = {
-                format: 'A4',
-                orientation: 'portrait',
-                margin: '1cm',
-                footer: {
-                    height: '1cm',
-                    contents: ph.callback(function (pageNum, numPages) {
-                        return '<div style="text-align: right; font-size: 12px;">' + pageNum + ' / ' + numPages + '</div>';
-                    })
-                }
-                //console.log('Formato PDF');
-            };
-            //
             console.log('2.-Mando a llamar a Nuevo');
-            page.open("http://localhost:4700/api/contratoDetalle/nuevo?idCliente=" + req.query.idCliente).then(function (status) {
-                console.log(status);
-                page.render('Reporte_Buro.pdf').then(function () {
-                    console.log('4.-Regreso y estoy en Page Rendered');
-                    page.close();
-                    ph.exit();
-                    console.log('5.-Page Rendered2');
-                    setTimeout(function () {
-                        res.sendFile("Reporte_Buro.pdf", {
-                            root: path.join(__dirname, '../../../')
-                        });
-                        console.log('6.-Page Rendered3');
-                    }, 10)
+            //inicia Page.property
+            page.property('paperSize', {
+                format: 'A4'
+            }).then(function () {
+                page.open("http://localhost:4700/api/contratoDetalle/nuevo?idCliente=" + req.query.idCliente).then(function (status) {
+                    console.log(status);
+                    page.render('Reporte_Buro.pdf').then(function () {
+                        console.log('4.-Regreso y estoy en Page Rendered');
+                        page.close();
+                        ph.exit();
+                        console.log('5.-Page Rendered2');
+                        setTimeout(function () {
+                            res.sendFile("Reporte_Buro.pdf", {
+                                root: path.join(__dirname, '../../../')
+                            });
+                            console.log('6.-Page Rendered3');
+                        }, 10)
 
+                    });
                 });
-            });
+
+            }); //Fin Page.property
+
         });
     });
 };
