@@ -338,11 +338,12 @@
                                 <div class="clearfix"></div>
                                 <ul class="pager wizard">
                                     <li class="previous first" style="display:none;"><a href="javascript:;">First</a></li>
-                                    <li class="previous"><a href="javascript:;">Anterior</a></li>
+                                    <li class="previous"><a href="javascript:;" ng-click="setStepRemove()">Anterior</a></li>
                                     <li class="next last disabled" style="display:none;"><a href="javascript:;">Last</a></li>
-                                    <li class="next disabled"><a href="javascript:;" ng-hide="datosCliente==undefined" ng-click="cargaTiposEmpresas(datosCliente.idCliente)">Siguiente</a></li>
-                                    <li class="finish" style="display:;"><a href="javascript:;" ng-click="GuardarContrato(datosCliente,nuevoContrato,datosCredito[0].limiteCredito)" ng-hide="folioContrato!=undefined || datosCliente==undefined || nuevoContrato.idDepartamento==undefined || nuevoContrato.idTipoContrato==undefined || nuevoContrato.fechaTermino==undefined || nuevoContrato.fechaInicio==undefined">
-                                        Guardar</a></li>
+                                    <!--ng-show="folioContrato!=undefined || datosCliente==undefined || nuevoContrato.idDepartamento==undefined || nuevoContrato.idTipoContrato==undefined || nuevoContrato.fechaTermino==undefined || nuevoContrato.fechaInicio==undefined" -->
+                                    <li class="next"><a href="javascript:;"  ng-click="cargaTiposEmpresas(datosCliente.idCliente);setStepAdd()" ng-hide="stepContador==2" ng-show="mostrarSiguiente==1">Siguiente</a></li>
+                                    <li class="finish" style="display:;"><a href="javascript:;" ng-click="GuardarContrato(datosCliente,nuevoContrato,datosCredito[0].limiteCredito)"
+                                     ng-show="stepContador==2">Guardar</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -368,7 +369,7 @@
         <div class="modal-dialog animated bounceInDown">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="Cerrar()"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Búsqueda de Clientes</h4>
                 </div>
                 <div class="modal-body">
@@ -407,7 +408,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="Cerrar()">Salir</button>
                 </div>
             </div>
             <!-- Fin content -->
@@ -416,6 +417,7 @@
     </div>
     <!-- Modal  Busqueda-->
 </div>
+
 <script src="js/wizard/jquery.validate.min.js" type="text/javascript"></script>
 <script src="js/wizard/jquery.bootstrap.wizard.min.js" type="text/javascript"></script>
 <script src="js/wizard/form-validation.js" type="text/javascript"></script>

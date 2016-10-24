@@ -1,5 +1,6 @@
 appControllers.controller('contratoController', function ($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, empresasRepository, sucursalesRepository, departamentosRepository, limiteCreditoRepository, documentosRepository, notificationFactory, sessionFactory, Upload, $window, contratoDetalleRepository) {
-
+    $scope.ocultarSiguiente=1;
+    $scope.stepContador=0;
     //Metodo de incio 
     $scope.init = function () {
         //Carga datos del Cliente
@@ -23,7 +24,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     $scope.BuscarCliente = function (txtBusqueda) {
         //notificationFactory.success('Estoy en la funcion BuscarCliente ' + $scope.txtBusqueda);
         $('#searchCliente').modal('show');
-
+        if(txtBusqueda!=undefined){
         contratoRepository.obtieneDatosCliente($scope.txtBusqueda)
             .then(
                 function succesCallback(response) {
@@ -36,6 +37,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                     notificationFactory.error('No se pudieron obtener los datos ' + response.data.message);
                 }
             );
+            }
 
     };
 
@@ -112,6 +114,8 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     //Regreso a la pantalla nuevo Contrato con los datos del Cliente
     $scope.cargarCliente = function (infoCliente) {
         //alert('Estoy en carga Cliente' + infoCliente.nombre);
+        $scope.listaClientes=null;
+        $scope.txtBusqueda=null;
         $rootScope.datosCliente = infoCliente;
         $rootScope.verDatos = true;
         $('#searchCliente').modal('hide');
@@ -240,6 +244,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     //Funcion para GuardarContrato
     $scope.GuardarContrato = function (datoscliente, nuevocontrato, limitecredito) {
+        $scope.mostrarSiguiente=1;
 
         if (datoscliente.idCliente != '' && nuevocontrato != '' && limitecredito > 0) {
 
@@ -257,6 +262,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                         //Success
                         $scope.folioContrato = response.data;
                         notificationFactory.success('Datos de Contrato guardados');
+                        $scope.ocultarSiguiente=1;
                         documentosRepository.creaCarpeta($scope.folioContrato["0"].idContrato)
                             .then(
                                 function succesCallback(response) {
@@ -319,5 +325,18 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                 }
             );
     };
+
+    $scope.Cerrar= function(){
+        $scope.listaClientes=null;
+        $scope.txtBusqueda=null;
+    }
+    $scope.setStepAdd=function(){
+        $scope.stepContador++;
+        console.log($scope.stepContador);
+    }
+    $scope.setStepRemove=function(){
+        $scope.stepContador--;
+        console.log($scope.stepContador);
+    }
 
 }); //FIN de appControllers

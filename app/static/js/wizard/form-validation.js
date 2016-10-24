@@ -262,7 +262,8 @@ $(document).ready(function() {
         });
 
         $('#pills .finish').click(function() {
-            alert('Finished!, Starting over!');
+            //alert('Contrato Guardado');
+            //notificationFactory.success('Guardado Exito');
             $('#pills').find("a[href*='tab1']").trigger('click');
         });
 
