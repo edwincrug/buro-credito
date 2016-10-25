@@ -150,7 +150,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-label" ng-show="verLimiteCredito">Límite de Crédito:</label>
-                                                <input type="text" class="form-control" id="limiteCredito" ng-model="datosCredito[0].limiteCredito" data-mask="fdecimal" placeholder="Mayor a cero" data-dec="," data-rad="." maxlength="18">
+                                                <input type="text" class="form-control" id="limiteCredito" name="txtLimite" ng-model="datosCredito[0].limiteCredito" data-mask="fdecimal" placeholder="Mayor a cero" data-dec="," data-rad="." maxlength="18">
+                                                <!--input type="text" class="form-control" id="limiteCredito" ng-model="datosCredito[0].limiteCredito" data-mask="fdecimal" placeholder="Mayor a cero" data-dec="," data-rad="." maxlength="18"-->
                                             </div>
                                         </div>
                                     </div>
@@ -341,9 +342,8 @@
                                     <li class="previous"><a href="javascript:;" ng-click="setStepRemove()">Anterior</a></li>
                                     <li class="next last disabled" style="display:none;"><a href="javascript:;">Last</a></li>
                                     <!--ng-show="folioContrato!=undefined || datosCliente==undefined || nuevoContrato.idDepartamento==undefined || nuevoContrato.idTipoContrato==undefined || nuevoContrato.fechaTermino==undefined || nuevoContrato.fechaInicio==undefined" -->
-                                    <li class="next"><a href="javascript:;"  ng-click="cargaTiposEmpresas(datosCliente.idCliente);setStepAdd()" ng-hide="stepContador==2" ng-show="mostrarSiguiente==1">Siguiente</a></li>
-                                    <li class="finish" style="display:;"><a href="javascript:;" ng-click="GuardarContrato(datosCliente,nuevoContrato,datosCredito[0].limiteCredito)"
-                                     ng-show="stepContador==2">Guardar</a></li>
+                                    <li class="next"><a href="javascript:;" ng-click="cargaTiposEmpresas(datosCliente.idCliente);setStepAdd()" ng-hide="stepContador==2" ng-show="mostrarSiguiente==1">Siguiente</a></li>
+                                    <li class="finish" style="display:;"><a href="javascript:;" ng-click="GuardarContrato(datosCliente,nuevoContrato,datosCredito[0].limiteCredito)" ng-show="stepContador==2">Guardar</a></li>
                                 </ul>
                             </div>
                         </div>
