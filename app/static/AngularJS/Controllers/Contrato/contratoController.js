@@ -11,10 +11,10 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         $rootScope.verDatos = false;
         $rootScope.verLimiteCredito = false;
 
-
+        //Para que empieze limpia la pantalla
+        $rootScope.datosCliente = null;
+        //Para que desaparezca botones
         $rootScope.avanzaContrato = 0;
-
-
 
         $('.datepicker').datepicker({});
         //        setTimeout(function () {
@@ -212,16 +212,14 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     };
 
     //PRUEBA  Llamada a la funcion para subir los Archivos 
-    $scope.subirDocumentosContrato = function () {
-
-        var contador = 0;
+    $scope.subirDocumentosContrato = function (listaDocumentos, idcontrato) {
+        //var contador = 0;
         angular.forEach($scope.listaDocumentos, function (value, key) {
-            if (value.file != '') {
-                $scope.submit(fileinput, idcontrato, value.idDocumento);
-                contador++;
+            if (value.file != null) {
+                $scope.submit(value.file, $scope.idcontrato, value.idDocumento);
+                //contador++;
             }
         });
-
     }; //PRUEBA  
 
     //Funcion para llamar al submit
@@ -291,15 +289,14 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                         notificationFactory.success('Datos de Contrato guardados');
 
                         //2)Creo la Carpeta con el idContrato
+                        $scope.idcontrato = $scope.folioContrato["0"].idContrato;
+
                         documentosRepository.creaCarpeta($scope.folioContrato["0"].idContrato)
                             .then(
                                 function succesCallback(response) {
-                                    //Success
                                     notificationFactory.success('Se creo la carpeta');
-
                                 },
                                 function errorCallback(response) {
-                                    //Error
                                     notificationFactory.error('No se creo la carpeta ' + response.data.message);
                                 }
                             );
@@ -317,6 +314,9 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                                 }
                             );
                         //Termina Success del Insert
+
+                        //4)Subo los documentos
+                        $scope.subirDocumentosContrato($scope.listaDocumentos, $scope.idcontrato);
                     },
                     function errorCallback(response) {
                         //Error
