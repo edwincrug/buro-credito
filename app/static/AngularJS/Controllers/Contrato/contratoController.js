@@ -11,6 +11,8 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         $rootScope.verDatos = false;
         $rootScope.verLimiteCredito = false;
 
+        var doctos = [];
+
         //Para que empieze limpia la pantalla
         $rootScope.datosCliente = null;
         //Para que desaparezca botones
@@ -212,15 +214,24 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     };
 
     //PRUEBA  Llamada a la funcion para subir los Archivos 
-    $scope.subirDocumentosContrato = function (listaDocumentos, idcontrato) {
-        //var contador = 0;
-        angular.forEach($scope.listaDocumentos, function (value, key) {
-            if (value.nomDocumento != null) {
-                $scope.submit(value.nomDocumento, $scope.idcontrato, value.idDocumento);
-                //contador++;
-            }
-        });
-    }; //PRUEBA  
+    //    $scope.subirDocumentosContrato = function (listaDocumentos, idcontrato) {
+    //        //var contador = 0;
+    //        angular.forEach($scope.listaDocumentos, function (value, key) {
+    //            if (value.nomDocumento != null) {
+    //                $scope.submit(value.nomDocumento, $scope.idcontrato, value.idDocumento);
+    //                //contador++;
+    //            }
+    //        });
+    //    }; //PRUEBA  
+
+
+    //    $scope.guardaArchivo(fileinput, iddocumento) {
+    //        if (fileinput != null) {
+    //            alert("Estoy en guarda");
+    //            $scope.upload(fileinput, 400, iddocumento);
+    //        }
+    //    }
+
 
     //Funcion para llamar al submit
     $scope.submit = function (fileinput, idcontrato, iddocumento) { //function to call on form submit

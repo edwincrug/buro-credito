@@ -139,14 +139,22 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                 notificationFactory.success('Detalle Documentos No Pagados');
                                 $scope.listaNoPagados = response.data;
 
+                                $scope.totalNoPagadoVencido = 0;
+                                $scope.totalNoPagadoNoVencido = 0;
+
                                 for (var i = 0; i < response.data.length; i++) {
-                                    $scope.totalNoPagado += (response.data[i].saldo);
+                                    if (response.data[i].diasVencidos > 0) {
+                                        $scope.totalNoPagadoVencido += (response.data[i].importe);
+                                    } else if (response.data[i].diasVencidos <= 0) {
+                                        $scope.totalNoPagadoNoVencido += (response.data[i].importe);
+                                    }
                                 }
 
                                 //Total de Credito
                                 $scope.totalCredito = $scope.totalNoPagado + $scope.totalPagPuntual + $scope.totalPagInPuntual;
                                 //Porcentajes
-                                $scope.porcNoPagado = $scope.totalNoPagado * 100 / $scope.totalCredito;
+                                $scope.porcNoPagadoVencido = $scope.totalNoPagadoVencido * 100 / $scope.totalCredito;
+                                $scope.porcNoPagadoNoVencido = $scope.totalNoPagadoNoVencido * 100 / $scope.totalCredito;
                                 $scope.porcPagInPuntual = $scope.totalPagInPuntual * 100 / $scope.totalCredito;
                                 $scope.porcPagPuntual = $scope.totalPagPuntual * 100 / $scope.totalCredito;
                                 $scope.porcCredito = $scope.porcNoPagado + $scope.porcPagInPuntual + $scope.porcPagPuntual;
@@ -161,14 +169,19 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                         Morris.Donut({
                                             element: 'morris_donut_graph',
                                             data: [{
-                                                value: $scope.porcNoPagado.toFixed(2),
-                                                label: 'No Pagado'
+                                                    value: $scope.porcNoPagadoVencido.toFixed(2),
+                                                    label: 'No Pagado Vencido'
+                                                },
+                                                {
+                                                    value: $scope.porcNoPagadoNoVencido.toFixed(2),
+                                                    label: 'No Pagado No Vencido'
+                                                },
+                                                {
+                                                    value: $scope.porcPagInPuntual.toFixed(2),
+                                                    label: 'Pago Extemporáneo'
                                                 }, {
-                                                value: $scope.porcPagInPuntual.toFixed(2),
-                                                label: 'Pago Extemporáneo'
-                                                }, {
-                                                value: $scope.porcPagPuntual.toFixed(2),
-                                                label: 'Pago Puntual'
+                                                    value: $scope.porcPagPuntual.toFixed(2),
+                                                    label: 'Pago Puntual'
 
                                                 }],
                                             resize: true,
@@ -178,7 +191,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                             colors: [
 //                                                        '#FF5656','#FFCC00','#B3E55E',
                                                        //Primera OPC
-                                                      '#FF5656', '#FFCC00', '#9ACD32',
+                                                      '#FF5656', '#ed7e29', '#FFCC00', '#9ACD32',
                                                       //Otros  Mate
                                                       //'#ed7e29', '#f0e428', '#8fbc21',
                                                       //OBSCUROS

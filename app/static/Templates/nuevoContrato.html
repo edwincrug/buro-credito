@@ -182,7 +182,7 @@
                                                                                 <span class="fa fa-search"></span>
                                                                                 <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" />
                                                                             </label>
-                                                                            <input type="text" class="form-control filefield" readonly="" ng-model="documento.nomDocumento">
+                                                                            <input type="text" class="form-control filefield" readonly="" ng-click="submit(this.file,600,documento.idDocumento)">
                                                                             <!--button type="submit" ng-click="submit(this.file,folioContrato,documento.idDocumento)" class="btn btn-warning"><span class="fa fa-upload"></span></button-->
                                                                         </div>
                                                                         <!--                                                                        <p>{{progress}}</p>-->

@@ -1,4 +1,13 @@
 #title {
-  color: white;
-  font-size: 18px;
-  font-weight: 100; }
+    color: white;
+    font-size: 18px;
+    font-weight: 100;
+}
+.avatar {
+    width: 45px;
+    margin-right: 10px;
+    margin-top: 8px;
+}
+.user {
+    color: white;
+}
