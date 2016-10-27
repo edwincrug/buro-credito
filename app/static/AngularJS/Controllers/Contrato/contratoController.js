@@ -215,8 +215,8 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     $scope.subirDocumentosContrato = function (listaDocumentos, idcontrato) {
         //var contador = 0;
         angular.forEach($scope.listaDocumentos, function (value, key) {
-            if (value.file != null) {
-                $scope.submit(value.file, $scope.idcontrato, value.idDocumento);
+            if (value.nomDocumento != null) {
+                $scope.submit(value.nomDocumento, $scope.idcontrato, value.idDocumento);
                 //contador++;
             }
         });
@@ -286,6 +286,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                     function succesCallback(response) {
                         //Success del Insert
                         $scope.folioContrato = response.data;
+
                         notificationFactory.success('Datos de Contrato guardados');
 
                         //2)Creo la Carpeta con el idContrato
@@ -313,14 +314,16 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                                     notificationFactory.error('No se pudo modificar el Limite de Crédito ' + response.data.message);
                                 }
                             );
-                        //Termina Success del Insert
 
                         //4)Subo los documentos
                         $scope.subirDocumentosContrato($scope.listaDocumentos, $scope.idcontrato);
+
+                        //Termina Success del Insert
+                        //$state.go('home');
                     },
                     function errorCallback(response) {
                         //Error
-                        notificationFactory.error('Error al insertar el Contrato ' + response.data.message);
+                        notificationFactory.error('Existe contrato con los mismos Parametros');
                     }
                 );
         } else {
