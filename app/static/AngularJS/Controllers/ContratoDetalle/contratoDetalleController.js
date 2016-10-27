@@ -118,7 +118,10 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         $scope.porcPagInPuntual = 0;
 
         //alert('Estoy en ver detalle Empresa: ' + $scope.nombreCliente);
-        $('#loadModal').modal('show');
+        setTimeout(function () {
+            $('#loadModal').modal('hide');
+        }, 1000);
+
         $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente)
             .then(
                 function succesCallback(response) {
@@ -191,7 +194,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                             colors: [
 //                                                        '#FF5656','#FFCC00','#B3E55E',
                                                        //Primera OPC
-                                                      '#FF5656', '#ed7e29', '#FFCC00', '#9ACD32',
+                                                      '#FF5656', '#2EA1D9', '#FFCC00', '#9ACD32',
                                                       //Otros  Mate
                                                       //'#ed7e29', '#f0e428', '#8fbc21',
                                                       //OBSCUROS
