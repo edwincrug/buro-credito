@@ -75,18 +75,6 @@
                             Buró de Crédito
                         </div>
                     </li>
-                    <!--li class="hidden-sm hidden-xs searchform">
-                        <form action="http://jaybabani.com/complete-admin/ui-search.html" method="post">
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                        <i class="fa fa-search"></i>
-                                    </span>
-                                <input type="text" class="form-control animated fadeIn" placeholder="Buscar">
-                            </div>
-                            <input type='submit' value="">
-                        </form>
-                    </li-->
-
                 </ul>
             </div>
         </div>
@@ -97,7 +85,7 @@
                 <li class="profile showopacity">
                     <a href="#" data-toggle="dropdown" class="toggle">
                         <img src="images/profile/man.jpg" alt="user-image" class="img-circle img-inline avatar">
-                        <span class="user"> Ismael Martínez Pablo </span>
+                        <span class="user"> Ismael Martínez Pablo {{ user.nombre }}</span>
                     </a>
 
                 </li>
@@ -132,7 +120,7 @@
                         <a ui-sref="consultaburo">
                             <i class="fa fa-eye"></i>
                             <span class="title">Consulta Buró de Crédito</span>
-                            <span class="arrow "></span>
+                            <span class="title"></span>
                         </a>
                     </li>
                     <li class='menusection'>Catálogo</li>
