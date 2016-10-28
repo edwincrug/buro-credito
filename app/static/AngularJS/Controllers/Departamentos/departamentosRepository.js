@@ -4,10 +4,26 @@ appServices.factory('departamentosRepository', function ($http, configurationFac
 
     return {
 
-        //4.-Obtiene todos los Tipo de Departamento
+        //1.-Obtiene todos los Tipo de Departamento
         obtieneTipoDepartamento: function (idUsuario, idEmpresa, idSucursal) {
+            return $http({
+                url: departamentosRepositoryURL + 'obtienetipodepartamento/',
+                method: "GET",
+                params: {
+                    idUsuario: idUsuario,
+                    idEmpresa: idEmpresa,
+                    idSucursal: idSucursal
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }, //Fin obtieneTipoSucursal
+
+        //2.-Obtiene todos los Departamentos segun el Perfil del Usuario
+        userDepartamentos: function (idUsuario, idEmpresa, idSucursal) {
                 return $http({
-                    url: departamentosRepositoryURL + 'obtienetipodepartamento/',
+                    url: departamentosRepositoryURL + 'userdepartamentos/',
                     method: "GET",
                     params: {
                         idUsuario: idUsuario,
@@ -19,7 +35,6 @@ appServices.factory('departamentosRepository', function ($http, configurationFac
                     }
                 });
             } //Fin obtieneTipoSucursal
-
 
     }; //Fin del return
 

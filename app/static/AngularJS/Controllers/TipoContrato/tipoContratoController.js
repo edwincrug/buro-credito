@@ -18,6 +18,7 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
                     $scope.listaTiposContrato = response.data;
                     setTimeout(function () {
                         $('.estiloTabla').DataTable({});
+                        $("#tablaT_length").removeClass("dataTables_info").addClass("hide-div");
                     }, 1000);
 
                     setTimeout(function () {

@@ -8,6 +8,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
         //Mando a llamar la Tabla despues de cargar datos
         setTimeout(function () {
             $('.estiloTabla').DataTable({});
+            $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
         }, 1000);
 
         $scope.opcion = sessionFactory.opcion;

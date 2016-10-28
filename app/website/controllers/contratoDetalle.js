@@ -177,7 +177,7 @@ contratoDetalle.prototype.get_detallePagoDocumentos = function (req, res, next) 
         value: req.query.idCliente,
         type: self.model.types.INT
         }]
-
+                            
     this.model.query('SEL_TOTAL_DOC_PAG_DETALLE_SP_TODAS', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,

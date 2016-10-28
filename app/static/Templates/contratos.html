@@ -20,12 +20,33 @@
         <section class="box ">
             <header class="panel_header">
                 <h2 class="title pull-left">Lista por Departamento</h2>
-
             </header>
             <div class="content-body">
+
+                <!--busqueda por Empresa/Sucursal/Depto -->
+                <h4>Busqueda por:</h4>
+                <form class="form-inline ng-pristine ng-valid">
+                    <div class="form-group">
+                        <select class="form-control" ng-model="seleccion.idEmpresa" ng-options="tipoEmpresa.idEmpresa as tipoEmpresa.nombreEmpresa for tipoEmpresa in listaEmpresas" ng-change="cargaSucursales(15,seleccion.idEmpresa)" id="cboEmpresa">
+                            <option value="">Empresa</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" ng-model="seleccion.idSucursal" ng-options="tipoSucursal.idSucursal as tipoSucursal.nombreSucursal for tipoSucursal in listaSucursales" ng-change="cargaDepartamentos(15,seleccion.idEmpresa,seleccion.idSucursal)" id="cboSucursal" name="txtRequerido">
+                            <option value="">Sucursal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" name="seleccion.idDepartamento" ng-model="seleccion.idDepartamento" ng-options="tipoDepartamento.idDepartamento as tipoDepartamento.nombreDepartamento for tipoDepartamento in listaDepartamentos" id="cboDepartamento" ng-change="cargaContratosUser(15,seleccion.idEmpresa,seleccion.idSucursal,seleccion.idDepartamento)" name="txtRequerido">
+                            <option value="">Departamento</option>
+                        </select>
+                    </div>
+                </form>
+                <!--Empresa/Sucursal/Depto-->
+
                 <div class="row">
                     <div class="col-xs-12">
-                        <table class="display estiloTabla">
+                        <table class="display estiloTabla" id="tablaR">
                             <thead class="gris">
                                 <tr class="active">
                                     <th>ID BPRO</th>

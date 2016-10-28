@@ -161,5 +161,4 @@ contrato.prototype.get_obtienecliente = function (req, res, next) {
 };
 
 
-
 module.exports = contrato;

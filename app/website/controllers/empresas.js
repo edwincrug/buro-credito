@@ -15,7 +15,7 @@ var empresas = function (conf) {
 
 // GET GetAll para obtener todos los elementos
 empresas.prototype.get_obtienetipoempresa = function (req, res, next) {
-   
+
     var self = this;
     //Obtención de valores de los parámetros del request
     var params = [
@@ -33,6 +33,30 @@ empresas.prototype.get_obtienetipoempresa = function (req, res, next) {
         });
     });
 };
+
+
+//Empresas segun Perfil de Consulta
+empresas.prototype.get_userempresas = function (req, res, next) {
+
+    var self = this;
+    //Obtención de valores de los parámetros del request
+    var params = [
+        {
+            name: 'idUsuario',
+            value: req.query.idUsuario,
+            type: self.model.types.INT
+                    }
+    ];
+
+    this.model.query('SEL_EMPRESA_BY_USUARIO_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+};
+
+
 
 
 module.exports = empresas;
