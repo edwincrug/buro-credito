@@ -9,7 +9,6 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
 
     //Obtiene la lista de Contratos 
     var cargaContratos = function () {
-
         contratoRepository.obtieneContratos(0)
             .then(
                 function succesCallback(response) {
@@ -28,7 +27,6 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
                     notificationFactory.error('No se pudieron obtener los Contratos: ' + response.data.message);
                 }
             );
-
     };
 
 
@@ -103,29 +101,52 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
     };
 
     //Carga solo Contratos para este Perfil
-    $scope.cargaContratosUser = function (idusuario, idempresa, idsucursal, iddepartamento) {
+    $scope.cargaContratosEmp = function (idusuario, idempresa) {
         notificationFactory.success('Estoy en contratos segun Perfil');
 
-        //         contratoRepository.obtieneContratos(0)
-        //            .then(
-        //                function succesCallback(response) {
-        //                    //Success
-        //                    $scope.listaContratos = response.data;
-        //
-        //                    setTimeout(function () {
-        //                        $('.estiloTabla').DataTable({});
-        //                        $("#tablaR_length").removeClass("dataTables_info").addClass("hide-div");
-        //                        //$("#tablaR_filter").removeClass("dataTables_info").addClass("pull-left");
-        //                    }, 100);
-        //
-        //                },
-        //                function errorCallback(response) {
-        //                    //Error
-        //                    notificationFactory.error('No se pudieron obtener los Contratos: ' + response.data.message);
-        //                }
-        //            );
+        contratoRepository.obtieneContratosEmp(idusuario, idempresa)
+            .then(
+                function succesCallback(response) {
+                    //Success
+                    $scope.listaContratos = response.data;
+
+                    setTimeout(function () {
+                        $('.estiloTabla').DataTable({});
+                        $("#tablaR_length").removeClass("dataTables_info").addClass("hide-div");
+                        //$("#tablaR_filter").removeClass("dataTables_info").addClass("pull-left");
+                    }, 100);
+
+                },
+                function errorCallback(response) {
+                    //Error
+                    notificationFactory.error('No se pudieron obtener los Contratos: ' + response.data.message);
+                }
+            );
+    };
+
+    //Carga solo Contratos para este Perfil
+    $scope.cargaContratosSuc = function (idusuario, idempresa, idsucursal) {
+        notificationFactory.success('Estoy en Sucursales');
 
 
+        contratoRepository.obtieneContratosEmp(idusuario, idempresa, idsucursal)
+            .then(
+                function succesCallback(response) {
+                    //Success
+                    $scope.listaContratos = response.data;
+
+                    setTimeout(function () {
+                        $('.estiloTabla').DataTable({});
+                        $("#tablaR_length").removeClass("dataTables_info").addClass("hide-div");
+                        //$("#tablaR_filter").removeClass("dataTables_info").addClass("pull-left");
+                    }, 100);
+
+                },
+                function errorCallback(response) {
+                    //Error
+                    notificationFactory.error('No se pudieron obtener los Contratos: ' + response.data.message);
+                }
+            );
     };
 
 

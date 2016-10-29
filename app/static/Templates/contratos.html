@@ -60,10 +60,14 @@
                                     <th>Fecha Término</th>
                                     <th>Límite Crédito</th>
                                     <th>Acción</th>
+                                    <th>idEmpresa</th>
+                                    <th>idSucursal</th>
+                                    <th>idDepartamento</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="contrato in listaContratos">
+                                <tr ng-repeat="contrato in listaContratos | filter:(seleccion.idEmpresa != undefined && seleccion.idSucursal == undefined ? {idEmpresa: seleccion.idEmpresa}: (seleccion.idEmpresa != undefined && seleccion.idSucursal != undefined && seleccion.idDepartamento == undefined ? {idSucursal: seleccion.idSucursal, idEmpresa: seleccion.idEmpresa}: (seleccion.idEmpresa != undefined && seleccion.idSucursal != undefined && seleccion.idDepartamento != undefined ?
+												  {idDepartamento:seleccion.idDepartamento,idSucursal: seleccion.idSucursal, idEmpresa: seleccion.idEmpresa}:'') ) )">
                                     <td>{{ contrato.idCliente }}</td>
                                     <td>{{ contrato.nombreCliente }}</td>
                                     <td>{{ contrato.empresa }}</td>
@@ -78,8 +82,10 @@
                                         <button type="button" class="btn btn-primary linkedin" tooltip="Ver" ng-click="verDetalleContrato(contrato)">
                                             <span class="fa fa-binoculars" aria-hidden="true"></span>
                                         </button>
-
                                     </td>
+                                    <td>{{ contrato.idEmpresa }}</td>
+                                    <td>{{ contrato.idSucursal }}</td>
+                                    <td>{{ contrato.idDepartamento }}</td>
                                 </tr>
                             </tbody>
                         </table>

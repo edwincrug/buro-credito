@@ -160,5 +160,96 @@ contrato.prototype.get_obtienecliente = function (req, res, next) {
     });
 };
 
+////////////////////////////////////////////////////////////////////////////////////
+// GET todos los Contratos  por Empresa segun el Perfil
+contrato.prototype.get_obtienecontratosemp = function (req, res, next) {
+    var self = this;
+    //Obtención de valores de los parámetros del request
+    var params = [
+        {
+            name: 'idUsuario',
+            value: req.query.idUsuario,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'idEmpresa',
+            value: req.query.idEmpresa,
+            type: self.model.types.INT
+                    }
+    ];
+
+    this.model.query('SEL_CONTRATOS_EMP_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+};
+
+// GET todos los Contratos por Sucursal segun el Perfil
+contrato.prototype.get_obtienecontratossuc = function (req, res, next) {
+    var self = this;
+    //Obtención de valores de los parámetros del request
+    var params = [
+        {
+            name: 'idUsuario',
+            value: req.query.idUsuario,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'idEmpresa',
+            value: req.query.idEmpresa,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'idSucursal',
+            value: req.query.idSucursal,
+            type: self.model.types.INT
+                    }
+    ];
+
+    this.model.query('SEL_CONTRATOS_SUC_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+};
+
+// GET todos los Contratos por Departamento segun el Perfil
+contrato.prototype.get_obtienecontratosdep = function (req, res, next) {
+    var self = this;
+    //Obtención de valores de los parámetros del request
+    var params = [
+        {
+            name: 'idUsuario',
+            value: req.query.idUsuario,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'idEmpresa',
+            value: req.query.idEmpresa,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'idSucursal',
+            value: req.query.idSucursal,
+            type: self.model.types.INT
+                    },
+        {
+            name: 'idDepartamentol',
+            value: req.query.idDepartamento,
+            type: self.model.types.INT
+                    }
+    ];
+
+    this.model.query('SEL_CONTRATOS_DEP_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+};
+
 
 module.exports = contrato;
