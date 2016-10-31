@@ -98,12 +98,12 @@ appServices.factory('contratoRepository', function ($http, configurationFactory)
         }, //Fin Inserta Contrato
 
         //7.-Obtiene todos los Contratos
-        obtieneContratos: function (idCliente) {
+        obtieneContratos: function (idUsuario) {
             return $http({
                 url: contratoRepositoryURL + 'obtienecontratos/',
                 method: "GET",
                 params: {
-                    idCliente: idCliente
+                    idUsuario: idUsuario
                 },
                 headers: {
                     'Content-Type': 'application/json'
@@ -173,6 +173,28 @@ appServices.factory('contratoRepository', function ($http, configurationFactory)
                 }
             });
         }, //Fin Obtiene todos los Contratos por Empresa
+
+
+        //12.-Obtiene DatosContrato
+        obtieneDatosContrato: function (idCliente, idTipoContrato, idEmpresa, idSucursal, idDepartamento, fechaInicio, fechaTermino) {
+                return $http({
+                    url: contratoRepositoryURL + 'obtienedatoscontrato/',
+                    method: "GET",
+                    params: {
+                        idCliente: idCliente,
+                        idTipoContrato: idTipoContrato,
+                        idEmpresa: idEmpresa,
+                        idSucursal: idSucursal,
+                        idDepartamento: idDepartamento,
+                        fechaInicio: fechaInicio,
+                        fechaTermino: fechaTermino
+                    },
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+            } //Fin obtieneDatosContrato 
+
 
         //        //7.-Obtiene Detalle Contrato
         //        obtieneDetalleContrato: function (idContrato) {

@@ -10,7 +10,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         //cargaListaDocumentos();
         $rootScope.verDatos = false;
         $rootScope.verLimiteCredito = false;
-
+        //var doctos  = ['1.jpg', '2.jpg', '3.jpg'];
         var doctos = [];
 
         //Para que empieze limpia la pantalla
@@ -235,6 +235,14 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     //Funcion para llamar al submit
     $scope.submit = function (fileinput, idcontrato, iddocumento) { //function to call on form submit
+        alert("Entre a submit");
+        //        var data = [];
+        //        for (var i = 0; i < doctos.length; i++) {
+        //            data.push({
+        //                fileinput: doctos[i]
+        //            });
+        //            alert("data: " + data["0"]);
+        //        }
         if (fileinput != null) { //check if from is valid
             $scope.upload(fileinput, idcontrato["0"].idContrato, iddocumento); //call upload function
         }
@@ -378,6 +386,25 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     $scope.setStepRemove = function () {
         $scope.stepContador--;
         console.log($scope.stepContador);
+    }
+
+    $scope.cargarDatosContrato = function (nuevoContrato) {
+        alert("Estoy en Datos del Contrato");
+        //
+        contratoRepository.obtieneDatosContrato(nuevoContrato.idCliente, nuevoContrato.idTipoContrato, nuevoContrato.idEmpresa, nuevoContrato.idSucursal, nuevoContrato.idDepartamento, nuevoContrato.fechaInicio, nuevoContrato.fechaTermino)
+            .then(
+                function succesCallback(response) {
+                    //Success
+                    $rootScope.datContrato = response.data;
+                    notificationFactory.success('Datos obtenido : ' + datContrato.empNombre);
+                },
+                function errorCallback(response) {
+                    //Error
+                    notificationFactory.error('No se pudo ' + response.data.message);
+                }
+            );
+
+
     }
 
 }); //FIN de appControllers

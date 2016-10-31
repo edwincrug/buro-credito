@@ -3,13 +3,14 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
     //Metodo de incio 
     $scope.init = function () {
         //Cargo la lista de contratos
+        $scope.idUsuario = 15; //user.idUsuario;
         cargaContratos();
-        $scope.cargaEmpresas(15);
+        $scope.cargaEmpresas($scope.idUsuario);
     };
 
     //Obtiene la lista de Contratos 
     var cargaContratos = function () {
-        contratoRepository.obtieneContratos(0)
+        contratoRepository.obtieneContratos($scope.idUsuario)
             .then(
                 function succesCallback(response) {
                     //Success
@@ -18,6 +19,7 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
                     setTimeout(function () {
                         $('.estiloTabla').DataTable({});
                         $("#tablaR_length").removeClass("dataTables_info").addClass("hide-div");
+                        $("#tablaR_filter").removeClass("dataTables_info").addClass("hide-div");
                         //$("#tablaR_filter").removeClass("dataTables_info").addClass("pull-left");
                     }, 100);
 
