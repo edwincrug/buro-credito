@@ -359,11 +359,11 @@
                                 <div class="clearfix"></div>
                                 <ul class="pager wizard">
                                     <li class="previous first" style="display:none;"><a href="javascript:;">First</a></li>
-                                    <li class="previous"><a href="javascript:;" ng-click="setStepRemove()" ng-hide="avanzaContrato == 0;">Anterior</a></li>
+                                    <li class="previous"><a href="javascript:;" ng-click="setStepRemove()" ng-hide="regresaContrato == 0;" ng-show="regresaContrato == 1;">Anterior</a></li>
                                     <li class="next last disabled" style="display:none;"><a href="javascript:;">Last</a></li>
                                     <!--ng-show="folioContrato!=undefined || datosCliente==undefined || nuevoContrato.idDepartamento==undefined || nuevoContrato.idTipoContrato==undefined || nuevoContrato.fechaTermino==undefined || nuevoContrato.fechaInicio==undefined" -->
-                                    <li class="next"><a href="javascript:;" ng-click="cargaTiposEmpresas(datosCliente.idCliente);setStepAdd()" ng-hide="avanzaContrato == 0;">Siguiente</a></li>
-                                    <li class="finish" style="display:;"><a href="javascript:;" ng-click="GuardarContrato(datosCliente,nuevoContrato,datosCredito[0].limiteCredito)" ng-hide="avanzaContrato == 0;">Guardar</a></li>
+                                    <li class="next"><a href="javascript:;" ng-click="cargaTiposEmpresas(datosCliente.idCliente);setStepAdd()" ng-hide="avanzaContrato == 0;" ng-show="avanzaContrato == 1;">Siguiente</a></li>
+                                    <li class="finish" style="display:;"><a href="javascript:;" ng-click="GuardarContrato(datosCliente,nuevoContrato,datosCredito[0].limiteCredito)" ng-hide="terminaContrato == 0;" ng-show="terminaContrato==1">Guardar</a></li>
                                 </ul>
                             </div>
                         </div>

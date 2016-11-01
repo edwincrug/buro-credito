@@ -13,13 +13,13 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         //cargaListaDocumentos();
         $rootScope.verDatos = false;
         $rootScope.verLimiteCredito = false;
-        //var doctos  = ['1.jpg', '2.jpg', '3.jpg'];
-
 
         //Para que empieze limpia la pantalla
         $rootScope.datosCliente = null;
         //Para que desaparezca botones
         $rootScope.avanzaContrato = 0;
+        $rootScope.regresaContrato = 0;
+        $rootScope.terminaContrato = 0;
 
         $('.datepicker').datepicker({});
         //        setTimeout(function () {
@@ -220,7 +220,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     $scope.subirDocumentosContrato = function (idcontrato) {
 
         for (var i = 0; i < $scope.idDoctos.length; i++) {
-            alert("Estoy en File  iddocto: " + $scope.idDoctos[i]);
+            //alert("Estoy en File  iddocto: " + $scope.idDoctos[i]);
             $scope.upload($scope.myArray[i], idcontrato, $scope.idDoctos[i]); //call upload function
         }
 
@@ -237,29 +237,13 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     //Funcion para llamar al submit
     $scope.submit = function (fileinput, idcontrato, iddocumento) { //function to call on form submit
-        alert("Entre a submit  ");
+        notificationFactory.success('Documento Seleccionado correctamente');
         if (fileinput != null) {
             $scope.myArray.push(fileinput);
             $scope.idDoctos.push(iddocumento);
         }
-        //        var idDoctos = [];
-        //        var doctos = [];
-        //
-        //        idDoctos.push(iddocumento);
-        //        doctos.push(fileinput);
-        //
-        //        alert(doctos + '  ID: ' + idDoctos);
 
-
-        //                if (fileinput != null) {
-        //                    for (var i = 0; i < doctos.length; i++) {
-        //                        data.push({
-        //                            fileinput: doctos[i]
-        //                        });
-        //                    }
-        //                    console.log(doctos);
-        //            alert("data: " + data["0"]);
-        //        }
+        $rootScope.terminaContrato = 1;
         /*if (fileinput != null) { //check if from is valid
             $scope.upload(fileinput, idcontrato["0"].idContrato, iddocumento); //call upload function
         }*/
@@ -299,8 +283,10 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     //Funcion para cargar doctos para el Tipo de Contrato
     $scope.cargaDocTipoContrato = function (nuevocontrato) {
+        $rootScope.regresaContrato = 1;
         //Carga Lista de Documentos
         cargaListaDocumentos(nuevocontrato.idTipoContrato);
+
     }
 
     //Funcion para GuardarContrato
@@ -416,7 +402,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                 },
                 function errorCallback(response) {
                     //Error
-                    notificationFactory.warning('No se pudo ' + response.data.message);
+                    notificationFactory.warning('No se pudo obtener los Datos ' + response.data.message);
                 }
             );
 
