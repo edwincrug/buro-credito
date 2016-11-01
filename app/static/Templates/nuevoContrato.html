@@ -128,7 +128,7 @@
                                             <p class="input-group">
                                                 Fecha de término:
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy" ng-model="nuevoContrato.fechaTermino" ng-change="cargarDatosContrato(nuevoContrato)" name="txtRequerido">
+                                                    <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy" ng-model="nuevoContrato.fechaTermino" name="txtRequerido">
                                                 </div>
                                             </p>
                                         </div>
@@ -182,9 +182,9 @@
                                                                                 <span class="fa fa-search"></span>
                                                                                 <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" />
                                                                             </label>
-                                                                            <input type="text" class="form-control filefield" readonly="" ng-change="submit(this.file,600,documento.idDocumento)">
+                                                                            <input type="text" class="form-control filefield" readonly="">
                                                                             <!--="submit(this.file,600,documento.idDocumento)"-->
-                                                                            <!--button type="submit" ng-click="submit(this.file,folioContrato,documento.idDocumento)" class="btn btn-warning"><span class="fa fa-upload"></span></button-->
+                                                                            <button type="submit" ng-click="submit(this.file,600,documento.idDocumento)" class="btn btn-warning"><span class="fa fa-upload"></span></button>
                                                                         </div>
                                                                         <!--                                                                        <p>{{progress}}</p>-->
                                                                     </form>

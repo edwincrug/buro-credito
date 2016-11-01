@@ -3,6 +3,9 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     $scope.stepContador = 0;
     //Metodo de incio 
     $scope.init = function () {
+
+        $scope.myArray = [];
+        $scope.idDoctos = [];
         //Carga datos del Cliente
         //cargaCliente();
         cargaTiposContrato();
@@ -11,7 +14,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         $rootScope.verDatos = false;
         $rootScope.verLimiteCredito = false;
         //var doctos  = ['1.jpg', '2.jpg', '3.jpg'];
-        var doctos = [];
+
 
         //Para que empieze limpia la pantalla
         $rootScope.datosCliente = null;
@@ -214,15 +217,14 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     };
 
     //PRUEBA  Llamada a la funcion para subir los Archivos 
-    //    $scope.subirDocumentosContrato = function (listaDocumentos, idcontrato) {
-    //        //var contador = 0;
-    //        angular.forEach($scope.listaDocumentos, function (value, key) {
-    //            if (value.nomDocumento != null) {
-    //                $scope.submit(value.nomDocumento, $scope.idcontrato, value.idDocumento);
-    //                //contador++;
-    //            }
-    //        });
-    //    }; //PRUEBA  
+    $scope.subirDocumentosContrato = function (idcontrato) {
+
+        for (var i = 0; i < $scope.idDoctos.length; i++) {
+            alert("Estoy en File  iddocto: " + $scope.idDoctos[i]);
+            $scope.upload($scope.myArray[i], idcontrato, $scope.idDoctos[i]); //call upload function
+        }
+
+    }; //PRUEBA  
 
 
     //    $scope.guardaArchivo(fileinput, iddocumento) {
@@ -235,17 +237,32 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     //Funcion para llamar al submit
     $scope.submit = function (fileinput, idcontrato, iddocumento) { //function to call on form submit
-        alert("Entre a submit");
-        //        var data = [];
-        //        for (var i = 0; i < doctos.length; i++) {
-        //            data.push({
-        //                fileinput: doctos[i]
-        //            });
+        alert("Entre a submit  ");
+        if (fileinput != null) {
+            $scope.myArray.push(fileinput);
+            $scope.idDoctos.push(iddocumento);
+        }
+        //        var idDoctos = [];
+        //        var doctos = [];
+        //
+        //        idDoctos.push(iddocumento);
+        //        doctos.push(fileinput);
+        //
+        //        alert(doctos + '  ID: ' + idDoctos);
+
+
+        //                if (fileinput != null) {
+        //                    for (var i = 0; i < doctos.length; i++) {
+        //                        data.push({
+        //                            fileinput: doctos[i]
+        //                        });
+        //                    }
+        //                    console.log(doctos);
         //            alert("data: " + data["0"]);
         //        }
-        if (fileinput != null) { //check if from is valid
+        /*if (fileinput != null) { //check if from is valid
             $scope.upload(fileinput, idcontrato["0"].idContrato, iddocumento); //call upload function
-        }
+        }*/
     };
 
     //Carga de archivos
@@ -335,7 +352,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                             );
 
                         //4)Subo los documentos
-                        $scope.subirDocumentosContrato($scope.listaDocumentos, $scope.idcontrato);
+                        $scope.subirDocumentosContrato($scope.idcontrato);
 
                         //Termina Success del Insert
                         //$state.go('home');
@@ -389,18 +406,17 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     }
 
     $scope.cargarDatosContrato = function (nuevoContrato) {
-        alert("Estoy en Datos del Contrato");
-        //
+
         contratoRepository.obtieneDatosContrato(nuevoContrato.idCliente, nuevoContrato.idTipoContrato, nuevoContrato.idEmpresa, nuevoContrato.idSucursal, nuevoContrato.idDepartamento, nuevoContrato.fechaInicio, nuevoContrato.fechaTermino)
             .then(
                 function succesCallback(response) {
                     //Success
                     $rootScope.datContrato = response.data;
-                    notificationFactory.success('Datos obtenido : ' + datContrato.empNombre);
+                    //notificationFactory.success('Datos obtenido : ' + datContrato.empNombre);
                 },
                 function errorCallback(response) {
                     //Error
-                    notificationFactory.error('No se pudo ' + response.data.message);
+                    notificationFactory.warning('No se pudo ' + response.data.message);
                 }
             );
 
