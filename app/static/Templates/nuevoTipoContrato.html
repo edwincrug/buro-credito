@@ -105,11 +105,11 @@
                         <!-- Botones -->
                         <ul class="pager wizard">
                             <li class="finish" style="display:;"><a href="javascript:;" ng-click="modalDocumentos()">Agregar Documentos</a></li>
-                            <li class="finish" style="display:;"><a href="javascript:;" ng-click="EditarTipo(listaDocumentos)" ng-show="opcion==2">
+                            <li class="finish" style="display:;"><a href="javascript:;" ng-click="validarForm(2,listaDocumentos)" ng-show="opcion==2">
                                         Actualizar Cambios</a></li>
                             <!--li class="finish" style="display:;"><a href="javascript:;" ng-click="CrearTipo(listaDocumentos)" ng-show="opcion==1" ng-disabled="myForm.contratoEditar.nombreContrato.$invalid || myForm.contratoEditar.descripcion.$invalid || myForm.contratoEditar.fechaCreacion.$invalid || myForm.contratoEditar.fechaTermino.$invalid">
                                         Guardar contrato</a></li-->
-                            <li class="finish" style="display:;"><a href="javascript:;" ng-click="validarForm(listaDocumentos)" ng-show="opcion==1">
+                            <li class="finish" style="display:;"><a href="javascript:;" ng-click="validarForm(1,listaDocumentos)" ng-show="opcion==1">
                                         Guardar contrato</a></li>
                         </ul>
                         <!-- Botones -->

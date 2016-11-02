@@ -88,10 +88,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
             });
         }, 1000);
 
-
     };
-
-
 
 
     //Funcion de Actualizacion del Tipo de Contrato
@@ -103,36 +100,29 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
         $scope.contratoEditar.fechaCreacion = newDateIni;
         $scope.contratoEditar.fechaTermino = newDateterm;
 
-        if ($scope.contratoEditar.nombreContrato != null && $scope.contratoEditar.descripcion != null && $scope.contratoEditar.fechaTermino != null && $scope.contratoEditar.fechaCreacion != null && $scope.contratoEditar.nombreContrato != "" && $scope.contratoEditar.descripcion != "" && $scope.contratoEditar.fechaTermino != "" && $scope.contratoEditar.fechaCreacion != "") {
 
-            tipoContratoRepository.editarTipoContrato($scope.contratoEditar)
-                .then(
-                    function successCallbackEditar(response) {
-                        //reset
-                        //Success
-                        notificationFactory.success('Actualizado correctamente.');
-                        $scope.resultado = response.data;
+        tipoContratoRepository.editarTipoContrato($scope.contratoEditar)
+            .then(
+                function successCallbackEditar(response) {
+                    //Success
+                    notificationFactory.success('Actualizado correctamente.');
+                    $scope.resultado = response.data;
 
-                        //alert('Antes de SeleccionaDocumentos' +$scope.resultado);
-                        $scope.SeleccionDocumentos(documento);
-                        //alert(documento.nombre);
-                        //$state.go('home');   //****
-                        $state.go('tipocontrato');
-                        $state.reload();
-                    },
-                    function errorCallbackEditar(response) {
-                        //Error
-                        notificationFactory.error('Error al editar el Tipo contrato: ' + response.data.message);
-                    }
-                );
-
-        } else {
-            notificationFactory.warning('Favor de llenar todos los campos');
-        }
+                    //alert('Antes de SeleccionaDocumentos' +$scope.resultado);
+                    $scope.SeleccionDocumentos(documento);
+                    //alert(documento.nombre);
+                    $state.go('tipocontrato');
+                    $state.reload();
+                },
+                function errorCallbackEditar(response) {
+                    //Error
+                    notificationFactory.error('Error al editar el Tipo contrato: ' + response.data.message);
+                }
+            );
     };
 
 
-    $scope.validarForm = function (listaDocumentos) {
+    $scope.validarForm = function (opc, listaDocumentos) {
 
         var nombreTipo = '';
         var descripcionTipo = '';
@@ -153,17 +143,14 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
         } else if (fechaCreacion > fechaTermino) {
             notificationFactory.error("La fecha de Inicio debe ser menor que la fecha de Termino");
             return false;
-        }
-
-        //        else if (listaDocumentos.seleccion === false) {
-        //            notificationFactory.error("Debes agregar minimo un documento");
-        //            return false;
-        //        }
-        else {
+        } else {
             //notificationFactory.success("Todos cumplen");
-            $scope.CrearTipo(listaDocumentos);
+            if (opc == 1) {
+                $scope.CrearTipo(listaDocumentos);
+            } else if (opc == 2) {
+                $scope.EditarTipo(listaDocumentos);
+            }
         }
-
     };
 
     //Funcion Crear Nuevo Tipo de Contrato
@@ -229,12 +216,9 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                 documentosRepository.TipoDocumento(value.idDocumento, $scope.tipoContratoEditar.idTipoContrato)
                     .then(
                         function successCallbackEditar(response) {
-                            //reset
                             //Success
                             notificationFactory.success('Update realizado correctamente.');
                             $scope.resultado = response.data;
-
-
                         },
                         function errorCallbackEditar(response) {
                             //Error
@@ -315,18 +299,13 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
         documentosRepository.insertDocumento(nuevoDocumento)
             .then(
                 function successCallbackNuevoTipo(response) {
-                    //reset
-                    //Success
                     //$state.go('nuevotipocontrato');
-
                     notificationFactory.success('Insertado correctamente.');
-
                 },
                 function errorCallbackNuevoTipo(response) {
                     //Error
                     notificationFactory.error('Error al insertar el documento: ' + response.data.message);
                 }
-
             );
         $('#agregarDocumentos').modal('hide');
         $state.reload();
