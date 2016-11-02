@@ -131,6 +131,41 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
         }
     };
 
+
+    $scope.validarForm = function (listaDocumentos) {
+
+        var nombreTipo = '';
+        var descripcionTipo = '';
+        var fechaCreacion = '';
+        var fechaTermino = '';
+
+        nombreTipo = document.getElementById("nombreTipo").value;
+        descripcionTipo = document.getElementById("descripcionTipo").value;
+        fechaCreacion = document.getElementById("fechaCreacion").value;
+        fechaTermino = document.getElementById("fechaTermino").value;
+
+        if (nombreTipo === "" || descripcionTipo === "" || fechaCreacion === "" || fechaTermino === "") {
+            notificationFactory.error("Todos los campos son obligatorios");
+            return false;
+        } else if (nombreTipo.length <= 3) {
+            notificationFactory.error("El nombre del Contrato debe ser mayor a 3 digitos");
+            return false;
+        } else if (fechaCreacion > fechaTermino) {
+            notificationFactory.error("La fecha de Inicio debe ser menor que la fecha de Termino");
+            return false;
+        }
+
+        //        else if (listaDocumentos.seleccion === false) {
+        //            notificationFactory.error("Debes agregar minimo un documento");
+        //            return false;
+        //        }
+        else {
+            //notificationFactory.success("Todos cumplen");
+            $scope.CrearTipo(listaDocumentos);
+        }
+
+    };
+
     //Funcion Crear Nuevo Tipo de Contrato
     $scope.CrearTipo = function (documento) {
         //alert($scope.contratoEditar.fechaTermino);
@@ -142,29 +177,25 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
         $scope.contratoEditar.fechaCreacion = newDateIni;
         $scope.contratoEditar.fechaTermino = newDateterm;
 
-        if ($scope.contratoEditar.nombreContrato != null && $scope.contratoEditar.descripcion != null && $scope.contratoEditar.fechaTermino != null && $scope.contratoEditar.fechaCreacion != null && $scope.contratoEditar.nombreContrato != "" && $scope.contratoEditar.descripcion != "" && $scope.contratoEditar.fechaTermino != "" && $scope.contratoEditar.fechaCreacion != "") {
 
-            tipoContratoRepository.insertarTipoContrato($scope.contratoEditar)
-                .then(
-                    function successCallbackNuevoTipo(response) {
-                        //reset
-                        //Success
-                        notificationFactory.success('Tipo de contrato creado correctamente.');
+        tipoContratoRepository.insertarTipoContrato($scope.contratoEditar)
+            .then(
+                function successCallbackNuevoTipo(response) {
+                    //reset
+                    //Success
+                    notificationFactory.success('Tipo de contrato creado correctamente.');
 
-                        $scope.idTipoContrato = response.data["0"][""];                  
-                        $scope.cargarDocumentos(documento, $scope.idTipoContrato);
-                        //$state.go('home');   //****
-                        $state.go('tipocontrato');
-                    },
-                    function errorCallbackNuevoTipo(response) {
-                        //Error
-                        notificationFactory.error('Error al editar el Tipo contrato: ' + response.data.message);
-                    }
-                );
+                    $scope.idTipoContrato = response.data["0"][""];                  
+                    $scope.cargarDocumentos(documento, $scope.idTipoContrato);
+                    //$state.go('home');   //****
+                    $state.go('tipocontrato');
+                },
+                function errorCallbackNuevoTipo(response) {
+                    //Error
+                    notificationFactory.error('Error al editar el Tipo contrato: ' + response.data.message);
+                }
+            );
 
-        } else {
-            notificationFactory.warning('No se puede crear un Tipo de contrato con campos vacios');
-        }
 
     };
 
@@ -214,9 +245,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                 $scope.contadorSeleccionado++;
             }
         });
-
         //alert('Total seleccionados: ' + $scope.contadorSeleccionado +' '+ $scope.tipoContratoEditar.idTipoContrato);
-
     };
 
 
@@ -291,8 +320,6 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                     //$state.go('nuevotipocontrato');
 
                     notificationFactory.success('Insertado correctamente.');
-
-
 
                 },
                 function errorCallbackNuevoTipo(response) {
