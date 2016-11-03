@@ -82,7 +82,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-label">Tipo de Contrato:</label>
-                                                <select class="form-control" ng-model="nuevoContrato.idTipoContrato" ng-options="tipoContrato.idTipoContrato as tipoContrato.nombreContrato for tipoContrato in listaTiposContrato" name="txtRequerido" ng-click="cargaDocTipoContrato(nuevoContrato)">
+                                                <select class="form-control" ng-model="nuevoContrato.idTipoContrato" ng-options="tipoContrato.idTipoContrato as tipoContrato.nombreContrato for tipoContrato in listaTiposContrato" name="txtTipoContrato" ng-click="cargaDocTipoContrato(nuevoContrato)">
                                                     <option value="">Tipo de Contrato</option>
                                                 </select>
                                             </div>
@@ -90,7 +90,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-label">Empresa:</label>
-                                                <select class="form-control" ng-model="nuevoContrato.idEmpresa" ng-options="tipoEmpresa.idEmpresa as tipoEmpresa.nombreEmpresa for tipoEmpresa in listaTiposEmpresa" ng-change="CargarSucursales(datosCliente.idCliente,nuevoContrato.idEmpresa)" id="cboEmpresa" name="txtRequerido">
+                                                <select class="form-control" ng-model="nuevoContrato.idEmpresa" ng-options="tipoEmpresa.idEmpresa as tipoEmpresa.nombreEmpresa for tipoEmpresa in listaTiposEmpresa" ng-change="CargarSucursales(datosCliente.idCliente,nuevoContrato.idEmpresa)" id="cboEmpresa" name="txtEmpresa">
                                                     <option value="">Empresa</option>
                                                 </select>
                                             </div>
@@ -100,7 +100,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-label">Sucursal:</label>
-                                                <select class="form-control" ng-model="nuevoContrato.idSucursal" ng-options="tipoSucursal.idSucursal as tipoSucursal.nombreSucursal for tipoSucursal in listaTiposSucursal" ng-change="CargarDepartamentos(datosCliente.idCliente,nuevoContrato.idEmpresa,nuevoContrato.idSucursal)" id="cboSucursal" name="txtRequerido">
+                                                <select class="form-control" ng-model="nuevoContrato.idSucursal" ng-options="tipoSucursal.idSucursal as tipoSucursal.nombreSucursal for tipoSucursal in listaTiposSucursal" ng-change="CargarDepartamentos(datosCliente.idCliente,nuevoContrato.idEmpresa,nuevoContrato.idSucursal)" id="cboSucursal" name="txtSucursal">
                                                     <option value="">Sucursal</option>
                                                 </select>
                                             </div>
@@ -108,7 +108,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-label">Departamento:</label>
-                                                <select class="form-control" name="tipocontrato" ng-model="nuevoContrato.idDepartamento" ng-options="tipoDepartamento.idDepartamento as tipoDepartamento.nombreDepartamento for tipoDepartamento in listaTiposDepartamento" id="cboDepartamento" ng-change="cargarLimiteCredito(datosCliente.idCliente,nuevoContrato.idEmpresa,nuevoContrato.idSucursal,nuevoContrato.idDepartamento)" name="txtRequerido">
+                                                <select class="form-control" ng-model="nuevoContrato.idDepartamento" ng-options="tipoDepartamento.idDepartamento as tipoDepartamento.nombreDepartamento for tipoDepartamento in listaTiposDepartamento" id="cboDepartamento" ng-change="cargarLimiteCredito(datosCliente.idCliente,nuevoContrato.idEmpresa,nuevoContrato.idSucursal,nuevoContrato.idDepartamento)" name="txtDepartamento">
                                                     <option value="">Departamento</option>
                                                 </select>
                                             </div>
@@ -120,7 +120,7 @@
                                             <p class="input-group">
                                                 Fecha de inicio:
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy" ng-model="nuevoContrato.fechaInicio" name="txtRequerido">
+                                                    <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy" ng-model="nuevoContrato.fechaInicio" name="txtInicio">
                                                 </div>
                                             </p>
                                         </div>
@@ -128,7 +128,7 @@
                                             <p class="input-group">
                                                 Fecha de término:
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy" ng-model="nuevoContrato.fechaTermino" name="txtRequerido">
+                                                    <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy" ng-model="nuevoContrato.fechaTermino" name="txtFin">
                                                 </div>
                                             </p>
                                         </div>
@@ -362,8 +362,8 @@
                                     <li class="previous"><a href="javascript:;" ng-click="setStepRemove()" ng-hide="regresaContrato == 0;" ng-show="regresaContrato == 1;">Anterior</a></li>
                                     <li class="next last disabled" style="display:none;"><a href="javascript:;">Last</a></li>
                                     <!--ng-show="folioContrato!=undefined || datosCliente==undefined || nuevoContrato.idDepartamento==undefined || nuevoContrato.idTipoContrato==undefined || nuevoContrato.fechaTermino==undefined || nuevoContrato.fechaInicio==undefined" -->
-                                    <li class="next"><a href="javascript:;" ng-click="cargaTiposEmpresas(datosCliente.idCliente);setStepAdd()" ng-hide="avanzaContrato == 0;" ng-show="avanzaContrato == 1;">Siguiente</a></li>
-                                    <li class="finish" style="display:;"><a href="javascript:;" ng-click="GuardarContrato(datosCliente,nuevoContrato,datosCredito[0].limiteCredito)" ng-hide="terminaContrato == 0;" ng-show="terminaContrato==1">Guardar</a></li>
+                                    <li class="next" id="btnNext"><a href="javascript:;" ng-click="cargaTiposEmpresas(datosCliente.idCliente);setStepAdd()" ng-hide="avanzaContrato == 0;" ng-show="avanzaContrato == 1;" ng-disabled="nuevoContrato.idDepartamento==undefined || nuevoContrato.idTipoContrato==undefined || nuevoContrato.fechaTermino==undefined || nuevoContrato.fechaInicio==undefined">Siguiente</a></li>
+                                    <li class="finish" id="btnFinish"><a href="javascript:;" ng-click="GuardarContrato(datosCliente,nuevoContrato,datosCredito[0].limiteCredito)">Guardar</a></li>
                                 </ul>
                             </div>
                         </div>

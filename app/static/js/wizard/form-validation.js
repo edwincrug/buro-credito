@@ -195,25 +195,29 @@ $(document).ready(function () {
         //Form Wizard Validations
         var $validator = $("#commentForm").validate({
             rules: {
-                txtFullName: {
-                    required: true,
-                    minlength: 3
+                txtTipoContrato: {
+                    required: true
                 },
-                txtEmail: {
-                    required: true,
-                    email: true,
+                txtEmpresa: {
+                    required: true
                 },
-                txtPhone: {
-                    number: true,
-                    required: true,
+                txtSucursal: {
+                    required: true
+                },
+                txtDepartamento: {
+                    required: true
                 },
                 txtLimite: {
                     number: true,
                     required: true,
                 },
-                txtRequerido: {
-                    required: true,
+                txtFin: {
+                    required: true
+                },
+                txtInicio: {
+                    required: true
                 }
+
             },
             errorPlacement: function (label, element) {
                 $('<span class="arrow"></span>').insertBefore(element);
@@ -235,7 +239,8 @@ $(document).ready(function () {
                 console.log('onShow');
             },
             onNext: function (tab, navigation, index) {
-                console.log('onNext');
+
+
                 if ($.isFunction($.fn.validate)) {
                     var $valid = $("#commentForm").valid();
                     if (!$valid) {
@@ -258,7 +263,15 @@ $(document).ready(function () {
                 //alert('on tab click disabled');
             },
             onTabShow: function (tab, navigation, index) {
-                console.log('onTabShow');
+                console.log(index);
+
+                if (index == 4) {
+                    $('#btnFinish').show();
+                    $('#btnNext').hide();
+                } else {
+                    $('#btnFinish').hide();
+                    $('#btnNext').show();
+                }
                 var $total = navigation.find('li').length;
                 var $current = index + 1;
                 var $percent = ($current / $total) * 100;

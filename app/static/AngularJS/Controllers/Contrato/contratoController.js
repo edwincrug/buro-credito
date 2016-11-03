@@ -243,7 +243,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             $scope.idDoctos.push(iddocumento);
         }
 
-        $rootScope.terminaContrato = 1;
+
         /*if (fileinput != null) { //check if from is valid
             $scope.upload(fileinput, idcontrato["0"].idContrato, iddocumento); //call upload function
         }*/
@@ -384,11 +384,11 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     $scope.setStepAdd = function () {
         $scope.stepContador++;
-        console.log($scope.stepContador);
+        // console.log($scope.stepContador);
     }
     $scope.setStepRemove = function () {
         $scope.stepContador--;
-        console.log($scope.stepContador);
+        //  console.log($scope.stepContador);
     }
 
     $scope.cargarDatosContrato = function (nuevoContrato) {
