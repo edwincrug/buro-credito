@@ -190,8 +190,8 @@ contratoDetalle.prototype.get_detalleNoPagados = function (req, res, next) {
         type: self.model.types.INT
         }]
 
-
-    this.model.query('SEL_TOTAL_CARTERA_DETALLE_SP_TODAS', params, function (error, result) {
+    //SEL_TOTAL_CARTERA_DETALLE_SP_TODAS
+    this.model.query('SEL_FACTURAS_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result

@@ -74,7 +74,7 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
         }, //Fin Obtiene Detalle Cliente
 
         //Detalle Documentos
-        detallePagoDocumentos: function (idCliente, idEmpresa) {
+        detallePagoDocumentos: function (idCliente) {
             return $http({
                 url: contratoDetalleRepositoryURL + 'detallepagodocumentos/',
                 method: "GET",
@@ -88,7 +88,7 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
         }, //Fin Detalle Documentos 
 
         //Detalle No Pagados
-        detalleNoPagados: function (idCliente, idEmpresa) {
+        detalleNoPagados: function (idCliente) {
             return $http({
                 url: contratoDetalleRepositoryURL + 'detallenopagados/',
                 method: "GET",
