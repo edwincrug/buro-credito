@@ -48,9 +48,10 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
             );
     };
 
-    /////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Genera el pdf 
     $scope.generarPdf2 = function () {
+        notificationFactory.success('Estoy en pdf2');
         //$scope.idcliente = $stateParams.contratoObj.idCliente;
 
         contratoDetalleRepository.generarPdfServer()
@@ -79,7 +80,8 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                 }
             );
     };
-    /////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     $scope.verDetalleCliente = function (idcliente) {
         contratoDetalleRepository.obtieneDetalleCliente(idcliente)
@@ -164,6 +166,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
                                 setTimeout(function () {
                                     $('.estiloTabla').DataTable({});
+                                    $("#tablaR_filter").removeClass("dataTables_info").addClass("hide-div");
                                     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                     //                   Gráfica
                                     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -173,11 +176,11 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                             element: 'morris_donut_graph',
                                             data: [{
                                                     value: $scope.porcNoPagadoVencido.toFixed(2),
-                                                    label: 'No Pagado Vencido'
+                                                    label: 'Cartera Vencida'
                                                 },
                                                 {
                                                     value: $scope.porcNoPagadoNoVencido.toFixed(2),
-                                                    label: 'No Pagado No Vencido'
+                                                    label: 'Cartera No Vencida'
                                                 },
                                                 {
                                                     value: $scope.porcPagInPuntual.toFixed(2),

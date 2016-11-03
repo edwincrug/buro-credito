@@ -20,7 +20,7 @@
     <div class="clearfix"></div>
     <div class="col-xs-12">
         <button type="button" class="btn btn-primary pull-right" ng-click="generarPdf()">Generar Reporte</button>
-        <!--<button type="button" class="btn btn-primary pull-right" ng-click="generarPdf2()">Generar Reporte2</button>-->
+        <button type="button" class="btn btn-primary pull-right" ng-click="generarPdf2()">Generar Reporte2</button>
     </div>
 
     <!-- Totales -->
@@ -191,7 +191,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- ********************************************** -->
-                        <table id="nopagado" class="display estiloTabla">
+                        <table id="nopagado" class="display estiloTabla" id="tablaR">
                             <thead class="gris">
                                 <tr>
                                     <th colspan="3">Origen</th>
@@ -244,7 +244,7 @@
                                     <th class="tdMonto">{{nopagado.diasMas120 | currency}}</th>
 
                                     <td class="tdMonto">{{ nopagado.diasVencidos }}</td>
-                                    <td><span class="iconopago fa fa-close" aria-hidden="true" style="color: #FF5656;"></span></td>
+                                    <td class="tdMonto"><span class="iconopago fa fa-close" aria-hidden="true" style="color: #FF5656;"></span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -328,7 +328,7 @@
                                     <th class="tdMonto">{{nopagado.diasMas120 | currency}}</th>
 
                                     <td class="tdMonto">{{ nopagado.diasVencidos }}</td>
-                                    <td><span class="iconopago fa fa-close" aria-hidden="true" style="color: #FF5656;"></span></td>
+                                    <td class="tdMonto"><span class="iconopago fa fa-plus" aria-hidden="true" style="color: #2EA1D9;"></span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -392,7 +392,7 @@
                                     <td>{{ pagado.fechaPago }}</td>
                                     <!--td>{{ pagado.diasAtraso }}</td-->
                                     <!--td><img src="\images\alerta3.png" width="35" height="35"></td--#F79F24-->
-                                    <td><span class="iconopago fa fa-exclamation" aria-hidden="true" style="color:  #FFCC00 ;"></span></td>
+                                    <td class="tdMonto"><span class="iconopago fa fa-exclamation" aria-hidden="true" style="color:  #FFCC00 ;"></span></td>
                                 </tr>
                                 <!--tr>
                                     <th colspan="4">Totales:</th>
@@ -455,7 +455,7 @@
                                     <td class="tdMonto">{{pagado.cargo | currency}}</td>
                                     <td>{{ pagado.fechaPago }}</td>
                                     <!--td><img src="\images\correcto.png" width="35" height="35"></td-->
-                                    <td><span class="iconopago fa fa-check" aria-hidden="true" style="color: #9ACD32;"></span></td>
+                                    <td class="tdMonto"><span class="iconopago fa fa-check" aria-hidden="true" style="color: #9ACD32;"></span></td>
                                 </tr>
                                 <!--tr>
                                     <th colspan="4">Totales:</th>
