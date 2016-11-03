@@ -230,11 +230,17 @@
 
                                     <td>{{ nopagado.tipoDocumento }}</td>
                                     <td>{{ nopagado.idDocumento }}</td>
-                                    <td>{{ nopagado.fechaDocumento }}</td>
-                                    <td>{{ nopagado.fechaVencimiento }}</td>
+                                    <td class="tdMonto">{{ nopagado.fechaDocumento }}</td>
+                                    <td class="tdMonto">{{ nopagado.fechaVencimiento }}</td>
 
-                                    <td class="tdMonto">{{nopagado.importe | currency}}</td>
-                                    <td class="tdMonto">{{nopagado.saldo | currency}}</td>
+                                    <td class="tdMonto">
+                                        <span style="color: #9c27b0;" ng-show="nopagado.tipoCartera==1">{{nopagado.importe | currency}}</span>
+                                        <span style="color: red;" ng-show="nopagado.tipoCartera==2">{{nopagado.importe | currency}}</span>
+                                    </td>
+                                    <td class="tdMonto">
+                                        <span style="color: #9c27b0;" ng-show="nopagado.tipoCartera==1">{{nopagado.saldo | currency}}</span>
+                                        <span style="color: red;" ng-show="nopagado.tipoCartera==2">{{nopagado.saldo | currency}}</span>
+                                    </td>
 
                                     <th class="tdMonto">{{nopagado.dias0 | currency}}</th>
                                     <th class="tdMonto">{{nopagado.dias30 | currency}}</th>
@@ -244,7 +250,10 @@
                                     <th class="tdMonto">{{nopagado.diasMas120 | currency}}</th>
 
                                     <td class="tdMonto">{{ nopagado.diasVencidos }}</td>
-                                    <td class="tdMonto"><span class="iconopago fa fa-close" aria-hidden="true" style="color: #FF5656;"></span></td>
+                                    <td class="tdMonto">
+                                        <span class="iconopago fa fa-star-o" aria-hidden="true" style="color: #FF5656;" ng-show="nopagado.tipoCartera==1"></span>
+                                        <span class="iconopago fa fa-close" aria-hidden="true" style="color: #FF5656;" ng-show="nopagado.tipoCartera==2"></span>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -274,7 +283,6 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <!-- ********************************************** -->
                         <table id="nopagado" class="display estiloTabla">
                             <thead class="gris">
                                 <tr>
@@ -311,14 +319,20 @@
                                     <td>{{ nopagado.empresa }}</td>
                                     <td>{{ nopagado.sucursal }}</td>
                                     <td>{{ nopagado.departamento }}</td>
-
+                                    s
                                     <td>{{ nopagado.tipoDocumento }}</td>
                                     <td>{{ nopagado.idDocumento }}</td>
-                                    <td>{{ nopagado.fechaDocumento }}</td>
-                                    <td>{{ nopagado.fechaVencimiento }}</td>
+                                    <td class="tdMonto">{{ nopagado.fechaDocumento }}</td>
+                                    <td class="tdMonto">{{ nopagado.fechaVencimiento }}</td>
 
-                                    <td class="tdMonto">{{nopagado.importe | currency}}</td>
-                                    <td class="tdMonto">{{nopagado.saldo | currency}}</td>
+                                    <td class="tdMonto">
+                                        <span style="color: #9c27b0;" ng-show="nopagado.tipoCartera==1">{{nopagado.importe | currency}}</span>
+                                        <span style="color: #2EA1D9;" ng-show="nopagado.tipoCartera==2">{{nopagado.importe | currency}}</span>
+                                    </td>
+                                    <td class="tdMonto">
+                                        <span style="color: #9c27b0;" ng-show="nopagado.tipoCartera==1">{{nopagado.saldo | currency}}</span>
+                                        <span style="color: #2EA1D9;" ng-show="nopagado.tipoCartera==2">{{nopagado.saldo | currency}}</span>
+                                    </td>
 
                                     <th class="tdMonto">{{nopagado.dias0 | currency}}</th>
                                     <th class="tdMonto">{{nopagado.dias30 | currency}}</th>
@@ -328,7 +342,10 @@
                                     <th class="tdMonto">{{nopagado.diasMas120 | currency}}</th>
 
                                     <td class="tdMonto">{{ nopagado.diasVencidos }}</td>
-                                    <td class="tdMonto"><span class="iconopago fa fa-plus" aria-hidden="true" style="color: #2EA1D9;"></span></td>
+                                    <td class="tdMonto">
+                                        <span class="iconopago fa fa-star-o" aria-hidden="true" style="color: #2EA1D9;" ng-show="nopagado.tipoCartera==1"></span>
+                                        <span class="iconopago fa fa-plus" aria-hidden="true" style="color: #2EA1D9;" ng-show="nopagado.tipoCartera==2"></span>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -387,7 +404,7 @@
                                     <td>{{ pagado.departamento }}</td>
                                     <td>{{ pagado.idDocumento }}</td>
                                     <!--td>{{ pagado.serie }}</td-->
-                                    <td>{{ pagado.fechaVencimiento }}</td>
+                                    <td class="tdMonto">{{ pagado.fechaVencimiento }}</td>
                                     <td class="tdMonto">{{pagado.cargo | currency}}</td>
                                     <td>{{ pagado.fechaPago }}</td>
                                     <!--td>{{ pagado.diasAtraso }}</td-->
@@ -451,7 +468,7 @@
                                     <td>{{ pagado.departamento }}</td>
                                     <td>{{ pagado.idDocumento }}</td>
                                     <!--td>{{ pagado.serie }}</td-->
-                                    <td>{{ pagado.fechaVencimiento }}</td>
+                                    <td class="tdMonto">{{ pagado.fechaVencimiento }}</td>
                                     <td class="tdMonto">{{pagado.cargo | currency}}</td>
                                     <td>{{ pagado.fechaPago }}</td>
                                     <!--td><img src="\images\correcto.png" width="35" height="35"></td-->
@@ -487,7 +504,7 @@
             </div>
         </div>
     </div-->
-    <!-- Modal-->
+    <!-- Modal Pipus-->
     <div id="loadModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="spinner">
@@ -499,9 +516,6 @@
         </div>
     </div>
     <!-- -->
-
-
-
 </div>
 
 

@@ -105,6 +105,8 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //  Documentos 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     var cargaDocumentos = function () {
+        $('#loadModal').modal('show');
+
         //Datos Cliente
         $scope.idcliente = $stateParams.contratoObj.idCliente;
         $scope.nombrecliente = $stateParams.contratoObj.nombreCliente;
@@ -120,9 +122,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         $scope.porcPagInPuntual = 0;
 
         //alert('Estoy en ver detalle Empresa: ' + $scope.nombreCliente);
-        setTimeout(function () {
-            $('#loadModal').modal('hide');
-        }, 1000);
+
 
         $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente)
             .then(
@@ -166,7 +166,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
                                 setTimeout(function () {
                                     $('.estiloTabla').DataTable({});
-                                    $("#tablaR_filter").removeClass("dataTables_info").addClass("hide-div");
+                                    //$("#tablaR_filter").removeClass("dataTables_info").addClass("hide-div");
                                     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                     //                   Gráfica
                                     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -211,6 +211,12 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                     }
                                     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                 }, 100);
+
+                                setTimeout(function () {
+                                    $('#loadModal').modal('hide');
+                                }, 1000);
+
+
                             },
                             function errorCallback(response) {
                                 notificationFactory.error('No se pudo obtener el detalle de los Documentos No Pagados');
