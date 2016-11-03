@@ -1,5 +1,5 @@
 appControllers.controller('contratoDetalleController', function ($scope, $state, Utils,
-    $sce, $stateParams, contratoDetalleRepository, notificationFactory, sessionFactory, datosClienteRepository) {
+    $sce, $stateParams, contratoDetalleRepository, notificationFactory, sessionFactory, datosClienteRepository, uiGridGroupingConstants) {
 
     $scope.message = 'Buscando...';
 
@@ -105,6 +105,61 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //  Documentos 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     var cargaDocumentos = function () {
+
+        $scope.gridOptions = {
+            enableFiltering: true,
+            treeRowHeaderAlwaysVisible: false,
+            columnDefs: [
+                {
+                    name: 'empresa',
+                    grouping: {
+                        groupPriority: 0
+                    }
+                },
+                {
+                    name: 'sucursal',
+                    grouping: {
+                        groupPriority: 1
+                    }
+                },
+                {
+                    name: 'departamento',
+                    grouping: {
+                        groupPriority: 1
+                    }
+                    // treeAggregationType: uiGridGroupingConstants.aggregation.MAX
+                },
+                {
+                    name: 'tipoDocumento'
+                },
+                {
+                    name: 'idDocumento'
+                },
+                {
+                    name: 'fechaDocumento'
+                },
+                {
+                    name: 'fechaVencimiento'
+                },
+                {
+                    name: 'importe'
+                },
+                {
+                    name: 'saldo'
+                },
+                {
+                    name: 'dias0'
+                },
+                {
+                    name: 'dias30'
+                },
+                {
+                    name: 'dias60'
+                }
+
+    ]
+        };
+
         $('#loadModal').modal('show');
 
         //Datos Cliente
@@ -143,6 +198,8 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                             function succesCallback(response) {
                                 notificationFactory.success('Detalle Documentos No Pagados');
                                 $scope.listaNoPagados = response.data;
+
+                                $scope.gridOptions.data = response.data;
 
                                 $scope.totalNoPagadoVencido = 0;
                                 $scope.totalNoPagadoNoVencido = 0;
