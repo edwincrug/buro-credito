@@ -155,6 +155,15 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                 },
                 {
                     name: 'dias60'
+                },
+                {
+                    name: 'dias90'
+                },
+                {
+                    name: 'dias120'
+                },
+                {
+                    name: 'diasMas120'
                 }
 
     ]

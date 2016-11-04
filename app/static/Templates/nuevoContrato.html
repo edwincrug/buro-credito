@@ -108,7 +108,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-label">Departamento:</label>
-                                                <select class="form-control" ng-model="nuevoContrato.idDepartamento" ng-options="tipoDepartamento.idDepartamento as tipoDepartamento.nombreDepartamento for tipoDepartamento in listaTiposDepartamento" id="cboDepartamento" ng-change="cargarLimiteCredito(datosCliente.idCliente,nuevoContrato.idEmpresa,nuevoContrato.idSucursal,nuevoContrato.idDepartamento)" name="txtDepartamento">
+                                                <select class="form-control" ng-model="nuevoContrato.idDepartamento" ng-options="tipoDepartamento.idDepartamento as tipoDepartamento.nombreDepartamento for tipoDepartamento in listaTiposDepartamento" id="cboDepartamento" ng-change="cargarLimiteCredito(datosCliente.idCliente,nuevoContrato.idEmpresa,nuevoContrato.idSucursal,nuevoContrato.idDepartamento);cargarDatosContrato(nuevoContrato)" name="txtDepartamento">
                                                     <option value="">Departamento</option>
                                                 </select>
                                             </div>
@@ -436,6 +436,25 @@
         <!-- Fin dialog -->
     </div>
     <!-- Modal  Busqueda-->
+
+    <!-- Modal Confirmacion -->
+    <!--div class="modal-dialog" id="confirmaContrato" ng-controller="contratoController">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Contrato creado</h4>
+            </div>
+            <div class="modal-body">
+                Se ha creado el Contrato!!!
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-warning" type="button"> Aceptar</button>
+            </div>
+        </div>
+    </div-->
+    <!-- Fin Modal Confirmacion -->
+
+
 </div>
 
 <script src="js/wizard/jquery.validate.min.js" type="text/javascript"></script>

@@ -314,6 +314,10 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                         //2)Creo la Carpeta con el idContrato
                         $scope.idcontrato = $scope.folioContrato["0"].idContrato;
 
+                        //Se llama a la Modal
+                        alert("Se ha creado el contrato : " + $scope.idcontrato);
+                        //$('#confirmaContrato').modal('show');
+
                         documentosRepository.creaCarpeta($scope.folioContrato["0"].idContrato)
                             .then(
                                 function succesCallback(response) {
