@@ -137,7 +137,12 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
         if (nombreTipo === "" || descripcionTipo === "" || fechaCreacion === "" || fechaTermino === "") {
             notificationFactory.error("Todos los campos son obligatorios");
             return false;
-        } else if (nombreTipo.length <= 3) {
+        }
+        //        else if (listaDocumentos) {
+        //            notificationFactory.error("Debes agregar minimo un documento");
+        //            return false;
+        //        } 
+        else if (nombreTipo.length <= 3) {
             notificationFactory.error("El nombre del Contrato debe ser mayor a 3 digitos");
             return false;
         } else if (fechaCreacion > fechaTermino) {
@@ -299,8 +304,15 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
         documentosRepository.insertDocumento(nuevoDocumento)
             .then(
                 function successCallbackNuevoTipo(response) {
+                    $('.estiloTabla').DataTable().destroy();
                     //$state.go('nuevotipocontrato');
                     notificationFactory.success('Insertado correctamente.');
+                    cargaListaDocumentos();
+                    //Mando a llamar la Tabla despues de cargar datos
+                    setTimeout(function () {
+                        $('.estiloTabla').DataTable({});
+                        $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
+                    }, 1000);
                 },
                 function errorCallbackNuevoTipo(response) {
                     //Error
@@ -308,7 +320,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                 }
             );
         $('#agregarDocumentos').modal('hide');
-        $state.reload();
+        //$state.reload();
     };
 
 

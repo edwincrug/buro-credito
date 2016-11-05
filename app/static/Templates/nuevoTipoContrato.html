@@ -32,7 +32,6 @@
                             </span>
                         </div>
                         <div class="row">
-                            <!-- Ejemplo datepicker bootstrap-->
                             <div class="col-md-6">
                                 <p class="input-group">
                                     Fecha de inicio
@@ -56,20 +55,17 @@
                                 </p>
                             </div>
                         </div>
-                        <!-- Ejemplo datepicker bootstrap-->
-                        <!--p>
-                            <input type="submit" ng-disabled="myForm.contratoEditar.nombreContrato.$invalid || myForm.contratoEditar.descripcion.$invalid || myForm.contratoEditar.fechaCreacion.$invalid || myForm.contratoEditar.fechaTermino.$invalid">
-                        </p-->
                     </div>
                 </div>
             </div>
-            <!--/section-->
-            <!--Tabla Documentos-->
-            <!--section class="box "-->
+        </section>
+
+        <!--Tabla Documentos-->
+        <section class="box ">
             <header class="panel_header">
                 <h2 class="title pull-left">Documentos Requeridos:</h2>
             </header>
-            <!-- Prueba -->
+
             <div class="content-body">
                 <div class="row">
                     <div class="col-xs-12">
@@ -86,12 +82,10 @@
                                 <tr ng-repeat=" documento in listaDocumentos">
                                     <td scope="row">
                                         <input type="checkbox" ng-model="documento.seleccionado" aria-label="Checkbox for following text input">
-
                                         <!-- <input type="checkbox" class="js-switch-blue checkbox" ng-model="documento.seleccionado"/> -->
                                     </td>
                                     <td scope="row">
                                         <input type="checkbox" ng-model="documento.obligatorio" aria-label="Checkbox for following text input" ng-disabled="!documento.seleccionado">
-
                                         <!-- <input type="checkbox" class="js-switch-blue checkbox" ng-model="documento.seleccionado"/> -->
                                     </td>
                                     <!-- <th scope="row">
@@ -116,24 +110,13 @@
                         <!--/form-->
                     </div>
                 </div>
-                <!--div class="col-md-offset-10">
-                    <div class="list-group">
-                        <!--button type="button" class="btn btn-primary vimeo" ng-click="EditarTipo(listaDocumentos)" ng-show="opcion==2">Actualizar Cambios</button-->
-                <!--button type="button" class="btn btn-success" ng-click="CrearTipo(listaDocumentos)" ng-show="opcion==1" ng-disabled="myForm.contratoEditar.nombreContrato.$invalid || myForm.contratoEditar.descripcion.$invalid || myForm.contratoEditar.fechaCreacion.$invalid || myForm.contratoEditar.fechaTermino.$invalid">Guardar Contrato</button>
-                        <p>
-                            <input type="submit" class="btn btn-success" ng-disabled="myForm.contratoEditar.nombreContrato.$invalid || myForm.contratoEditar.descripcion.$invalid || myForm.contratoEditar.fechaCreacion.$invalid || myForm.contratoEditar.fechaTermino.$invalid || myForm.contratoEditar.fechaCreacion !=undefined//undefined || myForm.contratoEditar.Termino !=undefined//undefined" ng-click="CrearTipo(listaDocumentos)" ng-show="opcion==1">
-                        </p>
-                    </div>
-                </div-->
-
             </div>
-            <!-- Prueba -->
             <!--Tabla Documentos-->
         </section>
-
-    </form>
-    <!--FIN Datos Tipo Contrato-->
+        <!--/form-->
+        <!--FIN Datos Tipo Contrato-->
 </div>
+
 <div class="modal" id="agregarDocumentos" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog animated bounceInDown">
         <div class="modal-content">
