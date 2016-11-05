@@ -185,6 +185,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         $scope.porcPagPuntual = 0;
         $scope.porcPagInPuntual = 0;
 
+
         //alert('Estoy en ver detalle Empresa: ' + $scope.nombreCliente);
 
 
@@ -209,6 +210,8 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                 $scope.listaNoPagados = response.data;
 
                                 $scope.gridOptions.data = response.data;
+
+
 
                                 $scope.totalNoPagadoVencido = 0;
                                 $scope.totalNoPagadoNoVencido = 0;
@@ -279,6 +282,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                 }, 100);
 
                                 setTimeout(function () {
+                                    $scope.verPagosExtemporaneos($scope.idcliente);
                                     $('#loadModal').modal('hide');
                                 }, 1000);
 
@@ -302,6 +306,23 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         $state.go('home');
     };
 
+    $scope.verPagosExtemporaneos = function (idcliente) {
+        contratoDetalleRepository.detallePagoDocumentosExtemporaneo(idcliente)
+            .then(
+                function succesCallback(response) {
+                    //alert('Success detalle Cliente Pagos');
+                    //Success
+                    //notificationFactory.success('Cotrato obtenidos correctamente');
+                     $scope.listaPagadosExtemporaneo = response.data;
+                    //location.href = '/detallecontrato';
+                    //$state.go('detallecontrato');
+                },
+                function errorCallback(response) {
+                    //Error
+                    notificationFactory.error('No se pudieron obtener datos del Cliente: ' + response.data.message);
+                }
+            );
+    };
 
 
 }); //FIN de appControllers

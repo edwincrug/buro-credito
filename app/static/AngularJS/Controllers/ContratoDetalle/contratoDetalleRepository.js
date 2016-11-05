@@ -85,7 +85,20 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
                     'Content-Type': 'application/json'
                 }
             });
-        }, //Fin Detalle Documentos 
+        }, //Fin Detalle Documentos detallePagoDocumentosExtemporaneo
+
+        detallePagoDocumentosExtemporaneo: function (idCliente) {
+            return $http({
+                url: contratoDetalleRepositoryURL + 'detallepagodocumentosextemporaneo/',
+                method: "GET",
+                params: {
+                    idCliente: idCliente
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }, //Fin Detalle Documentos detallePagoDocumentosExtemporaneo
 
         //Detalle No Pagados
         detalleNoPagados: function (idCliente) {

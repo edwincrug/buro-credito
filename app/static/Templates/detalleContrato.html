@@ -191,75 +191,55 @@
                 <div class="row">
                     <div class="col-xs-12">
 
-                        <div ui-grid="gridOptions" ui-grid-grouping class="myGrid"></div>
-                        <!-- ********************************************** 
+                        <!-- <div ui-grid="gridOptions" ui-grid-grouping class="myGrid"></div> -->
+                        
                         <table id="nopagado" class="display estiloTabla" id="tablaR">
                             <thead class="gris">
                                 <tr>
                                     <th colspan="3">Origen</th>
-                                    <th colspan="4">Detalle de documento</th>
-                                    <th colspan="10">Detalle de pago</th>
+                                    <th colspan="3">Detalle de documento</th>
+                                    <th colspan="1">Por Vencer</th>
+                                    <th colspan="5">Cartera Vencida</th>
                                 </tr>
                                 <tr>
                                     <th>Empresa</th>
                                     <th>Sucursal</th>
                                     <th>Departamento</th>
-
-                                    <th>Tipo Documento</th>
-                                    <th>Documento</th>
-                                    <th>Fecha Docto</th>
-                                    <th>Fecha Venc</th>
-
-                                    <th>Importe</th>
+                                    <th>Cant Doc</th>
+                                    <th>Imp Orig</th>
                                     <th>Saldo</th>
-
                                     <th>Por vencer</th>
                                     <th>30 Días</th>
                                     <th>60 Días</th>
                                     <th>90 Días</th>
                                     <th>120 Días</th>
                                     <th>Más de 120 Días</th>
-
-                                    <th>Dias Vencidos</th>
-                                    <th>Estatus</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="nopagado in listaNoPagados | filter:{ porVencer:'2'}">
+                                <tr ng-repeat="nopagado in listaNoPagados ">
                                     <td>{{ nopagado.empresa }}</td>
                                     <td>{{ nopagado.sucursal }}</td>
                                     <td>{{ nopagado.departamento }}</td>
 
-                                    <td>{{ nopagado.tipoDocumento }}</td>
-                                    <td>{{ nopagado.idDocumento }}</td>
-                                    <td class="tdMonto">{{ nopagado.fechaDocumento }}</td>
-                                    <td class="tdMonto">{{ nopagado.fechaVencimiento }}</td>
-
-                                    <td class="tdMonto">
-                                        <span style="color: #9c27b0;" ng-show="nopagado.tipoCartera==1">{{nopagado.importe | currency}}</span>
-                                        <span style="color: red;" ng-show="nopagado.tipoCartera==2">{{nopagado.importe | currency}}</span>
-                                    </td>
-                                    <td class="tdMonto">
-                                        <span style="color: #9c27b0;" ng-show="nopagado.tipoCartera==1">{{nopagado.saldo | currency}}</span>
-                                        <span style="color: red;" ng-show="nopagado.tipoCartera==2">{{nopagado.saldo | currency}}</span>
-                                    </td>
-
+                                    <td>{{ nopagado.totalDoctos }}</td>
+                                    <td>{{ nopagado.importeTotal  | currency}}</td>
+                                    <td>{{ nopagado.saldoTotal  | currency}}</td>
+                                   
                                     <th class="tdMonto">{{nopagado.dias0 | currency}}</th>
                                     <th class="tdMonto">{{nopagado.dias30 | currency}}</th>
                                     <th class="tdMonto">{{nopagado.dias60 | currency}}</th>
                                     <th class="tdMonto">{{nopagado.dias90 | currency}}</th>
                                     <th class="tdMonto">{{nopagado.dias120 | currency}}</th>
                                     <th class="tdMonto">{{nopagado.diasMas120 | currency}}</th>
-
-                                    <td class="tdMonto">{{ nopagado.diasVencidos }}</td>
-                                    <td class="tdMonto">
+<!--                                     <td class="tdMonto">
                                         <span class="iconopago fa fa-star-o" aria-hidden="true" style="color: #FF5656;" ng-show="nopagado.tipoCartera==1"></span>
                                         <span class="iconopago fa fa-close" aria-hidden="true" style="color: #FF5656;" ng-show="nopagado.tipoCartera==2"></span>
-                                    </td>
+                                    </td> -->
                                 </tr>
                             </tbody>
                         </table>
-                         ********************************************** -->
+                         
                     </div>
                 </div>
 
@@ -267,7 +247,7 @@
         </section>
     </div>
 
-    <!-- No Pagados no vencido-->
+    <!-- <!-- <!-- No Pagados no vencido
     <div class="col-xs-12">
         <section class="box ">
             <header class="panel_header">
@@ -351,14 +331,14 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <!-- ********************************************** -->
+                        
                     </div>
                 </div>
 
             </div>
         </section>
     </div>
-
+ --> -->
     <!-- Pagado Inpuntual-->
     <div class="col-xs-12">
         <section class="box ">
@@ -381,37 +361,34 @@
                         <table id="inpuntual" class="display estiloTabla">
                             <thead class="gris">
                                 <tr>
-                                    <!--                                    <th rowspan="3">Origen</th>-->
                                     <th colspan="3">Origen</th>
-                                    <th colspan="2">Detalle de documento</th>
+                                    <!-- <th colspan="3">Detalle de documento</th> -->
                                     <th colspan="3">Detalle de pago</th>
                                 </tr>
                                 <tr>
                                     <th>Empresa</th>
                                     <th>Sucursal</th>
                                     <th>Departamento</th>
-                                    <th>Documento</th>
+                                    <th>Total Doctos</th>
                                     <!--th>Serie</th-->
-                                    <th>Vencimiento</th>
-                                    <th>Importe</th>
-                                    <th>Fecha Pago</th>
-                                    <!--th>Dias Atraso</th-->
-                                    <th>Estatus</th>
+                                    <th>Cargo</th>
+                                    <th>Saldo</th>
+                                  <!--   <th>Fecha Pago</th>
+                                    <th>Estatus</th> -->
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="pagado in listaPagados | filter:{ tipoPagoFecha:'2'}">
-                                    <td>{{ pagado.empresa }}</td>
-                                    <td>{{ pagado.sucursal }}</td>
-                                    <td>{{ pagado.departamento }}</td>
-                                    <td>{{ pagado.idDocumento }}</td>
+                                <tr ng-repeat="pagadoExtemporaneo in listaPagadosExtemporaneo">
+                                    <td>{{ pagadoExtemporaneo.empresa }}</td>
+                                    <td>{{ pagadoExtemporaneo.sucursal }}</td>
+                                    <td>{{ pagadoExtemporaneo.departamento }}</td>
+                                    <td>{{ pagadoExtemporaneo.totalDoctos }}</td>
                                     <!--td>{{ pagado.serie }}</td-->
-                                    <td class="tdMonto">{{ pagado.fechaVencimiento }}</td>
-                                    <td class="tdMonto">{{pagado.cargo | currency}}</td>
-                                    <td>{{ pagado.fechaPago }}</td>
-                                    <!--td>{{ pagado.diasAtraso }}</td-->
-                                    <!--td><img src="\images\alerta3.png" width="35" height="35"></td--#F79F24-->
-                                    <td class="tdMonto"><span class="iconopago fa fa-exclamation" aria-hidden="true" style="color:  #FFCC00 ;"></span></td>
+                                    <!-- <td class="tdMonto">{{ pagado.fechaVencimiento }}</td> -->
+                                    <td class="tdMonto">{{pagadoExtemporaneo.cargoTotal | currency}}</td>
+                                    <td>{{ pagadoExtemporaneo.saldoTotal | currency }}</td>
+                                    <!--td><img src="\images\correcto.png" width="35" height="35"></td-->
+                                     <td class="tdMonto"><span class="iconopago fa fa-exclamation" aria-hidden="true" style="color:  #FFCC00 ;"></span></td>
                                 </tr>
                                 <!--tr>
                                     <th colspan="4">Totales:</th>
@@ -448,31 +425,31 @@
                             <thead class="gris">
                                 <tr>
                                     <th colspan="3">Origen</th>
-                                    <th colspan="2">Detalle de documento</th>
+                                    <!-- <th colspan="3">Detalle de documento</th> -->
                                     <th colspan="3">Detalle de pago</th>
                                 </tr>
                                 <tr>
                                     <th>Empresa</th>
                                     <th>Sucursal</th>
                                     <th>Departamento</th>
-                                    <th>Documento</th>
+                                    <th>Total Doctos</th>
                                     <!--th>Serie</th-->
-                                    <th>Vencimiento</th>
-                                    <th>Importe</th>
-                                    <th>Fecha Pago</th>
-                                    <th>Estatus</th>
+                                    <th>Cargo</th>
+                                    <th>Saldo</th>
+                                  <!--   <th>Fecha Pago</th>
+                                    <th>Estatus</th> -->
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="pagado in listaPagados | filter:{ tipoPagoFecha:'1'}">
+                                <tr ng-repeat="pagado in listaPagados">
                                     <td>{{ pagado.empresa }}</td>
                                     <td>{{ pagado.sucursal }}</td>
                                     <td>{{ pagado.departamento }}</td>
-                                    <td>{{ pagado.idDocumento }}</td>
+                                    <td>{{ pagado.totalDoctos }}</td>
                                     <!--td>{{ pagado.serie }}</td-->
-                                    <td class="tdMonto">{{ pagado.fechaVencimiento }}</td>
-                                    <td class="tdMonto">{{pagado.cargo | currency}}</td>
-                                    <td>{{ pagado.fechaPago }}</td>
+                                    <!-- <td class="tdMonto">{{ pagado.fechaVencimiento }}</td> -->
+                                    <td class="tdMonto">{{pagado.cargoTotal | currency}}</td>
+                                    <td>{{ pagado.saldoTotal | currency }}</td>
                                     <!--td><img src="\images\correcto.png" width="35" height="35"></td-->
                                     <td class="tdMonto"><span class="iconopago fa fa-check" aria-hidden="true" style="color: #9ACD32;"></span></td>
                                 </tr>

@@ -170,7 +170,7 @@ contratoDetalle.prototype.get_detallePagoDocumentos = function (req, res, next) 
         type: self.model.types.INT
         }]
 
-    this.model.query('SEL_TOTAL_DOC_PAG_DETALLE_SP_TODAS', params, function (error, result) {
+    this.model.query('SEL_PAGADOS_PUNTUAL_AGRUP_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result
@@ -178,6 +178,23 @@ contratoDetalle.prototype.get_detallePagoDocumentos = function (req, res, next) 
     });
 };
 
+
+contratoDetalle.prototype.get_detallepagodocumentosextemporaneo = function (req, res, next) {
+    var self = this;
+
+    params = [{
+        name: 'idCliente',
+        value: req.query.idCliente,
+        type: self.model.types.INT
+        }]
+
+    this.model.query('SEL_PAGADOS_NO_PUNTUAL_AGRUP_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+};
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 //   Documentos No Pagados
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -191,7 +208,7 @@ contratoDetalle.prototype.get_detalleNoPagados = function (req, res, next) {
         }]
 
     //SEL_TOTAL_CARTERA_DETALLE_SP_TODAS
-    this.model.query('SEL_FACTURAS_SP', params, function (error, result) {
+    this.model.query('SEL_CARTERA_VENCIDA_AGRUP_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result
