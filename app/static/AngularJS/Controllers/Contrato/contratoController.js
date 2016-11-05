@@ -162,6 +162,10 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                 function succesCallback(response) {
                     //Success
                     //notificationFactory.success('Lista de documentos obtenidos correctamente. ');
+                    ///////////////////Nuevo Inicia Gib ///////////////
+                    $scope.fechaInicioValidacion = response.data[0].fechaInicio;
+                    $scope.fechaFinValidacion = response.data[0].fechaFin;
+                    //////////Termina Nuevo ///////////////////
                     $scope.listaDocumentos = response.data;
                     var contador = 0;
 
@@ -215,6 +219,36 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                 }
             );
     };
+
+    ///////////////////Nuevo Inicia ///////////////
+    $scope.validarFechar = function (inicio, fin) {
+            console.log(inicio + ' fecha inicio' + fin + ' fecha termino')
+            if ($scope.fechaInicioValidacion <= inicio) {
+
+                notificationFactory.success('La fecha inicio es valida');
+                $scope.inicioF = true;
+            } else {
+                notificationFactory.error('La fecha de inicio es menor al contrato');
+                $scope.inicioF = false;
+            }
+            if ($scope.fechaFinValidacion >= fin) {
+                $scope.inicioT = true;
+                notificationFactory.success('La fecha termino es valida');
+            } else {
+                notificationFactory.error('La fecha de termino es mayor al contrato');
+                $scope.inicioT = false;
+            }
+            if ($scope.inicioF == true && $scope.inicioT == true) {
+                notificationFactory.success('todo bien');
+                $('#btnNext').show();
+
+            } else {
+                notificationFactory.error('todo mal');
+                $('#btnNext').hide();
+            }
+        }
+        //////////Termina Nuevo ///////////////////
+
 
     //PRUEBA  Llamada a la funcion para subir los Archivos 
     $scope.subirDocumentosContrato = function (idcontrato) {

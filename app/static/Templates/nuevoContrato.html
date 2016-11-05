@@ -115,8 +115,9 @@
                                         </div>
                                     </div>
                                     <!-- Ejemplo datepicker bootstrap-->
+                                    <!--                                    yo modifique gib-->
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <p class="input-group">
                                                 Fecha de inicio:
                                                 <div class="input-group">
@@ -124,15 +125,17 @@
                                                 </div>
                                             </p>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <p class="input-group">
                                                 Fecha de término:
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy" ng-model="nuevoContrato.fechaTermino" name="txtFin">
+                                                    <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy" ng-model="nuevoContrato.fechaTermino" name="txtFin" ng-change="validarFechar(nuevoContrato.fechaInicio,nuevoContrato.fechaTermino)">
                                                 </div>
                                             </p>
                                         </div>
                                     </div>
+
+                                    <!--                            aqui termine-->
                                 </div>
                                 <div class="tab-pane" id="limite">
                                     <h4>Límite de Crédito</h4>
