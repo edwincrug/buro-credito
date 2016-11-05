@@ -124,6 +124,13 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
 
     $scope.validarForm = function (opc, listaDocumentos) {
 
+        $scope.contadorSel = 0;
+        angular.forEach(listaDocumentos, function (value, key) {
+            if (value.seleccionado == true) {
+                $scope.contadorSel++;
+            }
+        });
+
         var nombreTipo = '';
         var descripcionTipo = '';
         var fechaCreacion = '';
@@ -137,12 +144,10 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
         if (nombreTipo === "" || descripcionTipo === "" || fechaCreacion === "" || fechaTermino === "") {
             notificationFactory.error("Todos los campos son obligatorios");
             return false;
-        }
-        //        else if (listaDocumentos) {
-        //            notificationFactory.error("Debes agregar minimo un documento");
-        //            return false;
-        //        } 
-        else if (nombreTipo.length <= 3) {
+        } else if ($scope.contadorSel == 0) {
+            notificationFactory.error("Debes agregar minimo un documento");
+            return false;
+        } else if (nombreTipo.length <= 3) {
             notificationFactory.error("El nombre del Contrato debe ser mayor a 3 digitos");
             return false;
         } else if (fechaCreacion > fechaTermino) {
