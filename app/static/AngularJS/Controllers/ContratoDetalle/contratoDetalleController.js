@@ -281,7 +281,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                                         }
                                                     });
                                                 }
-                                            }, 100);
+                                            }, 1000);
 
                                         },
                                         //Error Pago No Puntual 
