@@ -111,8 +111,8 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                     //alert('Antes de SeleccionaDocumentos' +$scope.resultado);
                     $scope.SeleccionDocumentos(documento);
                     //alert(documento.nombre);
-                    $state.go('tipocontrato');
                     $state.reload();
+                    $state.go('tipocontrato');
                 },
                 function errorCallbackEditar(response) {
                     //Error
@@ -142,16 +142,16 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
         fechaTermino = document.getElementById("fechaTermino").value;
 
         if (nombreTipo === "" || descripcionTipo === "" || fechaCreacion === "" || fechaTermino === "") {
-            notificationFactory.error("Todos los campos son obligatorios");
+            notificationFactory.warning("Todos los campos son obligatorios");
             return false;
         } else if ($scope.contadorSel == 0) {
-            notificationFactory.error("Debes agregar minimo un documento");
+            notificationFactory.warning("Debes agregar minimo un documento");
             return false;
         } else if (nombreTipo.length <= 3) {
-            notificationFactory.error("El nombre del Contrato debe ser mayor a 3 digitos");
+            notificationFactory.warning("El nombre del Contrato debe ser mayor a 3 digitos");
             return false;
         } else if (fechaCreacion > fechaTermino) {
-            notificationFactory.error("La fecha de Inicio debe ser menor que la fecha de Termino");
+            notificationFactory.warning("La fecha de Inicio debe ser menor que la fecha de Termino");
             return false;
         } else {
             //notificationFactory.success("Todos cumplen");

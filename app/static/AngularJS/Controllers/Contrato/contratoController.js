@@ -224,26 +224,24 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     $scope.validarFechar = function (inicio, fin) {
             console.log(inicio + ' fecha inicio' + fin + ' fecha termino')
             if ($scope.fechaInicioValidacion <= inicio) {
-
-                notificationFactory.success('La fecha inicio es valida');
+                //notificationFactory.success('La fecha inicio es valida');
                 $scope.inicioF = true;
             } else {
-                notificationFactory.error('La fecha de inicio es menor al contrato');
+                notificationFactory.warning('La fecha de Inicio es menor al Contrato');
                 $scope.inicioF = false;
             }
             if ($scope.fechaFinValidacion >= fin) {
                 $scope.inicioT = true;
-                notificationFactory.success('La fecha termino es valida');
+                //notificationFactory.success('La fecha termino es valida');
             } else {
-                notificationFactory.error('La fecha de termino es mayor al contrato');
+                notificationFactory.warning('La fecha de Termino es mayor al Contrato');
                 $scope.inicioT = false;
             }
             if ($scope.inicioF == true && $scope.inicioT == true) {
-                notificationFactory.success('todo bien');
+                notificationFactory.success('Fechas Correctas');
                 $('#btnNext').show();
-
             } else {
-                notificationFactory.error('todo mal');
+                notificationFactory.warning('Las fechas No pueden coinciden con la vigencia del Tipo de Contrato');
                 $('#btnNext').hide();
             }
         }
@@ -339,6 +337,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             //1)Inserto el Contrato en Base
             contratoRepository.creaNuevoContrato(datoscliente.idCliente, nuevocontrato.idTipoContrato, nuevocontrato.idEmpresa, nuevocontrato.idSucursal, nuevocontrato.idDepartamento, nuevocontrato.fechaInicio, nuevocontrato.fechaTermino, limitecredito, 1)
                 .then(
+                    //Success Crea Nuevo Contrato
                     function succesCallback(response) {
                         //Success del Insert
                         $scope.folioContrato = response.data;
@@ -377,13 +376,13 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
                         //4)Subo los documentos
                         $scope.subirDocumentosContrato($scope.idcontrato);
-
                         //Termina Success del Insert
                         //$state.go('home');
                     },
+                    //Error Nuevo Contrato
                     function errorCallback(response) {
                         //Error
-                        notificationFactory.error('Existe contrato con los mismos Parametros');
+                        notificationFactory.warning('Existe contrato con los mismos Parametros');
                     }
                 );
         } else {

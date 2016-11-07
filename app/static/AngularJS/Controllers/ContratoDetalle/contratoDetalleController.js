@@ -198,12 +198,9 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
                     //For Total Porcentajes Variables 
                     for (var i = 0; i < response.data.length; i++) {
-                        if (response.data[i].tipoPagoFecha == 1) {
-                            $scope.totalPagPuntual += (response.data[i].cargoTotal);
-                        }
-                        //                        else if (response.data[i].tipoPagoFecha == 2) {
-                        //                            $scope.totalPagInPuntual += (response.data[i].cargo);
-                        //                        }
+                        //if (response.data[i].tipoPagoFecha == 1) {
+                        $scope.totalPagPuntual += (response.data[i].cargoTotal);
+                        //}
                     }
 
                     contratoDetalleRepository.detalleNoPagados($scope.idcliente)
@@ -219,12 +216,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                 $scope.totalNoPagadoNoVencido = 0;
 
                                 for (var i = 0; i < response.data.length; i++) {
-                                    //if (response.data[i].diasVencidos > 0) {
                                     $scope.totalNoPagadoVencido += (response.data[i].importeTotal);
-                                    //} 
-                                    //else if (response.data[i].diasVencidos <= 0) {
-                                    //    $scope.totalNoPagadoNoVencido += (response.data[i].importe);
-                                    //}
                                 }
                                 //////////////////////////
                                 contratoDetalleRepository.detallePagoDocumentosExtemporaneo($scope.idcliente)
@@ -234,9 +226,9 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                             $scope.listaPagadosExtemporaneo = response.data;
 
                                             for (var i = 0; i < response.data.length; i++) {
-                                                if (response.data[i].tipoPagoFecha == 2) {
-                                                    $scope.totalPagInPuntual += (response.data[i].cargoTotal);
-                                                }
+                                                //if (response.data[i].tipoPagoFecha == 2) {
+                                                $scope.totalPagInPuntual += (response.data[i].cargoTotal);
+                                                //}
                                             }
 
                                             //Total de Credito
