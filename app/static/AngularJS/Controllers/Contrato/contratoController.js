@@ -430,6 +430,14 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         $scope.stepContador--;
         //  console.log($scope.stepContador);
     }
+    
+    
+     //Boton Cancelar
+    $scope.Regresar = function () {
+        $state.go('home');
+    };
+    
+    
 
     $scope.cargarDatosContrato = function (nuevoContrato) {
 

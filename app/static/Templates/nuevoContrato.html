@@ -431,7 +431,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="Cerrar()">Salir</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="Regresar()">Salir</button>
                 </div>
             </div>
             <!-- Fin content -->
@@ -457,7 +457,7 @@
     </div-->
     <!-- Fin Modal Confirmacion -->
     <div id="modalLotes" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog animated zoomIn">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
@@ -468,20 +468,20 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <p>
-                                <b>folio</b>
+                                <h4><b>Folio :</b><span>{{folioContratoNuevo}}</span></h4>
                             </p>
-                            {{folioContratoNuevo}}
                         </div>
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <div class="row">
+                        <div class="col-sm-12">
+                            <!--button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button-->
+                            <button data-dismiss="modal" class="btn btn-default" type="button" ng-click="">Cerrar</button>
+                        </div>
                         <!--                         <div class="col-sm-6">
-                           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
-                       </div> -->
-                        <!--                         <div class="col-sm-6">
-                           <button class="btn btn-info "><span class="glyphicon glyphicon-file"> </span>Aceptar</button>
+                           <button class="btn btn-info"><span class="glyphicon glyphicon-file"> </span>Aceptar</button>
                        </div> -->
                     </div>
                 </div>
