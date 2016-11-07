@@ -346,9 +346,11 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
                         //2)Creo la Carpeta con el idContrato
                         $scope.idcontrato = $scope.folioContrato["0"].idContrato;
+                        $scope.folioContratoNuevo = $scope.folioContrato["0"].folio;
+
 
                         //Se llama a la Modal
-                        alert("Se ha creado el contrato : " + $scope.idcontrato);
+                        // alert("Se ha creado el contrato : " + $scope.idcontrato);
                         //$('#confirmaContrato').modal('show');
 
                         documentosRepository.creaCarpeta($scope.folioContrato["0"].idContrato)
@@ -378,6 +380,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                         $scope.subirDocumentosContrato($scope.idcontrato);
                         //Termina Success del Insert
                         //$state.go('home');
+                        $('#modalLotes').modal('show');
                     },
                     //Error Nuevo Contrato
                     function errorCallback(response) {
