@@ -243,7 +243,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             notificationFactory.success('Las fechas son validas');
         } else {
             console.log(dateStartDB + ' ' + dateStart + ' ' + dateEndDB + ' ' + dateEnd)
-            notificationFactory.warning('Las fechas No pueden coinciden con la vigencia del Tipo de Contrato');
+            notificationFactory.warning('Las fechas No coinciden con la vigencia del Tipo de Contrato');
             $scope.inicioF = false;
             $scope.inicioT = false;
         }
@@ -252,7 +252,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             notificationFactory.success('Fechas Correctas');
             $('#btnNext').show();
         } else {
-            notificationFactory.warning('Las fechas No pueden coinciden con la vigencia del Tipo de Contrato');
+            notificationFactory.warning('Las fechas No coinciden con la vigencia del Tipo de Contrato');
             $('#btnNext').hide();
         }
     }
