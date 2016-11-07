@@ -221,31 +221,43 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     };
 
     ///////////////////Nuevo Inicia ///////////////
+
     $scope.validarFechar = function (inicio, fin) {
-            console.log(inicio + ' fecha inicio' + fin + ' fecha termino')
-            if ($scope.fechaInicioValidacion <= inicio) {
-                //notificationFactory.success('La fecha inicio es valida');
-                $scope.inicioF = true;
-            } else {
-                notificationFactory.warning('La fecha de Inicio es menor al Contrato');
-                $scope.inicioF = false;
-            }
-            if ($scope.fechaFinValidacion >= fin) {
-                $scope.inicioT = true;
-                //notificationFactory.success('La fecha termino es valida');
-            } else {
-                notificationFactory.warning('La fecha de Termino es mayor al Contrato');
-                $scope.inicioT = false;
-            }
-            if ($scope.inicioF == true && $scope.inicioT == true) {
-                notificationFactory.success('Fechas Correctas');
-                $('#btnNext').show();
-            } else {
-                notificationFactory.warning('Las fechas No pueden coinciden con la vigencia del Tipo de Contrato');
-                $('#btnNext').hide();
-            }
+
+        valuesStart = inicio.split("/");
+        valuesEnd = fin.split("/");
+        valuestarDB = $scope.fechaInicioValidacion.split("/");
+        valuesEndDB = $scope.fechaFinValidacion.split("/");
+
+        // Verificamos que la fecha no sea posterior a la actual
+        var dateStart = new Date(valuesStart[2], (valuesStart[1] - 1), valuesStart[0]);
+        var dateEnd = new Date(valuesEnd[2], (valuesEnd[1] - 1), valuesEnd[0]);
+
+        var dateStartDB = new Date(valuestarDB[2], (valuestarDB[1] - 1), valuestarDB[0]);
+        var dateEndDB = new Date(valuesEndDB[2], (valuesEndDB[1] - 1), valuesEndDB[0]);
+
+        if (dateStartDB <= dateStart && dateEndDB >= dateEnd) {
+            console.log(dateStartDB + ' ' + dateStart + ' ' + dateEndDB + ' ' + dateEnd)
+            $scope.inicioF = true;
+            $scope.inicioT = true;
+            notificationFactory.success('Las fechas son validas');
+        } else {
+            console.log(dateStartDB + ' ' + dateStart + ' ' + dateEndDB + ' ' + dateEnd)
+            notificationFactory.warning('Las fechas No pueden coinciden con la vigencia del Tipo de Contrato');
+            $scope.inicioF = false;
+            $scope.inicioT = false;
         }
-        //////////Termina Nuevo ///////////////////
+
+        if ($scope.inicioF == true && $scope.inicioT == true) {
+            notificationFactory.success('Fechas Correctas');
+            $('#btnNext').show();
+        } else {
+            notificationFactory.warning('Las fechas No pueden coinciden con la vigencia del Tipo de Contrato');
+            $('#btnNext').hide();
+        }
+    }
+
+    //////////Termina Nuevo ///////////////////
 
 
     //PRUEBA  Llamada a la funcion para subir los Archivos 
@@ -430,14 +442,14 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         $scope.stepContador--;
         //  console.log($scope.stepContador);
     }
-    
-    
-     //Boton Cancelar
+
+
+    //Boton Cancelar
     $scope.Regresar = function () {
         $state.go('home');
     };
-    
-    
+
+
 
     $scope.cargarDatosContrato = function (nuevoContrato) {
 
