@@ -55,7 +55,9 @@ TipoContrato.prototype.post_nuevotipocontrato_data = function (req, res, next) {
 TipoContrato.prototype.put_editartipocontrato_data = function (req, res, next) {
     var self = this;
     //Obtención de valores de los parámetros del request
-    var date = new Date(req.query.fechaTermino.toString());
+    var datecreacion = new Date(req.query.fechaCreacion.toString());
+    var datetermino = new Date(req.query.fechaTermino.toString());
+
     //var fecha = new Date(date.valueOf() - date.getTimezoneOffset() * 60000);
 
     var params = [
@@ -74,9 +76,15 @@ TipoContrato.prototype.put_editartipocontrato_data = function (req, res, next) {
             value: req.query.descripcion,
             type: self.model.types.STRING
                     },
+
+        {
+            name: 'fechaInicio',
+            value: datecreacion,
+            type: self.model.types.DATE
+                    },
         {
             name: 'fechaTermino',
-            value: date,
+            value: datetermino,
             type: self.model.types.DATE
                     }
     ];
