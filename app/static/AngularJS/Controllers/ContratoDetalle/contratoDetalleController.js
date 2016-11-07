@@ -191,109 +191,122 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
         $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente)
             .then(
+                //Succes Pagados
                 function succesCallback(response) {
                     notificationFactory.success('Detalle Documentos Pagados');
                     $scope.listaPagados = response.data;
 
+                    //For Total Porcentajes Variables 
                     for (var i = 0; i < response.data.length; i++) {
                         if (response.data[i].tipoPagoFecha == 1) {
-                            $scope.totalPagPuntual += (response.data[i].cargo);
-                        } else if (response.data[i].tipoPagoFecha == 2) {
-                            $scope.totalPagInPuntual += (response.data[i].cargo);
+                            $scope.totalPagPuntual += (response.data[i].cargoTotal);
                         }
+                        //                        else if (response.data[i].tipoPagoFecha == 2) {
+                        //                            $scope.totalPagInPuntual += (response.data[i].cargo);
+                        //                        }
                     }
 
                     contratoDetalleRepository.detalleNoPagados($scope.idcliente)
                         .then(
+                            //Succes Cartera
                             function succesCallback(response) {
                                 notificationFactory.success('Detalle Documentos No Pagados');
+
                                 $scope.listaNoPagados = response.data;
-
                                 $scope.gridOptions.data = response.data;
-
-
 
                                 $scope.totalNoPagadoVencido = 0;
                                 $scope.totalNoPagadoNoVencido = 0;
 
                                 for (var i = 0; i < response.data.length; i++) {
-                                    if (response.data[i].diasVencidos > 0) {
-                                        $scope.totalNoPagadoVencido += (response.data[i].importe);
-                                    } else if (response.data[i].diasVencidos <= 0) {
-                                        $scope.totalNoPagadoNoVencido += (response.data[i].importe);
-                                    }
+                                    //if (response.data[i].diasVencidos > 0) {
+                                    $scope.totalNoPagadoVencido += (response.data[i].importeTotal);
+                                    //} 
+                                    //else if (response.data[i].diasVencidos <= 0) {
+                                    //    $scope.totalNoPagadoNoVencido += (response.data[i].importe);
+                                    //}
                                 }
+                                //////////////////////////
+                                contratoDetalleRepository.detallePagoDocumentosExtemporaneo($scope.idcliente)
+                                    .then(
+                                        //Succes Pago No puntual
+                                        function succesCallback(response) {
+                                            $scope.listaPagadosExtemporaneo = response.data;
 
-                                //Total de Credito
-                                $scope.totalCredito = $scope.totalNoPagado + $scope.totalPagPuntual + $scope.totalPagInPuntual;
-                                //Porcentajes
-                                $scope.porcNoPagadoVencido = $scope.totalNoPagadoVencido * 100 / $scope.totalCredito;
-                                $scope.porcNoPagadoNoVencido = $scope.totalNoPagadoNoVencido * 100 / $scope.totalCredito;
-                                $scope.porcPagInPuntual = $scope.totalPagInPuntual * 100 / $scope.totalCredito;
-                                $scope.porcPagPuntual = $scope.totalPagPuntual * 100 / $scope.totalCredito;
-                                $scope.porcCredito = $scope.porcNoPagado + $scope.porcPagInPuntual + $scope.porcPagPuntual;
+                                            for (var i = 0; i < response.data.length; i++) {
+                                                if (response.data[i].tipoPagoFecha == 2) {
+                                                    $scope.totalPagInPuntual += (response.data[i].cargoTotal);
+                                                }
+                                            }
 
-                                setTimeout(function () {
-                                    $('.estiloTabla').DataTable({});
-                                    //$("#tablaR_filter").removeClass("dataTables_info").addClass("hide-div");
-                                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                    //                   Gráfica
-                                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                    if ($("#morris_donut_graph").length) {
-                                        /*Donut Graph*/
-                                        Morris.Donut({
-                                            element: 'morris_donut_graph',
-                                            data: [{
-                                                    value: $scope.porcNoPagadoVencido.toFixed(2),
-                                                    label: 'Cartera Vencida'
-                                                },
-                                                {
-                                                    value: $scope.porcNoPagadoNoVencido.toFixed(2),
-                                                    label: 'Cartera No Vencida'
-                                                },
-                                                {
-                                                    value: $scope.porcPagInPuntual.toFixed(2),
-                                                    label: 'Pago Extemporáneo'
+                                            //Total de Credito
+                                            $scope.totalCredito = $scope.totalNoPagado + $scope.totalPagPuntual + $scope.totalPagInPuntual;
+                                            //Porcentajes
+                                            $scope.porcNoPagadoVencido = $scope.totalNoPagadoVencido * 100 / $scope.totalCredito;
+                                            $scope.porcNoPagadoVencido = $scope.porcNoPagadoVencido * (-1);
+                                            //$scope.porcNoPagadoNoVencido = $scope.totalNoPagadoNoVencido * 100 / //$scope.totalCredito;
+                                            $scope.porcPagInPuntual = $scope.totalPagInPuntual * 100 / $scope.totalCredito;
+                                            $scope.porcPagPuntual = $scope.totalPagPuntual * 100 / $scope.totalCredito;
+                                            $scope.porcCredito = $scope.porcNoPagadoVencido + $scope.porcPagInPuntual + $scope.porcPagPuntual;
+
+                                            setTimeout(function () {
+                                                $('.estiloTabla').DataTable({});
+                                                //$("#tablaR_filter").removeClass("dataTables_info").addClass("hide-div");
+                                                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                //                   Gráfica
+                                                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                if ($("#morris_donut_graph").length) {
+                                                    /*Donut Graph*/
+                                                    Morris.Donut({
+                                                        element: 'morris_donut_graph',
+                                                        data: [{
+                                                            value: $scope.porcNoPagadoVencido.toFixed(2),
+                                                            label: 'Cartera Vencida'
                                                 }, {
-                                                    value: $scope.porcPagPuntual.toFixed(2),
-                                                    label: 'Pago Puntual'
+                                                            value: $scope.porcPagInPuntual.toFixed(2),
+                                                            label: 'Pago Extemporáneo'
+                                                }, {
+                                                            value: $scope.porcPagPuntual.toFixed(2),
+                                                            label: 'Pago Puntual'
 
                                                 }],
-                                            resize: true,
-                                            redraw: true,
-                                            backgroundColor: '#ffffff',
-                                            labelColor: '#1D242B', //#999999',
-                                            colors: [
+                                                        resize: true,
+                                                        redraw: true,
+                                                        backgroundColor: '#ffffff',
+                                                        labelColor: '#1D242B', //#999999',
+                                                        colors: [
 //                                                        '#FF5656','#FFCC00','#B3E55E',
-                                                       //Primera OPC
-                                                      '#FF5656', '#2EA1D9', '#FFCC00', '#9ACD32',
+                                                       //Primera OPC //Cartera No vencida :  '#2EA1D9',
+                                                      '#FF5656', '#FFCC00', '#9ACD32',
                                                       //Otros  Mate
                                                       //'#ed7e29', '#f0e428', '#8fbc21',
                                                       //OBSCUROS
                                                       //'#ce6800', '#ffd000', '#b2b206',
                                                         '#ffcc00'
                                                     ],
-                                            formatter: function (x) {
-                                                return x + "%"
-                                            }
-                                        });
-                                    }
-                                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                }, 100);
+                                                        formatter: function (x) {
+                                                            return x + "%"
+                                                        }
+                                                    });
+                                                }
+                                            }, 100);
 
-                                setTimeout(function () {
-                                    $scope.verPagosExtemporaneos($scope.idcliente);
-                                    $('#loadModal').modal('hide');
-                                }, 1000);
-
-
+                                        },
+                                        //Error Pago No Puntual 
+                                        function errorCallback(response) {
+                                            //Error
+                                            notificationFactory.error('No se pudieron obtener datos del Cliente: ' + response.data.message);
+                                        }
+                                    );
                             },
+                            //Error Cartera 
                             function errorCallback(response) {
                                 notificationFactory.error('No se pudo obtener el detalle de los Documentos No Pagados');
                             }
                         );
                     $('#loadModal').modal('hide');
                 },
+                //Error Pagados
                 function errorCallback(response) {
                     notificationFactory.error('No se pudo obtener el detalle de los Documentos Pagados');
                     $('#loadModal').modal('hide');
@@ -306,23 +319,21 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         $state.go('home');
     };
 
-    $scope.verPagosExtemporaneos = function (idcliente) {
-        contratoDetalleRepository.detallePagoDocumentosExtemporaneo(idcliente)
-            .then(
-                function succesCallback(response) {
-                    //alert('Success detalle Cliente Pagos');
-                    //Success
-                    //notificationFactory.success('Cotrato obtenidos correctamente');
-                     $scope.listaPagadosExtemporaneo = response.data;
-                    //location.href = '/detallecontrato';
-                    //$state.go('detallecontrato');
-                },
-                function errorCallback(response) {
-                    //Error
-                    notificationFactory.error('No se pudieron obtener datos del Cliente: ' + response.data.message);
-                }
-            );
-    };
+    //    $scope.verPagosExtemporaneos = function (idcliente) {
+    //        contratoDetalleRepository.detallePagoDocumentosExtemporaneo(idcliente)
+    //            .then(
+    //                function succesCallback(response) {
+    //                    $scope.listaPagadosExtemporaneo = response.data;
+    //                    if (response.data[i].tipoPagoFecha == 2) {
+    //                        $scope.totalPagInPuntual += (response.data[i].cargo);
+    //                    }
+    //                },
+    //                function errorCallback(response) {
+    //                    //Error
+    //                    notificationFactory.error('No se pudieron obtener datos del Cliente: ' + response.data.message);
+    //                }
+    //            );
+    //    };
 
 
 }); //FIN de appControllers
