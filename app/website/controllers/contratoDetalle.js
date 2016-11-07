@@ -61,7 +61,7 @@ contratoDetalle.prototype.get_generarPdf = function (req, res, next) {
             page.property('paperSize', {
                 format: 'A4'
             }).then(function () {
-                page.open("http://localhost:4700/api/contratoDetalle/nuevo?idCliente=" + req.query.idCliente).then(function (status) {
+                page.open("http://192.168.20.9:4700/api/contratoDetalle/nuevo?idCliente=" + req.query.idCliente).then(function (status) {
                     console.log(status);
                     page.render('Reporte_Buro.pdf').then(function () {
                         console.log('4.-Regreso y estoy en Page Rendered');

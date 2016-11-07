@@ -1,7 +1,7 @@
 appServices.factory('configurationFactory', [function () {
 
     var interfaz = {};
-    interfaz.urlAPI = 'http://localhost:4700/api/';
+    interfaz.urlAPI = 'http://192.168.20.9:4700/api/';
     return interfaz;
 
 }]);

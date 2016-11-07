@@ -284,7 +284,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     //Carga de archivos
     $scope.upload = function (file, idcontrato, iddocumento) {
         Upload.upload({
-            url: 'http://localhost:4700/api/documentos/uploadfile/', //webAPI exposed to upload the file
+            url: 'http://192.168.20.9:4700/api/documentos/uploadfile/', //webAPI exposed to upload the file
             data: {
                 file: file
             }, //pass file as data, should be user ng-model

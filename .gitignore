@@ -1,0 +1,3 @@
+app/static/AngularJS/Controllers/Contrato/contratoController.js
+app/static/AngularJS/Factories/configurationFactory.js
+app/website/controllers/contratoDetalle.js
