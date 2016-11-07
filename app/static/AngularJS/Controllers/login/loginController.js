@@ -20,7 +20,9 @@
                     }
                 }
             }
-        loginRepository.cargaDatosUsuario($scope.idUsuario)
+
+        setTimeout(function () {
+                      loginRepository.cargaDatosUsuario($scope.idUsuario)
             .then(
                 function succesCallback(response) {
                     //Success
@@ -33,6 +35,9 @@
                     notificationFactory.error('No se pudo obtener el usuario: ' + response.data.message);
                 }
             );
+                    }, 5000);
+
+        
     };
 
 
