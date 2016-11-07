@@ -4,12 +4,29 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
     //Metodo de inicio 
     $scope.init = function () {
         //Cargo la lista de documentos
-        cargaListaDocumentos();
+        //cargaListaDocumentos();
+        if (sessionFactory.tipoContratoEditar == null) {
+            cargaListaDocumentos(0);
+            //Mando a llamar la Tabla despues de cargar datos
+            setTimeout(function () {
+                $('.estiloTabla').DataTable({});
+                $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
+            }, 1000);
+        } else {
+            cargaListaDocumentos(sessionFactory.tipoContratoEditar.idTipoContrato);
+            //Mando a llamar la Tabla despues de cargar datos
+            setTimeout(function () {
+                $('.estiloTabla').DataTable({});
+                $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
+            }, 1000);
+        };
+
+
         //Mando a llamar la Tabla despues de cargar datos
-        setTimeout(function () {
-            $('.estiloTabla').DataTable({});
-            $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
-        }, 1000);
+        //        setTimeout(function () {
+        //            $('.estiloTabla').DataTable({});
+        //            $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
+        //        }, 1000);
 
         $scope.opcion = sessionFactory.opcion;
         $scope.tipoContratoEditar = sessionFactory.tipoContratoEditar;
@@ -198,8 +215,8 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
 
 
     //Funcion Carga Lista de Documentos  --Inconluso
-    var cargaListaDocumentos = function () {
-        documentosRepository.obtieneListaDocumentos(0)
+    var cargaListaDocumentos = function (idTipo) {
+        documentosRepository.obtieneListaDocumentos(idTipo)
             .then(
                 function succesCallback(response) {
                     //Success

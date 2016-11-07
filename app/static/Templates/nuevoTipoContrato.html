@@ -81,11 +81,11 @@
                             <tbody>
                                 <tr ng-repeat=" documento in listaDocumentos">
                                     <td scope="row">
-                                        <input type="checkbox" ng-model="documento.seleccionado" aria-label="Checkbox for following text input">
+                                        <input type="checkbox" ng-init="documento.seleccionado = documento.seleccion" ng-model="documento.seleccionado" aria-label="Checkbox for following text input" ng-checked="{{ documento.seleccion}}">
                                         <!-- <input type="checkbox" class="js-switch-blue checkbox" ng-model="documento.seleccionado"/> -->
                                     </td>
                                     <td scope="row">
-                                        <input type="checkbox" ng-model="documento.obligatorio" aria-label="Checkbox for following text input" ng-disabled="!documento.seleccionado">
+                                        <input type="checkbox" ng-init="documento.obligatorio = documento.obligatorio" ng-model="documento.obligatorio" aria-label="Checkbox for following text input" ng-disabled="documento.seleccionado!=true" ng-checked="{{ documento.obligatorio }}">
                                         <!-- <input type="checkbox" class="js-switch-blue checkbox" ng-model="documento.seleccionado"/> -->
                                     </td>
                                     <!-- <th scope="row">
