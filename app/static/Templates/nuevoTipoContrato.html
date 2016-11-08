@@ -81,12 +81,12 @@
                             <tbody>
                                 <tr ng-repeat=" documento in listaDocumentos">
                                     <td scope="row">
-                                        <input type="checkbox" ng-init="documento.seleccionado = documento.seleccion" ng-model="documento.seleccionado" aria-label="Checkbox for following text input" ng-checked="{{ documento.seleccion}}" ng-change="documento.seleccion=!documento.seleccionado">{{ documento.seleccionado}}
-                                        <!-- <input type="checkbox" class="js-switch-blue checkbox" ng-model="documento.seleccionado"/> -->
+                                        <input type="checkbox" ng-init="(documento.seleccion == 1)?documento.seleccionado=true:documento.seleccionado=false" ng-model="documento.seleccionado" aria-label="Checkbox for following text input" ng-checked="{{ documento.seleccion}}">
+                                        <!-- {{ documento.seleccionado}}<input type="checkbox" class="js-switch-blue checkbox" ng-model="documento.seleccionado"/> -->
                                     </td>
                                     <td scope="row">
-                                        <input type="checkbox" ng-init="documento.obligatorios = documento.obligatorio" ng-model="documento.obligatorios" aria-label="Checkbox for following text input" ng-disabled="documento.seleccionado!=true" ng-checked="{{ documento.obligatorios }}" ng-change="documento.obligatorio=!documento.obligatorios">{{ documento.obligatorios }}
-                                        <!-- <input type="checkbox" class="js-switch-blue checkbox" ng-model="documento.seleccionado"/> -->
+                                        <input type="checkbox" ng-init="(documento.obligatorio == 1)?documento.obligatorios=true:documento.obligatorios=false" ng-model="documento.obligatorios" aria-label="Checkbox for following text input" ng-disabled="documento.seleccionado!=true" ng-checked="{{ documento.obligatorios }}">
+                                        <!-- {{ documento.obligatorios }}<input type="checkbox" class="js-switch-blue checkbox" ng-model="documento.seleccionado"/> -->
                                     </td>
                                     <!-- <th scope="row">
                                                     <input type="checkbox" class="js-switch-red checkbox"/>
