@@ -170,7 +170,8 @@ contratoDetalle.prototype.get_detallePagoDocumentos = function (req, res, next) 
         type: self.model.types.INT
         }]
 
-    this.model.query('SEL_PAGADOS_PUNTUAL_AGRUP_SP', params, function (error, result) {
+    //SEL_PAGADOS_PUNTUAL_AGRUP_SP
+    this.model.query('SEL_PAG_AGRUP_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result
@@ -188,7 +189,8 @@ contratoDetalle.prototype.get_detallepagodocumentosextemporaneo = function (req,
         type: self.model.types.INT
         }]
 
-    this.model.query('SEL_PAGADOS_NO_PUNTUAL_AGRUP_SP', params, function (error, result) {
+    //SEL_PAGADOS_NO_PUNTUAL_AGRUP_SP
+    this.model.query('SEL_NO_PAG_AGRUP_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result
