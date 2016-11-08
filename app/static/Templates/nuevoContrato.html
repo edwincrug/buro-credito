@@ -18,11 +18,11 @@
                     <form id="commentForm" novalidate="novalidate">
                         <div id="pills" class="wizardpills">
                             <ul class="form-wizard">
-                                <li><a href="#cliente" data-toggle="tab"><span>Cliente</span></a></li>
-                                <li><a href="#contrato" data-toggle="tab"><span>Contrato</span></a></li>
-                                <li><a href="#limite" data-toggle="tab"><span>Límite</span></a></li>
-                                <li><a href="#documentos" data-toggle="tab"><span>Documentos</span></a></li>
-                                <li><a href="#confirmar" data-toggle="tab"><span>Confirmar</span></a></li>
+                                <li><a href="/nuevocontrato/#cliente" data-toggle="tab"><span>Cliente</span></a></li>
+                                <li><a href="/nuevocontrato/#contrato" data-toggle="tab"><span>Contrato</span></a></li>
+                                <li><a href="/nuevocontrato/#limite" data-toggle="tab"><span>Límite</span></a></li>
+                                <li><a href="/nuevocontrato/#documentos" data-toggle="tab"><span>Documentos</span></a></li>
+                                <li><a href="/nuevocontrato/#confirmar" data-toggle="tab"><span>Confirmar</span></a></li>
                             </ul>
                             <div id="bar" class="progress active">
                                 <div class="progress-bar progress-bar-primary " role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
@@ -117,6 +117,14 @@
                                     <!-- Ejemplo datepicker bootstrap-->
                                     <!--                                    yo modifique gib-->
                                     <div class="row">
+
+                                        <div class="col-md-4 form-label" ng-show="fechaInicioValidacion" style="color:#283593 ">
+                                            <b>
+                                           Vigencia tipo de contrato: {{fechaInicioValidacion}} - {{fechaFinValidacion}}
+                                       </b>
+                                        </div>
+                                        <br>
+
                                         <div class="col-md-4">
                                             <p class="input-group">
                                                 Fecha de inicio:
