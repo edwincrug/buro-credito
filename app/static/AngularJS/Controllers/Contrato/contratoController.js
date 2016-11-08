@@ -170,6 +170,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                     //////////Termina Nuevo ///////////////////
                     $scope.listaDocumentos = response.data;
                     var contador = 0;
+                    $scope.camposRequeridos = 0;
                     var contadorObligatorios = 0;
 
                     angular.forEach($scope.listaDocumentos, function (value, key) {
