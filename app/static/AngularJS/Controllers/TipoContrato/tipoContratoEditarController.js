@@ -330,11 +330,12 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                     $('.estiloTabla').DataTable().destroy();
                     //$state.go('nuevotipocontrato');
                     notificationFactory.success('Insertado correctamente.');
-                    cargaListaDocumentos();
+                    //cargaListaDocumentos();
                     //Mando a llamar la Tabla despues de cargar datos
                     setTimeout(function () {
                         $('.estiloTabla').DataTable({});
                         $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
+                        cargaListaDocumentos(sessionFactory.tipoContratoEditar.idTipoContrato);
                     }, 1000);
                 },
                 function errorCallbackNuevoTipo(response) {
