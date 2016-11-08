@@ -286,7 +286,6 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     //    }
 
 
-    //Funcion para llamar al submit
     $scope.submit = function (fileinput, idcontrato, iddocumento, obj) { //function to call on form submit
         notificationFactory.success('Documento Seleccionado correctamente');
         console.log(obj)
@@ -294,28 +293,23 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             $scope.myArray.push(fileinput);
             $scope.idDoctos.push(iddocumento);
         }
-        if (obj.obligatorio == 'Si') {
-            $scope.camposRequeridos++;
-            console.log($scope.camposRequeridos + ' hay')
-            if ($scope.camposRequeridos == $scope.contadorObligatorios1) {
-                $('#btnNext').show();
-            } else {
-                $('#btnNext').hide();
-            }
 
-            //$('#btnNext').show();
+        if ($scope.camposRequeridos == $scope.contadorObligatorios1) {
+            $('#btnNext').show();
         } else {
-            if ($scope.camposRequeridos == $scope.contadorObligatorios1) {
-                $('#btnNext').show();
+            if (obj.obligatorio == 'Si') {
+                $scope.camposRequeridos++;
+                if ($scope.camposRequeridos == $scope.contadorObligatorios1) {
+                    $('#btnNext').show();
+                } else {
+                    $('#btnNext').hide();
+                }
             } else {
                 $('#btnNext').hide();
             }
         }
-
-        /*if (fileinput != null) { //check if from is valid
-            $scope.upload(fileinput, idcontrato["0"].idContrato, iddocumento); //call upload function
-        }*/
     };
+
 
     //Carga de archivos
     $scope.upload = function (file, idcontrato, iddocumento) {
