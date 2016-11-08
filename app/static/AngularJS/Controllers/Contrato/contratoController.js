@@ -164,6 +164,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                     //Success
                     //notificationFactory.success('Lista de documentos obtenidos correctamente. ');
                     ///////////////////Nuevo Inicia Gib ///////////////
+                    console.log(idtipocontrato + ' idtipocontrato ')
                     $scope.fechaInicioValidacion = response.data[0].fechaInicio;
                     $scope.fechaFinValidacion = response.data[0].fechaFin;
                     //////////Termina Nuevo ///////////////////
@@ -269,6 +270,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     //PRUEBA  Llamada a la funcion para subir los Archivos 
     $scope.subirDocumentosContrato = function (idcontrato) {
+        console.log(idcontrato + ' Entro a subir documento')
 
         for (var i = 0; i < $scope.idDoctos.length; i++) {
             //alert("Estoy en File  iddocto: " + $scope.idDoctos[i]);
@@ -313,8 +315,9 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     //Carga de archivos
     $scope.upload = function (file, idcontrato, iddocumento) {
+
         Upload.upload({
-            url: 'http://192.168.20.9:4700/api/documentos/uploadfile/', //webAPI exposed to upload the file
+            url: 'http://localhost:4700/api/documentos/uploadfile/', //webAPI exposed to upload the file
             data: {
                 file: file
             }, //pass file as data, should be user ng-model
@@ -322,9 +325,11 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                 contrato: idcontrato,
                 documento: iddocumento
             }
-        }).then(function (resp) { //upload function returns a promise
+        }).then(function (resp) {
+            console.log(file + ' Archivo ' + idcontrato + ' IdContrato ' + iddocumento + ' idDocumento esta dentro de la carga dorumento') //upload function returns a promise
             if (resp.data.error_code === 0) { //validate success
-                //$window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
+                console.log(resp + ' dentro de la condicion')
+                    //$window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
                 notificationFactory.success('Success de Documentos' + resp.config.data.file.name + 'uploaded. Response');
             } else {
                 //$window.alert('an error occured');
@@ -409,8 +414,9 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
                         //4)Subo los documentos
                         $scope.subirDocumentosContrato($scope.idcontrato);
-                        //Termina Success del Insert
-                        //$state.go('home');
+                        console.log($scope.idcontrato + ' Idcontrato despues de guardar')
+                            //Termina Success del Insert
+                            //$state.go('home');
                         $('#modalLotes').modal('show');
                     },
                     //Error Nuevo Contrato
@@ -465,7 +471,10 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     //Boton Cancelar
     $scope.Regresar = function () {
-        $state.go('home');
+
+
+        location.href = '/';
+
     };
 
 

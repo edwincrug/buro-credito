@@ -127,7 +127,7 @@ Documentos.prototype.post_TipoDocumento_data = function (req, res, next) {
 //Crea Carpeta para Documentos
 Documentos.prototype.post_creaCarpeta_data = function (req, res, next) {
     var self = this;
-
+    console.log('Si entre para crear la carpeta')
     mkdirp('./app/reportes/' + req.query.idcontrato, function (err) {
         if (err) console.error(err)
         else console.log('Carpeta Creada para Documentos')

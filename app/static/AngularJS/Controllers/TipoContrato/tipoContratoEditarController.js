@@ -6,18 +6,18 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
         //Cargo la lista de documentos
         //cargaListaDocumentos();
         if (sessionFactory.tipoContratoEditar == null) {
-            cargaListaDocumentos(0);
             //Mando a llamar la Tabla despues de cargar datos
             setTimeout(function () {
                 $('.estiloTabla').DataTable({});
                 $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
+                cargaListaDocumentos(0);
             }, 1000);
         } else {
-            cargaListaDocumentos(sessionFactory.tipoContratoEditar.idTipoContrato);
             //Mando a llamar la Tabla despues de cargar datos
             setTimeout(function () {
                 $('.estiloTabla').DataTable({});
                 $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
+                cargaListaDocumentos(sessionFactory.tipoContratoEditar.idTipoContrato);
             }, 1000);
         };
 
@@ -126,7 +126,8 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                     $scope.resultado = response.data;
 
                     //alert('Antes de SeleccionaDocumentos' +$scope.resultado);
-                    $scope.SeleccionDocumentos(documento);
+                    //$scope.SeleccionDocumentos(documento);
+                    $scope.cargarDocumentos(documento, $scope.contratoEditar.idTipoContrato);
                     //alert(documento.nombre);
                     $state.reload();
                     $state.go('tipocontrato');
@@ -266,11 +267,11 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
         //Contador de seleccionados
         $scope.contadorSeleccionado = 0;
 
-        angular.forEach($scope.listaDocumentos, function (value, key) {
+        angular.forEach(documento, function (value, key) {
             //alert(value.nombre + 'Seleccionado: ' + value.seleccionado);
 
             if (value.seleccionado == true) {
-                if (value.obligatorio == true) {
+                if (value.obligatorios == true) {
                     documentosRepository.TipoDocumento(value.idDocumento, idContrato, 1)
                         .then(
                             function successCallbackEditar(response) {
