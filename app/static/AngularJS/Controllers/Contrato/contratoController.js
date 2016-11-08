@@ -294,32 +294,28 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     $scope.submit = function (fileinput, idcontrato, iddocumento, obj) { //function to call on form submit
         //
         if (fileinput != null) {
-                if ($scope.myArray.length > 0)
-                {
-                    var actualizo = false;
-                    $scope.myArray.forEach(function (ducumentos, k) {
-                        if ($scope.idDoctos[k] == iddocumento) {
-                            $scope.myArray[k] = fileinput;
-                            actualizo = true;
-                        }
-                    });
-                     if (actualizo == false)
-                        {
-                            $scope.myArray.push(fileinput);
-                            $scope.idDoctos.push(iddocumento);
-                        }
-                }
-                else
-                {
+            if ($scope.myArray.length > 0) {
+                var actualizo = false;
+                $scope.myArray.forEach(function (ducumentos, k) {
+                    if ($scope.idDoctos[k] == iddocumento) {
+                        $scope.myArray[k] = fileinput;
+                        actualizo = true;
+                    }
+                });
+                if (actualizo == false) {
                     $scope.myArray.push(fileinput);
                     $scope.idDoctos.push(iddocumento);
                 }
+            } else {
+                $scope.myArray.push(fileinput);
+                $scope.idDoctos.push(iddocumento);
+            }
 
             console.log(' primer filtro ' + fileinput + ' fileinput dd')
 
         }
-      
-        
+
+
 
         if (fileinput != undefined || fileinput != null) {
             console.log('se a seleccionado un archivo' + fileinput)
@@ -420,7 +416,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                         // alert("Se ha creado el contrato : " + $scope.idcontrato);
                         //$('#confirmaContrato').modal('show');
 
-                        documentosRepository.creaCarpeta($scope.folioContrato["0"].idContrato)
+                        documentosRepository.creaCarpeta($scope.folioContratoNuevo) ////Cambio1
                             .then(
                                 function succesCallback(response) {
                                     notificationFactory.success('Se creo la carpeta');
@@ -444,7 +440,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                             );
 
                         //4)Subo los documentos
-                        $scope.subirDocumentosContrato($scope.idcontrato);
+                        $scope.subirDocumentosContrato($scope.folioContratoNuevo); ////Cambio2
                         console.log($scope.idcontrato + ' Idcontrato despues de guardar')
                             //Termina Success del Insert
                             //$state.go('home');
