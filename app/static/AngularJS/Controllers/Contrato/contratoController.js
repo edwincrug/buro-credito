@@ -1,6 +1,7 @@
 appControllers.controller('contratoController', function ($scope, $rootScope, $state, tipoContratoRepository, contratoRepository, empresasRepository, sucursalesRepository, departamentosRepository, limiteCreditoRepository, documentosRepository, notificationFactory, sessionFactory, Upload, $window, contratoDetalleRepository) {
     $scope.ocultarSiguiente = 1;
     $scope.stepContador = 0;
+    $scope.camposRequeridos = 0;
     //Metodo de incio 
     $scope.init = function () {
 
@@ -168,6 +169,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                     //////////Termina Nuevo ///////////////////
                     $scope.listaDocumentos = response.data;
                     var contador = 0;
+                    var contadorObligatorios = 0;
 
                     angular.forEach($scope.listaDocumentos, function (value, key) {
                         if (value.obligatorio == 0) {
@@ -177,8 +179,13 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                         } else if (value.obligatorio == 1) {
                             $scope.listaDocumentos[contador].obligatorio = 'Si';
                             contador++;
+                            contadorObligatorios++;
                         }
                     });
+                    $scope.contadorObligatorios1 = contadorObligatorios;
+                    //$scope.validarDocumentos();
+                    console.log(contadorObligatorios + ' campos obligatorios existentes')
+
 
                     //Funcion para que del nombre del documento al subirlo
                     setTimeout(function () {
@@ -280,13 +287,30 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
 
     //Funcion para llamar al submit
-    $scope.submit = function (fileinput, idcontrato, iddocumento) { //function to call on form submit
+    $scope.submit = function (fileinput, idcontrato, iddocumento, obj) { //function to call on form submit
         notificationFactory.success('Documento Seleccionado correctamente');
+        console.log(obj)
         if (fileinput != null) {
             $scope.myArray.push(fileinput);
             $scope.idDoctos.push(iddocumento);
         }
+        if (obj.obligatorio == 'Si') {
+            $scope.camposRequeridos++;
+            console.log($scope.camposRequeridos + ' hay')
+            if ($scope.camposRequeridos == $scope.contadorObligatorios1) {
+                $('#btnNext').show();
+            } else {
+                $('#btnNext').hide();
+            }
 
+            //$('#btnNext').show();
+        } else {
+            if ($scope.camposRequeridos == $scope.contadorObligatorios1) {
+                $('#btnNext').show();
+            } else {
+                $('#btnNext').hide();
+            }
+        }
 
         /*if (fileinput != null) { //check if from is valid
             $scope.upload(fileinput, idcontrato["0"].idContrato, iddocumento); //call upload function
@@ -336,6 +360,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     //Funcion para GuardarContrato
     $scope.GuardarContrato = function (datoscliente, nuevocontrato, limitecredito) {
         $scope.mostrarSiguiente = 1;
+        $scope.camposRequeridos = 0;
 
         if (datoscliente.idCliente != '' && nuevocontrato != '' && limitecredito > 0) {
 
