@@ -461,6 +461,10 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     $scope.setStepAdd = function () {
         $scope.stepContador++;
+        if ($scope.stepContador > 1){
+        $scope.traetextos($scope.nuevoContrato.idEmpresa, $scope.nuevoContrato.idSucursal ,$scope.nuevoContrato.idDepartamento,$scope.nuevoContrato.idTipoContrato);
+        }
+        
         // console.log($scope.stepContador);
     }
     $scope.setStepRemove = function () {
@@ -496,5 +500,39 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
 
     }
+
+//FAL
+    $scope.traetextos = function(empresa,sucursal,departamento, tipocontrato) {
+        //FAL traigo el nombre de la empresa y lo pongo en el modelo
+        $scope.listaTiposEmpresa.forEach(function(listaempresa, k) {
+            if (listaempresa.idEmpresa == empresa)
+            {
+                $scope.nuevoContrato.empresa = listaempresa.nombreEmpresa
+            }
+        });
+
+        $scope.listaTiposSucursal.forEach(function(listasucursal, k) {
+            if (listasucursal.idSucursal == sucursal && listasucursal.idEmpresa == empresa)
+            {
+                $scope.nuevoContrato.sucursal = listasucursal.nombreSucursal
+            }
+        });
+
+        $scope.listaTiposDepartamento.forEach(function(listadepartamento, k) {
+            if (listadepartamento.idDepartamento == departamento)
+            {
+                $scope.nuevoContrato.departamento = listadepartamento.nombreDepartamento
+            }
+        });
+
+        $scope.listaTiposContrato.forEach(function(listatiposcontra, k) {
+            if (listatiposcontra.idTipoContrato == tipocontrato)
+            {
+                $scope.nuevoContrato.contrato = listatiposcontra.nombreContrato
+            }
+        });
+
+        
+    };
 
 }); //FIN de appControllers
