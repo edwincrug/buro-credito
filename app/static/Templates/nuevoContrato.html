@@ -344,9 +344,9 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr ng-repeat="documento in listaDocumentos">
-                                                                    <td>{{ documento.nombre }}</td>
-                                                                    <td>{{ documento.obligatorio }}</td>
-                                                                    <td>Archivo Seleccinado </td>
+                                                                    <td>{{ listaDocumentos[$index].nombre }}</td>
+                                                                    <td>{{ listaDocumentos[$index].obligatorio }}</td>
+                                                                    <td>{{ myArray[$index].name}}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
