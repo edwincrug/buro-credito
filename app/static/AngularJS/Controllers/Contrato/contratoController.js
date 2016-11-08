@@ -293,12 +293,33 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     $scope.submit = function (fileinput, idcontrato, iddocumento, obj) { //function to call on form submit
         //
-        //console.log(obj)
         if (fileinput != null) {
-            $scope.myArray.push(fileinput);
-            $scope.idDoctos.push(iddocumento);
+                if ($scope.myArray.length > 0)
+                {
+                    var actualizo = false;
+                    $scope.myArray.forEach(function (ducumentos, k) {
+                        if ($scope.idDoctos[k] == iddocumento) {
+                            $scope.myArray[k] = fileinput;
+                            actualizo = true;
+                        }
+                    });
+                     if (actualizo == false)
+                        {
+                            $scope.myArray.push(fileinput);
+                            $scope.idDoctos.push(iddocumento);
+                        }
+                }
+                else
+                {
+                    $scope.myArray.push(fileinput);
+                    $scope.idDoctos.push(iddocumento);
+                }
+
+            console.log(' primer filtro ' + fileinput + ' fileinput dd')
+
         }
-        console.log(' primer filtro ' + fileinput + ' fileinput dd')
+      
+        
 
         if (fileinput != undefined || fileinput != null) {
             console.log('se a seleccionado un archivo' + fileinput)
