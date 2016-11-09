@@ -11,7 +11,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
             setTimeout(function () {
 
                 $('.estiloTabla').DataTable({});
-                //$("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
+                $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
 
             }, 1000);
         } else {
@@ -20,7 +20,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
             setTimeout(function () {
 
                 $('.estiloTabla').DataTable({});
-                //$("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
+                $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
 
             }, 1000);
         };
@@ -350,14 +350,14 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                         cargaListaDocumentos(sessionFactory.tipoContratoEditar.idTipoContrato);
                         setTimeout(function () {
                             $('.estiloTabla').DataTable({});
-                            //$("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
+                            $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
 
                         }, 1000);
                     } else {
                         cargaListaDocumentos(0);
                         setTimeout(function () {
                             $('.estiloTabla').DataTable({});
-                            //$("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
+                            $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
 
                         }, 1000);
                     }
