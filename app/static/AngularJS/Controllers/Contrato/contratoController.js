@@ -542,7 +542,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                 },
                 function errorCallback(response) {
                     //Error
-                    notificationFactory.warning('No se pudo obtener los Datos ' + response.data.message);
+                    //notificationFactory.warning('No se pudo obtener los Datos ' + response.data.message);
                 }
             );
 
