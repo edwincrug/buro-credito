@@ -210,7 +210,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                 $scope.listaNoPagados = response.data;
                                 $scope.gridOptions.data = response.data;
 
-                                $scope.totalNoPagado = 0; ///////////??
+                                $scope.totalNoPagado = 0;
                                 $scope.totalNoPagadoVencido = 0;
                                 $scope.totalNoPagadoNoVencido = 0;
                                 $scope.totalPorVencer = 0;
@@ -285,7 +285,8 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                                         resize: true,
                                                         redraw: true,
                                                         backgroundColor: '#ffffff',
-                                                        labelColor: '#1D242B', //#999999',
+                                                        labelColor: '#1D242B',
+                                                        /*//#999999',*/
                                                         colors: [
 //                                                        '#FF5656','#FFCC00','#B3E55E',
                                                        //Primera OPC //Cartera No vencida :  '#2EA1D9',

@@ -102,9 +102,9 @@
                                     </tr>
                                 </table>
                             </div>
-                            <br></br>
-                            <br></br>
-                            <br></br>
+                            <br>
+                            <br>
+                            <br>
                         </div>
                     </div>
                 </div>
@@ -176,7 +176,7 @@
     <div class="col-xs-12">
         <section class="box ">
             <header class="panel_header">
-                <h2 class="title pull-left" style="color: #E20049;">Cartera Vencida</h2>
+                <h2 class="title pull-left" style="color: #E20049;">Cartera</h2>
                 <div class="actions panel_actions pull-right">
                     <a class="box_toggle fa fa-chevron-down"></a>
                     <a class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></a>
@@ -186,7 +186,7 @@
             <div class="content-body">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h5><strong>Total Cartera Vencida: {{totalNoPagadoVencido | currency}}</strong></h5></div>
+                        <h5><strong>Total Cartera: {{totalNoPagado | currency}}</strong></h5></div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
@@ -224,16 +224,16 @@
                                     <td>{{ nopagado.departamento }}</td>
 
                                     <td align="center">{{ nopagado.totalDoctos }}</td>
-                                    <td class="tdMonto">{{ nopagado.importeTotal | currency}}</td>
-                                    <td class="tdMonto">{{ nopagado.saldoTotal | currency}}</td>
+                                    <td class="tdMonto"><span>{{ nopagado.importeTotal | currency}}</span></td>
+                                    <td class="tdMonto"><span>{{ nopagado.saldoTotal | currency}}</span></td>
 
-                                    <th class="tdMonto">{{nopagado.dias0 | currency}}</th>
-                                    <th class="tdMonto">{{nopagado.dias30 | currency}}</th>
-                                    <th class="tdMonto">{{nopagado.dias60 | currency}}</th>
-                                    <th class="tdMonto">{{nopagado.dias90 | currency}}</th>
-                                    <th class="tdMonto">{{nopagado.dias120 | currency}}</th>
-                                    <th class="tdMonto">{{nopagado.diasMas120 | currency}}</th>
-                                    <th class="tdMonto"><span class="iconopago fa fa-close" aria-hidden="true" style="color: #FF5656;"></span></th>
+                                    <td class="tdMonto" style="color: #2EA1D9;">{{nopagado.dias0 | currency}}</td>
+                                    <td class="tdMonto" style="color: #FF5656;">{{nopagado.dias30 | currency}}</td>
+                                    <td class="tdMonto" style="color: #FF5656;">{{nopagado.dias60 | currency}}</td>
+                                    <td class="tdMonto" style="color: #FF5656;">{{nopagado.dias90 | currency}}</td>
+                                    <td class="tdMonto" style="color: #FF5656;">{{nopagado.dias120 | currency}}</td>
+                                    <td class="tdMonto" style="color: #FF5656;">{{nopagado.diasMas120 | currency}}</td>
+                                    <td class="tdMonto"><span class="iconopago fa fa-close" aria-hidden="true" style="color: #FF5656;"></span></td>
                                     <!--                                     <td class="tdMonto">
                                         <span class="iconopago fa fa-star-o" aria-hidden="true" style="color: #FF5656;" ng-show="nopagado.tipoCartera==1"></span>
                                         <span class="iconopago fa fa-close" aria-hidden="true" style="color: #FF5656;" ng-show="nopagado.tipoCartera==2"></span>
