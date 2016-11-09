@@ -333,7 +333,12 @@ appControllers.controller('tipoContratoEditarController', function($scope, $stat
                 function successCallbackNuevoTipo(response) {
                     $('.estiloTabla').DataTable().destroy();
                     //$state.go('nuevotipocontrato');
-                    notificationFactory.success('Insertado correctamente.');
+                     if(response.data[0].idDocumento==0){
+                        notificationFactory.warning('Este documento ya existe.');
+                     }else{
+                        notificationFactory.success('Insertado correctamente.');
+                     }
+                    
                     //cargaListaDocumentos();
                     //Mando a llamar la Tabla despues de cargar datos
                     if (sessionFactory.tipoContratoEditar!=null) {
