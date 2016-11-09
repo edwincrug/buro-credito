@@ -191,11 +191,11 @@
                                                                         <div class="input-group">
                                                                             <label class="btn btn-info">
                                                                                 <span class="fa fa-search"></span>
-                                                                                <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" />
+                                                                                <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" ng-change="cambioColor(documento.idDocumento)" />
                                                                             </label>
                                                                             <input type="text" class="form-control filefield" readonly="">
                                                                             <!--="submit(this.file,600,documento.idDocumento)"-->
-                                                                            <button type="submit" ng-click="submit(this.file,600,documento.idDocumento,documento )" class="btn btn-warning"><span class="fa fa-upload"></span></button>
+                                                                            <button id="{{documento.idDocumento}}" type="submit" ng-click="submit(this.file,600,documento.idDocumento,documento )" class="btn btn-warning"><span class="fa fa-upload"></span></button>
                                                                         </div>
                                                                         <!--                                                                        <p>{{progress}}</p>-->
                                                                     </form>

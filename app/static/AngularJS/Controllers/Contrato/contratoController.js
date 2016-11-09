@@ -310,7 +310,11 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     //            $scope.upload(fileinput, 400, iddocumento);
     //        }
     //    }
+    $scope.cambioColor = function (iddocumento) {
+        var contenedor = document.getElementById(iddocumento);
+        contenedor.style.backgroundColor = "#FFC107";
 
+    }
 
     $scope.submit = function (fileinput, idcontrato, iddocumento, obj) { //function to call on form submit
         //
@@ -336,7 +340,8 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
         }
 
-
+        var contenedor = document.getElementById(iddocumento);
+        contenedor.style.backgroundColor = "#269ABC";
 
         if (fileinput != undefined || fileinput != null) {
             console.log('se a seleccionado un archivo' + fileinput)
