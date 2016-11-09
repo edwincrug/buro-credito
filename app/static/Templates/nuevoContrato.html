@@ -161,7 +161,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-label" ng-show="verLimiteCredito">Límite de Crédito:</label>
-                                                <input type="text" class="form-control" id="limiteCredito" min="0" name="txtLimite" ng-model="datosCredito[0].limiteCredito" data-mask="fdecimal" placeholder="Mayor a cero" data-dec="," data-rad="." maxlength="18">
+                                                <input type="text" class="form-control" id="limiteCredito" min="0" name="txtLimite" ng-model="nuevoContrato.limiteCredito" data-mask="fdecimal" placeholder="Mayor a cero" data-dec="," data-rad="." maxlength="18">
                                                 <!--input type="text" class="form-control" id="limiteCredito" ng-model="datosCredito[0].limiteCredito" data-mask="fdecimal" placeholder="Mayor a cero" data-dec="," data-rad="." maxlength="18"-->
                                             </div>
                                         </div>
@@ -275,7 +275,7 @@
                                             <div class="form-group">
                                                 <i class="pull-left fa fa-dollar icon-md icon-rounded icon-primary inviewport animated  animated-delay-1800ms animated-duration-1400ms visible zoomIn" data-vp-add-class="visible zoomIn"></i>
                                                 <label class="control-label" ng-show="verDatos">Límite Crédito:</label>
-                                                <p>{{datosCredito[0].limiteCredito}}</p>
+                                                <p>{{nuevoContrato.limiteCredito}}</p>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
