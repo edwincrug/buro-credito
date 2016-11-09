@@ -260,8 +260,9 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
                                             setTimeout(function () {
                                                 $('.estiloTabla').DataTable({});
-                                                //$("#tablaR_filter").removeClass("dataTables_info").addClass("hide-div");
-                                                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                $("#nopagado_length").removeClass("dataTables_info").addClass("hide-div");
+                                                $("#inpuntual_length").removeClass("dataTables_info").addClass("hide-div");
+                                                $("#puntual_length").removeClass("dataTables_info").addClass("hide-div"); //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                 //                   Gráfica
                                                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                 if ($("#morris_donut_graph").length) {
