@@ -70,35 +70,39 @@
                                 <table class="table">
                                     <tr>
                                         <td>
-                                            <h5 style="color: #E20049;"><strong>CARTERA VENCIDA: </strong></h5></td>
+                                            <p style="color: #E20049;"><strong>CARTERA VENCIDA: </strong></p>
+                                        </td>
                                         <td class="tdMonto">
-                                            <h4>{{ totalVencido | currency}}</h4></td>
+                                            {{ totalVencido | currency}}</td>
                                         <td class="tdMonto">
-                                            <h4>{{ porcNoPagadoVencido | number:2}}%</h4></td>
+                                            {{ porcNoPagadoVencido | number:2}}%</td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <h5 style="color: #2EA1D9;"><strong>CARTERA  NO VENCIDA: </strong></h5></td>
+                                            <p style="color: #2EA1D9;"><strong>CARTERA  NO VENCIDA: </strong></p>
+                                        </td>
                                         <td class="tdMonto">
-                                            <h4>{{ totalPorVencer | currency}}</h4></td>
+                                            {{ totalPorVencer | currency}}</td>
                                         <td class="tdMonto">
-                                            <h4>{{ porcNoPagadoNoVencido | number:2}}%</h4></td>
+                                            {{ porcNoPagadoNoVencido | number:2}}%</td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <h5 style="color: #F79F24;"><strong>PAGO EXTEMPORANÉO:</strong></h5></td>
+                                            <p style="color: #F79F24;"><strong>PAGO EXTEMPORANÉO:</strong></p>
+                                        </td>
                                         <td class="tdMonto">
-                                            <h4>{{ totalPagInPuntual | currency}}</h4></td>
+                                            {{ totalPagInPuntual | currency}}</td>
                                         <td class="tdMonto">
-                                            <h4>{{ porcPagInPuntual | number:2}}%</h4></td>
+                                            {{ porcPagInPuntual | number:2}}%</td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <h5 style="color: #9ACD32;"><strong>PAGO PUNTUAL:</strong></h5></td>
+                                            <p style="color: #9ACD32;"><strong>PAGO PUNTUAL:</strong></p>
+                                        </td>
                                         <td class="tdMonto">
-                                            <h4>{{ totalPagPuntual | currency}}</h4></td>
+                                            {{ totalPagPuntual | currency}}</td>
                                         <td class="tdMonto">
-                                            <h4>{{ porcPagPuntual | number:2}}%</h4></td>
+                                            {{ porcPagPuntual | number:2}}%</td>
                                     </tr>
                                 </table>
                             </div>
