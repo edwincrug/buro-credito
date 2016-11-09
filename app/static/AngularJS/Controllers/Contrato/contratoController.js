@@ -172,6 +172,8 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                     $scope.fechaFinValidacion = response.data[0].fechaFin;
                     //////////Termina Nuevo ///////////////////
                     $scope.listaDocumentos = response.data;
+                    $scope.idDoctos= [];
+                    $scope.myArray = [];
                     var contador = 0;
                     $scope.camposRequeridos = 0;                    
                     var contadorObligatorios = 0;
