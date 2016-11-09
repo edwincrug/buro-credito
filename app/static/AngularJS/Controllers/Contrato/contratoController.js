@@ -336,9 +336,20 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                 $scope.myArray.push(fileinput);
                 $scope.idDoctos.push(iddocumento);
             }
-
             console.log(' primer filtro ' + fileinput + ' fileinput dd')
 
+            $scope.listaDocumentos.forEach(function(listadocu,p)
+            {
+                if (listadocu.idDocumento == iddocumento){
+                    $scope.listaDocumentos[p].imgArchivo = fileinput.name;
+                }
+                else
+                {
+                    if(($scope.listaDocumentos[p].imgArchivo) == "undefined"){
+                         $scope.listaDocumentos[p].imgArchivo = "";
+                    }
+                }
+            });
         }
 
         var contenedor = document.getElementById(iddocumento);
