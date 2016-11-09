@@ -7,17 +7,21 @@ appControllers.controller('tipoContratoEditarController', function($scope, $stat
         //cargaListaDocumentos();
         if (sessionFactory.tipoContratoEditar == null) {
             //Mando a llamar la Tabla despues de cargar datos
+            cargaListaDocumentos(0);
             setTimeout(function() {
+                
                 $('.estiloTabla').DataTable({});
-                $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
-                cargaListaDocumentos(0);
+                //$("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
+                
             }, 1000);
         } else {
             //Mando a llamar la Tabla despues de cargar datos
+            cargaListaDocumentos(sessionFactory.tipoContratoEditar.idTipoContrato);
             setTimeout(function() {
+                
                 $('.estiloTabla').DataTable({});
-                $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
-                cargaListaDocumentos(sessionFactory.tipoContratoEditar.idTipoContrato);
+                //$("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
+                
             }, 1000);
         };
 
@@ -333,16 +337,18 @@ appControllers.controller('tipoContratoEditarController', function($scope, $stat
                     //cargaListaDocumentos();
                     //Mando a llamar la Tabla despues de cargar datos
                     if (sessionFactory.tipoContratoEditar!=null) {
+                         cargaListaDocumentos(sessionFactory.tipoContratoEditar.idTipoContrato);
                         setTimeout(function() {
                             $('.estiloTabla').DataTable({});
-                            $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
-                            cargaListaDocumentos(sessionFactory.tipoContratoEditar.idTipoContrato);
+                            //$("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
+                           
                         }, 1000);
                     }else{
+                        cargaListaDocumentos(0);
                         setTimeout(function() {
                             $('.estiloTabla').DataTable({});
-                            $("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
-                            cargaListaDocumentos(0);
+                            //$("#tablaD_length").removeClass("dataTables_info").addClass("hide-div");
+                            
                         }, 1000);
                     }
 
