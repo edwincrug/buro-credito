@@ -176,12 +176,12 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         $scope.nombrecliente = $stateParams.contratoObj.nombreCliente;
         //Total Credito
         $scope.totalCredito = 0;
-        $scope.totalNoPagado = 0;
+
         $scope.totalPagPuntual = 0;
         $scope.totalPagInPuntual = 0;
         //Porcentajes Credito
-        $scope.porcCredito = 0;
-        $scope.porcNoPagado = 0;
+        $scope.porcCredito = 0; ///////////??
+        $scope.porcNoPagado = 0; /////////// Total Cartera (Vencida y Por Vencer)
         $scope.porcPagPuntual = 0;
         $scope.porcPagInPuntual = 0;
 
@@ -210,12 +210,20 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                 $scope.listaNoPagados = response.data;
                                 $scope.gridOptions.data = response.data;
 
+                                $scope.totalNoPagado = 0; ///////////??
                                 $scope.totalNoPagadoVencido = 0;
                                 $scope.totalNoPagadoNoVencido = 0;
+                                $scope.totalPorVencer = 0;
+                                $scope.totalVencido = 0;
 
                                 for (var i = 0; i < response.data.length; i++) {
-                                    $scope.totalNoPagadoVencido += (response.data[i].importeTotal);
+                                    $scope.totalNoPagado += (response.data[i].importeTotal);
+                                    $scope.totalPorVencer += (response.data[i].dias0);
                                 }
+
+                                //Vencido= Total - PorVencer
+                                $scope.totalVencido = $scope.totalNoPagado - $scope.totalPorVencer;
+
                                 //////////////////////////
                                 contratoDetalleRepository.detallePagoDocumentosExtemporaneo($scope.idcliente)
                                     .then(
@@ -231,13 +239,24 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
                                             //Total de Credito
                                             $scope.totalCredito = $scope.totalNoPagado + $scope.totalPagPuntual + $scope.totalPagInPuntual;
-                                            //Porcentajes
-                                            $scope.porcNoPagadoVencido = $scope.totalNoPagadoVencido * 100 / $scope.totalCredito;
-                                            $scope.porcNoPagadoVencido = $scope.porcNoPagadoVencido * (-1);
-                                            //$scope.porcNoPagadoNoVencido = $scope.totalNoPagadoNoVencido * 100 / //$scope.totalCredito;
+                                            //Cartera Vencida        //$scope.totalVencido
+                                            $scope.porcNoPagadoVencido = $scope.totalVencido * 100 / $scope.totalCredito;
+                                            //$scope.porcNoPagadoVencido = $scope.totalVencido * (-1);
+                                            //$scope.porcNoPagadoVencido = $scope.totalNoPagadoVencido * 100 / $scope.totalCredito;
+                                            //$scope.porcNoPagadoVencido = $scope.porcNoPagadoVencido * (-1);
+
+                                            //Cartera por Vencer     //$scope.totalPorVencer
+                                            $scope.porcNoPagadoNoVencido = $scope.totalPorVencer * 100 / $scope.totalCredito;
+                                            //$scope.porcNoPagadoNoVencido = $scope.totalPorVencer * (-1);
+                                            //$scope.porcNoPagadoNoVencido = $scope.totalNoPagadoNoVencido * 100 / $scope.totalCredito;
+                                            //$scope.porcNoPagadoNoVencido = $scope.porcNoPagadoNoVencido * (-1);
+
+                                            //Pagados
                                             $scope.porcPagInPuntual = $scope.totalPagInPuntual * 100 / $scope.totalCredito;
                                             $scope.porcPagPuntual = $scope.totalPagPuntual * 100 / $scope.totalCredito;
-                                            $scope.porcCredito = $scope.porcNoPagadoVencido + $scope.porcPagInPuntual + $scope.porcPagPuntual;
+
+                                            //Total
+                                            $scope.porcCredito = $scope.porcNoPagado + $scope.porcPagInPuntual + $scope.porcPagPuntual;
 
                                             setTimeout(function () {
                                                 $('.estiloTabla').DataTable({});
@@ -253,6 +272,9 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                                             value: $scope.porcNoPagadoVencido.toFixed(2),
                                                             label: 'Cartera Vencida'
                                                 }, {
+                                                            value: $scope.porcNoPagadoNoVencido.toFixed(2),
+                                                            label: 'Cartera Por Vencer'
+                                                }, {
                                                             value: $scope.porcPagInPuntual.toFixed(2),
                                                             label: 'Pago Extemporáneo'
                                                 }, {
@@ -267,7 +289,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                                         colors: [
 //                                                        '#FF5656','#FFCC00','#B3E55E',
                                                        //Primera OPC //Cartera No vencida :  '#2EA1D9',
-                                                      '#FF5656', '#FFCC00', '#9ACD32',
+                                                      '#FF5656', '#2EA1D9', '#FFCC00', '#9ACD32',
                                                       //Otros  Mate
                                                       //'#ed7e29', '#f0e428', '#8fbc21',
                                                       //OBSCUROS
