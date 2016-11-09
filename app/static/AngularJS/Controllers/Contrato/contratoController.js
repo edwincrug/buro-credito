@@ -448,10 +448,11 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                     function succesCallback(response) {
                         //Success del Insert
                         $scope.folioContrato = response.data;
-
-                        if ($scope.folioContrato.idContrato[0] == 0) {
-                            notificationFactory.warning('Ya existe un Contrato');
-                        } else if ($scope.folioContrato.idContrato != 0) {
+                        console.log('Soy el idContrato de respuestita',$scope.folioContrato["0"].idContrato)
+                        if ($scope.folioContrato["0"].idContrato == 0) {                            
+                            notificationFactory.warning('Ya existe un Contrato con esa misma vigencia');
+                            //location.href = '/';
+                        } else if ($scope.folioContrato["0"].idContrato != 0) {
 
                             notificationFactory.success('Se creo el Contrato con idContrato > 0');
 
