@@ -18,7 +18,8 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
                     $scope.listaTiposContrato = response.data;
                     setTimeout(function () {
                         $('.estiloTabla').DataTable({});
-                       // $("#tablaT_length").removeClass("dataTables_info").addClass("hide-div");
+                        $("#tablaT_filter").removeClass("dataTables_info").addClass("hide-div");
+                        // $("#tablaT_length").removeClass("dataTables_info").addClass("hide-div");
                     }, 1000);
 
                     setTimeout(function () {
@@ -42,9 +43,11 @@ appControllers.controller('tipoContratoController', function ($scope, $state, ti
         tipoContratoRepository.eliminarTipoContrato(idtipocontrato)
             .then(
                 function successCallbackEliminar(response) {
+                    $('.estiloTabla').DataTable().destroy();
                     //reset
                     //Success        
                     notificationFactory.success('Eliminados correctamente.');
+                    cargaTiposContrato();
                     //$scope.resultado = response.data;
                 },
                 function errorCallbackEliminar(response) {

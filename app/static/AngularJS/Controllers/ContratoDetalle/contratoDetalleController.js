@@ -185,9 +185,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         $scope.porcPagPuntual = 0;
         $scope.porcPagInPuntual = 0;
 
-
         //alert('Estoy en ver detalle Empresa: ' + $scope.nombreCliente);
-
 
         $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente)
             .then(
