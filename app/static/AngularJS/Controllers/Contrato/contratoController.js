@@ -3,6 +3,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     $scope.stepContador = 0;
     $scope.camposRequeridos = 0;
     $scope.mostrarDesDoc=0;
+    $scope.mostrarSigFecha=0;
     //Metodo de incio 
     $scope.init = function () {
 
@@ -252,6 +253,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             //console.log(dateStartDB + ' ' + dateStart + ' ' + dateEndDB + ' ' + dateEnd)
             $scope.inicioF = true;
             notificationFactory.success('La  fecha de termino es valida');
+            $scope.mostrarSigFecha=1;
         } else {
             console.log(dateStartDB + ' ' + dateStart + ' ' + dateEndDB + ' ' + dateEnd)
             notificationFactory.warning('La fecha No coinciden con la vigencia del Tipo de Contrato');
@@ -259,6 +261,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         }
         if ($scope.inicioF == true && $scope.inicioT == true) {
             notificationFactory.success('Fecha de termino Correcta');
+            
             $('#btnNext').show();
         } else {
             notificationFactory.warning('Las fechas No coinciden con la vigencia del Tipo de Contrato');
@@ -602,5 +605,14 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
 
     };
+
+    $scope.validaLimite=function(limite){
+        if(limite>0){
+            $scope.limiteCorrecto=1;
+        }
+        else{
+            $scope.limiteCorrecto=0;
+        }
+    }
 
 }); //FIN de appControllers
