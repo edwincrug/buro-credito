@@ -21,21 +21,24 @@
                 }
             }
 
-        setTimeout(function () {
+            if ($scope.idUsuario == "{{ user.idUsuario }}")
+            {
+                $scope.idUsuario = 15;
+            }
+       
                       loginRepository.cargaDatosUsuario($scope.idUsuario)
             .then(
                 function succesCallback(response) {
                     //Success
                     //notificationFactory.success('Tipos de contrato obtenidos correctamente. ');
                     //messenger.showErrorMessage('Tipos de contrato obtenidos');
-                    $rootScope.usuario = response.data[0];
+                    $scope.usuario = response.data[0];
                 },
                 function errorCallback(response) {
                     //Error
                     notificationFactory.error('No se pudo obtener el usuario: ' + response.data.message);
                 }
             );
-                    }, 5000);
 
         
     };
