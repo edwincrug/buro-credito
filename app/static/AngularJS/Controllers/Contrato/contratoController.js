@@ -2,8 +2,8 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     $scope.ocultarSiguiente = 1;
     $scope.stepContador = 0;
     $scope.camposRequeridos = 0;
-    $scope.mostrarDesDoc=0;
-    $scope.mostrarSigFecha=0;
+    $scope.mostrarDesDoc = 0;
+    $scope.mostrarSigFecha = 0;
     //Metodo de incio 
     $scope.init = function () {
 
@@ -173,10 +173,10 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                     $scope.fechaFinValidacion = response.data[0].fechaFin;
                     //////////Termina Nuevo ///////////////////
                     $scope.listaDocumentos = response.data;
-                    $scope.idDoctos= [];
+                    $scope.idDoctos = [];
                     $scope.myArray = [];
                     var contador = 0;
-                    $scope.camposRequeridos = 0;                    
+                    $scope.camposRequeridos = 0;
                     var contadorObligatorios = 0;
 
                     angular.forEach($scope.listaDocumentos, function (value, key) {
@@ -253,7 +253,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             //console.log(dateStartDB + ' ' + dateStart + ' ' + dateEndDB + ' ' + dateEnd)
             $scope.inicioF = true;
             notificationFactory.success('La  fecha de termino es valida');
-            $scope.mostrarSigFecha=1;
+            $scope.mostrarSigFecha = 1;
         } else {
             console.log(dateStartDB + ' ' + dateStart + ' ' + dateEndDB + ' ' + dateEnd)
             notificationFactory.warning('La fecha No coinciden con la vigencia del Tipo de Contrato');
@@ -261,7 +261,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         }
         if ($scope.inicioF == true && $scope.inicioT == true) {
             notificationFactory.success('Fecha de termino Correcta');
-            
+
             $('#btnNext').show();
         } else {
             notificationFactory.warning('Las fechas No coinciden con la vigencia del Tipo de Contrato');
@@ -343,15 +343,12 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             }
             console.log(' primer filtro ' + fileinput + ' fileinput dd')
 
-            $scope.listaDocumentos.forEach(function(listadocu,p)
-            {
-                if (listadocu.idDocumento == iddocumento){
+            $scope.listaDocumentos.forEach(function (listadocu, p) {
+                if (listadocu.idDocumento == iddocumento) {
                     $scope.listaDocumentos[p].imgArchivo = fileinput.name;
-                }
-                else
-                {
-                    if(($scope.listaDocumentos[p].imgArchivo) == "undefined"){
-                         $scope.listaDocumentos[p].imgArchivo = "";
+                } else {
+                    if (($scope.listaDocumentos[p].imgArchivo) == "undefined") {
+                        $scope.listaDocumentos[p].imgArchivo = "";
                     }
                 }
             });
@@ -364,14 +361,14 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             console.log('se a seleccionado un archivo' + fileinput)
             notificationFactory.success('Documento Seleccionado correctamente');
             if ($scope.camposRequeridos == $scope.contadorObligatorios1) {
-               // $('#btnNext').show();
-               $scope.mostrarDesDoc=1;
+                // $('#btnNext').show();
+                $scope.mostrarDesDoc = 1;
             } else {
                 if (obj.obligatorio == 'Si') {
                     $scope.camposRequeridos++;
                     if ($scope.camposRequeridos == $scope.contadorObligatorios1) {
                         //$('#btnNext').show();
-                        $scope.mostrarDesDoc=1;
+                        $scope.mostrarDesDoc = 1;
                     } else {
                         //$('#btnNext').hide();
                     }
@@ -424,7 +421,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     //Funcion para cargar doctos para el Tipo de Contrato
     $scope.cargaDocTipoContrato = function (nuevocontrato) {
         $rootScope.regresaContrato = 1;
-        $scope.mostrarDesDoc=0;
+        $scope.mostrarDesDoc = 0;
         //Carga Lista de Documentos
         cargaListaDocumentos(nuevocontrato.idTipoContrato);
 
@@ -452,51 +449,60 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                         //Success del Insert
                         $scope.folioContrato = response.data;
 
-                        notificationFactory.success('Datos de Contrato guardados');
+                        if ($scope.folioContrato.idContrato[0] == 0) {
+                            notificationFactory.warning('Ya existe un Contrato');
+                        } else if ($scope.folioContrato.idContrato != 0) {
 
-                        //2)Creo la Carpeta con el idContrato
-                        $scope.idcontrato = $scope.folioContrato["0"].idContrato;
-                        $scope.folioContratoNuevo = $scope.folioContrato["0"].folio;
+                            notificationFactory.success('Se creo el Contrato con idContrato > 0');
+
+                            //2)Creo la Carpeta con el idContrato
+                            $scope.idcontrato = $scope.folioContrato["0"].idContrato;
+                            $scope.folioContratoNuevo = $scope.folioContrato["0"].folio;
 
 
-                        //Se llama a la Modal
-                        // alert("Se ha creado el contrato : " + $scope.idcontrato);
-                        //$('#confirmaContrato').modal('show');
+                            //Se llama a la Modal
+                            // alert("Se ha creado el contrato : " + $scope.idcontrato);
+                            //$('#confirmaContrato').modal('show');
 
-                        documentosRepository.creaCarpeta($scope.folioContratoNuevo) ////Cambio1
-                            .then(
-                                function succesCallback(response) {
-                                    notificationFactory.success('Se creo la carpeta');
-                                },
-                                function errorCallback(response) {
-                                    notificationFactory.error('No se creo la carpeta ' + response.data.message);
-                                }
-                            );
+                            documentosRepository.creaCarpeta($scope.folioContratoNuevo) ////Cambio1
+                                .then(
+                                    function succesCallback(response) {
+                                        notificationFactory.success('Se creo la carpeta');
+                                    },
+                                    function errorCallback(response) {
+                                        notificationFactory.error('No se creo la carpeta ' + response.data.message);
+                                    }
+                                );
 
-                        //3)Update a Limite de Credito en BPRO
-                        limiteCreditoRepository.editarLimiteCredito(datoscliente.idCliente, nuevocontrato.idEmpresa, nuevocontrato.idSucursal, nuevocontrato.idDepartamento, limitecredito)
-                            .then(
-                                function succesCallback(response) {
-                                    //Success
-                                    notificationFactory.success('Se modifico el Limite de Crédito en BPRO');
-                                },
-                                function errorCallback(response) {
-                                    //Error
-                                    notificationFactory.error('No se pudo modificar el Limite de Crédito ' + response.data.message);
-                                }
-                            );
+                            //3)Update a Limite de Credito en BPRO
+                            limiteCreditoRepository.editarLimiteCredito(datoscliente.idCliente, nuevocontrato.idEmpresa, nuevocontrato.idSucursal, nuevocontrato.idDepartamento, limitecredito)
+                                .then(
+                                    function succesCallback(response) {
+                                        //Success
+                                        notificationFactory.success('Se modifico el Limite de Crédito en BPRO');
+                                    },
+                                    function errorCallback(response) {
+                                        //Error
+                                        notificationFactory.error('No se pudo modificar el Limite de Crédito ' + response.data.message);
+                                    }
+                                );
 
-                        //4)Subo los documentos
-                        $scope.subirDocumentosContrato($scope.folioContratoNuevo); ////Cambio2
-                        console.log($scope.idcontrato + ' Idcontrato despues de guardar')
-                            //Termina Success del Insert
-                            //$state.go('home');
-                        $('#modalLotes').modal('show');
+                            //4)Subo los documentos
+                            $scope.subirDocumentosContrato($scope.folioContratoNuevo); ////Cambio2
+                            console.log($scope.idcontrato + ' Idcontrato despues de guardar')
+                                //Termina Success del Insert
+                                //$state.go('home');
+                            $('#modalLotes').modal('show');
+
+
+                        }
+
+
                     },
                     //Error Nuevo Contrato
                     function errorCallback(response) {
                         //Error
-                        notificationFactory.warning('Existe contrato con los mismos Parametros');
+                        notificationFactory.warning('Error al crear contrato');
                     }
                 );
         } else {
@@ -539,11 +545,11 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             $scope.traetextos($scope.nuevoContrato.idEmpresa, $scope.nuevoContrato.idSucursal, $scope.nuevoContrato.idDepartamento, $scope.nuevoContrato.idTipoContrato);
         }
 
-         console.log($scope.stepContador,'Este es el next');
+        console.log($scope.stepContador, 'Este es el next');
     }
     $scope.setStepRemove = function () {
         $scope.stepContador--;
-          console.log($scope.stepContador,'Este es el anterior');
+        console.log($scope.stepContador, 'Este es el anterior');
     }
 
 
@@ -606,12 +612,11 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     };
 
-    $scope.validaLimite=function(limite){
-        if(limite>0){
-            $scope.limiteCorrecto=1;
-        }
-        else{
-            $scope.limiteCorrecto=0;
+    $scope.validaLimite = function (limite) {
+        if (limite > 0) {
+            $scope.limiteCorrecto = 1;
+        } else {
+            $scope.limiteCorrecto = 0;
         }
     }
 
