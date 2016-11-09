@@ -2,6 +2,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     $scope.ocultarSiguiente = 1;
     $scope.stepContador = 0;
     $scope.camposRequeridos = 0;
+    $scope.mostrarDesDoc=0;
     //Metodo de incio 
     $scope.init = function () {
 
@@ -172,7 +173,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                     //////////Termina Nuevo ///////////////////
                     $scope.listaDocumentos = response.data;
                     var contador = 0;
-                    $scope.camposRequeridos = 0;
+                    $scope.camposRequeridos = 0;                    
                     var contadorObligatorios = 0;
 
                     angular.forEach($scope.listaDocumentos, function (value, key) {
@@ -347,18 +348,21 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             console.log('se a seleccionado un archivo' + fileinput)
             notificationFactory.success('Documento Seleccionado correctamente');
             if ($scope.camposRequeridos == $scope.contadorObligatorios1) {
-                $('#btnNext').show();
+               // $('#btnNext').show();
+               $scope.mostrarDesDoc=1;
             } else {
                 if (obj.obligatorio == 'Si') {
                     $scope.camposRequeridos++;
                     if ($scope.camposRequeridos == $scope.contadorObligatorios1) {
-                        $('#btnNext').show();
+                        //$('#btnNext').show();
+                        $scope.mostrarDesDoc=1;
                     } else {
-                        $('#btnNext').hide();
+                        //$('#btnNext').hide();
                     }
                 } else {
-                    $('#btnNext').hide();
+                    //$('#btnNext').hide();
                 }
+
             }
         } else {
             console.log('No se a seleccionado un archivo')
@@ -404,6 +408,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     //Funcion para cargar doctos para el Tipo de Contrato
     $scope.cargaDocTipoContrato = function (nuevocontrato) {
         $rootScope.regresaContrato = 1;
+        $scope.mostrarDesDoc=0;
         //Carga Lista de Documentos
         cargaListaDocumentos(nuevocontrato.idTipoContrato);
 
@@ -518,11 +523,11 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             $scope.traetextos($scope.nuevoContrato.idEmpresa, $scope.nuevoContrato.idSucursal, $scope.nuevoContrato.idDepartamento, $scope.nuevoContrato.idTipoContrato);
         }
 
-        // console.log($scope.stepContador);
+         console.log($scope.stepContador,'Este es el next');
     }
     $scope.setStepRemove = function () {
         $scope.stepContador--;
-        //  console.log($scope.stepContador);
+          console.log($scope.stepContador,'Este es el anterior');
     }
 
 
@@ -578,6 +583,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         $scope.listaTiposContrato.forEach(function (listatiposcontra, k) {
             if (listatiposcontra.idTipoContrato == tipocontrato) {
                 $scope.nuevoContrato.contrato = listatiposcontra.nombreContrato
+
             }
         });
 

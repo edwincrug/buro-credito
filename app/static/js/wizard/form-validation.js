@@ -269,13 +269,15 @@ $(document).ready(function () {
                     $('#btnFinish').show();
                     $('#btnNext').hide();
                 } else {
-                    if (index == 3) {
-                        $('#btnNext').hide();
-                        $('#btnFinish').hide();
-                    } else {
-                        $('#btnFinish').hide();
+                    $('#btnFinish').hide();
                         $('#btnNext').show();
-                    }
+                    // if (index == 3) {
+                    //     $('#btnNext').hide();
+                    //     $('#btnFinish').hide();
+                    // } else {
+                    //     $('#btnFinish').hide();
+                    //     $('#btnNext').show();
+                    // }
                 }
                 var $total = navigation.find('li').length;
                 var $current = index + 1;
