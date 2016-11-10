@@ -493,6 +493,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                             console.log($scope.idcontrato + ' Idcontrato despues de guardar')
                                 //Termina Success del Insert
                                 //$state.go('home');
+                             $('#modalConfirmarContrato').modal('hide');
                             $('#modalLotes').modal('show');
 
 
@@ -619,6 +620,9 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         } else {
             $scope.limiteCorrecto = 0;
         }
+    }
+    $scope.abrirModalConfirmar=function(){
+        $('#modalConfirmarContrato').modal('show');
     }
 
 }); //FIN de appControllers

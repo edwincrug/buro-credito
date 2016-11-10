@@ -173,6 +173,9 @@
                                     <p>
                                         <div class="row">
                                             <div class="col-xs-10">
+                                            <p><b>
+                                            Seleccioné y cargué cada archivo de manera independiente, debe cargar todos los obligatorios para continuar.
+                                            </b></p>
                                                 <div class="table-responsive">
                                                     <table class="table table-bordered">
                                                         <thead style="background-color: #F8F8F8;">
@@ -190,12 +193,12 @@
                                                                     <form id="upload_form">
                                                                         <div class="input-group">
                                                                             <label class="btn btn-info">
-                                                                                <span class="fa fa-search"></span>
+                                                                                <span class="fa fa-search"> Seleccionar</span>
                                                                                 <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" ng-change="cambioColor(documento.idDocumento)" />
                                                                             </label>
                                                                             <input type="text" class="form-control filefield" readonly="">
                                                                             <!--="submit(this.file,600,documento.idDocumento)"-->
-                                                                            <button id="{{documento.idDocumento}}" type="submit" ng-click="submit(this.file,600,documento.idDocumento,documento )" class="btn btn-warning"><span class="fa fa-upload"></span></button>
+                                                                            <button id="{{documento.idDocumento}}" type="submit" ng-click="submit(this.file,600,documento.idDocumento,documento )" class="btn btn-warning"><span class="fa fa-upload"> Cargar</span></button>
                                                                         </div>
                                                                         <!--                                                                        <p>{{progress}}</p>-->
                                                                     </form>
@@ -374,7 +377,7 @@
                                     <li class="next last disabled" style="display:none;"><a href="javascript:;">Last</a></li>
                                     <!--ng-show="folioContrato!=undefined || datosCliente==undefined || nuevoContrato.idDepartamento==undefined || nuevoContrato.idTipoContrato==undefined || nuevoContrato.fechaTermino==undefined || nuevoContrato.fechaInicio==undefined" -->
                                     <li class="next" id="btnNext"><a href="javascript:;" ng-model="probando" ng-click="cargaTiposEmpresas(datosCliente.idCliente);setStepAdd()" ng-hide="avanzaContrato == 0 || (stepContador==3 && mostrarDesDoc==0) || (stepContador==1 && nuevoContrato.idDepartamento==undefined)|| (stepContador==1 && mostrarSigFecha==0) || (stepContador==2 && limiteCorrecto==0)" ng-show="avanzaContrato == 1 || mostrarDesDoc==1" ng-disabled="nuevoContrato.idDepartamento==undefined || nuevoContrato.idTipoContrato==undefined || nuevoContrato.fechaTermino==undefined || nuevoContrato.fechaInicio==undefined ">Siguiente</a></li>
-                                    <li class="finish" id="btnFinish"><a href="javascript:;" ng-click="GuardarContrato(datosCliente,nuevoContrato,datosCredito[0].limiteCredito)">Guardar</a></li>
+                                    <li class="finish" id="btnFinish"><a href="javascript:;" ng-click="abrirModalConfirmar()">Guardar</a></li>
                                     <!-- ng-init=" ({{camposRequeridos}}!={{contadorObligatorios1}})?probando=0:probando=1" -->
                                 </ul>
                             </div>
@@ -475,9 +478,9 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <p>
-                                <h4><b>Folio :</b><span>{{folioContratoNuevo}}</span></h4>
+                                <h4 style="text-align:center"><b>Folio :</b><span>{{folioContratoNuevo}}</span></h4>
                             </p>
                         </div>
                     </div>
@@ -498,6 +501,23 @@
         </div>
     </div>
 
+</div>
+<div class="modal" id="modalConfirmarContrato" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog animated bounceInDown">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Confirmar Nuevo Contrato </h4>
+            </div>
+            <div class="modal-body">
+                ¿Está seguro que desea crear el contrato?
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
+                <button class="btn btn-primary" type="button" ng-click="GuardarContrato(datosCliente,nuevoContrato,datosCredito[0].limiteCredito)">Confirmar</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="js/wizard/jquery.validate.min.js" type="text/javascript"></script>
