@@ -254,7 +254,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                     .then(
                         function successCallbackEditar(response) {
                             //Success
-                            notificationFactory.success('Update realizado correctamente.');
+                            //notificationFactory.success('Update realizado correctamente.');
                             $scope.resultado = response.data;
                         },
                         function errorCallbackEditar(response) {
@@ -286,7 +286,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                             function successCallbackEditar(response) {
                                 //reset
                                 //Success
-                                notificationFactory.success('Update realizado correctamente.');
+                                //notificationFactory.success('Update realizado correctamente.');
                                 $scope.resultado = response.data;
                             },
                             function errorCallbackEditar(response) {
@@ -303,7 +303,7 @@ appControllers.controller('tipoContratoEditarController', function ($scope, $sta
                             function successCallbackEditar(response) {
                                 //reset
                                 //Success
-                                notificationFactory.success('Update realizado correctamente.');
+                                //notificationFactory.success('Update realizado correctamente.');
                                 $scope.resultado = response.data;
                             },
                             function errorCallbackEditar(response) {

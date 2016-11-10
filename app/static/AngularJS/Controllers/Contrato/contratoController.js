@@ -400,7 +400,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
             if (resp.data.error_code === 0) { //validate success
                 console.log(resp + ' dentro de la condicion')
                     //$window.alert('Success ' + resp.config.data.file.name + 'uploaded. Response: ');
-                notificationFactory.success('Success de Documentos' + resp.config.data.file.name + 'uploaded. Response');
+                //notificationFactory.success('Success de Documentos' + resp.config.data.file.name + 'uploaded. Response');
             } else {
                 //$window.alert('an error occured');
                 notificationFactory.error('A ocurrido un error al subir los Documentos');
@@ -454,7 +454,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                             //location.href = '/';
                         } else if ($scope.folioContrato["0"].idContrato != 0) {
 
-                            notificationFactory.success('Se creo el Contrato con idContrato > 0');
+                            //notificationFactory.success('Se creo el Contrato con idContrato > 0');
 
                             //2)Creo la Carpeta con el idContrato
                             $scope.idcontrato = $scope.folioContrato["0"].idContrato;
@@ -468,7 +468,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                             documentosRepository.creaCarpeta($scope.folioContratoNuevo) ////Cambio1
                                 .then(
                                     function succesCallback(response) {
-                                        notificationFactory.success('Se creo la carpeta');
+                                        //notificationFactory.success('Se creo la carpeta');
                                     },
                                     function errorCallback(response) {
                                         notificationFactory.error('No se creo la carpeta ' + response.data.message);
@@ -480,7 +480,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
                                 .then(
                                     function succesCallback(response) {
                                         //Success
-                                        notificationFactory.success('Se modifico el Limite de Crédito en BPRO');
+                                        //notificationFactory.success('Se modifico el Limite de Crédito en BPRO');
                                     },
                                     function errorCallback(response) {
                                         //Error
