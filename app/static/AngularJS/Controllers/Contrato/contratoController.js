@@ -95,6 +95,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     //Obtiene el catalogo de sucursales por empresa
     $scope.CargarSucursales = function (idcliente, idempresa) {
+        $scope.nuevoContrato.idSucursal='';
         $('#cboSucursal').attr('disabled', 'disabled');
         sucursalesRepository.obtieneTipoSucursal(idcliente, idempresa)
             .then(
@@ -112,6 +113,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
 
     //Obtiene el catalogo de departamentos por sucursal
     $scope.CargarDepartamentos = function (idcliente, idempresa, idsucursal) {
+        $scope.nuevoContrato.idDepartamento='';
         $('#cboDepartamento').attr('disabled', 'disabled');
         departamentosRepository.obtieneTipoDepartamento(idcliente, idempresa, idsucursal)
             .then(
