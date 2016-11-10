@@ -132,7 +132,57 @@ contratoDetalle.prototype.get_nuevo = function (req, res, next) {
 //TERMINA VERSION DE PRUEBA
 //////////////////////////////////////////////////////////////////////////////////////////////////77777777777777
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Equivalente a nuevo PIPUS
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+contratoDetalle.prototype.get_rptdata = function (req, res, next) {
+    var self = this;
 
+    var params = [{
+        name: 'idCliente',
+        value: req.query.idCliente,
+        type: self.model.types.INT
+    }];
+
+    this.model.query('SEL_DATOS_CLIENTE_SP ', params, function (error, informacioncliente) {
+        //console.log(informacioncliente)
+        params = [{
+            name: 'idCliente',
+            value: informacioncliente[0].idCliente,
+            type: self.model.types.INT
+        }]
+        self.model.querymulti('SEL_TOTAL_CREDITO_SP_TODAS', params, function (error, totales) {
+            //console.log(totales)
+
+            self.model.querymulti('SEL_TOTAL_DOC_PAGADOS_SP_TODAS', params, function (error, docpagados) {
+
+                //console.log(docpagados)
+
+                self.model.querymulti('SEL_TOTAL_DOC_NO_PAGADOS_SP_TODAS', params, function (error, docnopagados) {
+
+                    //console.log(docnopagados);
+
+
+                    self.view.speakJSON(res, {
+                        error: error,
+                        result: {
+                            informacioncliente: informacioncliente[0],
+                            listaTotales: totales,
+                            listaDocPagados: docpagados,
+                            listaDocNoPagados: docnopagados
+                        }
+                    });
+
+
+                    console.log('OK')
+                });
+            });
+        });
+
+    });
+};
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //obtiene Informacion del Cliente

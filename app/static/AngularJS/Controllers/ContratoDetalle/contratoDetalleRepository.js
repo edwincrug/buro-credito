@@ -18,7 +18,7 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
             });
         }, //Fin Obtiene Detalle Contrato
 
-        //Genera PDF
+        //2.-Genera PDF
         generarPdf: function (idCliente) {
             return $http({
                 url: contratoDetalleRepositoryURL + 'generarPdf/',
@@ -32,7 +32,7 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
             });
         }, //Fin de genera pdf 
 
-        //Genera PDF SERVER
+        //3.-Genera PDF SERVER
         generarPdfServer: function () {
             return $http({
                 url: 'http://189.204.141.193:5488/api/report',
@@ -73,7 +73,7 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
             });
         }, //Fin Obtiene Detalle Cliente
 
-        //Detalle Documentos
+        //4.-Detalle Documentos
         detallePagoDocumentos: function (idCliente) {
             return $http({
                 url: contratoDetalleRepositoryURL + 'detallepagodocumentos/',
@@ -87,6 +87,7 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
             });
         }, //Fin Detalle Documentos detallePagoDocumentosExtemporaneo
 
+        //5,-
         detallePagoDocumentosExtemporaneo: function (idCliente) {
             return $http({
                 url: contratoDetalleRepositoryURL + 'detallepagodocumentosextemporaneo/',
@@ -100,7 +101,7 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
             });
         }, //Fin Detalle Documentos detallePagoDocumentosExtemporaneo
 
-        //Detalle No Pagados
+        //6.-Detalle No Pagados
         detalleNoPagados: function (idCliente) {
             return $http({
                 url: contratoDetalleRepositoryURL + 'detallenopagados/',
@@ -113,6 +114,39 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
                 }
             });
         }, //Fin Detalle Documentos 
+
+        //7.-Llama al servico y crea PDF  PIPUS
+        callExternalPdf: function (jsonData) {
+            console.log('Llamada externa');
+            return $http({
+                //url: 'http://189.204.141.193:5488/api/report/',
+                url: 'http://192.168.20.9:5000/api/layout/newpdf/',
+                method: "POST",
+                data: {
+                    values: jsonData
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+
+            });
+        },
+
+        //8.-Obtiene datos del Reporte PIPUS
+        generarPdfdata: function (idCliente) {
+            return $http({
+                url: contratoDetalleRepositoryURL + 'rptdata/',
+                method: "GET",
+                params: {
+                    idCliente: idCliente
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }, //Fin de genera pdf 
+
+
 
     }; //Fin del return
 

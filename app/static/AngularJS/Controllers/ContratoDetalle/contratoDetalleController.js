@@ -333,6 +333,89 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         $state.go('home');
     };
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    //    Manda a Generar el PDF con Grafica
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    $scope.generarPdfdata = function () {
+            $scope.idcliente = $stateParams.contratoObj.idCliente;
+            contratoDetalleRepository.generarPdfdata($scope.idcliente).then(function (result) {
+
+
+                console.log(result.data);
+
+
+                var rptStructure = {};
+
+                rptStructure.clientInfo = result.data.informacioncliente;
+
+                rptStructure.totalT1 = result.data.listaTotales[0];
+                rptStructure.totalT2 = result.data.listaTotales[1];
+
+                rptStructure.payDocT1 = result.data.listaDocPagados[0];
+                rptStructure.payDocT2 = result.data.listaDocPagados[1];
+
+                rptStructure.notPayDocT1 = result.data.listaDocNoPagados[0];
+                rptStructure.notPayDocT2 = result.data.listaDocNoPagados[1];
+
+                rptStructure.graphic = {
+                    title: {
+                        text: "Test Lu´s Graphic"
+                    },
+                    data: [{
+                        type: "doughnut",
+                        dataPoints: [
+                            {
+                                y: 29565802.53,
+                                indexLabel: "credito Facturado 50%"
+                                            },
+                            {
+                                y: 1000000.00,
+                                indexLabel: "Cartera Vencida 2%"
+                                            },
+                            {
+                                y: 64878.00,
+                                indexLabel: "Cartera No Vencida 1%"
+                                            },
+                            {
+                                y: 12037380.92,
+                                indexLabel: "Pago No Puntual 20%"
+                                            },
+                            {
+                                y: 16463543.61,
+                                indexLabel: "Pago Puntual 27%"
+                                            }
+
+                                    ]
+                                }]
+                };
+
+
+
+                var jsonData = {
+                    "template": {
+                        "name": "buro-credito"
+                    },
+                    "data": rptStructure
+                }
+
+
+                contratoDetalleRepository.callExternalPdf(jsonData).then(function (fileName) {
+
+                    setTimeout(function () {
+                        window.open("http://192.168.20.9:5000/api/layout/viewpdf?fileName=" + fileName.data);
+                        console.log(fileName.data);
+                    }, 5000);
+
+                });
+
+
+            });
+
+
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+
     //    $scope.verPagosExtemporaneos = function (idcliente) {
     //        contratoDetalleRepository.detallePagoDocumentosExtemporaneo(idcliente)
     //            .then(
