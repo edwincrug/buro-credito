@@ -24,7 +24,7 @@
             <div class="content-body">
 
                 <!--busqueda por Empresa/Sucursal/Depto -->
-                <h4>Busqueda por:</h4>
+                <h4>Filtrar por:</h4>
                 <form class="form-inline ng-pristine ng-valid">
                     <div class="form-group">
                         <select class="form-control" ng-model="seleccion.idEmpresa" ng-options="tipoEmpresa.idEmpresa as tipoEmpresa.nombreEmpresa for tipoEmpresa in listaEmpresas" ng-change="cargaSucursales(15,seleccion.idEmpresa)" id="cboEmpresa">

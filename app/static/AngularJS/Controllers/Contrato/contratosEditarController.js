@@ -19,8 +19,7 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
                     setTimeout(function () {
                         $('.estiloTabla').DataTable({});
                         $("#tablaR_length").removeClass("dataTables_info").addClass("hide-div");
-                        $("#tablaR_filter").removeClass("dataTables_info").addClass("hide-div");
-                        //$("#tablaR_filter").removeClass("dataTables_info").addClass("pull-left");
+                        //$("#tablaR_filter").removeClass("dataTables_info").addClass("hide-div");
                     }, 100);
 
                 },
