@@ -338,6 +338,8 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //    Manda a Generar el PDF con Grafica
     //////////////////////////////////////////////////////////////////////////////////////////////////
     $scope.generarPdfdata = function () {
+            $scope.mostrarCargando = 0;
+            $('#loadCargando').modal('show');
             $scope.idcliente = $stateParams.contratoObj.idCliente;
             contratoDetalleRepository.generarPdfdata($scope.idcliente).then(function (result) {
 
@@ -788,6 +790,8 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                     setTimeout(function () {
                         window.open("http://192.168.20.9:5000/api/layout/viewpdf?fileName=" + fileName.data);
                         console.log(fileName.data);
+                        $scope.mostrarCargando = 1;
+                        $('#loadCargando').modal('hide');
                     }, 5000);
 
                 });
