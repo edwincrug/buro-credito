@@ -260,6 +260,7 @@ $(document).ready(function () {
             },
             onTabClick: function (tab, navigation, index) {
                 console.log('onTabClick');
+                return false; //LMS cambio para desactivar el cambio de tab por las Bolitas azules
                 //alert('on tab click disabled');
             },
             onTabShow: function (tab, navigation, index) {
@@ -270,7 +271,7 @@ $(document).ready(function () {
                     $('#btnNext').hide();
                 } else {
                     $('#btnFinish').hide();
-                        $('#btnNext').show();
+                    $('#btnNext').show();
                     // if (index == 3) {
                     //     $('#btnNext').hide();
                     //     $('#btnFinish').hide();
