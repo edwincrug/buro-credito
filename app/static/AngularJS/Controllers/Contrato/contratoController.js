@@ -4,6 +4,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     $scope.camposRequeridos = 0;
     $scope.mostrarDesDoc = 0;
     $scope.mostrarSigFecha = 0;
+
     //Metodo de incio 
     $scope.init = function () {
 
@@ -39,12 +40,15 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
         //notificationFactory.success('Estoy en la funcion BuscarCliente ' + $scope.txtBusqueda);
         $('#searchCliente').modal('show');
         if (txtBusqueda != undefined) {
+            $scope.mostrarEspera=0;
             contratoRepository.obtieneDatosCliente($scope.txtBusqueda)
                 .then(
                     function succesCallback(response) {
                         //Success
                         //notificationFactory.success('Datos cliente correctamente');
+                        
                         $scope.listaClientes = response.data;
+                        $scope.mostrarEspera=1;
                     },
                     function errorCallback(response) {
                         //Error
