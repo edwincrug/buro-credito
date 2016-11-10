@@ -384,7 +384,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                         {
                             "empresa": {
                                 "nombre": "Total Global Grupo Andrade",
-                                "tipo": false
+                                "tipo": "false"
                             },
                             "cliente": {
                                 "id": "11",
@@ -490,7 +490,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                         }, {
                             "empresa": {
                                 "nombre": "Camiones Repuestos y Accesorios SA de CV",
-                                "tipo": true
+                                "tipo": "true"
                             },
                             "cliente": {
                                 "id": "11",
@@ -607,7 +607,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                         }, {
                             "empresa": {
                                 "nombre": "Nissan Zaragoza SA de CV",
-                                "tipo": true
+                                "tipo": "true"
                             },
                             "cliente": {
                                 "id": "11",
