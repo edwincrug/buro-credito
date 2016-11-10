@@ -428,6 +428,7 @@ appControllers.controller('contratoController', function ($scope, $rootScope, $s
     $scope.cargaDocTipoContrato = function (nuevocontrato) {
         $rootScope.regresaContrato = 1;
         $scope.mostrarDesDoc = 0;
+        $scope.mostrarSigFecha = 0;
         //Carga Lista de Documentos
         cargaListaDocumentos(nuevocontrato.idTipoContrato);
 

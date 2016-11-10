@@ -83,7 +83,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-label">Tipo de Contrato:</label>
-                                                <select class="form-control" ng-model="nuevoContrato.idTipoContrato" ng-options="tipoContrato.idTipoContrato as tipoContrato.nombreContrato for tipoContrato in listaTiposContrato" name="txtTipoContrato" ng-click="cargaDocTipoContrato(nuevoContrato)">
+                                                <select class="form-control" ng-model="nuevoContrato.idTipoContrato" ng-options="tipoContrato.idTipoContrato as tipoContrato.nombreContrato for tipoContrato in listaTiposContrato" name="txtTipoContrato" ng-change="cargaDocTipoContrato(nuevoContrato)">
                                                     <option value="">Tipo de Contrato</option>
                                                 </select>
                                             </div>
@@ -368,7 +368,7 @@
                                     <li class="previous"><a href="javascript:;" ng-click="setStepRemove()" ng-hide="regresaContrato == 0;" ng-show="regresaContrato == 1;">Anterior</a></li>
                                     <li class="next last disabled" style="display:none;"><a href="javascript:;">Last</a></li>
                                     <!--ng-show="folioContrato!=undefined || datosCliente==undefined || nuevoContrato.idDepartamento==undefined || nuevoContrato.idTipoContrato==undefined || nuevoContrato.fechaTermino==undefined || nuevoContrato.fechaInicio==undefined" -->
-                                    <li class="next" id="btnNext"><a href="javascript:;" ng-model="probando" ng-click="cargaTiposEmpresas(datosCliente.idCliente);setStepAdd()" ng-hide="avanzaContrato == 0 || (stepContador==3 && mostrarDesDoc==0) || (stepContador==1 && nuevoContrato.idDepartamento==undefined)|| (stepContador==1 && mostrarSigFecha==0) || (stepContador==2 && limiteCorrecto==0)" ng-show="avanzaContrato == 1 || mostrarDesDoc==1" ng-disabled="nuevoContrato.idDepartamento==undefined || nuevoContrato.idTipoContrato==undefined || nuevoContrato.fechaTermino==undefined || nuevoContrato.fechaInicio==undefined ">Siguiente</a></li>
+                                    <li class="next" id="btnNext"><a href="javascript:;" ng-model="probando" ng-click="cargaTiposEmpresas(datosCliente.idCliente);setStepAdd()" ng-hide="avanzaContrato == 0 || (stepContador==3 && mostrarDesDoc==0) || (stepContador==1 && nuevoContrato.idDepartamento==undefined)|| (stepContador==1 && mostrarSigFecha==0) || (stepContador==2 && limiteCorrecto==0)|| (stepContador==1 && nuevoContrato.idDepartamento=='') || (stepContador==1 && nuevoContrato.idSucursal=='') || (stepContador==1 && nuevoContrato.idEmpresa=='')" ng-show="avanzaContrato == 1 || mostrarDesDoc==1" ng-disabled="nuevoContrato.idDepartamento==undefined || nuevoContrato.idTipoContrato==undefined || nuevoContrato.fechaTermino==undefined || nuevoContrato.fechaInicio==undefined ">Siguiente</a></li>
                                     <li class="finish" id="btnFinish"><a href="javascript:;" ng-click="abrirModalConfirmar()">Guardar</a></li>
                                     <!-- ng-init=" ({{camposRequeridos}}!={{contadorObligatorios1}})?probando=0:probando=1" -->
                                 </ul>
