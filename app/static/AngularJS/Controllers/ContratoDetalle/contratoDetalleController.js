@@ -348,6 +348,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
                 var rptStructure = {
                     "graphic": {
+                        "colorSet": "greenShades",
                         "data": [{
                             "type": "doughnut",
                             "dataPoints": [
