@@ -203,7 +203,7 @@
                                                                             </label>
                                                                             <input type="text" class="form-control filefield" readonly="">
                                                                             <!--="submit(this.file,600,documento.idDocumento)"-->
-                                                                            <button id="{{documento.idDocumento}}" type="submit" ng-click="submit(this.file,600,documento.idDocumento,documento )" class="btn btn-warning"><span class="fa fa-upload"> Cargar</span></button>
+                                                                            <button id="{{documento.idDocumento}}" type="submit" ng-click="submit(this.file,600,documento.idDocumento,documento )" class="btn btn-warning" ng-disabled="!file"><span class="fa fa-upload"> Cargar</span></button>
                                                                         </div>
                                                                         <!--                                                                        <p>{{progress}}</p>-->
                                                                     </form>
