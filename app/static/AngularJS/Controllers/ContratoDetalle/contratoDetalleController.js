@@ -337,16 +337,47 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //////////////////////////////////////////////////////////////////////////////////////////////////
     //    Manda a Generar el PDF con Grafica
     //////////////////////////////////////////////////////////////////////////////////////////////////
+    $scope.clasificar = function (obj, status) {
+        var arr = [];
+
+        for (var i = 0; i < obj.length; i++) {
+            if (obj[i].tipoPagoFecha == status) {
+                arr.push(obj[i]);
+            }
+        };
+
+        return arr;
+
+    };
+
+
     $scope.generarPdfdata = function () {
-            $scope.mostrarCargando = 0;
-            $('#loadCargando').modal('show');
             $scope.idcliente = $stateParams.contratoObj.idCliente;
             contratoDetalleRepository.generarPdfdata($scope.idcliente).then(function (result) {
 
+                var lstEmpresa = [];
 
-                console.log(result.data);
+                for (var i = 0; i < result.data.listaTotales.length; i++) {
+                    var obj = {
+                        "empresa": result.data.listaTotales[i][0], //
+                        "cliente": result.data.informacioncliente,
+                        "limites": result.data.listaTotales[i],
+                        "cartera": result.data.listaDocNoPagados[i],
+                        "extemporaneo": $scope.clasificar(result.data.listaDocPagados[i], 2), //estatus =2
+                        "puntual": $scope.clasificar(result.data.listaDocPagados[i], 1) //estatus =1
+                    }
+
+                    obj.empresa.tipo = true;
+                    lstEmpresa.push(obj);
+                };
+
+                /*var encabezado = lstEmpresa[1];
+                encabezado.empresa.tipo = false;
+                lstEmpresa.unshift(encabezado);
+                */
 
                 var rptStructure = {
+
                     "graphic": {
                         "colorSet": "greenShades",
                         "data": [{
@@ -372,410 +403,13 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                     "y": 16463543.61,
                                     "indexLabel": "Pago Puntual"
                                 }
+
                             ]
                         }]
                     },
-                    "cliente": {
-                        "id": "11",
-                        "nombre": "AUTOMOTRIZ EL TOREO, S.A. DE C.V.",
-                        "dirección": "Avenida Alfonoso Reyes #10 Col. Garza",
-                        "telefono": "5550512940",
-                        "RFC": "ATTO2836457F"
-                    },
-                    "empresas": [
-
-                        {
-                            "empresa": {
-                                "nombre": "Total Global Grupo Andrade",
-                                "tipo": "false"
-                            },
-                            "cliente": {
-                                "id": "11",
-                                "nombre": "AUTOMOTRIZ EL TOREO, S.A. DE C.V.",
-                                "direccion": "Avenida Alfonoso Reyes #10 Col. Garza",
-                                "telefono": "5550512940",
-                                "RFC": "ATTO2836457F"
-                            },
-                            "limites": [],
-                            "cartera": [
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "impOriginal": "2000.00",
-                                    "saldo": "2000.00",
-                                    "porVencer": "2000.00",
-                                    "30Dias": "10.00",
-                                    "60Dias": "10.00",
-                                    "90Dias": "10.00",
-                                    "120Dias": "0.00",
-                                    "mas120Dias": "0.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "impOriginal": "2000.00",
-                                    "saldo": "2000.00",
-                                    "porVencer": "2000.00",
-                                    "30Dias": "10.00",
-                                    "60Dias": "10.00",
-                                    "90Dias": "10.00",
-                                    "120Dias": "0.00",
-                                    "mas120Dias": "0.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "impOriginal": "2000.00",
-                                    "saldo": "2000.00",
-                                    "porVencer": "2000.00",
-                                    "30Dias": "10.00",
-                                    "60Dias": "10.00",
-                                    "90Dias": "10.00",
-                                    "120Dias": "0.00",
-                                    "mas120Dias": "0.00"
-                                }
-                            ],
-                            "extemporaneo": [
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                }
-
-                            ],
-                            "puntual": [
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                }
-                            ]
-
-
-                        }, {
-                            "empresa": {
-                                "nombre": "Camiones Repuestos y Accesorios SA de CV",
-                                "tipo": "true"
-                            },
-                            "cliente": {
-                                "id": "11",
-                                "nombre": "AUTOMOTRIZ EL TOREO, S.A. DE C.V.",
-                                "direccion": "Avenida Alfonoso Reyes #10 Col. Garza",
-                                "telefono": "5550512940",
-                                "RFC": "ATTO2836457F"
-                            },
-                            "limites": [
-                                {
-                                    "sucursal": "Tlahuac",
-                                    "departamento": "Refacciones",
-                                    "credito": "1000.00"
-                                },
-                                {
-                                    "sucursal": "Cuantitlán",
-                                    "departamento": "Unidades Nuevas",
-                                    "credito": "10000.00"
-                                }
-                            ],
-                            "cartera": [
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "impOriginal": "2000.00",
-                                    "saldo": "2000.00",
-                                    "porVencer": "2000.00",
-                                    "30Dias": "10.00",
-                                    "60Dias": "10.00",
-                                    "90Dias": "10.00",
-                                    "120Dias": "0.00",
-                                    "mas120Dias": "0.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "impOriginal": "2000.00",
-                                    "saldo": "2000.00",
-                                    "porVencer": "2000.00",
-                                    "30Dias": "10.00",
-                                    "60Dias": "10.00",
-                                    "90Dias": "10.00",
-                                    "120Dias": "0.00",
-                                    "mas120Dias": "0.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "impOriginal": "2000.00",
-                                    "saldo": "2000.00",
-                                    "porVencer": "2000.00",
-                                    "30Dias": "10.00",
-                                    "60Dias": "10.00",
-                                    "90Dias": "10.00",
-                                    "120Dias": "0.00",
-                                    "mas120Dias": "0.00"
-                                }
-                            ],
-                            "extemporaneo": [
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                }
-
-                            ],
-                            "puntual": [
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                }
-                            ]
-
-
-                        }, {
-                            "empresa": {
-                                "nombre": "Nissan Zaragoza SA de CV",
-                                "tipo": "true"
-                            },
-                            "cliente": {
-                                "id": "11",
-                                "nombre": "AUTOMOTRIZ EL TOREO, S.A. DE C.V.",
-                                "direccion": "Avenida Alfonoso Reyes #10 Col. Garza",
-                                "telefono": "5550512940",
-                                "RFC": "ATTO2836457F"
-                            },
-                            "limites": [
-                                {
-                                    "sucursal": "Tlahuac",
-                                    "departamento": "Refacciones",
-                                    "credito": "1000.00"
-                                },
-                                {
-                                    "sucursal": "Cuantitlán",
-                                    "departamento": "Unidades Nuevas",
-                                    "credito": "10000.00"
-                                }
-                            ],
-                            "cartera": [
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "impOriginal": "2000.00",
-                                    "saldo": "2000.00",
-                                    "porVencer": "2000.00",
-                                    "30Dias": "10.00",
-                                    "60Dias": "10.00",
-                                    "90Dias": "10.00",
-                                    "120Dias": "0.00",
-                                    "mas120Dias": "0.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "impOriginal": "2000.00",
-                                    "saldo": "2000.00",
-                                    "porVencer": "2000.00",
-                                    "30Dias": "10.00",
-                                    "60Dias": "10.00",
-                                    "90Dias": "10.00",
-                                    "120Dias": "0.00",
-                                    "mas120Dias": "0.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "impOriginal": "2000.00",
-                                    "saldo": "2000.00",
-                                    "porVencer": "2000.00",
-                                    "30Dias": "10.00",
-                                    "60Dias": "10.00",
-                                    "90Dias": "10.00",
-                                    "120Dias": "0.00",
-                                    "mas120Dias": "0.00"
-                                }
-                            ],
-                            "extemporaneo": [
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                }
-
-                            ],
-                            "puntual": [
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                },
-                                {
-                                    "empresa": "ZARAGOZA MOTRIZ SA DE CV",
-                                    "sucursal": "AEROPUERTO",
-                                    "departamento": "REFACCIONES",
-                                    "cantDoc": "10",
-                                    "saldo": "2000.00"
-                                }
-                            ]
-
-
-                        }
-                    ]
-
-
+                    "cliente": result.data.informacioncliente,
+                    "empresas": lstEmpresa
                 }
-
-
-                /*
-
-                rptStructure.clientInfo = result.data.informacioncliente;
-
-                rptStructure.totalT1 = result.data.listaTotales[0];
-                rptStructure.totalT2 = result.data.listaTotales[1];
-
-                rptStructure.payDocT1 = result.data.listaDocPagados[0];
-                rptStructure.payDocT2 = result.data.listaDocPagados[1];
-
-                rptStructure.notPayDocT1 = result.data.listaDocNoPagados[0];
-                rptStructure.notPayDocT2 = result.data.listaDocNoPagados[1];
-
-                rptStructure.graphic = {
-                    title: {
-                        text: "Test Lu´s Graphic"
-                    },
-                    data: [{
-                        type: "doughnut",
-                        dataPoints: [
-                            {
-                                y: 29565802.53,
-                                indexLabel: "credito Facturado 50%"
-                                            },
-                            {
-                                y: 1000000.00,
-                                indexLabel: "Cartera Vencida 2%"
-                                            },
-                            {
-                                y: 64878.00,
-                                indexLabel: "Cartera No Vencida 1%"
-                                            },
-                            {
-                                y: 12037380.92,
-                                indexLabel: "Pago No Puntual 20%"
-                                            },
-                            {
-                                y: 16463543.61,
-                                indexLabel: "Pago Puntual 27%"
-                                            }
-
-                                    ]
-                                }]
-                };
-*/
 
 
                 var jsonData = {
@@ -791,12 +425,9 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                     setTimeout(function () {
                         window.open("http://192.168.20.9:5000/api/layout/viewpdf?fileName=" + fileName.data);
                         console.log(fileName.data);
-                        $scope.mostrarCargando = 1;
-                        $('#loadCargando').modal('hide');
                     }, 5000);
 
                 });
-
 
             });
 
