@@ -220,133 +220,93 @@
                                 <div class="tab-pane" id="confirmar">
                                     <br>
                                     <div class="invoice-head row">
-                                        <div class="col-xs-12 col-md-14  invoice-title">
+                                        <!-- <div class="col-xs-12 col-md-14  invoice-title">
                                             <h3 class="text-center bg-primary ">Confirmar Datos</h3>
-                                        </div>
+                                        </div> -->
                                         <!---div class="col-xs-12 col-md-3 invoice-head-info">
                                             <span class="text-muted"></span>
                                         </div-->
                                         <!--div class="col-xs-12 col-md-3 invoice-head-info"><span class="text-muted"><br></span></div-->
                                     </div>
-                                    <br>
-                                    <br>
-                                    <div class="well comment-block row level-1" style="display:inline-block;">
-                                        <h4 class="mail_head">DATOS DEL CLIENTE</h4>
-                                    </div>
+                                    <!-- PROBANDO -->
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">Num. Cliente BPRO:</label>
-                                                <p>{{datosCliente.idCliente}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">Nombre:</label>
-                                                <p>{{datosCliente.nombre}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">RFC:</label>
-                                                <p>{{datosCliente.rfc}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">Teléfono:</label>
-                                                <p>{{datosCliente.telefono}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">Correo:</label>
-                                                <p>{{datosCliente.email}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <div class="well comment-block row level-1" style="display:inline-block;">
-                                        <h4 class="mail_head">DATOS DEL CONTRATO</h4>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <i class="pull-left fa fa-dollar icon-md icon-rounded icon-primary inviewport animated  animated-delay-1800ms animated-duration-1400ms visible zoomIn" data-vp-add-class="visible zoomIn"></i>
-                                                <label class="control-label" ng-show="verDatos">Límite Crédito:</label>
-                                                <p>{{datosCredito[0].limiteCredito}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">Tipo Contrato:</label>
-                                                <p>{{nuevoContrato.contrato}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">Fecha Inicio:</label>
-                                                <p>{{nuevoContrato.fechaInicio}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">Fecha Término:</label>
-                                                <p>{{nuevoContrato.fechaTermino}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">Empresa:</label>
-                                                <p>{{nuevoContrato.empresa}}</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">Sucursal:</label>
-                                                <p>{{nuevoContrato.sucursal}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">Departamento:</label>
-                                                <p>{{nuevoContrato.departamento}}</p>
-                                            </div>
-                                        </div>
-                                        <!--div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label" ng-show="verDatos">Cartera:</label>
-                                                <p>{{datosCredito[0].cartera}} {{datosCredito[0].descripcionCartera}}</p>
-                                            </div>
-                                        </div-->
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <!-- Agregado Prueba doc-->
-                                    <div class="well comment-block row level-1" style="display:inline-block;">
-                                        <h4 class="mail_head">DOCUMENTOS REQUERIDOS</h4>
-                                    </div>
-                                    <div class="tab-pane" id="documentos">
-                                        <br>
-                                        <p>
+                                        <div class="col-xs-12">
+                                            <!-- start -->
                                             <div class="row">
-                                                <div class="col-xs-10">
+                                                <div class="col-xs-12">
+                                                    <div class="invoice-head row">
+                                                        <div class="col-xs-12 col-md-3 invoice-title">
+                                                            <h2 class="text-center bg-primary" style="height: 180px;">Confirmar Datos <span class="glyphicon glyphicon-user icon-lg icon-square icon-primary animated fadeIn"></span></h2>
+                                                        <!-- fa fa-rocket icon-xlg icon-success animated fadeIn 
+                                                        fa fa-rocket icon-lg icon-square icon-primary animated fadeIn -->
+                                                        </div>
+                                                        <div>
+                                                        <h3>Datos del cliente</h3>
+                                                        <div class="col-xs-12 col-md-3 invoice-head-info">
+                                                            <span class=''>
+                                                                
+                                                            <b>Num. Cliente BPRO:</b><br>
+                                                            <b>Nombre:</b><br>
+                                                            <b>RFC:</b><br>
+                                                            <b>Teléfono:</b> <br>
+                                                            <b>Correo:</b> <br>
+                                                        </span>
+                                                        </div>
+                                                        <div class="col-xs-12 col-md-3 invoice-head-info"><span class='text-muted'>
+                                                            
+                                                            {{datosCliente.idCliente}} <br>
+                                                            {{datosCliente.nombre}} <br>
+                                                            {{datosCliente.rfc}} <br>
+                                                            {{datosCliente.telefono}} <br>
+                                                            {{datosCliente.email}} <br>
+                                                            </span>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <br>
+                                                </div>
+                                                <h3 class="col-xs-12 col-md-3">Datos del contrato</h3>
+
+                                                <div>
+                                                <div class="col-xs-12 col-md-3 invoice-head-info">
+                                                    <span class=''>
+                                                            <br>   
+                                                            <b>Límite Crédito:</b><br>
+                                                            <b>Tipo Contrato:</b><br>
+                                                            <b>Fecha Inicio:</b><br>
+                                                            <b>Fecha Término: </b><br>
+                                                            <b>Empresa:</b><br>
+                                                            <b>Sucursal: </b><br>
+                                                            <b>Departamento: </b><br>
+                                                        </span>
+                                                </div>
+                                                <div class="col-xs-12 col-md-3 invoice-head-info"><span class='text-muted'>
+                                                            <br>
+                                                            {{datosCredito[0].limiteCredito | currency}}<br>
+                                                            {{nuevoContrato.contrato}}<br>
+                                                            {{nuevoContrato.fechaInicio}} <br>
+                                                            {{nuevoContrato.fechaTermino}} <br>
+                                                            {{nuevoContrato.empresa}} <br>
+                                                            {{nuevoContrato.sucursal}} <br>
+                                                            {{nuevoContrato.departamento}} <br>
+                                                            </span>
+                                                </div>
+                                                </div>
+                                                <!--  -->
+
+                                          
+                                   
+                                          
+                                                <!--  -->
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <h3>Documentos Requeridos</h3>
+                                                    <br>
                                                     <div class="table-responsive">
-                                                        <table class="table table-bordered">
-                                                            <thead style="background-color: #F8F8F8;">
+                                                        <table class="table table-hover invoice-table">
+                                                            <thead>
                                                                 <tr>
                                                                     <th>Documento</th>
                                                                     <th>Obligatorio</th>
@@ -362,11 +322,16 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
+                                                    <div class="clearfix"></div>
+                                                    <br>
                                                 </div>
                                             </div>
-                                        </p>
+                                            
+                                            <!-- end -->
+                                        </div>
                                     </div>
-                                    <!-- Agregado Prueba doc-->
+                                    <!-- PROBANDO -->                                    
+                                    
                                 </div>
                                 <!-- FIN CONFIRMAR DATOS-->
                                 <div class="clearfix"></div>
