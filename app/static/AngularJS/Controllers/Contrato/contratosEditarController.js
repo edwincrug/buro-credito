@@ -1,28 +1,30 @@
-appControllers.controller('contratosEditarController', function ($scope, $state, contratoRepository, contratoDetalleRepository, empresasRepository, sucursalesRepository, departamentosRepository, notificationFactory, sessionFactory) {
+appControllers.controller('contratosEditarController', function($scope, $state, contratoRepository, contratoDetalleRepository, empresasRepository, sucursalesRepository, departamentosRepository, notificationFactory, sessionFactory) {
 
     //Metodo de incio 
-    $scope.init = function () {
+    $scope.init = function() {
         //Cargo la lista de contratos
         $scope.idUsuario = 15; //user.idUsuario;
         cargaContratos();
         $scope.cargaEmpresas($scope.idUsuario);
+
     };
 
     //Obtiene la lista de Contratos 
-    var cargaContratos = function () {
+    var cargaContratos = function() {
         contratoRepository.obtieneContratos($scope.idUsuario)
             .then(
                 function succesCallback(response) {
                     //Success
                     $scope.listaContratos = response.data;
 
-                    setTimeout(function () {
+                    setTimeout(function() {
                         $('.estiloTabla').DataTable({});
                         $("#tablaR_length").removeClass("dataTables_info").addClass("hide-div");
                         //$("#tablaR_filter").removeClass("dataTables_info").addClass("hide-div");
-                    }, 100);
-
-                },
+                        $('input.column_filter').on('keyup click', function() {
+                            filterColumn($(this).parents('div').attr('data-column'));
+                        });
+                    }, 100);},
                 function errorCallback(response) {
                     //Error
                     notificationFactory.error('No se pudieron obtener los Contratos: ' + response.data.message);
@@ -31,7 +33,7 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
     };
 
 
-    $scope.verDetalleContrato = function (contrato) {
+    $scope.verDetalleContrato = function(contrato) {
 
         contratoDetalleRepository.obtieneDetalleContrato(contrato.idContrato)
             .then(
@@ -54,7 +56,7 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
 
 
     //Obtiene Empresas segun el perfil del Usuario
-    $scope.cargaEmpresas = function (idcliente) {
+    $scope.cargaEmpresas = function(idcliente) {
         empresasRepository.userEmpresas(idcliente)
             .then(
                 function succesCallback(response) {
@@ -68,7 +70,7 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
     };
 
     //Obtiene Sucursales segun el perfil de Usuario
-    $scope.cargaSucursales = function (idcliente, idempresa) {
+    $scope.cargaSucursales = function(idcliente, idempresa) {
         $('#cboSucursal').attr('disabled', 'disabled');
         sucursalesRepository.userSucursales(idcliente, idempresa)
             .then(
@@ -85,7 +87,7 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
     };
 
     //Obtiene los departamentos segun el Perfil del Usuario
-    $scope.cargaDepartamentos = function (idcliente, idempresa, idsucursal) {
+    $scope.cargaDepartamentos = function(idcliente, idempresa, idsucursal) {
         $('#cboDepartamento').attr('disabled', 'disabled');
         departamentosRepository.userDepartamentos(idcliente, idempresa, idsucursal)
             .then(
@@ -102,7 +104,7 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
     };
 
     //Carga solo Contratos para este Perfil
-    $scope.cargaContratosEmp = function (idusuario, idempresa) {
+    $scope.cargaContratosEmp = function(idusuario, idempresa) {
         notificationFactory.success('Estoy en contratos segun Perfil');
 
         contratoRepository.obtieneContratosEmp(idusuario, idempresa)
@@ -111,7 +113,7 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
                     //Success
                     $scope.listaContratos = response.data;
 
-                    setTimeout(function () {
+                    setTimeout(function() {
                         $('.estiloTabla').DataTable({});
                         $("#tablaR_length").removeClass("dataTables_info").addClass("hide-div");
                         //$("#tablaR_filter").removeClass("dataTables_info").addClass("pull-left");
@@ -126,7 +128,7 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
     };
 
     //Carga solo Contratos para este Perfil
-    $scope.cargaContratosSuc = function (idusuario, idempresa, idsucursal) {
+    $scope.cargaContratosSuc = function(idusuario, idempresa, idsucursal) {
         notificationFactory.success('Estoy en Sucursales');
 
 
@@ -136,7 +138,7 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
                     //Success
                     $scope.listaContratos = response.data;
 
-                    setTimeout(function () {
+                    setTimeout(function() {
                         $('.estiloTabla').DataTable({});
                         $("#tablaR_length").removeClass("dataTables_info").addClass("hide-div");
                         //$("#tablaR_filter").removeClass("dataTables_info").addClass("pull-left");
@@ -149,6 +151,16 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
                 }
             );
     };
+
+
+
+    function filterColumn(i) {
+        $('#tablaR').DataTable().column(i).search(
+            $('#col' + i + '_filter').val(),
+            $('#col' + i + '_regex').prop('checked'),
+            $('#col' + i + '_smart').prop('checked')
+        ).draw();
+    }
 
 
 });

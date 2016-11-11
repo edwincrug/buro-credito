@@ -1,7 +1,6 @@
 <link href="../../css/detalleContrato.css" rel="stylesheet" />
 <!--Div principal-->
 <div ng-init="init()">
-
     <!--Titulo de Pagina  -->
     <div class='col-xs-12'>
         <div class="page-title">
@@ -22,9 +21,8 @@
                 <h2 class="title pull-left">Lista por Departamento</h2>
             </header>
             <div class="content-body">
-
                 <!--busqueda por Empresa/Sucursal/Depto -->
-                <h4>Filtrar por:</h4>
+                <!-- <h4>Filtrar por:</h4>
                 <form class="form-inline ng-pristine ng-valid">
                     <div class="form-group">
                         <select class="form-control" ng-model="seleccion.idEmpresa" ng-options="tipoEmpresa.idEmpresa as tipoEmpresa.nombreEmpresa for tipoEmpresa in listaEmpresas" ng-change="cargaSucursales(15,seleccion.idEmpresa)" id="cboEmpresa">
@@ -42,11 +40,25 @@
                         </select>
                     </div>
                 </form>
+                <br> -->
+                <!--Empresa/Sucursal/Depto-->
+                <!--busqueda por Empresa/Sucursal/Depto -->
+                <h4>Filtrar por:</h4>
+                <form class="form-inline">
+                    <div class="form-group" id="filter_col3" data-column="2">
+                        <input type="text" class="column_filter form-control" id="col2_filter" placeholder="Empresa">
+                    </div>
+                    <div class="form-group" id="filter_col4" data-column="3">
+                        <input type="text" class="column_filter form-control" id="col3_filter" placeholder="Sucursal">
+                    </div>
+                    <div class="form-group" id="filter_col5" data-column="4">
+                        <input type="text" class="column_filter form-control" id="col4_filter"  placeholder="Departamento">
+                    </div>
+                </form>
                 <br>
                 <!--Empresa/Sucursal/Depto-->
-
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12">                        
                         <table class="display estiloTabla" id="tablaR">
                             <thead class="gris">
                                 <tr class="active">
@@ -67,8 +79,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="contrato in listaContratos | filter:(seleccion.idEmpresa != undefined && seleccion.idSucursal == undefined ? {idEmpresa: seleccion.idEmpresa}: (seleccion.idEmpresa != undefined && seleccion.idSucursal != undefined && seleccion.idDepartamento == undefined ? {idSucursal: seleccion.idSucursal, idEmpresa: seleccion.idEmpresa}: (seleccion.idEmpresa != undefined && seleccion.idSucursal != undefined && seleccion.idDepartamento != undefined ?
-												  {idDepartamento:seleccion.idDepartamento,idSucursal: seleccion.idSucursal, idEmpresa: seleccion.idEmpresa}:'') ) )">
+                                <tr ng-repeat="contrato in listaContratos">
+                                <!-- | filter:(seleccion.idEmpresa != undefined && seleccion.idSucursal == undefined ? {idEmpresa: seleccion.idEmpresa}: (seleccion.idEmpresa != undefined && seleccion.idSucursal != undefined && seleccion.idDepartamento == undefined ? {idSucursal: seleccion.idSucursal, idEmpresa: seleccion.idEmpresa}: (seleccion.idEmpresa != undefined && seleccion.idSucursal != undefined && seleccion.idDepartamento != undefined ?
+                                                  {idDepartamento:seleccion.idDepartamento,idSucursal: seleccion.idSucursal, idEmpresa: seleccion.idEmpresa}:'') ) ) -->
                                     <td>{{ contrato.idCliente }}</td>
                                     <td>{{ contrato.nombreCliente }}</td>
                                     <td>{{ contrato.empresa }}</td>
