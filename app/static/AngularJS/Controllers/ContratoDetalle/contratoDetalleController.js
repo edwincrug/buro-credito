@@ -353,6 +353,11 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
     $scope.generarPdfdata = function () {
             $scope.idcliente = $stateParams.contratoObj.idCliente;
+
+            $scope.mostrarCargando = 0;
+            $('#loadCargando').modal('show');
+
+
             contratoDetalleRepository.generarPdfdata($scope.idcliente).then(function (result) {
 
                 var lstEmpresa = [];
@@ -425,6 +430,8 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                     setTimeout(function () {
                         window.open("http://192.168.20.9:5000/api/layout/viewpdf?fileName=" + fileName.data);
                         console.log(fileName.data);
+                        $scope.mostrarCargando = 1;
+                        $('#loadCargando').modal('hide');
                     }, 5000);
 
                 });
