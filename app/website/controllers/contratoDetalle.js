@@ -144,21 +144,21 @@ contratoDetalle.prototype.get_rptdata = function (req, res, next) {
         type: self.model.types.INT
     }];
 
-    this.model.query('SEL_DATOS_CLIENTE_SP ', params, function (error, informacioncliente) {
+    this.model.query('SEL_DATOS_CLIENTE_SP', params, function (error, informacioncliente) {
         //console.log(informacioncliente)
         params = [{
             name: 'idCliente',
             value: informacioncliente[0].idCliente,
             type: self.model.types.INT
         }]
-        self.model.querymulti('SEL_TOTAL_CREDITO_SP_TODAS', params, function (error, totales) {
+        self.model.querymulti('SEL_TOTAL_CREDITO_SP_TODAS_5', params, function (error, totales) {
             //console.log(totales)
 
-            self.model.querymulti('SEL_TOTAL_DOC_PAGADOS_SP_TODAS', params, function (error, docpagados) {
+            self.model.querymulti('SEL_PAG_AGRUP_SP_5', params, function (error, docpagados) {
 
                 //console.log(docpagados)
 
-                self.model.querymulti('SEL_TOTAL_DOC_NO_PAGADOS_SP_TODAS', params, function (error, docnopagados) {
+                self.model.querymulti('SEL_CARTERA_VENCIDA_AGRUP_SP_5', params, function (error, docnopagados) {
 
                     //console.log(docnopagados);
 
@@ -183,7 +183,6 @@ contratoDetalle.prototype.get_rptdata = function (req, res, next) {
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 //obtiene Informacion del Cliente
 contratoDetalle.prototype.get_obtienedetallecliente = function (req, res, next) {
