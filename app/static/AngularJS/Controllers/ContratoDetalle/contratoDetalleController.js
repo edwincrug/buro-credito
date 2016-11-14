@@ -338,7 +338,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //    Manda a Generar el PDF con Grafica
     //////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $scope.clasificar = function(obj, status) {
+    $scope.clasificar = function (obj, status) {
         var arr = [];
 
         for (var i = 0; i < obj.length; i++) {
@@ -350,7 +350,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         return arr;
     };
 
-    $scope.sumar = function(obj, fieldName) {
+    $scope.sumar = function (obj, fieldName) {
         var total = 0;
 
         for (var i = 0; i < obj.length; i++) {
@@ -361,11 +361,11 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     };
 
 
-    $scope.generarPdfdata = function() {
+    $scope.generarPdfdata = function () {
 
             $scope.idcliente = $stateParams.contratoObj.idCliente;
 
-            contratoDetalleRepository.generarPdfdata($scope.idcliente).then(function(result) {
+            contratoDetalleRepository.generarPdfdata($scope.idcliente).then(function (result) {
 
                 var lstEmpresa = [];
                 var lstGraficas = [];
@@ -381,13 +381,77 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
                     if (result.data.listaTotales[i][0] == null) {
                         obj = {
-                            "showPage": true,
-                            "empresa": { tabla: "0", idEmpresa: "0", empresa: "", idSucursal: "0", sucursal: "0", idDepartamento: "0", departamento: "0", cartera: "0", credito: "0" },
+                            "showPage": false,
+                            "empresa": {
+                                tabla: "0",
+                                idEmpresa: "0",
+                                empresa: "",
+                                idSucursal: "0",
+                                sucursal: "0",
+                                idDepartamento: "0",
+                                departamento: "0",
+                                cartera: "0",
+                                credito: "0"
+                            },
                             "cliente": {},
-                            "limites": [{ tabla: "0", idEmpresa: "0", empresa: "", idSucursal: "0", sucursal: "0", idDepartamento: "0", departamento: "0", cartera: "0", credito: "0" }],
-                            "cartera": [{ idEmpresa: "0", empresa: "", idSucursal: "0", sucursal: "0", idDepartamento: "0", departamento: "0", conteoTotal: "0", importeTotal: "0", saldoTotal: "0", porVencer: "0", saldo: "0", saldoP: "0", saldoS: "0", saldoT: "0", saldoC: "0" }],
-                            "extemporaneo": [{ tabla: "0", tipoPagoFecha: "0", idEmpresa: "0", empresa: "0", idSucursal: "0", sucursal: "0", idDepartamento: "0", departamento: "0", totalDoctos: "0", cargo: "0", saldo: "0", saldoAFavor: "0", saldoTotalTipo: "0" }], //estatus =2
-                            "puntual": [{ tabla: "0", tipoPagoFecha: "0", idEmpresa: "0", empresa: "0", idSucursal: "0", sucursal: "0", idDepartamento: "0", departamento: "0", totalDoctos: "0", cargo: "0", saldo: "0", saldoAFavor: "0", saldoTotalTipo: "0" }]
+                            "limites": [{
+                                tabla: "0",
+                                idEmpresa: "0",
+                                empresa: "",
+                                idSucursal: "0",
+                                sucursal: "0",
+                                idDepartamento: "0",
+                                departamento: "0",
+                                cartera: "0",
+                                credito: "0"
+                            }],
+                            "cartera": [{
+                                idEmpresa: "0",
+                                empresa: "",
+                                idSucursal: "0",
+                                sucursal: "0",
+                                idDepartamento: "0",
+                                departamento: "0",
+                                conteoTotal: "0",
+                                importeTotal: "0",
+                                saldoTotal: "0",
+                                porVencer: "0",
+                                saldo: "0",
+                                saldoP: "0",
+                                saldoS: "0",
+                                saldoT: "0",
+                                saldoC: "0"
+                            }],
+                            "extemporaneo": [{
+                                tabla: "0",
+                                tipoPagoFecha: "0",
+                                idEmpresa: "0",
+                                empresa: "0",
+                                idSucursal: "0",
+                                sucursal: "0",
+                                idDepartamento: "0",
+                                departamento: "0",
+                                totalDoctos: "0",
+                                cargo: "0",
+                                saldo: "0",
+                                saldoAFavor: "0",
+                                saldoTotalTipo: "0"
+                            }], //estatus =2
+                            "puntual": [{
+                                tabla: "0",
+                                tipoPagoFecha: "0",
+                                idEmpresa: "0",
+                                empresa: "0",
+                                idSucursal: "0",
+                                sucursal: "0",
+                                idDepartamento: "0",
+                                departamento: "0",
+                                totalDoctos: "0",
+                                cargo: "0",
+                                saldo: "0",
+                                saldoAFavor: "0",
+                                saldoTotalTipo: "0"
+                            }]
                         };
 
                         graficaObj = {
@@ -395,11 +459,26 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                             "data": [{
                                 "type": "doughnut",
                                 "dataPoints": [
-                                    { "y": 100, "indexLabel": "Crédito Facturado" },
-                                    { "y": 1, "indexLabel": "Cartera Vencida" },
-                                    { "y": 1, "indexLabel": "Cartera No Vencida" }, //saldoP
-                                    { "y": 1, "indexLabel": "Pago No Puntual" },
-                                    { "y": 1, "indexLabel": "Pago Puntual" }
+                                    {
+                                        "y": 100,
+                                        "indexLabel": "Crédito Facturado"
+                                    },
+                                    {
+                                        "y": 1,
+                                        "indexLabel": "Cartera Vencida"
+                                    },
+                                    {
+                                        "y": 1,
+                                        "indexLabel": "Cartera No Vencida"
+                                    }, //saldoP
+                                    {
+                                        "y": 1,
+                                        "indexLabel": "Pago No Puntual"
+                                    },
+                                    {
+                                        "y": 1,
+                                        "indexLabel": "Pago Puntual"
+                                    }
 
                                 ]
                             }]
@@ -435,11 +514,26 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                             "data": [{
                                 "type": "doughnut",
                                 "dataPoints": [
-                                    { "y": 1000, "indexLabel": "Crédito Facturado" },
-                                    { "y": carteraVencida, "indexLabel": "Cartera Vencida" },
-                                    { "y": carteraNoVencida, "indexLabel": "Cartera No Vencida" }, //saldoP
-                                    { "y": pagoNoPuntual, "indexLabel": "Pago No Puntual" },
-                                    { "y": pagoPuntual, "indexLabel": "Pago Puntual" }
+                                    {
+                                        "y": 1000,
+                                        "indexLabel": "Crédito Facturado"
+                                    },
+                                    {
+                                        "y": carteraVencida,
+                                        "indexLabel": "Cartera Vencida"
+                                    },
+                                    {
+                                        "y": carteraNoVencida,
+                                        "indexLabel": "Cartera No Vencida"
+                                    }, //saldoP
+                                    {
+                                        "y": pagoNoPuntual,
+                                        "indexLabel": "Pago No Puntual"
+                                    },
+                                    {
+                                        "y": pagoPuntual,
+                                        "indexLabel": "Pago Puntual"
+                                    }
 
                                 ]
                             }]
@@ -483,9 +577,9 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                 }
 
 
-                contratoDetalleRepository.callExternalPdf(jsonData).then(function(fileName) {
+                contratoDetalleRepository.callExternalPdf(jsonData).then(function (fileName) {
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         window.open("http://192.168.20.9:5000/api/layout/viewpdf?fileName=" + fileName.data);
                         console.log(fileName.data);
                     }, 5000);
