@@ -186,12 +186,12 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         $scope.porcPagInPuntual = 0;
 
         //Fechas de la busqueda para los detalles del contrato
-        $scope.fechaInicio=$stateParams.fechaInicio;
-        $scope.fechaFin=$stateParams.fechaFin;
+        $scope.fechaInicio = $stateParams.fechaInicio;
+        $scope.fechaFin = $stateParams.fechaFin;
 
         //alert('Estoy en ver detalle Empresa: ' + $scope.nombreCliente);
 
-        $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente,$scope.fechaInicio,$scope.fechaFin)
+        $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente, $scope.fechaInicio, $scope.fechaFin)
             .then(
                 //Succes Pagados
                 function succesCallback(response) {
@@ -229,7 +229,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                 $scope.totalVencido = $scope.totalNoPagado - $scope.totalPorVencer;
 
                                 //////////////////////////
-                                contratoDetalleRepository.detallePagoDocumentosExtemporaneo($scope.idcliente,$scope.fechaInicio,$scope.fechaFin)
+                                contratoDetalleRepository.detallePagoDocumentosExtemporaneo($scope.idcliente, $scope.fechaInicio, $scope.fechaFin)
                                     .then(
                                         //Succes Pago No puntual
                                         function succesCallback(response) {
@@ -505,9 +505,19 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                         var pagoPuntual = 0;
                         var pagoNoPuntual = 0;
 
+                        //$scope.totalPagPuntual
+                        //$scope.totalPagInPuntual
+                        //$scope.totalVencido
+                        //$scope.totalPorVencer
+
+                        //                        creditoFacturado = $scope.sumar(result.data.listaTotales[i], 'credito');
+                        //                        carteraVencida = $scope.totalVencido;
+                        //                        carteraNoVencida = $scope.totalPorVencer;
+                        //                        pagoNoPuntual = $scope.totalPagInPuntual;
+                        //                        pagoPuntual = $scope.totalPagPuntual;
                         creditoFacturado = $scope.sumar(result.data.listaTotales[i], 'credito');
-                        carteraVencida = $scope.sumar(result.data.listaDocNoPagados[i], 'saldoP');
-                        carteraNoVencida = $scope.sumar(result.data.listaDocNoPagados[i], 'saldoP');
+                        carteraVencida = $scope.sumar(result.data.listaDocNoPagados[i], 'saldoVencido');
+                        carteraNoVencida = $scope.sumar(result.data.listaDocNoPagados[i], 'porVencer');
                         pagoNoPuntual = $scope.sumar(obj.extemporaneo, 'cargo');
                         pagoPuntual = $scope.sumar(obj.puntual, 'cargo');
 
