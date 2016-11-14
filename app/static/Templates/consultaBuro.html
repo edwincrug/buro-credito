@@ -1,6 +1,5 @@
 <!--Div principal-->
 <div ng-init="init()">
-
     <div class='col-xs-12'>
         <div class="page-title">
             <div class="pull-left">
@@ -8,7 +7,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-xs-12">
         <section class="box ">
             <header class="panel_header">
@@ -20,18 +18,37 @@
                 </div>
             </header>
             <div class="content-body">
-                <h4>Introduce un Cliente:</h4>
-                <form class="form-inline">
-                    <div class="form-group">
-                        <input class="form-control" ng-model="idBusqueda" placeholder="ID BPRO">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" ng-model="txtBusqueda" placeholder="Nombre o RFC">
-                    </div>
-                    <button type="submit" class="btn btn-primary" ng-click="BuscaCliente(idBusqueda,txtBusqueda)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbspBuscar</button>
-                </form>
+                <div class="col-xs-7">
+                    <h4>Introduce un Cliente:</h4>
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <input class="form-control" ng-model="idBusqueda" placeholder="ID BPRO">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" ng-model="txtBusqueda" placeholder="Nombre o RFC">
+                        </div>
+                        <button type="submit" class="btn btn-primary" ng-click="BuscaCliente(idBusqueda,txtBusqueda)"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbspBuscar</button>
+                    </form>
+                </div>
+                <div class="col-xs-5">
+                    <h4>Consulta por Fecha:</h4>
+                    <form class="form-inline">
+                        <!-- begin filtro por fechas -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy" ng-model="fechaInicio" name="txtInicio" placeholder="Fecha de inicio" ng-change="validarFechar(fechaInicio,fechaTermino)">
+                            </div>
+                        </div>
+                        <div class="form-group"> - </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control datepicker" data-format="dd/mm/yyyy" ng-model="fechaTermino" name="txtFin" ng-change="validarFechar(fechaInicio,fechaTermino)" placeholder="Fecha de término">
+                            </div>
+                        </div>
+                        <!-- end filtro por fechas -->
+                    </form>
+                </div>
                 <!--  Prueba-->
-
                 <div class="tableContent">
                     <br>
                     <br>
@@ -52,7 +69,7 @@
                                 <td> {{ cliente.rfc }} </td>
                                 <td> {{ cliente.email }} </td>
                                 <td>
-                                    <button class="btn btn-primary linkedin" tooltip="Ir" data-toggle="tooltip" data-placement="top" title="Reporte de Crédito" ng-click="verDetalleReporte(cliente)">
+                                    <button class="btn btn-primary linkedin" tooltip="Ir" data-toggle="tooltip" data-placement="top" title="Reporte de Crédito" ng-click="verDetalleReporte(cliente,fechaInicio,fechaTermino)" ng-hide="ocultarBtnBuscar==1">
                                         <span class="fa fa-binoculars" aria-hidden="true"></span>
                                     </button>
                                 </td>

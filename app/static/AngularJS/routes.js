@@ -1,6 +1,6 @@
 angular.module('app.routes', ["LocalStorageModule"])
 
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider) {
 
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
@@ -42,7 +42,9 @@ angular.module('app.routes', ["LocalStorageModule"])
         templateUrl: 'Templates/detalleContrato.html',
         controller: 'contratoDetalleController',
         params: {
-            contratoObj: null
+            contratoObj: null,
+            fechaInicio: null,
+            fechaFin: null
         }
     })
 

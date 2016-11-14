@@ -74,12 +74,14 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
         }, //Fin Obtiene Detalle Cliente
 
         //4.-Detalle Documentos
-        detallePagoDocumentos: function (idCliente) {
+        detallePagoDocumentos: function (idCliente,fechaInicio,fechaFin) {
             return $http({
                 url: contratoDetalleRepositoryURL + 'detallepagodocumentos/',
                 method: "GET",
                 params: {
-                    idCliente: idCliente
+                    idCliente: idCliente,
+                    fechaInicio:fechaInicio,
+                    fechaFin: fechaFin
                 },
                 headers: {
                     'Content-Type': 'application/json'
@@ -88,12 +90,14 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
         }, //Fin Detalle Documentos detallePagoDocumentosExtemporaneo
 
         //5,-
-        detallePagoDocumentosExtemporaneo: function (idCliente) {
+        detallePagoDocumentosExtemporaneo: function (idCliente,fechaInicio,fechaFin) {
             return $http({
                 url: contratoDetalleRepositoryURL + 'detallepagodocumentosextemporaneo/',
                 method: "GET",
                 params: {
-                    idCliente: idCliente
+                    idCliente: idCliente,
+                    fechaInicio:fechaInicio,
+                    fechaFin: fechaFin
                 },
                 headers: {
                     'Content-Type': 'application/json'

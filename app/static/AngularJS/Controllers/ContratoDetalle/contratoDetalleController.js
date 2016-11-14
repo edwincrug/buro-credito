@@ -185,9 +185,13 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         $scope.porcPagPuntual = 0;
         $scope.porcPagInPuntual = 0;
 
+        //Fechas de la busqueda para los detalles del contrato
+        $scope.fechaInicio=$stateParams.fechaInicio;
+        $scope.fechaFin=$stateParams.fechaFin;
+
         //alert('Estoy en ver detalle Empresa: ' + $scope.nombreCliente);
 
-        $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente)
+        $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente,$scope.fechaInicio,$scope.fechaFin)
             .then(
                 //Succes Pagados
                 function succesCallback(response) {
@@ -225,7 +229,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                 $scope.totalVencido = $scope.totalNoPagado - $scope.totalPorVencer;
 
                                 //////////////////////////
-                                contratoDetalleRepository.detallePagoDocumentosExtemporaneo($scope.idcliente)
+                                contratoDetalleRepository.detallePagoDocumentosExtemporaneo($scope.idcliente,$scope.fechaInicio,$scope.fechaFin)
                                     .then(
                                         //Succes Pago No puntual
                                         function succesCallback(response) {
