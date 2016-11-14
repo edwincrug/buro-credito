@@ -1,6 +1,13 @@
 appControllers.controller('contratosEditarController', function($scope, $state, contratoRepository, contratoDetalleRepository, empresasRepository, sucursalesRepository, departamentosRepository, notificationFactory, sessionFactory) {
+    //Consigue la fecha actual
+    var f = new Date();
+    $scope.fechaTermino = f.getFullYear() + '' + (f.getMonth() + 1) + '' + f.getDate();
+    //Consigue 1 año antes de la fecha actual
 
-    //Metodo de incio 
+    $scope.fechaInicio = (f.getFullYear() - 5) + '' + (f.getMonth() + 1) + '' + f.getDate();
+    console.log($scope.fechaTermino)
+    console.log($scope.fechaInicio)
+        //Metodo de incio 
     $scope.init = function() {
         //Cargo la lista de contratos
         $scope.idUsuario = 15; //user.idUsuario;
@@ -24,7 +31,8 @@ appControllers.controller('contratosEditarController', function($scope, $state, 
                         $('input.column_filter').on('keyup click', function() {
                             filterColumn($(this).parents('div').attr('data-column'));
                         });
-                    }, 100);},
+                    }, 100);
+                },
                 function errorCallback(response) {
                     //Error
                     notificationFactory.error('No se pudieron obtener los Contratos: ' + response.data.message);
@@ -42,7 +50,9 @@ appControllers.controller('contratosEditarController', function($scope, $state, 
                     //alert('Estoy en ver detalle Contrato: ' + contrato.idContrato);
                     sessionFactory.detalle = response.data;
                     $state.go('detallecontrato', {
-                        contratoObj: contrato
+                        contratoObj: contrato,
+                        fechaInicio: $scope.fechaInicio,
+                        fechaFin: $scope.fechaTermino
                     }, {
                         reload: true
                     });
