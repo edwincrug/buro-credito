@@ -221,12 +221,15 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                 $scope.totalVencido = 0;
 
                                 for (var i = 0; i < response.data.length; i++) {
-                                    $scope.totalNoPagado += (response.data[i].importeTotal);
+                                    //$scope.totalNoPagado += (response.data[i].importeTotal);
                                     $scope.totalPorVencer += (response.data[i].dias0);
+                                    $scope.totalVencido += (response.data[i].saldoVencido);
                                 }
 
+                                $scope.totalNoPagado = $scope.totalPorVencer + $scope.totalVencido;
+
                                 //Vencido= Total - PorVencer
-                                $scope.totalVencido = $scope.totalNoPagado - $scope.totalPorVencer;
+                                //$scope.totalVencido = $scope.totalNoPagado - $scope.totalPorVencer;
 
                                 //////////////////////////
                                 contratoDetalleRepository.detallePagoDocumentosExtemporaneo($scope.idcliente, $scope.fechaInicio, $scope.fechaFin)
@@ -464,10 +467,6 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                 "type": "doughnut",
                                 "dataPoints": [
                                     {
-                                        "y": 100,
-                                        "indexLabel": "Crédito Facturado"
-                                    },
-                                    {
                                         "y": 1,
                                         "indexLabel": "Cartera Vencida"
                                     },
@@ -533,10 +532,6 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                             "data": [{
                                 "type": "doughnut",
                                 "dataPoints": [
-                                    {
-                                        "y": 1000,
-                                        "indexLabel": "Crédito Facturado"
-                                    },
                                     {
                                         "y": carteraVencida,
                                         "indexLabel": "Cartera Vencida"

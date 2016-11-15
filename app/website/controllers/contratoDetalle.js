@@ -149,11 +149,9 @@ contratoDetalle.prototype.get_rptdata = function (req, res, next) {
             //console.log(totales)
 
             self.model.querymulti('SEL_PAG_AGRUP_SP_5', params, function (error, docpagados) {
-
                 //console.log(docpagados)
 
                 self.model.querymulti('SEL_CARTERA_VENCIDA_AGRUP_SP_5', params, function (error, docnopagados) {
-
                     //console.log(docnopagados);
 
 
@@ -177,7 +175,6 @@ contratoDetalle.prototype.get_rptdata = function (req, res, next) {
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 //obtiene Informacion del Cliente
 contratoDetalle.prototype.get_obtienedetallecliente = function (req, res, next) {
     var self = this;
