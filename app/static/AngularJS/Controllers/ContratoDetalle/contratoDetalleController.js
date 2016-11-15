@@ -207,7 +207,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                         //}
                     }
 
-                    contratoDetalleRepository.detalleNoPagados($scope.idcliente)
+                    contratoDetalleRepository.detalleNoPagados($scope.idcliente, $scope.fechaInicio, $scope.fechaFin)
                         .then(
                             //Succes Cartera
                             function succesCallback(response) {

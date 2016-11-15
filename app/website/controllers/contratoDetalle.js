@@ -268,10 +268,18 @@ contratoDetalle.prototype.get_detalleNoPagados = function (req, res, next) {
         name: 'idCliente',
         value: req.query.idCliente,
         type: self.model.types.INT
+    }, {
+        name: 'fechaInicio',
+        value: req.query.fechaInicio,
+        type: self.model.types.STRING
+    }, {
+        name: 'fechaFin',
+        value: req.query.fechaFin,
+        type: self.model.types.STRING
     }]
 
     //SEL_TOTAL_CARTERA_DETALLE_SP_TODAS
-    this.model.query('SEL_CARTERA_VENCIDA_AGRUP_SP', params, function (error, result) {
+    this.model.query('SEL_CARTERA_VENCIDA_AGRUP_SP_ModificarFechas', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result

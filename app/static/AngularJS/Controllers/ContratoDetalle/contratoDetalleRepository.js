@@ -74,13 +74,13 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
         }, //Fin Obtiene Detalle Cliente
 
         //4.-Detalle Documentos
-        detallePagoDocumentos: function (idCliente,fechaInicio,fechaFin) {
+        detallePagoDocumentos: function (idCliente, fechaInicio, fechaFin) {
             return $http({
                 url: contratoDetalleRepositoryURL + 'detallepagodocumentos/',
                 method: "GET",
                 params: {
                     idCliente: idCliente,
-                    fechaInicio:fechaInicio,
+                    fechaInicio: fechaInicio,
                     fechaFin: fechaFin
                 },
                 headers: {
@@ -90,13 +90,13 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
         }, //Fin Detalle Documentos detallePagoDocumentosExtemporaneo
 
         //5,-
-        detallePagoDocumentosExtemporaneo: function (idCliente,fechaInicio,fechaFin) {
+        detallePagoDocumentosExtemporaneo: function (idCliente, fechaInicio, fechaFin) {
             return $http({
                 url: contratoDetalleRepositoryURL + 'detallepagodocumentosextemporaneo/',
                 method: "GET",
                 params: {
                     idCliente: idCliente,
-                    fechaInicio:fechaInicio,
+                    fechaInicio: fechaInicio,
                     fechaFin: fechaFin
                 },
                 headers: {
@@ -106,12 +106,14 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
         }, //Fin Detalle Documentos detallePagoDocumentosExtemporaneo
 
         //6.-Detalle No Pagados
-        detalleNoPagados: function (idCliente) {
+        detalleNoPagados: function (idCliente, fechaInicio, fechaFin) {
             return $http({
                 url: contratoDetalleRepositoryURL + 'detallenopagados/',
                 method: "GET",
                 params: {
-                    idCliente: idCliente
+                    idCliente: idCliente,
+                    fechaInicio: fechaInicio,
+                    fechaFin: fechaFin
                 },
                 headers: {
                     'Content-Type': 'application/json'
