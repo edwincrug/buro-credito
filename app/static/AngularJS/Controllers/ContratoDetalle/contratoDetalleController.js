@@ -1,6 +1,8 @@
 appControllers.controller('contratoDetalleController', function ($scope, $state, Utils,
     $sce, $stateParams, contratoDetalleRepository, notificationFactory, sessionFactory, datosClienteRepository, uiGridGroupingConstants) {
-
+    //Consigue la fecha actual
+    var f = new Date();
+    $scope.fecha = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
     $scope.message = 'Buscando...';
 
     //Metodo de incio 
@@ -585,7 +587,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
                 var jsonData = {
                     "template": {
-                        "name": "testReport"
+                        "name": "buroCredito_rpt"
                     },
                     "data": rptStructure
                 }

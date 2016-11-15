@@ -186,7 +186,7 @@ contratoDetalle.prototype.get_obtienedetallecliente = function (req, res, next) 
     }];
 
     this.model.query('SEL_PAGOS_DOCUMENTOS_SP', params, function (error, result) {
-        console.log(result);
+        //console.log(result);
         self.view.speakJSON(res, {
             error: error,
             result: result
@@ -201,7 +201,7 @@ contratoDetalle.prototype.get_obtienedetallecliente = function (req, res, next) 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 contratoDetalle.prototype.get_detallePagoDocumentos = function (req, res, next) {
     var self = this;
-    console.log(req.query.fechaInicio, req.query.fechaFin)
+    //console.log(req.query.fechaInicio, req.query.fechaFin)
     params = [{
         name: 'idCliente',
         value: req.query.idCliente,
@@ -218,8 +218,8 @@ contratoDetalle.prototype.get_detallePagoDocumentos = function (req, res, next) 
 
     //SEL_PAGADOS_PUNTUAL_AGRUP_SP
     this.model.query('SEL_PAG_AGRUP_SP_ModificarFechas', params, function (error, result) {
-        console.log('Soy el error', error)
-        console.log('Soy el resultado', result)
+        //console.log('Soy el error', error)
+        //console.log('Soy el resultado', result)
         self.view.speakJSON(res, {
             error: error,
             result: result
@@ -248,10 +248,10 @@ contratoDetalle.prototype.get_detallepagodocumentosextemporaneo = function (req,
 
     //SEL_PAGADOS_NO_PUNTUAL_AGRUP_SP
     this.model.query('SEL_NO_PAG_AGRUP_SP_ModificarFechas', params, function (error, result) {
-        console.log('Soy el error', error)
-        console.log('Soy el resultado', result)
-        console.log(req.query.fechaInicio)
-        console.log(req.query.fechaFin)
+        //console.log('Soy el error', error)
+        //console.log('Soy el resultado', result)
+        //console.log(req.query.fechaInicio)
+        //console.log(req.query.fechaFin)
         self.view.speakJSON(res, {
             error: error,
             result: result

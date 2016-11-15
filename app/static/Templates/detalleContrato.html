@@ -19,8 +19,8 @@
     </div>
     <div class="clearfix"></div>
     <div class="col-xs-12">
-        <button type="button" class="btn btn-primary pull-right" ng-click="generarPdf()">Generar Rep Ant</button>
-        <button type="button" class="btn btn-primary pull-right" ng-click="generarPdfdata()">Generar Rep</button>
+        <!-- <button type="button" class="btn btn-primary pull-right" ng-click="generarPdf()">Generar Rep Ant</button> -->
+        <button type="button" class="btn btn-primary pull-right" ng-click="generarPdfdata()">Generar Reporte</button>
     </div>
 
     <!-- Totales -->
@@ -44,8 +44,17 @@
                         <h4> {{nombrecliente}}</h4>
                     </div>
                 </div>
-            </div>
+            </div>            
         </section>
+        
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Fecha de Consulta: {{fecha}}</h2>
+                <div class="actions panel_actions pull-right">
+                </div>
+            </header>            
+        </section>
+    
     </div>
 
     <div class="col-xs-12 col-sm-4">
@@ -475,9 +484,7 @@
 
     <div ng-bind-html="htmlString"></div>
     <!-- -->
-    <div class="col-xs-12">
-        <button type="button" class="btn btn-primary pull-right" ng-click="Regresar()">Regresar</button>
-    </div>
+    
     <!-- -->
     <div id="pdfInvoceContent"></div>
 
