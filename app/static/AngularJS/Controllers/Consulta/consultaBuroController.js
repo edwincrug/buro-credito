@@ -74,7 +74,9 @@ appControllers.controller('consultaBuroController', function($scope, $state, not
         $state.go('detallecontrato', {
             contratoObj: cliente,
             fechaInicio: $scope.fechaCreacion,
-            fechaFin: $scope.fechaFin
+            fechaFin: $scope.fechaFin,
+            fInicio: fechaInicio,
+            fFin: fechaTermino
         }, {
             reload: true
         });

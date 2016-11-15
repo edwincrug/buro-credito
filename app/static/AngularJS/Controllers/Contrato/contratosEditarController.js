@@ -2,11 +2,13 @@ appControllers.controller('contratosEditarController', function($scope, $state, 
     //Consigue la fecha actual
     var f = new Date();
     $scope.fechaTermino = f.getFullYear() + '' + (f.getMonth() + 1) + '' + f.getDate();
+    $scope.fFin=f.getDate() + '/' + + (f.getMonth() + 1) + '/' + f.getFullYear();
     //Consigue 1 año antes de la fecha actual
 
     $scope.fechaInicio = (f.getFullYear() - 5) + '' + (f.getMonth() + 1) + '' + f.getDate();
-    console.log($scope.fechaTermino)
-    console.log($scope.fechaInicio)
+    $scope.fInicio=f.getDate() + '/' + + (f.getMonth() + 1) + '/' + (f.getFullYear() - 5) ;
+    //console.log($scope.fechaTermino)
+    //console.log($scope.fechaInicio)
         //Metodo de incio 
     $scope.init = function() {
         //Cargo la lista de contratos
@@ -52,7 +54,9 @@ appControllers.controller('contratosEditarController', function($scope, $state, 
                     $state.go('detallecontrato', {
                         contratoObj: contrato,
                         fechaInicio: $scope.fechaInicio,
-                        fechaFin: $scope.fechaTermino
+                        fechaFin: $scope.fechaTermino,
+                        fInicio: $scope.fInicio,
+                        fFin:$scope.fFin 
                     }, {
                         reload: true
                     });

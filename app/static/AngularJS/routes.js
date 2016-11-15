@@ -44,7 +44,9 @@ angular.module('app.routes', ["LocalStorageModule"])
         params: {
             contratoObj: null,
             fechaInicio: null,
-            fechaFin: null
+            fechaFin: null,
+            fInicio: null,
+            fFin: null
         }
     })
 
