@@ -376,7 +376,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
             $scope.idcliente = $stateParams.contratoObj.idCliente;
 
-            contratoDetalleRepository.generarPdfdata($scope.idcliente).then(function (result) {
+            contratoDetalleRepository.generarPdfdata($scope.idcliente,$scope.fechaInicio, $scope.fechaFin).then(function (result) {
 
                 var lstEmpresa = [];
                 var lstGraficas = [];

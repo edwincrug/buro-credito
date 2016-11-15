@@ -131,11 +131,22 @@ contratoDetalle.prototype.get_nuevo = function (req, res, next) {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 contratoDetalle.prototype.get_rptdata = function (req, res, next) {
     var self = this;
-
+    //console.log(req.query.fechaInicio)
+    //console.log(req.query.fechaFin)
     var params = [{
         name: 'idCliente',
         value: req.query.idCliente,
         type: self.model.types.INT
+    },
+    {
+        name: 'fechaInicio',
+        value: req.query.fechaInicio,
+        type: self.model.types.STRING
+    },
+    {
+        name: 'fechaFin',
+        value: req.query.fechaFin,
+        type: self.model.types.STRING
     }];
 
     this.model.query('SEL_DATOS_CLIENTE_SP', params, function (error, informacioncliente) {

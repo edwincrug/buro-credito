@@ -139,12 +139,14 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
         },
 
         //8.-Obtiene datos del Reporte PIPUS
-        generarPdfdata: function (idCliente) {
+        generarPdfdata: function (idCliente,fechaInicio,fechaFin) {
             return $http({
                 url: contratoDetalleRepositoryURL + 'rptdata/',
                 method: "GET",
                 params: {
-                    idCliente: idCliente
+                    idCliente: idCliente,
+                    fechaInicio:fechaInicio,
+                    fechaFin:fechaFin
                 },
                 headers: {
                     'Content-Type': 'application/json'
