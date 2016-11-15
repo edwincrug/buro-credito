@@ -4,6 +4,8 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     var f = new Date();
     $scope.fecha = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
     $scope.message = 'Buscando...';
+    $scope.fInicio=$stateParams.fInicio;
+    $scope.fFin=$stateParams.fFin;
 
     //Metodo de incio 
     $scope.init = function () {
