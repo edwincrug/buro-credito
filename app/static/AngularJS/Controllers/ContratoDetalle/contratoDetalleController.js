@@ -496,7 +496,10 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                             "limites": result.data.listaTotales[i],
                             "cartera": result.data.listaDocNoPagados[i],
                             "extemporaneo": $scope.clasificar(result.data.listaDocPagados[i], 2), //estatus =2
-                            "puntual": $scope.clasificar(result.data.listaDocPagados[i], 1) //estatus =1
+                            "puntual": $scope.clasificar(result.data.listaDocPagados[i], 1), //estatus =1
+                            ////LMS
+                            "totalSaldoVencido": $scope.sumar(result.data.listaDocNoPagados[i], 'saldoVencido'),
+                            "totalSaldoPorVencer": $scope.sumar(result.data.listaDocNoPagados[i], 'porVencer')
                         };
 
                         var creditoFacturado = 0;
@@ -521,7 +524,9 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                         pagoNoPuntual = $scope.sumar(obj.extemporaneo, 'cargo');
                         pagoPuntual = $scope.sumar(obj.puntual, 'cargo');
 
-
+                        //LMS
+                        obj.totalExtemporaneo = pagoNoPuntual;
+                        obj.totalPuntual = pagoPuntual;
 
                         graficaObj = {
                             "colorSet": "greenShades",
