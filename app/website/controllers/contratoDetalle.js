@@ -134,35 +134,48 @@ contratoDetalle.prototype.get_rptdata = function (req, res, next) {
     //console.log(req.query.fechaInicio)
     //console.log(req.query.fechaFin)
     var params = [{
-        name: 'idCliente',
-        value: req.query.idCliente,
-        type: self.model.types.INT
+            name: 'idCliente',
+            value: req.query.idCliente,
+            type: self.model.types.INT
     },
-    {
-        name: 'fechaInicio',
-        value: req.query.fechaInicio,
-        type: self.model.types.STRING
+        {
+            name: 'fechaInicio',
+            value: req.query.fechaInicio,
+            type: self.model.types.STRING
     },
-    {
-        name: 'fechaFin',
-        value: req.query.fechaFin,
-        type: self.model.types.STRING
+        {
+            name: 'fechaFin',
+            value: req.query.fechaFin,
+            type: self.model.types.STRING
     }];
 
-    this.model.query('SEL_DATOS_CLIENTE_SP', params, function (error, informacioncliente) {
-        //console.log(informacioncliente)
+    this.model.query('SEL_DATOS_CLIENTE_SP_ModificarFechas', params, function (error, informacioncliente) {
+        console.log(informacioncliente)
+            //        console.log('soy el error', error)
+            //        console.log('SI ENTRE Y SI TRAJE DATOS', req.query.fechaInicio)
+            //        console.log(req.query.fechaFin)
         params = [{
-            name: 'idCliente',
-            value: informacioncliente[0].idCliente,
-            type: self.model.types.INT
-        }]
-        self.model.querymulti('SEL_TOTAL_CREDITO_SP_TODAS_5', params, function (error, totales) {
-            //console.log(totales)
+                name: 'idCliente',
+                value: informacioncliente[0].idCliente,
+                type: self.model.types.INT
+        },
+            {
+                name: 'fechaInicio',
+                value: req.query.fechaInicio,
+                type: self.model.types.STRING
+    },
+            {
+                name: 'fechaFin',
+                value: req.query.fechaFin,
+                type: self.model.types.STRING
+    }]
+        self.model.querymulti('SEL_TOTAL_CREDITO_SP_TODAS_5_ModificarFechas', params, function (error, totales) {
+            // console.log(totales)
 
-            self.model.querymulti('SEL_PAG_AGRUP_SP_5', params, function (error, docpagados) {
+            self.model.querymulti('SEL_PAG_AGRUP_SP_5_ModificarFechas', params, function (error, docpagados) {
                 //console.log(docpagados)
 
-                self.model.querymulti('SEL_CARTERA_VENCIDA_AGRUP_SP_5', params, function (error, docnopagados) {
+                self.model.querymulti('SEL_CARTERA_VENCIDA_AGRUP_SP_5_ModificarFechas', params, function (error, docnopagados) {
                     //console.log(docnopagados);
 
 
