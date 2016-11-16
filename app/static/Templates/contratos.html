@@ -72,7 +72,7 @@
                                     <th>Fecha Inicio</th>
                                     <th>Fecha Término</th>
                                     <th>Límite Crédito</th>
-                                    <th>Acción</th>
+                                    <th>Consultar</th>
                                     <th ng-hide="true">idEmpresa</th>
                                     <th ng-hide="true">idSucursal</th>
                                     <th ng-hide="true">idDepartamento</th>
@@ -92,7 +92,7 @@
                                     <td>{{ contrato.fechaInicio | date:"dd/MM/yyyy"}}</td>
                                     <td>{{ contrato.fechaTermino | date:"dd/MM/yyyy"}}</td>
                                     <td class="tdMonto">{{ contrato.limiteCredito | currency}}</td>
-                                    <td>
+                                    <td align="center">
                                         <button type="button" class="btn btn-primary linkedin" tooltip="Ver" ng-click="verDetalleContrato(contrato)">
                                             <span class="fa fa-binoculars" aria-hidden="true"></span>
                                         </button>
