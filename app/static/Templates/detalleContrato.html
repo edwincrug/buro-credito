@@ -44,9 +44,9 @@
                         <h4> {{nombrecliente}}</h4>
                     </div>
                 </div>
-            </div>            
+            </div>
         </section>
-        
+
         <section class="box ">
             <header class="panel_header">
                 <h2 class="title pull-left">Fecha de Consulta: </h2>
@@ -55,11 +55,11 @@
             </header>
             <div class="content-body">
                 <div class="row">
-                   <h4>  {{fInicio}} - {{fFin}}</h4>
+                    <h4>  {{fInicio}} - {{fFin}}</h4>
                 </div>
-            </div>             
+            </div>
         </section>
-    
+
     </div>
 
     <div class="col-xs-12 col-sm-4">
@@ -192,7 +192,7 @@
     <!-- Fin Totales-->
     <!-- No Pagados Vencido-->
     <div class="col-xs-12">
-        <section class="box ">
+        <section class="box " ng-hide="ocultaCartera==1">
             <header class="panel_header">
                 <h2 class="title pull-left" style="color: #E20049;">Cartera</h2>
                 <div class="actions panel_actions pull-right">
@@ -489,7 +489,7 @@
 
     <div ng-bind-html="htmlString"></div>
     <!-- -->
-    
+
     <!-- -->
     <div id="pdfInvoceContent"></div>
 

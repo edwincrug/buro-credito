@@ -4,8 +4,9 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     var f = new Date();
     $scope.fecha = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
     $scope.message = 'Buscando...';
-    $scope.fInicio=$stateParams.fInicio;
-    $scope.fFin=$stateParams.fFin;
+    $scope.fInicio = $stateParams.fInicio;
+    $scope.fFin = $stateParams.fFin;
+    $scope.ocultaCartera = 0;
 
     //Metodo de incio 
     $scope.init = function () {
@@ -216,6 +217,11 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                 notificationFactory.success('Detalle Documentos No Pagados');
 
                                 $scope.listaNoPagados = response.data;
+
+                                if (response.data.length == 0) {
+                                    $scope.ocultaCartera = 1;
+                                }
+
                                 $scope.gridOptions.data = response.data;
 
                                 $scope.totalNoPagado = 0;
@@ -376,7 +382,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
             $scope.idcliente = $stateParams.contratoObj.idCliente;
 
-            contratoDetalleRepository.generarPdfdata($scope.idcliente,$scope.fechaInicio, $scope.fechaFin).then(function (result) {
+            contratoDetalleRepository.generarPdfdata($scope.idcliente, $scope.fechaInicio, $scope.fechaFin).then(function (result) {
 
                 var lstEmpresa = [];
                 var lstGraficas = [];
@@ -594,6 +600,10 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                     "data": rptStructure
                 }
 
+                /*
+                var resdata = JSON.stringify(rptStructure);
+                console.log(resdata);
+                */
 
                 contratoDetalleRepository.callExternalPdf(jsonData).then(function (fileName) {
 
