@@ -194,6 +194,27 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         $scope.fechaInicio = $stateParams.fechaInicio;
         $scope.fechaFin = $stateParams.fechaFin;
 
+        //////////////////////////////////////////////////////////////////////////////////////////////////////// 
+        //                           Oculto cartera si la consulta no es el dia Actual
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        var f = new Date();
+        //alert('Fecha formato 1: ' + f.getDate() + '/' + (f.getMonth() + 1) + '/' + f.getFullYear());
+        //alert('Fecha formato 2: ' + f.getFullYear() + (f.getMonth() + 1) + f.getDate());
+
+        var annioActual = f.getFullYear();
+        var mesActual = f.getMonth() + 1;
+        var diaActual = f.getDate();
+
+        var annioFin = $stateParams.fechaFin.substring(0, 4);
+        var mesFin = $stateParams.fechaFin.substring(4, 6);
+        var diaFin = $stateParams.fechaFin.substring(6, 8);
+        //alert('Fecha Fin: ' + annioFin + mesFin + diaFin);
+
+        if (annioActual != annioFin || mesActual != mesFin || diaActual != diaFin) {
+            $scope.ocultaCartera = 1;
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         //alert('Estoy en ver detalle Empresa: ' + $scope.nombreCliente);
 
         $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente, $scope.fechaInicio, $scope.fechaFin)
@@ -218,9 +239,9 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
                                 $scope.listaNoPagados = response.data;
 
-                                if (response.data.length == 0) {
-                                    $scope.ocultaCartera = 1;
-                                }
+                                //                                if (response.data.length == 0) {
+                                //                                    $scope.ocultaCartera = 1;
+                                //                                }
 
                                 $scope.gridOptions.data = response.data;
 
