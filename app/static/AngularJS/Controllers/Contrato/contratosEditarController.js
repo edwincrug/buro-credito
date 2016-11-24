@@ -12,7 +12,7 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
     //Metodo de incio 
     $scope.init = function () {
         //Cargo la lista de contratos
-        $scope.idUsuario = 15; //user.idUsuario;
+        //$scope.idUsuario = 15; //user.idUsuario;
         cargaContratos();
         $scope.cargaEmpresas($scope.idUsuario);
 
