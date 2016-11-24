@@ -1,16 +1,16 @@
-appControllers.controller('contratosEditarController', function($scope, $state, contratoRepository, contratoDetalleRepository, empresasRepository, sucursalesRepository, departamentosRepository, notificationFactory, sessionFactory) {
+appControllers.controller('contratosEditarController', function ($scope, $state, contratoRepository, contratoDetalleRepository, empresasRepository, sucursalesRepository, departamentosRepository, notificationFactory, sessionFactory) {
     //Consigue la fecha actual
     var f = new Date();
     $scope.fechaTermino = f.getFullYear() + '' + (f.getMonth() + 1) + '' + f.getDate();
-    $scope.fFin=f.getDate() + '/' + + (f.getMonth() + 1) + '/' + f.getFullYear();
+    $scope.fFin = f.getDate() + '/' + +(f.getMonth() + 1) + '/' + f.getFullYear();
     //Consigue 1 año antes de la fecha actual
 
     $scope.fechaInicio = (f.getFullYear() - 5) + '' + (f.getMonth() + 1) + '' + f.getDate();
-    $scope.fInicio=f.getDate() + '/' + + (f.getMonth() + 1) + '/' + (f.getFullYear() - 5) ;
+    $scope.fInicio = f.getDate() + '/' + +(f.getMonth() + 1) + '/' + (f.getFullYear() - 1);
     //console.log($scope.fechaTermino)
     //console.log($scope.fechaInicio)
-        //Metodo de incio 
-    $scope.init = function() {
+    //Metodo de incio 
+    $scope.init = function () {
         //Cargo la lista de contratos
         $scope.idUsuario = 15; //user.idUsuario;
         cargaContratos();
@@ -19,18 +19,18 @@ appControllers.controller('contratosEditarController', function($scope, $state, 
     };
 
     //Obtiene la lista de Contratos 
-    var cargaContratos = function() {
+    var cargaContratos = function () {
         contratoRepository.obtieneContratos($scope.idUsuario)
             .then(
                 function succesCallback(response) {
                     //Success
                     $scope.listaContratos = response.data;
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $('.estiloTabla').DataTable({});
                         $("#tablaR_length").removeClass("dataTables_info").addClass("hide-div");
                         //$("#tablaR_filter").removeClass("dataTables_info").addClass("hide-div");
-                        $('input.column_filter').on('keyup click', function() {
+                        $('input.column_filter').on('keyup click', function () {
                             filterColumn($(this).parents('div').attr('data-column'));
                         });
                     }, 100);
@@ -43,7 +43,7 @@ appControllers.controller('contratosEditarController', function($scope, $state, 
     };
 
 
-    $scope.verDetalleContrato = function(contrato) {
+    $scope.verDetalleContrato = function (contrato) {
 
         contratoDetalleRepository.obtieneDetalleContrato(contrato.idContrato)
             .then(
@@ -56,7 +56,7 @@ appControllers.controller('contratosEditarController', function($scope, $state, 
                         fechaInicio: $scope.fechaInicio,
                         fechaFin: $scope.fechaTermino,
                         fInicio: $scope.fInicio,
-                        fFin:$scope.fFin 
+                        fFin: $scope.fFin
                     }, {
                         reload: true
                     });
@@ -70,7 +70,7 @@ appControllers.controller('contratosEditarController', function($scope, $state, 
 
 
     //Obtiene Empresas segun el perfil del Usuario
-    $scope.cargaEmpresas = function(idcliente) {
+    $scope.cargaEmpresas = function (idcliente) {
         empresasRepository.userEmpresas(idcliente)
             .then(
                 function succesCallback(response) {
@@ -84,7 +84,7 @@ appControllers.controller('contratosEditarController', function($scope, $state, 
     };
 
     //Obtiene Sucursales segun el perfil de Usuario
-    $scope.cargaSucursales = function(idcliente, idempresa) {
+    $scope.cargaSucursales = function (idcliente, idempresa) {
         $('#cboSucursal').attr('disabled', 'disabled');
         sucursalesRepository.userSucursales(idcliente, idempresa)
             .then(
@@ -101,7 +101,7 @@ appControllers.controller('contratosEditarController', function($scope, $state, 
     };
 
     //Obtiene los departamentos segun el Perfil del Usuario
-    $scope.cargaDepartamentos = function(idcliente, idempresa, idsucursal) {
+    $scope.cargaDepartamentos = function (idcliente, idempresa, idsucursal) {
         $('#cboDepartamento').attr('disabled', 'disabled');
         departamentosRepository.userDepartamentos(idcliente, idempresa, idsucursal)
             .then(
@@ -118,7 +118,7 @@ appControllers.controller('contratosEditarController', function($scope, $state, 
     };
 
     //Carga solo Contratos para este Perfil
-    $scope.cargaContratosEmp = function(idusuario, idempresa) {
+    $scope.cargaContratosEmp = function (idusuario, idempresa) {
         notificationFactory.success('Estoy en contratos segun Perfil');
 
         contratoRepository.obtieneContratosEmp(idusuario, idempresa)
@@ -127,7 +127,7 @@ appControllers.controller('contratosEditarController', function($scope, $state, 
                     //Success
                     $scope.listaContratos = response.data;
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $('.estiloTabla').DataTable({});
                         $("#tablaR_length").removeClass("dataTables_info").addClass("hide-div");
                         //$("#tablaR_filter").removeClass("dataTables_info").addClass("pull-left");
@@ -142,7 +142,7 @@ appControllers.controller('contratosEditarController', function($scope, $state, 
     };
 
     //Carga solo Contratos para este Perfil
-    $scope.cargaContratosSuc = function(idusuario, idempresa, idsucursal) {
+    $scope.cargaContratosSuc = function (idusuario, idempresa, idsucursal) {
         notificationFactory.success('Estoy en Sucursales');
 
 
@@ -152,7 +152,7 @@ appControllers.controller('contratosEditarController', function($scope, $state, 
                     //Success
                     $scope.listaContratos = response.data;
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         $('.estiloTabla').DataTable({});
                         $("#tablaR_length").removeClass("dataTables_info").addClass("hide-div");
                         //$("#tablaR_filter").removeClass("dataTables_info").addClass("pull-left");
