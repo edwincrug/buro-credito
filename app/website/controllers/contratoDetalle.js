@@ -148,7 +148,7 @@ contratoDetalle.prototype.get_rptdata = function (req, res, next) {
             type: self.model.types.STRING
     }];
 
-    this.model.query('SEL_DATOS_CLIENTE_SP_ModificarFechas', params, function (error, informacioncliente) {
+    this.model.query('SEL_DATOS_CLIENTE_REP_SP', params, function (error, informacioncliente) {
         console.log(informacioncliente)
         params = [{
                 name: 'idCliente',
@@ -165,13 +165,13 @@ contratoDetalle.prototype.get_rptdata = function (req, res, next) {
                 value: req.query.fechaFin,
                 type: self.model.types.STRING
     }]
-        self.model.querymulti('SEL_TOTAL_CREDITO_SP_TODAS_5_ModificarFechas', params, function (error, totales) {
+        self.model.querymulti('SEL_TOTAL_CREDITO_REP_SP', params, function (error, totales) {
             // console.log(totales)
 
-            self.model.querymulti('SEL_PAG_AGRUP_SP_5_ModificarFechas', params, function (error, docpagados) {
+            self.model.querymulti('SEL_PAG_PUNTUAL_REP_SP', params, function (error, docpagados) {
                 //console.log(docpagados)
 
-                self.model.querymulti('SEL_CARTERA_VENCIDA_AGRUP_SP_5_ModificarFechas', params, function (error, docnopagados) {
+                self.model.querymulti('SEL_CARTERA_VENCIDA_REP_SP', params, function (error, docnopagados) {
                     //console.log(docnopagados);
 
                     self.view.speakJSON(res, {
@@ -231,7 +231,7 @@ contratoDetalle.prototype.get_detallePagoDocumentos = function (req, res, next) 
         type: self.model.types.STRING
     }]
 
-    this.model.query('SEL_PAG_AGRUP_SP_ModificarFechas', params, function (error, result) {
+    this.model.query('SEL_PAG_PUNTUAL_AGRUP_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result
@@ -260,7 +260,7 @@ contratoDetalle.prototype.get_detallepagodocumentosextemporaneo = function (req,
         type: self.model.types.STRING
     }]
 
-    this.model.query('SEL_NO_PAG_AGRUP_SP_ModificarFechas', params, function (error, result) {
+    this.model.query('SEL_PAG_NO_PUNTUAL_AGRUP_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result
@@ -288,7 +288,7 @@ contratoDetalle.prototype.get_detalleNoPagados = function (req, res, next) {
         type: self.model.types.STRING
     }]
 
-    this.model.query('SEL_CARTERA_VENCIDA_AGRUP_SP_ModificarFechas', params, function (error, result) {
+    this.model.query('SEL_CARTERA_VENCIDA_AGRUP_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result
