@@ -111,81 +111,83 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     var cargaDocumentos = function () {
 
-        $scope.gridOptions = {
-            enableFiltering: true,
-            treeRowHeaderAlwaysVisible: false,
-            columnDefs: [
-                {
-                    name: 'empresa',
-                    grouping: {
-                        groupPriority: 0
-                    }
-                },
-                {
-                    name: 'sucursal',
-                    grouping: {
-                        groupPriority: 1
-                    }
-                },
-                {
-                    name: 'departamento',
-                    grouping: {
-                        groupPriority: 1
-                    }
-                    // treeAggregationType: uiGridGroupingConstants.aggregation.MAX
-                },
-                {
-                    name: 'tipoDocumento'
-                },
-                {
-                    name: 'idDocumento'
-                },
-                {
-                    name: 'fechaDocumento'
-                },
-                {
-                    name: 'fechaVencimiento'
-                },
-                {
-                    name: 'importe'
-                },
-                {
-                    name: 'saldo'
-                },
-                {
-                    name: 'dias0'
-                },
-                {
-                    name: 'dias30'
-                },
-                {
-                    name: 'dias60'
-                },
-                {
-                    name: 'dias90'
-                },
-                {
-                    name: 'dias120'
-                },
-                {
-                    name: 'diasMas120'
-                }
-
-    ]
-        };
+        //        $scope.gridOptions = {
+        //            enableFiltering: true,
+        //            treeRowHeaderAlwaysVisible: false,
+        //            columnDefs: [
+        //                {
+        //                    name: 'empresa',
+        //                    grouping: {
+        //                        groupPriority: 0
+        //                    }
+        //                },
+        //                {
+        //                    name: 'sucursal',
+        //                    grouping: {
+        //                        groupPriority: 1
+        //                    }
+        //                },
+        //                {
+        //                    name: 'departamento',
+        //                    grouping: {
+        //                        groupPriority: 1
+        //                    }
+        //                    // treeAggregationType: uiGridGroupingConstants.aggregation.MAX
+        //                },
+        //                {
+        //                    name: 'tipoDocumento'
+        //                },
+        //                {
+        //                    name: 'idDocumento'
+        //                },
+        //                {
+        //                    name: 'fechaDocumento'
+        //                },
+        //                {
+        //                    name: 'fechaVencimiento'
+        //                },
+        //                {
+        //                    name: 'importe'
+        //                },
+        //                {
+        //                    name: 'saldo'
+        //                },
+        //                {
+        //                    name: 'dias0'
+        //                },
+        //                {
+        //                    name: 'dias30'
+        //                },
+        //                {
+        //                    name: 'dias60'
+        //                },
+        //                {
+        //                    name: 'dias90'
+        //                },
+        //                {
+        //                    name: 'dias120'
+        //                },
+        //                {
+        //                    name: 'diasMas120'
+        //                }
+        //
+        //    ]
+        //        };
 
         $('#loadModal').modal('show');
 
         //Datos Cliente
         $scope.idcliente = $stateParams.contratoObj.idCliente;
         $scope.nombrecliente = $stateParams.contratoObj.nombreCliente;
+
         //Total Credito
         $scope.totalCredito = 0;
 
         $scope.totalPagPuntual = 0;
         $scope.totalPagInPuntual = 0;
+
         //Porcentajes Credito
-        $scope.porcCredito = 0; ///////////??
+        $scope.porcCredito = 0;
         $scope.porcNoPagado = 0; /////////// Total Cartera (Vencida y Por Vencer)
         $scope.porcPagPuntual = 0;
         $scope.porcPagInPuntual = 0;
@@ -198,8 +200,6 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         //                           Oculto cartera si la consulta no es el dia Actual
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         var f = new Date();
-        //alert('Fecha formato 1: ' + f.getDate() + '/' + (f.getMonth() + 1) + '/' + f.getFullYear());
-        //alert('Fecha formato 2: ' + f.getFullYear() + (f.getMonth() + 1) + f.getDate());
 
         var annioActual = f.getFullYear();
         var mesActual = f.getMonth() + 1;
@@ -214,8 +214,6 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
             $scope.ocultaCartera = 1;
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        //alert('Estoy en ver detalle Empresa: ' + $scope.nombreCliente);
 
         $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente, $scope.fechaInicio, $scope.fechaFin)
             .then(
@@ -239,11 +237,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
                                 $scope.listaNoPagados = response.data;
 
-                                //                                if (response.data.length == 0) {
-                                //                                    $scope.ocultaCartera = 1;
-                                //                                }
-
-                                $scope.gridOptions.data = response.data;
+                                //$scope.gridOptions.data = response.data;
 
                                 $scope.totalNoPagado = 0;
                                 $scope.totalNoPagadoVencido = 0;
@@ -259,10 +253,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
                                 $scope.totalNoPagado = $scope.totalPorVencer + $scope.totalVencido;
 
-                                //Vencido= Total - PorVencer
-                                //$scope.totalVencido = $scope.totalNoPagado - $scope.totalPorVencer;
 
-                                //////////////////////////
                                 contratoDetalleRepository.detallePagoDocumentosExtemporaneo($scope.idcliente, $scope.fechaInicio, $scope.fechaFin)
                                     .then(
                                         //Succes Pago No puntual
@@ -277,17 +268,11 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
                                             //Total de Credito
                                             $scope.totalCredito = $scope.totalNoPagado + $scope.totalPagPuntual + $scope.totalPagInPuntual;
-                                            //Cartera Vencida        //$scope.totalVencido
+                                            //Cartera Vencida       
                                             $scope.porcNoPagadoVencido = $scope.totalVencido * 100 / $scope.totalCredito;
-                                            //$scope.porcNoPagadoVencido = $scope.totalVencido * (-1);
-                                            //$scope.porcNoPagadoVencido = $scope.totalNoPagadoVencido * 100 / $scope.totalCredito;
-                                            //$scope.porcNoPagadoVencido = $scope.porcNoPagadoVencido * (-1);
 
-                                            //Cartera por Vencer     //$scope.totalPorVencer
+                                            //Cartera por Vencer     
                                             $scope.porcNoPagadoNoVencido = $scope.totalPorVencer * 100 / $scope.totalCredito;
-                                            //$scope.porcNoPagadoNoVencido = $scope.totalPorVencer * (-1);
-                                            //$scope.porcNoPagadoNoVencido = $scope.totalNoPagadoNoVencido * 100 / $scope.totalCredito;
-                                            //$scope.porcNoPagadoNoVencido = $scope.porcNoPagadoNoVencido * (-1);
 
                                             //Pagados
                                             $scope.porcPagInPuntual = $scope.totalPagInPuntual * 100 / $scope.totalCredito;
@@ -300,9 +285,11 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                                 $('.estiloTabla').DataTable({});
                                                 $("#nopagado_length").removeClass("dataTables_info").addClass("hide-div");
                                                 $("#inpuntual_length").removeClass("dataTables_info").addClass("hide-div");
-                                                $("#puntual_length").removeClass("dataTables_info").addClass("hide-div"); //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                                //                   Gráfica
-                                                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                $("#puntual_length").removeClass("dataTables_info").addClass("hide-div");
+
+                                                ///////////////////////////////////////////////////
+                                                ////                   Gráfica
+                                                ///////////////////////////////////////////////////
                                                 if ($("#morris_donut_graph").length) {
                                                     /*Donut Graph*/
                                                     Morris.Donut({
@@ -325,15 +312,9 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                                                         redraw: true,
                                                         backgroundColor: '#ffffff',
                                                         labelColor: '#1D242B',
-                                                        /*//#999999',*/
                                                         colors: [
-//                                                        '#FF5656','#FFCC00','#B3E55E',
-                                                       //Primera OPC //Cartera No vencida :  '#2EA1D9',
-                                                      '#FF5656', '#2EA1D9', '#FFCC00', '#9ACD32',
-                                                      //Otros  Mate
-                                                      //'#ed7e29', '#f0e428', '#8fbc21',
-                                                      //OBSCUROS
-                                                      //'#ce6800', '#ffd000', '#b2b206',
+                                                        //Primera OPC //Cartera No vencida :  '#2EA1D9',
+                                                        '#FF5656', '#2EA1D9', '#FFCC00', '#9ACD32',
                                                         '#ffcc00'
                                                     ],
                                                         formatter: function (x) {
@@ -636,24 +617,6 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
 
 
     }
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////
-
-    //    $scope.verPagosExtemporaneos = function (idcliente) {
-    //        contratoDetalleRepository.detallePagoDocumentosExtemporaneo(idcliente)
-    //            .then(
-    //                function succesCallback(response) {
-    //                    $scope.listaPagadosExtemporaneo = response.data;
-    //                    if (response.data[i].tipoPagoFecha == 2) {
-    //                        $scope.totalPagInPuntual += (response.data[i].cargo);
-    //                    }
-    //                },
-    //                function errorCallback(response) {
-    //                    //Error
-    //                    notificationFactory.error('No se pudieron obtener datos del Cliente: ' + response.data.message);
-    //                }
-    //            );
-    //    };
 
 
 }); //FIN de appControllers
