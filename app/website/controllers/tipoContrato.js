@@ -121,11 +121,7 @@ TipoContrato.prototype.delete_eliminartipocontrato_data = function (req, res, ne
 
 // GET GetAll para obtener todos los elementos
 TipoContrato.prototype.get_obtienetipocontrato = function (req, res, next) {
-    //Con req.query se obtienen los parametros de la url
-    //Ejemplo: ?p1=a&p2=b
-    //Retorna {p1:'a',p2:'b'}
-    //Objeto que envía los parámetros
-    //Referencia a la clase para callback
+
     var self = this;
     //Obtención de valores de los parámetros del request
     var params = [
@@ -146,11 +142,6 @@ TipoContrato.prototype.get_obtienetipocontrato = function (req, res, next) {
 
 // GET GetAll para obtener todos los documentos disponibles
 TipoContrato.prototype.get_obtienelistadocumentos = function (req, res, next) {
-    //Con req.query se obtienen los parametros de la url
-    //Ejemplo: ?p1=a&p2=b
-    //Retorna {p1:'a',p2:'b'}
-    //Objeto que envía los parámetros
-    //Referencia a la clase para callback
     var self = this;
     //Obtención de valores de los parámetros del request
     var params = [

@@ -19,45 +19,45 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
         }, //Fin Obtiene Detalle Contrato
 
         //2.-Genera PDF
-        generarPdf: function (idCliente) {
-            return $http({
-                url: contratoDetalleRepositoryURL + 'generarPdf/',
-                method: "GET",
-                params: {
-                    idCliente: idCliente
-                },
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-        }, //Fin de genera pdf 
+        //        generarPdf: function (idCliente) {
+        //            return $http({
+        //                url: contratoDetalleRepositoryURL + 'generarPdf/',
+        //                method: "GET",
+        //                params: {
+        //                    idCliente: idCliente
+        //                },
+        //                headers: {
+        //                    'Content-Type': 'application/json'
+        //                }
+        //            });
+        //        }, //Fin de genera pdf 
 
-        //3.-Genera PDF SERVER
-        generarPdfServer: function () {
-            return $http({
-                url: 'http://189.204.141.193:5488/api/report',
-                method: "POST",
-                data: {
-                    "template": {
-                        "name": "buro-credito"
-                    },
-                    "data": {
-                        "to": "Gerardo Sladek",
-                        "from": "Jan Blaha",
-                        "price": 90
-                    },
-                    "options": {
-                        "reports": {
-                            "save": true
-                        },
-                        "Content-Disposition": "attachment; filename=myreport.pdf"
-                    }
-                },
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-        }, //Fin de genera pdf Server
+        //        //3.-Genera PDF SERVER
+        //        generarPdfServer: function () {
+        //            return $http({
+        //                url: 'http://189.204.141.193:5488/api/report',
+        //                method: "POST",
+        //                data: {
+        //                    "template": {
+        //                        "name": "buro-credito"
+        //                    },
+        //                    "data": {
+        //                        "to": "Gerardo Sladek",
+        //                        "from": "Jan Blaha",
+        //                        "price": 90
+        //                    },
+        //                    "options": {
+        //                        "reports": {
+        //                            "save": true
+        //                        },
+        //                        "Content-Disposition": "attachment; filename=myreport.pdf"
+        //                    }
+        //                },
+        //                headers: {
+        //                    'Content-Type': 'application/json'
+        //                }
+        //            });
+        //        }, //Fin de genera pdf Server
 
         //3.-Obtiene Detalle Cliente
         obtieneDetalleCliente: function (idCliente) {
@@ -139,22 +139,20 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
         },
 
         //8.-Obtiene datos del Reporte PIPUS
-        generarPdfdata: function (idCliente,fechaInicio,fechaFin) {
+        generarPdfdata: function (idCliente, fechaInicio, fechaFin) {
             return $http({
                 url: contratoDetalleRepositoryURL + 'rptdata/',
                 method: "GET",
                 params: {
                     idCliente: idCliente,
-                    fechaInicio:fechaInicio,
-                    fechaFin:fechaFin
+                    fechaInicio: fechaInicio,
+                    fechaFin: fechaFin
                 },
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
         }, //Fin de genera pdf 
-
-
 
     }; //Fin del return
 
