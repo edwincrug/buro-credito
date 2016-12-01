@@ -1,23 +1,36 @@
-appControllers.controller('consultaBuroController', function($scope, $state, notificationFactory, sessionFactory, contratoRepository, contratoDetalleRepository) {
-    //Consigue la fecha actual
-    var f = new Date();
-    $scope.fechaTermino = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
-    //Consigue 1 año antes de la fecha actual
+appControllers.controller('consultaBuroController', function ($scope, $state, notificationFactory, sessionFactory, contratoRepository, contratoDetalleRepository) {
 
-    $scope.fechaInicio = f.getDate() + "/" + (f.getMonth() + 1) + "/" + (f.getFullYear() - 1);
     //Metodo de incio 
-    $scope.init = function() {
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //     Fechas de Inicio para la Consulta de los Documentos
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var f = new Date();
+
+    if (f.getDate() < 10) {
+        $scope.fechaTermino = "0" + f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
+        $scope.fechaInicio = "0" + f.getDate() + "/" + (f.getMonth() + 1) + "/" + (f.getFullYear() - 1);
+    } else {
+        //Consigue la fecha actual
+        $scope.fechaTermino = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
+        //Consigue 1 año antes de la fecha actual
+        $scope.fechaInicio = f.getDate() + "/" + (f.getMonth() + 1) + "/" + (f.getFullYear() - 1);
+    }
+
+    //alert('FechaTermino: ' + $scope.fechaTermino + ' FechaInicio' + $scope.fechaInicio);
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    $scope.init = function () {
         $('.datepicker').datepicker({});
     };
 
     //Limpiar variables de busqueda de Cliente
-    $scope.clearControls = function() {
+    $scope.clearControls = function () {
         $scope.txtBusqueda = undefined;
         $scope.idBusqueda = undefined;
     }
 
     //Buscar Cliente por Texto 
-    $scope.BuscaCliente = function(idBusqueda, txtBusqueda) {
+    $scope.BuscaCliente = function (idBusqueda, txtBusqueda) {
         if (idBusqueda != '' && idBusqueda != null) {
             $scope.BuscarClienteId(idBusqueda);
             $scope.clearControls();
@@ -30,7 +43,7 @@ appControllers.controller('consultaBuroController', function($scope, $state, not
     };
 
     //Obtiene todos los clientes coincidentes con la busqueda
-    $scope.BuscarCliente = function(txtBusqueda) {
+    $scope.BuscarCliente = function (txtBusqueda) {
         contratoRepository.obtieneDatosCliente($scope.txtBusqueda)
             .then(
                 function succesCallback(response) {
@@ -44,7 +57,7 @@ appControllers.controller('consultaBuroController', function($scope, $state, not
     };
 
     //Obtiene todos los clientes coincidentes con la busqueda
-    $scope.BuscarClienteId = function(idBusqueda) {
+    $scope.BuscarClienteId = function (idBusqueda) {
         contratoRepository.obtieneCliente($scope.idBusqueda)
             .then(
                 function succesCallback(response) {
@@ -57,7 +70,7 @@ appControllers.controller('consultaBuroController', function($scope, $state, not
         $scope.clearControls();
     };
 
-    $scope.verDetalleReporte = function(cliente, fechaInicio, fechaTermino) {
+    $scope.verDetalleReporte = function (cliente, fechaInicio, fechaTermino) {
         //////Begin Modificar fecha a año, mes, dia//////////
         var modifechaInic = fechaInicio.split('/');
         var newDateIni = modifechaInic[2] + modifechaInic[1] + modifechaInic[0];
@@ -83,7 +96,7 @@ appControllers.controller('consultaBuroController', function($scope, $state, not
     };
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////BEGIN Valida fechas ////////////////////////////////////////////////////////////////////////
-    $scope.validarFechar = function(fechaInicio, fechaFin) {
+    $scope.validarFechar = function (fechaInicio, fechaFin) {
             $scope.ocultarBtnBuscar = 1;
             if (fechaFin != undefined) {
                 valorInicio = fechaInicio.split("/");
