@@ -4,38 +4,26 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
     //     Fechas de Inicio para la Consulta de los Documentos
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var f = new Date();
+    var dia = f.getDate();
+    var mes = f.getMonth() + 1;
 
-    if (f.getDate() < 10) {
-        $scope.fechaTermino = f.getFullYear() + '' + (f.getMonth() + 1) + "0" + f.getDate();
-        $scope.fFin = "0" + f.getDate() + '/' + +(f.getMonth() + 1) + '/' + f.getFullYear();
-        //Consigue 1 año antes de la fecha actual
-        $scope.fechaInicio = (f.getFullYear() - 1) + '' + (f.getMonth() + 1) + "0" + f.getDate();
-        $scope.fInicio = "0" + f.getDate() + '/' + +(f.getMonth() + 1) + '/' + (f.getFullYear() - 1);
-
-    } else {
-
-        $scope.fechaTermino = f.getFullYear() + '' + (f.getMonth() + 1) + '' + f.getDate();
-        $scope.fFin = f.getDate() + '/' + +(f.getMonth() + 1) + '/' + f.getFullYear();
-        //Consigue 1 año antes de la fecha actual
-        $scope.fechaInicio = (f.getFullYear() - 1) + '' + (f.getMonth() + 1) + '' + f.getDate();
-        $scope.fInicio = f.getDate() + '/' + +(f.getMonth() + 1) + '/' + (f.getFullYear() - 1);
-
+    if (dia < 10) {
+        dia = "0" + dia;
     }
+
+    if (mes < 10) {
+        mes = "0" + mes;
+    }
+
+    //Fecha Actual
+    $scope.fechaTermino = f.getFullYear() + '' + mes + '' + dia;
+    $scope.fFin = dia + '/' + mes + '/' + f.getFullYear();
+    //Consigue 1 año antes de la fecha actual
+    $scope.fechaInicio = (f.getFullYear() - 1) + '' + mes + '' + dia;
+    $scope.fInicio = dia + '/' + mes + '/' + (f.getFullYear() - 1);
 
     //alert('FechaTermino: ' + $scope.fechaTermino + ' FechaInicio' + $scope.fechaInicio);
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-    //    //Consigue la fecha actual
-    //    var f = new Date();
-    //
-    //    $scope.fechaTermino = f.getFullYear() + '' + (f.getMonth() + 1) + '' + f.getDate();
-    //    $scope.fFin = f.getDate() + '/' + +(f.getMonth() + 1) + '/' + f.getFullYear();
-    //    //Consigue 1 año antes de la fecha actual
-    //
-    //    $scope.fechaInicio = (f.getFullYear() - 5) + '' + (f.getMonth() + 1) + '' + f.getDate();
-    //    $scope.fInicio = f.getDate() + '/' + +(f.getMonth() + 1) + '/' + (f.getFullYear() - 1);
-
 
     //Metodo de incio 
     $scope.init = function () {

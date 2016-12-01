@@ -1,24 +1,28 @@
 appControllers.controller('consultaBuroController', function ($scope, $state, notificationFactory, sessionFactory, contratoRepository, contratoDetalleRepository) {
 
-    //Metodo de incio 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //     Fechas de Inicio para la Consulta de los Documentos
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var f = new Date();
+    var dia = f.getDate();
+    var mes = f.getMonth() + 1;
 
-    if (f.getDate() < 10) {
-        $scope.fechaTermino = "0" + f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
-        $scope.fechaInicio = "0" + f.getDate() + "/" + (f.getMonth() + 1) + "/" + (f.getFullYear() - 1);
-    } else {
-        //Consigue la fecha actual
-        $scope.fechaTermino = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
-        //Consigue 1 año antes de la fecha actual
-        $scope.fechaInicio = f.getDate() + "/" + (f.getMonth() + 1) + "/" + (f.getFullYear() - 1);
+    if (dia < 10) {
+        dia = "0" + dia;
     }
 
-    //alert('FechaTermino: ' + $scope.fechaTermino + ' FechaInicio' + $scope.fechaInicio);
+    if (mes < 10) {
+        mes = "0" + mes;
+    }
+
+    //Consigue la fecha actual
+    $scope.fechaTermino = dia + "/" + mes + "/" + f.getFullYear();
+    //Consigue 1 año antes de la fecha actual
+    $scope.fechaInicio = dia + "/" + mes + "/" + (f.getFullYear() - 1);
+
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
+    //Metodo de incio 
     $scope.init = function () {
         $('.datepicker').datepicker({});
     };
