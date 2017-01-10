@@ -1,4 +1,4 @@
-appControllers.controller('consultaBuroController', function ($scope, $state, notificationFactory, sessionFactory, contratoRepository, contratoDetalleRepository) {
+appControllers.controller('consultaBuroController', function($scope, $state, notificationFactory, sessionFactory, contratoRepository, contratoDetalleRepository) {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //     Fechas de Inicio para la Consulta de los Documentos
@@ -23,18 +23,18 @@ appControllers.controller('consultaBuroController', function ($scope, $state, no
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Metodo de incio 
-    $scope.init = function () {
+    $scope.init = function() {
         $('.datepicker').datepicker({});
     };
 
     //Limpiar variables de busqueda de Cliente
-    $scope.clearControls = function () {
+    $scope.clearControls = function() {
         $scope.txtBusqueda = undefined;
         $scope.idBusqueda = undefined;
     }
 
     //Buscar Cliente por Texto 
-    $scope.BuscaCliente = function (idBusqueda, txtBusqueda) {
+    $scope.BuscaCliente = function(idBusqueda, txtBusqueda) {
         if (idBusqueda != '' && idBusqueda != null) {
             $scope.BuscarClienteId(idBusqueda);
             $scope.clearControls();
@@ -47,7 +47,7 @@ appControllers.controller('consultaBuroController', function ($scope, $state, no
     };
 
     //Obtiene todos los clientes coincidentes con la busqueda
-    $scope.BuscarCliente = function (txtBusqueda) {
+    $scope.BuscarCliente = function(txtBusqueda) {
         contratoRepository.obtieneDatosCliente($scope.txtBusqueda)
             .then(
                 function succesCallback(response) {
@@ -61,7 +61,7 @@ appControllers.controller('consultaBuroController', function ($scope, $state, no
     };
 
     //Obtiene todos los clientes coincidentes con la busqueda
-    $scope.BuscarClienteId = function (idBusqueda) {
+    $scope.BuscarClienteId = function(idBusqueda) {
         contratoRepository.obtieneCliente($scope.idBusqueda)
             .then(
                 function succesCallback(response) {
@@ -74,7 +74,7 @@ appControllers.controller('consultaBuroController', function ($scope, $state, no
         $scope.clearControls();
     };
 
-    $scope.verDetalleReporte = function (cliente, fechaInicio, fechaTermino) {
+    $scope.verDetalleReporte = function(cliente, fechaInicio, fechaTermino, tipodetalle) {
         //////Begin Modificar fecha a año, mes, dia//////////
         var modifechaInic = fechaInicio.split('/');
         var newDateIni = modifechaInic[2] + modifechaInic[1] + modifechaInic[0];
@@ -93,14 +93,15 @@ appControllers.controller('consultaBuroController', function ($scope, $state, no
             fechaInicio: $scope.fechaCreacion,
             fechaFin: $scope.fechaFin,
             fInicio: fechaInicio,
-            fFin: fechaTermino
+            fFin: fechaTermino,
+            tipodetalle: tipodetalle
         }, {
             reload: true
         });
     };
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////BEGIN Valida fechas ////////////////////////////////////////////////////////////////////////
-    $scope.validarFechar = function (fechaInicio, fechaFin) {
+    $scope.validarFechar = function(fechaInicio, fechaFin) {
             $scope.ocultarBtnBuscar = 1;
             if (fechaFin != undefined) {
                 valorInicio = fechaInicio.split("/");

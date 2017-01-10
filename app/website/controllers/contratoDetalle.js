@@ -238,6 +238,33 @@ contratoDetalle.prototype.get_detallePagoDocumentos = function (req, res, next) 
         });
     });
 };
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//   Pagos Documentos Detallado
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+contratoDetalle.prototype.get_detallepagodocumentosdet = function (req, res, next) {
+    var self = this;
+
+    params = [{
+        name: 'idCliente',
+        value: req.query.idCliente,
+        type: self.model.types.INT
+    }, {
+        name: 'fechaInicio',
+        value: req.query.fechaInicio,
+        type: self.model.types.STRING
+    }, {
+        name: 'fechaFin',
+        value: req.query.fechaFin,
+        type: self.model.types.STRING
+    }]
+
+    this.model.query('SEL_PAG_PUNTUAL_DET_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+};
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -261,6 +288,33 @@ contratoDetalle.prototype.get_detallepagodocumentosextemporaneo = function (req,
     }]
 
     this.model.query('SEL_PAG_NO_PUNTUAL_AGRUP_SP', params, function (error, result) {
+        self.view.speakJSON(res, {
+            error: error,
+            result: result
+        });
+    });
+};
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//   Pagos Documentos Extemporaneos
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+contratoDetalle.prototype.get_detallepagodocumentosextemporaneodet = function (req, res, next) {
+    var self = this;
+
+    params = [{
+        name: 'idCliente',
+        value: req.query.idCliente,
+        type: self.model.types.INT
+    }, {
+        name: 'fechaInicio',
+        value: req.query.fechaInicio,
+        type: self.model.types.STRING
+    }, {
+        name: 'fechaFin',
+        value: req.query.fechaFin,
+        type: self.model.types.STRING
+    }]
+
+    this.model.query('SEL_PAG_NO_PUNTUAL_DET_SP', params, function (error, result) {
         self.view.speakJSON(res, {
             error: error,
             result: result

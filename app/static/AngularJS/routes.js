@@ -46,7 +46,8 @@ angular.module('app.routes', ["LocalStorageModule"])
             fechaInicio: null,
             fechaFin: null,
             fInicio: null,
-            fFin: null
+            fFin: null,
+            tipodetalle: null
         }
     })
 

@@ -1,6 +1,8 @@
-appControllers.controller('contratoDetalleController', function ($scope, $state, Utils,
+appControllers.controller('contratoDetalleController', function($scope, $state, Utils,
     $sce, $stateParams, contratoDetalleRepository, notificationFactory, sessionFactory, datosClienteRepository, uiGridGroupingConstants) {
     //Consigue la fecha actual
+    $scope.tipodetalle = '';
+    $scope.mostrardias = false;
     var f = new Date();
     $scope.fecha = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
     $scope.message = 'Buscando...';
@@ -9,14 +11,14 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     $scope.ocultaCartera = 0;
 
     //Metodo de incio 
-    $scope.init = function () {
+    $scope.init = function() {
         $scope.detalle = sessionFactory.detalle;
 
         cargaDocumentos();
     };
 
     //Obtiene los datos del cliente
-    var cargaInfoCliente = function (idcliente) {
+    var cargaInfoCliente = function(idcliente) {
 
         datosClienteRepository.cargaInfoCliente(idcliente)
             .then(
@@ -88,7 +90,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //    /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    $scope.verDetalleCliente = function (idcliente) {
+    $scope.verDetalleCliente = function(idcliente) {
         contratoDetalleRepository.obtieneDetalleCliente(idcliente)
             .then(
                 function succesCallback(response) {
@@ -109,7 +111,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     //  Documentos 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
-    var cargaDocumentos = function () {
+    var cargaDocumentos = function() {
 
         //        $scope.gridOptions = {
         //            enableFiltering: true,
@@ -195,6 +197,8 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         //Fechas de la busqueda para los detalles del contrato
         $scope.fechaInicio = $stateParams.fechaInicio;
         $scope.fechaFin = $stateParams.fechaFin;
+        //Tipo de detalle soliccitado 1.-Detalle Agrupado 2.-Detalle
+        $scope.tipodetalle = $stateParams.tipodetalle;
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////// 
         //                           Oculto cartera si la consulta no es el dia Actual
@@ -214,141 +218,283 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
             $scope.ocultaCartera = 1;
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Si el detalle es agrupado $scope.tipodetalle=1
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        if ($scope.tipodetalle == 1) {
+            $scope.mostrardias = false;
+            $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente, $scope.fechaInicio, $scope.fechaFin) //Cambia
+                .then(
+                    //Succes Pagados
+                    function succesCallback(response) {
+                        notificationFactory.success('Detalle Documentos Pagados');
+                        $scope.listaPagados = response.data;
 
-        $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente, $scope.fechaInicio, $scope.fechaFin)
-            .then(
-                //Succes Pagados
-                function succesCallback(response) {
-                    notificationFactory.success('Detalle Documentos Pagados');
-                    $scope.listaPagados = response.data;
+                        //For Total Porcentajes Variables 
+                        for (var i = 0; i < response.data.length; i++) {
+                            //if (response.data[i].tipoPagoFecha == 1) {
+                            $scope.totalPagPuntual += (response.data[i].cargoTotal);
+                            //}
+                        }
 
-                    //For Total Porcentajes Variables 
-                    for (var i = 0; i < response.data.length; i++) {
-                        //if (response.data[i].tipoPagoFecha == 1) {
-                        $scope.totalPagPuntual += (response.data[i].cargoTotal);
-                        //}
-                    }
+                        contratoDetalleRepository.detalleNoPagados($scope.idcliente, $scope.fechaInicio, $scope.fechaFin) //Se queda igual
+                            .then(
+                                //Succes Cartera
+                                function succesCallback(response) {
+                                    notificationFactory.success('Detalle Documentos No Pagados');
 
-                    contratoDetalleRepository.detalleNoPagados($scope.idcliente, $scope.fechaInicio, $scope.fechaFin)
-                        .then(
-                            //Succes Cartera
-                            function succesCallback(response) {
-                                notificationFactory.success('Detalle Documentos No Pagados');
+                                    $scope.listaNoPagados = response.data;
 
-                                $scope.listaNoPagados = response.data;
+                                    //$scope.gridOptions.data = response.data;
 
-                                //$scope.gridOptions.data = response.data;
+                                    $scope.totalNoPagado = 0;
+                                    $scope.totalNoPagadoVencido = 0;
+                                    $scope.totalNoPagadoNoVencido = 0;
+                                    $scope.totalPorVencer = 0;
+                                    $scope.totalVencido = 0;
 
-                                $scope.totalNoPagado = 0;
-                                $scope.totalNoPagadoVencido = 0;
-                                $scope.totalNoPagadoNoVencido = 0;
-                                $scope.totalPorVencer = 0;
-                                $scope.totalVencido = 0;
+                                    for (var i = 0; i < response.data.length; i++) {
+                                        //$scope.totalNoPagado += (response.data[i].importeTotal);
+                                        $scope.totalPorVencer += (response.data[i].dias0);
+                                        $scope.totalVencido += (response.data[i].saldoVencido);
+                                    }
 
-                                for (var i = 0; i < response.data.length; i++) {
-                                    //$scope.totalNoPagado += (response.data[i].importeTotal);
-                                    $scope.totalPorVencer += (response.data[i].dias0);
-                                    $scope.totalVencido += (response.data[i].saldoVencido);
-                                }
-
-                                $scope.totalNoPagado = $scope.totalPorVencer + $scope.totalVencido;
+                                    $scope.totalNoPagado = $scope.totalPorVencer + $scope.totalVencido;
 
 
-                                contratoDetalleRepository.detallePagoDocumentosExtemporaneo($scope.idcliente, $scope.fechaInicio, $scope.fechaFin)
-                                    .then(
-                                        //Succes Pago No puntual
-                                        function succesCallback(response) {
-                                            $scope.listaPagadosExtemporaneo = response.data;
+                                    contratoDetalleRepository.detallePagoDocumentosExtemporaneo($scope.idcliente, $scope.fechaInicio, $scope.fechaFin) //Cambia
+                                        .then(
+                                            //Succes Pago No puntual
+                                            function succesCallback(response) {
+                                                $scope.listaPagadosExtemporaneo = response.data;
 
-                                            for (var i = 0; i < response.data.length; i++) {
-                                                //if (response.data[i].tipoPagoFecha == 2) {
-                                                $scope.totalPagInPuntual += (response.data[i].cargoTotal);
-                                                //}
-                                            }
-
-                                            //Total de Credito
-                                            $scope.totalCredito = $scope.totalNoPagado + $scope.totalPagPuntual + $scope.totalPagInPuntual;
-                                            //Cartera Vencida       
-                                            $scope.porcNoPagadoVencido = $scope.totalVencido * 100 / $scope.totalCredito;
-
-                                            //Cartera por Vencer     
-                                            $scope.porcNoPagadoNoVencido = $scope.totalPorVencer * 100 / $scope.totalCredito;
-
-                                            //Pagados
-                                            $scope.porcPagInPuntual = $scope.totalPagInPuntual * 100 / $scope.totalCredito;
-                                            $scope.porcPagPuntual = $scope.totalPagPuntual * 100 / $scope.totalCredito;
-
-                                            //Total
-                                            $scope.porcCredito = $scope.porcNoPagado + $scope.porcPagInPuntual + $scope.porcPagPuntual;
-
-                                            setTimeout(function () {
-                                                $('.estiloTabla').DataTable({});
-                                                $("#nopagado_length").removeClass("dataTables_info").addClass("hide-div");
-                                                $("#inpuntual_length").removeClass("dataTables_info").addClass("hide-div");
-                                                $("#puntual_length").removeClass("dataTables_info").addClass("hide-div");
-
-                                                ///////////////////////////////////////////////////
-                                                ////                   Gráfica
-                                                ///////////////////////////////////////////////////
-                                                if ($("#morris_donut_graph").length) {
-                                                    /*Donut Graph*/
-                                                    Morris.Donut({
-                                                        element: 'morris_donut_graph',
-                                                        data: [{
-                                                            value: $scope.porcNoPagadoVencido.toFixed(2),
-                                                            label: 'Cartera Vencida'
-                                                }, {
-                                                            value: $scope.porcNoPagadoNoVencido.toFixed(2),
-                                                            label: 'Cartera Por Vencer'
-                                                }, {
-                                                            value: $scope.porcPagInPuntual.toFixed(2),
-                                                            label: 'Pago Extemporáneo'
-                                                }, {
-                                                            value: $scope.porcPagPuntual.toFixed(2),
-                                                            label: 'Pago Puntual'
-
-                                                }],
-                                                        resize: true,
-                                                        redraw: true,
-                                                        backgroundColor: '#ffffff',
-                                                        labelColor: '#1D242B',
-                                                        colors: [
-                                                        //Primera OPC //Cartera No vencida :  '#2EA1D9',
-                                                        '#FF5656', '#2EA1D9', '#FFCC00', '#9ACD32',
-                                                        '#ffcc00'
-                                                    ],
-                                                        formatter: function (x) {
-                                                            return x + "%"
-                                                        }
-                                                    });
+                                                for (var i = 0; i < response.data.length; i++) {
+                                                    //if (response.data[i].tipoPagoFecha == 2) {
+                                                    $scope.totalPagInPuntual += (response.data[i].cargoTotal);
+                                                    //}
                                                 }
-                                            }, 1000);
 
-                                        },
-                                        //Error Pago No Puntual 
-                                        function errorCallback(response) {
-                                            //Error
-                                            notificationFactory.error('No se pudieron obtener datos del Cliente: ' + response.data.message);
-                                        }
-                                    );
-                            },
-                            //Error Cartera 
-                            function errorCallback(response) {
-                                notificationFactory.error('No se pudo obtener el detalle de los Documentos No Pagados');
-                            }
-                        );
-                    $('#loadModal').modal('hide');
-                },
-                //Error Pagados
-                function errorCallback(response) {
-                    notificationFactory.error('No se pudo obtener el detalle de los Documentos Pagados');
-                    $('#loadModal').modal('hide');
-                }
-            );
+                                                //Total de Credito
+                                                $scope.totalCredito = $scope.totalNoPagado + $scope.totalPagPuntual + $scope.totalPagInPuntual;
+                                                //Cartera Vencida       
+                                                $scope.porcNoPagadoVencido = $scope.totalVencido * 100 / $scope.totalCredito;
+
+                                                //Cartera por Vencer     
+                                                $scope.porcNoPagadoNoVencido = $scope.totalPorVencer * 100 / $scope.totalCredito;
+
+                                                //Pagados
+                                                $scope.porcPagInPuntual = $scope.totalPagInPuntual * 100 / $scope.totalCredito;
+                                                $scope.porcPagPuntual = $scope.totalPagPuntual * 100 / $scope.totalCredito;
+
+                                                //Total
+                                                $scope.porcCredito = $scope.porcNoPagado + $scope.porcPagInPuntual + $scope.porcPagPuntual;
+
+                                                setTimeout(function() {
+                                                    $('.estiloTabla').DataTable({});
+                                                    $("#nopagado_length").removeClass("dataTables_info").addClass("hide-div");
+                                                    $("#inpuntual_length").removeClass("dataTables_info").addClass("hide-div");
+                                                    $("#puntual_length").removeClass("dataTables_info").addClass("hide-div");
+
+                                                    ///////////////////////////////////////////////////
+                                                    ////                   Gráfica
+                                                    ///////////////////////////////////////////////////
+                                                    if ($("#morris_donut_graph").length) {
+                                                        /*Donut Graph*/
+                                                        Morris.Donut({
+                                                            element: 'morris_donut_graph',
+                                                            data: [{
+                                                                value: $scope.porcNoPagadoVencido.toFixed(2),
+                                                                label: 'Cartera Vencida'
+                                                            }, {
+                                                                value: $scope.porcNoPagadoNoVencido.toFixed(2),
+                                                                label: 'Cartera Por Vencer'
+                                                            }, {
+                                                                value: $scope.porcPagInPuntual.toFixed(2),
+                                                                label: 'Pago Extemporáneo'
+                                                            }, {
+                                                                value: $scope.porcPagPuntual.toFixed(2),
+                                                                label: 'Pago Puntual'
+
+                                                            }],
+                                                            resize: true,
+                                                            redraw: true,
+                                                            backgroundColor: '#ffffff',
+                                                            labelColor: '#1D242B',
+                                                            colors: [
+                                                                //Primera OPC //Cartera No vencida :  '#2EA1D9',
+                                                                '#FF5656', '#2EA1D9', '#FFCC00', '#9ACD32',
+                                                                '#ffcc00'
+                                                            ],
+                                                            formatter: function(x) {
+                                                                return x + "%"
+                                                            }
+                                                        });
+                                                    }
+                                                }, 1000);
+
+                                            },
+                                            //Error Pago No Puntual 
+                                            function errorCallback(response) {
+                                                //Error
+                                                notificationFactory.error('No se pudieron obtener datos del Cliente: ' + response.data.message);
+                                            }
+                                        );
+                                },
+                                //Error Cartera 
+                                function errorCallback(response) {
+                                    notificationFactory.error('No se pudo obtener el detalle de los Documentos No Pagados');
+                                }
+                            );
+                        $('#loadModal').modal('hide');
+                    },
+                    //Error Pagados
+                    function errorCallback(response) {
+                        notificationFactory.error('No se pudo obtener el detalle de los Documentos Pagados');
+                        $('#loadModal').modal('hide');
+                    }
+                );
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Si el detalle es "detallado" :P  $scope.tipodetalle=2
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+        else if ($scope.tipodetalle == 2) {
+            $scope.mostrardias = true;
+            $scope.promise = contratoDetalleRepository.detallePagoDocumentosDet($scope.idcliente, $scope.fechaInicio, $scope.fechaFin) //Cambia
+                .then(
+                    //Succes Pagados
+                    function succesCallback(response) {
+                        notificationFactory.success('Detalle Documentos Pagados');
+                        $scope.listaPagados = response.data;
+
+                        //For Total Porcentajes Variables 
+                        for (var i = 0; i < response.data.length; i++) {
+                            //if (response.data[i].tipoPagoFecha == 1) {
+                            $scope.totalPagPuntual += (response.data[i].cargoTotal);
+                            //}
+                        }
+
+                        contratoDetalleRepository.detalleNoPagados($scope.idcliente, $scope.fechaInicio, $scope.fechaFin) //Se queda igual
+                            .then(
+                                //Succes Cartera
+                                function succesCallback(response) {
+                                    notificationFactory.success('Detalle Documentos No Pagados');
+
+                                    $scope.listaNoPagados = response.data;
+
+                                    //$scope.gridOptions.data = response.data;
+
+                                    $scope.totalNoPagado = 0;
+                                    $scope.totalNoPagadoVencido = 0;
+                                    $scope.totalNoPagadoNoVencido = 0;
+                                    $scope.totalPorVencer = 0;
+                                    $scope.totalVencido = 0;
+
+                                    for (var i = 0; i < response.data.length; i++) {
+                                        //$scope.totalNoPagado += (response.data[i].importeTotal);
+                                        $scope.totalPorVencer += (response.data[i].dias0);
+                                        $scope.totalVencido += (response.data[i].saldoVencido);
+                                    }
+
+                                    $scope.totalNoPagado = $scope.totalPorVencer + $scope.totalVencido;
+
+
+                                    contratoDetalleRepository.detallePagoDocumentosExtemporaneoDet($scope.idcliente, $scope.fechaInicio, $scope.fechaFin) //Cambia
+                                        .then(
+                                            //Succes Pago No puntual
+                                            function succesCallback(response) {
+                                                $scope.listaPagadosExtemporaneo = response.data;
+
+                                                for (var i = 0; i < response.data.length; i++) {
+                                                    //if (response.data[i].tipoPagoFecha == 2) {
+                                                    $scope.totalPagInPuntual += (response.data[i].cargoTotal);
+                                                    //}
+                                                }
+
+                                                //Total de Credito
+                                                $scope.totalCredito = $scope.totalNoPagado + $scope.totalPagPuntual + $scope.totalPagInPuntual;
+                                                //Cartera Vencida       
+                                                $scope.porcNoPagadoVencido = $scope.totalVencido * 100 / $scope.totalCredito;
+
+                                                //Cartera por Vencer     
+                                                $scope.porcNoPagadoNoVencido = $scope.totalPorVencer * 100 / $scope.totalCredito;
+
+                                                //Pagados
+                                                $scope.porcPagInPuntual = $scope.totalPagInPuntual * 100 / $scope.totalCredito;
+                                                $scope.porcPagPuntual = $scope.totalPagPuntual * 100 / $scope.totalCredito;
+
+                                                //Total
+                                                $scope.porcCredito = $scope.porcNoPagado + $scope.porcPagInPuntual + $scope.porcPagPuntual;
+
+                                                setTimeout(function() {
+                                                    $('.estiloTabla').DataTable({});
+                                                    $("#nopagado_length").removeClass("dataTables_info").addClass("hide-div");
+                                                    $("#inpuntual_length").removeClass("dataTables_info").addClass("hide-div");
+                                                    $("#puntual_length").removeClass("dataTables_info").addClass("hide-div");
+
+                                                    ///////////////////////////////////////////////////
+                                                    ////                   Gráfica
+                                                    ///////////////////////////////////////////////////
+                                                    if ($("#morris_donut_graph").length) {
+                                                        /*Donut Graph*/
+                                                        Morris.Donut({
+                                                            element: 'morris_donut_graph',
+                                                            data: [{
+                                                                value: $scope.porcNoPagadoVencido.toFixed(2),
+                                                                label: 'Cartera Vencida'
+                                                            }, {
+                                                                value: $scope.porcNoPagadoNoVencido.toFixed(2),
+                                                                label: 'Cartera Por Vencer'
+                                                            }, {
+                                                                value: $scope.porcPagInPuntual.toFixed(2),
+                                                                label: 'Pago Extemporáneo'
+                                                            }, {
+                                                                value: $scope.porcPagPuntual.toFixed(2),
+                                                                label: 'Pago Puntual'
+
+                                                            }],
+                                                            resize: true,
+                                                            redraw: true,
+                                                            backgroundColor: '#ffffff',
+                                                            labelColor: '#1D242B',
+                                                            colors: [
+                                                                //Primera OPC //Cartera No vencida :  '#2EA1D9',
+                                                                '#FF5656', '#2EA1D9', '#FFCC00', '#9ACD32',
+                                                                '#ffcc00'
+                                                            ],
+                                                            formatter: function(x) {
+                                                                return x + "%"
+                                                            }
+                                                        });
+                                                    }
+                                                }, 1000);
+
+                                            },
+                                            //Error Pago No Puntual 
+                                            function errorCallback(response) {
+                                                //Error
+                                                notificationFactory.error('No se pudieron obtener datos del Cliente: ' + response.data.message);
+                                            }
+                                        );
+                                },
+                                //Error Cartera 
+                                function errorCallback(response) {
+                                    notificationFactory.error('No se pudo obtener el detalle de los Documentos No Pagados');
+                                }
+                            );
+                        $('#loadModal').modal('hide');
+                    },
+                    //Error Pagados
+                    function errorCallback(response) {
+                        notificationFactory.error('No se pudo obtener el detalle de los Documentos Pagados');
+                        $('#loadModal').modal('hide');
+                    }
+                );
+        } else {
+            notificationFactory.error('Ocurrio un error');
+        }
     }; //Fin de Documentos
 
     //Boton Cancelar
-    $scope.Regresar = function () {
+    $scope.Regresar = function() {
         $state.go('home');
     };
 
@@ -357,7 +503,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //    Manda a Generar el PDF con Grafica
     //////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $scope.clasificar = function (obj, status) {
+    $scope.clasificar = function(obj, status) {
         var arr = [];
 
         for (var i = 0; i < obj.length; i++) {
@@ -369,7 +515,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
         return arr;
     };
 
-    $scope.sumar = function (obj, fieldName) {
+    $scope.sumar = function(obj, fieldName) {
         var total = 0;
 
         for (var i = 0; i < obj.length; i++) {
@@ -382,11 +528,11 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
     //////////////////////////////////////////////////////////////////////////////////////////////////
     //    Manda a Generar el PDF con Grafica ultima version (18/nov/2016)
     //////////////////////////////////////////////////////////////////////////////////////////////////
-    $scope.generarPdfdata = function () {
+    $scope.generarPdfdata = function() {
         $('#loadModal').modal('show');
         $scope.idcliente = $stateParams.contratoObj.idCliente;
 
-        contratoDetalleRepository.generarPdfdata($scope.idcliente, $scope.fechaInicio, $scope.fechaFin).then(function (result) {
+        contratoDetalleRepository.generarPdfdata($scope.idcliente, $scope.fechaInicio, $scope.fechaFin).then(function(result) {
 
             var lstEmpresa = [];
             var lstGraficas = [];
@@ -422,7 +568,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                             departamento: "0",
                             cartera: "0",
                             credito: "0"
-                            }],
+                        }],
                         "cartera": [{
                             idEmpresa: "0",
                             empresa: "",
@@ -439,7 +585,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                             saldoS: "0",
                             saldoT: "0",
                             saldoC: "0"
-                            }],
+                        }],
                         "extemporaneo": [{
                             tabla: "0",
                             tipoPagoFecha: "0",
@@ -454,7 +600,7 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                             saldo: "0",
                             saldoAFavor: "0",
                             saldoTotalTipo: "0"
-                            }], //estatus =2
+                        }], //estatus =2
                         "puntual": [{
                             tabla: "0",
                             tipoPagoFecha: "0",
@@ -469,33 +615,30 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                             saldo: "0",
                             saldoAFavor: "0",
                             saldoTotalTipo: "0"
-                            }]
+                        }]
                     };
 
                     graficaObj = {
                         "colorSet": "greenShades",
                         "data": [{
                             "type": "doughnut",
-                            "dataPoints": [
-                                {
+                            "dataPoints": [{
                                     "y": 1,
                                     "indexLabel": "Cartera Vencida"
-                                    },
-                                {
+                                }, {
                                     "y": 1,
                                     "indexLabel": "Cartera No Vencida"
-                                    }, //saldoP
+                                }, //saldoP
                                 {
                                     "y": 1,
                                     "indexLabel": "Pago No Puntual"
-                                    },
-                                {
+                                }, {
                                     "y": 1,
                                     "indexLabel": "Pago Puntual"
-                                    }
+                                }
 
-                                ]
-                            }]
+                            ]
+                        }]
                     };
 
                 } else {
@@ -542,26 +685,23 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
                         "colorSet": "greenShades",
                         "data": [{
                             "type": "doughnut",
-                            "dataPoints": [
-                                {
+                            "dataPoints": [{
                                     "y": carteraVencida,
                                     "indexLabel": "Cartera Vencida"
-                                    },
-                                {
+                                }, {
                                     "y": carteraNoVencida,
                                     "indexLabel": "Cartera No Vencida"
-                                    }, //saldoP
+                                }, //saldoP
                                 {
                                     "y": pagoNoPuntual,
                                     "indexLabel": "Pago No Puntual"
-                                    },
-                                {
+                                }, {
                                     "y": pagoPuntual,
                                     "indexLabel": "Pago Puntual"
-                                    }
+                                }
 
-                                ]
-                            }]
+                            ]
+                        }]
                     };
 
 
@@ -603,9 +743,9 @@ appControllers.controller('contratoDetalleController', function ($scope, $state,
             console.log(resdata);
             */
 
-            contratoDetalleRepository.callExternalPdf(jsonData).then(function (fileName) {
+            contratoDetalleRepository.callExternalPdf(jsonData).then(function(fileName) {
 
-                setTimeout(function () {
+                setTimeout(function() {
                     window.open("http://192.168.20.9:5000/api/layout/viewpdf?fileName=" + fileName.data);
                     console.log(fileName.data);
                     $('#loadModal').modal('hide');
