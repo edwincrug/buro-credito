@@ -72,7 +72,8 @@ appControllers.controller('contratosEditarController', function ($scope, $state,
                         fechaInicio: $scope.fechaInicio,
                         fechaFin: $scope.fechaTermino,
                         fInicio: $scope.fInicio,
-                        fFin: $scope.fFin
+                        fFin: $scope.fFin,
+                        tipodetalle: 1
                     }, {
                         reload: true
                     });
