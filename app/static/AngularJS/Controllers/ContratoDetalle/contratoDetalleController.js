@@ -2,7 +2,6 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
     $sce, $stateParams, contratoDetalleRepository, notificationFactory, sessionFactory, datosClienteRepository, uiGridGroupingConstants) {
     //Consigue la fecha actual
     $scope.tipodetalle = '';
-    $scope.mostrardias = false;
     var f = new Date();
     $scope.fecha = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
     $scope.message = 'Buscando...';
@@ -221,7 +220,6 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
         //Si el detalle es agrupado $scope.tipodetalle=1
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
         if ($scope.tipodetalle == 1) {
-            $scope.mostrardias = false;
             $scope.promise = contratoDetalleRepository.detallePagoDocumentos($scope.idcliente, $scope.fechaInicio, $scope.fechaFin) //Cambia
                 .then(
                     //Succes Pagados
@@ -357,7 +355,6 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
         //Si el detalle es "detallado" :P  $scope.tipodetalle=2
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
         else if ($scope.tipodetalle == 2) {
-            $scope.mostrardias = true;
             $scope.promise = contratoDetalleRepository.detallePagoDocumentosDet($scope.idcliente, $scope.fechaInicio, $scope.fechaFin) //Cambia
                 .then(
                     //Succes Pagados

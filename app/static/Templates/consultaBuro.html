@@ -59,8 +59,8 @@
                                 <th>Nombre</th>
                                 <th>RFC</th>
                                 <th>Correo</th>
-                                <th>Consultar Detalle Agrupado</th>
-                                <th>Consultar Detalle</th>
+                                <th>Resumen</th>
+                                <th>Detalle</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -70,12 +70,12 @@
                                 <td> {{ cliente.rfc }} </td>
                                 <td> {{ cliente.email }} </td>
                                 <td>
-                                    <button class="btn btn-primary linkedin" tooltip="Ir" data-toggle="tooltip" data-placement="top" title="Reporte de Crédito" ng-click="verDetalleReporte(cliente,fechaInicio,fechaTermino,1)" ng-hide="ocultarBtnBuscar==1">
+                                    <button class="btn btn-primary" tooltip="Ir" data-toggle="tooltip" data-placement="top" title="Reporte de Crédito" ng-click="verDetalleReporte(cliente,fechaInicio,fechaTermino,1)" ng-hide="ocultarBtnBuscar==1">
                                         <span class="fa fa-binoculars" aria-hidden="true"></span>
                                     </button>
                                 </td>
                                 <td>
-                                    <button class="btn btn-primary linkedin" tooltip="Ir" data-toggle="tooltip" data-placement="top" title="Reporte de Crédito" ng-click="verDetalleReporte(cliente,fechaInicio,fechaTermino,2)" ng-hide="ocultarBtnBuscar==1">
+                                    <button class="btn btn-success" tooltip="Ir" data-toggle="tooltip" data-placement="top" title="Reporte de Crédito" ng-click="verDetalleReporte(cliente,fechaInicio,fechaTermino,2)" ng-hide="ocultarBtnBuscar==1">
                                         <span class="fa fa-binoculars" aria-hidden="true"></span>
                                     </button>
                                 </td>
