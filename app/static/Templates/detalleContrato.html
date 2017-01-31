@@ -20,8 +20,8 @@
     <div class="clearfix"></div>
     <div class="col-xs-12">
         <!-- <button type="button" class="btn btn-primary pull-right" ng-click="generarPdf()">Generar Rep Ant</button> -->
+        <button type="button" class="btn btn-primary pull-right" ng-click="generarPdfdata()">Reporte Detalle</button>
         <button type="button" class="btn btn-primary pull-right" ng-click="generarPdfdata()">Reporte Resumen</button>
-        <button type="button" class="btn btn-success pull-right" ng-click="generarPdfdata()">Reporte Detalles</button>
     </div>
 
     <!-- Totales -->
@@ -411,7 +411,7 @@
                                     <!--td>{{ pagado.serie }}</td-->
                                     <!-- <td class="tdMonto">{{ pagado.fechaVencimiento }}</td> -->
                                     <td class="tdMonto">{{pagadoExtemporaneo.cargoTotal | currency}}</td>
-                                    <td>{{pagadoExtemporaneo.dias}}</td>
+                                    <td class="tdMonto">{{pagadoExtemporaneo.dias}}</td>
                                     <!--td class="tdMonto">{{ pagadoExtemporaneo.saldoTotal | currency }}</td-->
                                     <!--td><img src="\images\correcto.png" width="35" height="35"></td-->
                                     <td class="tdMonto"><span class="iconopago fa fa-exclamation" aria-hidden="true" style="color:  #FFCC00 ;"></span></td>
@@ -476,7 +476,7 @@
                                     <!--td>{{ pagado.serie }}</td-->
                                     <!-- <td class="tdMonto">{{ pagado.fechaVencimiento }}</td> -->
                                     <td class="tdMonto">{{pagado.cargoTotal | currency}}</td>
-                                    <td>{{pagado.dias}}</td>
+                                    <td class="tdMonto">{{pagado.dias}}</td>
                                     <!--td class="tdMonto">{{ pagado.saldoTotal | currency }}</td-->
                                     <!--td><img src="\images\correcto.png" width="35" height="35"></td-->
                                     <td class="tdMonto"><span class="iconopago fa fa-check" aria-hidden="true" style="color: #9ACD32;"></span></td>
