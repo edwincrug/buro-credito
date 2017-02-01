@@ -151,7 +151,25 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
             });
         }, //Fin Detalle Documentos 
 
-        //7.-Llama al servico y crea PDF  PIPUS
+        ////////////////////////////////////////////////////////////////////////////////////// 
+        //7.-Obtiene datos del Reporte PIPUS
+        //////////////////////////////////////////////////////////////////////////////////////
+        generarPdfdata: function (idCliente, fechaInicio, fechaFin) {
+            return $http({
+                url: contratoDetalleRepositoryURL + 'rptdata/',
+                method: "GET",
+                params: {
+                    idCliente: idCliente,
+                    fechaInicio: fechaInicio,
+                    fechaFin: fechaFin
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }, //Fin de genera pdf 
+
+        //8.-Llama al servico y crea PDF  PIPUS
         callExternalPdf: function (jsonData) {
             console.log('Llamada externa');
             return $http({
@@ -168,10 +186,12 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
             });
         },
 
-        //8.-Obtiene datos del Reporte PIPUS
-        generarPdfdata: function (idCliente, fechaInicio, fechaFin) {
+        //////////////////////////////////////////////////////////////////////////////////////
+        //9.-Obtiene datos del Reporte PIPUS 2
+        //////////////////////////////////////////////////////////////////////////////////////
+        generarPdfdataDet: function (idCliente, fechaInicio, fechaFin) {
             return $http({
-                url: contratoDetalleRepositoryURL + 'rptdata/',
+                url: contratoDetalleRepositoryURL + 'rptdatadet/',
                 method: "GET",
                 params: {
                     idCliente: idCliente,
@@ -183,6 +203,23 @@ appServices.factory('contratoDetalleRepository', function ($http, configurationF
                 }
             });
         }, //Fin de genera pdf 
+
+        //10.-Llama al servico y crea PDF  PIPUS
+        callExternalPdf2: function (jsonData) {
+            console.log('Llamada externa2');
+            return $http({
+                //url: 'http://189.204.141.193:5488/api/report/',
+                url: 'http://192.168.20.9:5000/api/layout/newpdf/',
+                method: "POST",
+                data: {
+                    values: jsonData
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+
+            });
+        },
 
     }; //Fin del return
 

@@ -1,4 +1,4 @@
-appControllers.controller('contratoDetalleController', function($scope, $state, Utils,
+appControllers.controller('contratoDetalleController', function ($scope, $state, Utils,
     $sce, $stateParams, contratoDetalleRepository, notificationFactory, sessionFactory, datosClienteRepository, uiGridGroupingConstants) {
     //Consigue la fecha actual
     $scope.tipodetalle = '';
@@ -10,14 +10,14 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
     $scope.ocultaCartera = 0;
 
     //Metodo de incio 
-    $scope.init = function() {
+    $scope.init = function () {
         $scope.detalle = sessionFactory.detalle;
 
         cargaDocumentos();
     };
 
     //Obtiene los datos del cliente
-    var cargaInfoCliente = function(idcliente) {
+    var cargaInfoCliente = function (idcliente) {
 
         datosClienteRepository.cargaInfoCliente(idcliente)
             .then(
@@ -89,7 +89,7 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
     //    /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    $scope.verDetalleCliente = function(idcliente) {
+    $scope.verDetalleCliente = function (idcliente) {
         contratoDetalleRepository.obtieneDetalleCliente(idcliente)
             .then(
                 function succesCallback(response) {
@@ -110,7 +110,7 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     //  Documentos 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
-    var cargaDocumentos = function() {
+    var cargaDocumentos = function () {
 
         //        $scope.gridOptions = {
         //            enableFiltering: true,
@@ -286,7 +286,7 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
                                                 //Total
                                                 $scope.porcCredito = $scope.porcNoPagado + $scope.porcPagInPuntual + $scope.porcPagPuntual;
 
-                                                setTimeout(function() {
+                                                setTimeout(function () {
                                                     $('.estiloTabla').DataTable({});
                                                     $("#nopagado_length").removeClass("dataTables_info").addClass("hide-div");
                                                     $("#inpuntual_length").removeClass("dataTables_info").addClass("hide-div");
@@ -322,7 +322,7 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
                                                                 '#FF5656', '#2EA1D9', '#FFCC00', '#9ACD32',
                                                                 '#ffcc00'
                                                             ],
-                                                            formatter: function(x) {
+                                                            formatter: function (x) {
                                                                 return x + "%"
                                                             }
                                                         });
@@ -421,7 +421,7 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
                                                 //Total
                                                 $scope.porcCredito = $scope.porcNoPagado + $scope.porcPagInPuntual + $scope.porcPagPuntual;
 
-                                                setTimeout(function() {
+                                                setTimeout(function () {
                                                     $('.estiloTabla').DataTable({});
                                                     $("#nopagado_length").removeClass("dataTables_info").addClass("hide-div");
                                                     $("#inpuntual_length").removeClass("dataTables_info").addClass("hide-div");
@@ -457,7 +457,7 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
                                                                 '#FF5656', '#2EA1D9', '#FFCC00', '#9ACD32',
                                                                 '#ffcc00'
                                                             ],
-                                                            formatter: function(x) {
+                                                            formatter: function (x) {
                                                                 return x + "%"
                                                             }
                                                         });
@@ -491,7 +491,7 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
     }; //Fin de Documentos
 
     //Boton Cancelar
-    $scope.Regresar = function() {
+    $scope.Regresar = function () {
         $state.go('home');
     };
 
@@ -500,7 +500,7 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
     //    Manda a Generar el PDF con Grafica
     //////////////////////////////////////////////////////////////////////////////////////////////////
 
-    $scope.clasificar = function(obj, status) {
+    $scope.clasificar = function (obj, status) {
         var arr = [];
 
         for (var i = 0; i < obj.length; i++) {
@@ -512,7 +512,7 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
         return arr;
     };
 
-    $scope.sumar = function(obj, fieldName) {
+    $scope.sumar = function (obj, fieldName) {
         var total = 0;
 
         for (var i = 0; i < obj.length; i++) {
@@ -525,11 +525,11 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
     //////////////////////////////////////////////////////////////////////////////////////////////////
     //    Manda a Generar el PDF con Grafica ultima version (18/nov/2016)
     //////////////////////////////////////////////////////////////////////////////////////////////////
-    $scope.generarPdfdata = function() {
+    $scope.generarPdfdata = function () {
         $('#loadModal').modal('show');
         $scope.idcliente = $stateParams.contratoObj.idCliente;
 
-        contratoDetalleRepository.generarPdfdata($scope.idcliente, $scope.fechaInicio, $scope.fechaFin).then(function(result) {
+        contratoDetalleRepository.generarPdfdata($scope.idcliente, $scope.fechaInicio, $scope.fechaFin).then(function (result) {
 
             var lstEmpresa = [];
             var lstGraficas = [];
@@ -596,7 +596,8 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
                             cargo: "0",
                             saldo: "0",
                             saldoAFavor: "0",
-                            saldoTotalTipo: "0"
+                            saldoTotalTipo: "0",
+                            dias: "0" //Agregado para nuevo Requerimiento
                         }], //estatus =2
                         "puntual": [{
                             tabla: "0",
@@ -611,7 +612,8 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
                             cargo: "0",
                             saldo: "0",
                             saldoAFavor: "0",
-                            saldoTotalTipo: "0"
+                            saldoTotalTipo: "0",
+                            dias: "0" //Agregado para nuevo Requerimiento
                         }]
                     };
 
@@ -740,9 +742,9 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
             console.log(resdata);
             */
 
-            contratoDetalleRepository.callExternalPdf(jsonData).then(function(fileName) {
+            contratoDetalleRepository.callExternalPdf(jsonData).then(function (fileName) {
 
-                setTimeout(function() {
+                setTimeout(function () {
                     window.open("http://192.168.20.9:5000/api/layout/viewpdf?fileName=" + fileName.data);
                     console.log(fileName.data);
                     $('#loadModal').modal('hide');
@@ -752,6 +754,239 @@ appControllers.controller('contratoDetalleController', function($scope, $state, 
 
         });
 
+    };
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    //    Manda a Generar el PDF con Grafica ultima version (31/enero/2017)
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    $scope.generarPdfdataDet = function () {
+        $('#loadModal').modal('show');
+        $scope.idcliente = $stateParams.contratoObj.idCliente;
+
+        contratoDetalleRepository.generarPdfdataDet($scope.idcliente, $scope.fechaInicio, $scope.fechaFin).then(function (result) {
+
+            var lstEmpresa = [];
+            var lstGraficas = [];
+
+            for (var i = 0; i < result.data.listaTotales.length; i++) {
+
+                var empresa = {};
+                var obj = {};
+                var graficaObj = {};
+
+                if (result.data.listaTotales[i][0] == null) {
+                    obj = {
+                        "showPage": false,
+                        "empresa": {
+                            tabla: "0",
+                            idEmpresa: "0",
+                            empresa: "",
+                            idSucursal: "0",
+                            sucursal: "0",
+                            idDepartamento: "0",
+                            departamento: "0",
+                            cartera: "0",
+                            credito: "0"
+                        },
+                        "cliente": {},
+                        "limites": [{
+                            tabla: "0",
+                            idEmpresa: "0",
+                            empresa: "",
+                            idSucursal: "0",
+                            sucursal: "0",
+                            idDepartamento: "0",
+                            departamento: "0",
+                            cartera: "0",
+                            credito: "0"
+                        }],
+                        "cartera": [{
+                            idEmpresa: "0",
+                            empresa: "",
+                            idSucursal: "0",
+                            sucursal: "0",
+                            idDepartamento: "0",
+                            departamento: "0",
+                            conteoTotal: "0",
+                            importeTotal: "0",
+                            saldoTotal: "0",
+                            porVencer: "0",
+                            saldo: "0",
+                            saldoP: "0",
+                            saldoS: "0",
+                            saldoT: "0",
+                            saldoC: "0"
+                        }],
+                        "extemporaneo": [{
+                            tabla: "0",
+                            tipoPagoFecha: "0",
+                            idEmpresa: "0",
+                            empresa: "0",
+                            idSucursal: "0",
+                            sucursal: "0",
+                            idDepartamento: "0",
+                            departamento: "0",
+                            totalDoctos: "0",
+                            cargo: "0",
+                            saldo: "0",
+                            saldoAFavor: "0",
+                            saldoTotalTipo: "0",
+                            dias: "0" //Agregado para nuevo Requerimiento
+                        }], //estatus =2
+                        "puntual": [{
+                            tabla: "0",
+                            tipoPagoFecha: "0",
+                            idEmpresa: "0",
+                            empresa: "0",
+                            idSucursal: "0",
+                            sucursal: "0",
+                            idDepartamento: "0",
+                            departamento: "0",
+                            totalDoctos: "0",
+                            cargo: "0",
+                            saldo: "0",
+                            saldoAFavor: "0",
+                            saldoTotalTipo: "0",
+                            dias: "0" //Agregado para nuevo Requerimiento
+                        }]
+                    };
+
+                    graficaObj = {
+                        "colorSet": "greenShades",
+                        "data": [{
+                            "type": "doughnut",
+                            "dataPoints": [{
+                                    "y": 1,
+                                    "indexLabel": "Cartera Vencida"
+                                }, {
+                                    "y": 1,
+                                    "indexLabel": "Cartera No Vencida"
+                                }, //saldoP
+                                {
+                                    "y": 1,
+                                    "indexLabel": "Pago No Puntual"
+                                }, {
+                                    "y": 1,
+                                    "indexLabel": "Pago Puntual"
+                                }
+
+                            ]
+                        }]
+                    };
+
+                } else {
+                    obj = {
+                        "showPage": true,
+                        "empresa": result.data.listaTotales[i][0],
+                        "cliente": result.data.informacioncliente,
+                        "limites": result.data.listaTotales[i],
+                        "cartera": result.data.listaDocNoPagados[i],
+                        "extemporaneo": $scope.clasificar(result.data.listaDocPagados[i], 2), //estatus =2
+                        "puntual": $scope.clasificar(result.data.listaDocPagados[i], 1), //estatus =1
+                        ////LMS
+                        "totalSaldoVencido": $scope.sumar(result.data.listaDocNoPagados[i], 'saldoVencido'),
+                        "totalSaldoPorVencer": $scope.sumar(result.data.listaDocNoPagados[i], 'porVencer')
+                    };
+
+                    var creditoFacturado = 0;
+                    var carteraVencida = 0;
+                    var carteraNoVencida = 0;
+                    var pagoPuntual = 0;
+                    var pagoNoPuntual = 0;
+
+                    //$scope.totalPagPuntual
+                    //$scope.totalPagInPuntual
+                    //$scope.totalVencido
+                    //$scope.totalPorVencer
+
+                    //                        creditoFacturado = $scope.sumar(result.data.listaTotales[i], 'credito');
+                    //                        carteraVencida = $scope.totalVencido;
+                    //                        carteraNoVencida = $scope.totalPorVencer;
+                    //                        pagoNoPuntual = $scope.totalPagInPuntual;
+                    //                        pagoPuntual = $scope.totalPagPuntual;
+                    creditoFacturado = $scope.sumar(result.data.listaTotales[i], 'credito');
+                    carteraVencida = $scope.sumar(result.data.listaDocNoPagados[i], 'saldoVencido');
+                    carteraNoVencida = $scope.sumar(result.data.listaDocNoPagados[i], 'porVencer');
+                    pagoNoPuntual = $scope.sumar(obj.extemporaneo, 'cargo');
+                    pagoPuntual = $scope.sumar(obj.puntual, 'cargo');
+
+                    //LMS
+                    obj.totalExtemporaneo = pagoNoPuntual;
+                    obj.totalPuntual = pagoPuntual;
+
+                    graficaObj = {
+                        "colorSet": "greenShades",
+                        "data": [{
+                            "type": "doughnut",
+                            "dataPoints": [{
+                                    "y": carteraVencida,
+                                    "indexLabel": "Cartera Vencida"
+                                }, {
+                                    "y": carteraNoVencida,
+                                    "indexLabel": "Cartera No Vencida"
+                                }, //saldoP
+                                {
+                                    "y": pagoNoPuntual,
+                                    "indexLabel": "Pago No Puntual"
+                                }, {
+                                    "y": pagoPuntual,
+                                    "indexLabel": "Pago Puntual"
+                                }
+
+                            ]
+                        }]
+                    };
+
+
+
+                }
+
+
+
+                lstGraficas.push(graficaObj);
+                lstEmpresa.push(obj);
+            };
+
+
+            var rptStructure = {
+
+                "cliente": result.data.informacioncliente,
+                "pagina1": lstEmpresa[0],
+                "pagina2": lstEmpresa[1],
+                "pagina3": lstEmpresa[2],
+                "pagina4": lstEmpresa[3],
+                "pagina5": lstEmpresa[4],
+                "graphic": lstGraficas[0],
+                "graphic2": lstGraficas[1],
+                "graphic3": lstGraficas[2],
+                "graphic4": lstGraficas[3],
+                "graphic5": lstGraficas[4]
+            }
+
+
+            var jsonData = {
+                "template": {
+                    "name": "buroCredito_rpt"
+                },
+                "data": rptStructure
+            }
+
+            /*
+            var resdata = JSON.stringify(rptStructure);
+            console.log(resdata);
+            */
+
+            contratoDetalleRepository.callExternalPdf(jsonData).then(function (fileName) {
+
+                setTimeout(function () {
+                    window.open("http://192.168.20.9:5000/api/layout/viewpdf?fileName=" + fileName.data);
+                    console.log(fileName.data);
+                    $('#loadModal').modal('hide');
+                }, 5000);
+
+            });
+
+        });
 
     }
 

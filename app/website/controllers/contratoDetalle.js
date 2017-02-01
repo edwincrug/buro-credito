@@ -127,7 +127,7 @@ contratoDetalle.prototype.get_obtienedetallecontrato = function (req, res, next)
 //////////////////////////////////////////////////////////////////////////////////////////////////77777777777777
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Equivalente a nuevo PIPUS
+// Equivalente a nuevo PIPUS Primero
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 contratoDetalle.prototype.get_rptdata = function (req, res, next) {
     var self = this;
@@ -190,6 +190,76 @@ contratoDetalle.prototype.get_rptdata = function (req, res, next) {
 
     });
 };
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Equivalente a nuevo PIPUS Segundo
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+contratoDetalle.prototype.get_rptdatadet = function (req, res, next) {
+    var self = this;
+
+    var params = [{
+            name: 'idCliente',
+            value: req.query.idCliente,
+            type: self.model.types.INT
+    },
+        {
+            name: 'fechaInicio',
+            value: req.query.fechaInicio,
+            type: self.model.types.STRING
+    },
+        {
+            name: 'fechaFin',
+            value: req.query.fechaFin,
+            type: self.model.types.STRING
+    }];
+
+    this.model.query('SEL_DATOS_CLIENTE_REP_SP', params, function (error, informacioncliente) {
+        console.log(informacioncliente)
+        params = [{
+                name: 'idCliente',
+                value: informacioncliente[0].idCliente,
+                type: self.model.types.INT
+        },
+            {
+                name: 'fechaInicio',
+                value: req.query.fechaInicio,
+                type: self.model.types.STRING
+    },
+            {
+                name: 'fechaFin',
+                value: req.query.fechaFin,
+                type: self.model.types.STRING
+    }]
+        self.model.querymulti('SEL_TOTAL_CREDITO_REP_SP', params, function (error, totales) {
+            // console.log(totales)
+
+            self.model.querymulti('SEL_PAG_PUNTUAL_REP_DET_SP', params, function (error, docpagados) {
+                //console.log(docpagados)
+
+                self.model.querymulti('SEL_CARTERA_VENCIDA_REP_SP', params, function (error, docnopagados) {
+                    //console.log(docnopagados);
+
+                    self.view.speakJSON(res, {
+                        error: error,
+                        result: {
+                            informacioncliente: informacioncliente[0],
+                            listaTotales: totales,
+                            listaDocPagados: docpagados,
+                            listaDocNoPagados: docnopagados
+                        }
+                    });
+                    console.log('OK')
+                });
+            });
+        });
+
+    });
+};
+
+
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //obtiene Informacion del Cliente
